@@ -1,6 +1,43 @@
 # Allow-listed data sources (spec §13.8). Tools fetch only from these domains. Governed file: data owner.
-version: 1
+# v2 (Milestone 2): + coastwatch.noaa.gov (NOAA moved VIIRS chlorophyll there), + data-gis.unep-wcmc.org (WDPA),
+#                   endpoints per tool.
+version: 2
 allowlist_domains: [incois.gov.in, erddap.incois.gov.in, mosdac.gov.in, api.imd.gov.in, mausam.imd.gov.in,
-                    marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov,
-                    globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in]
+                    marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov, coastwatch.noaa.gov,
+                    globalfishingwatch.org, gateway.api.globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in,
+                    data-gis.unep-wcmc.org]
 cache_ttl_s: { warnings: 300, forecast: 3600, pfz: 86400, sst: 86400, chl: 86400, layers: 2592000 }
+
+endpoints:
+  open_meteo_marine:
+    url: https://marine-api.open-meteo.com/v1/marine
+    name: "Open-Meteo Marine"
+    hourly: [wave_height, wave_direction, wave_period, swell_wave_height, ocean_current_velocity,
+             ocean_current_direction, sea_surface_temperature]
+  open_meteo_wind:
+    url: https://api.open-meteo.com/v1/forecast
+    name: "Open-Meteo Forecast (wind at 10 m)"
+    hourly: [wind_speed_10m, wind_gusts_10m, wind_direction_10m]
+  sst:
+    # OISST v2.1 near-real-time, 0.25°, daily (the final ncdcOisst21Agg lags ~2 weeks)
+    url: https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21NrtAgg.json
+    name: "NOAA OISST v2.1 NRT (CoastWatch ERDDAP)"
+    variable: sst
+    query: "sst[(last)][(0.0)][({lat_min}):({lat_max})][({lon_min}):({lon_max})]"
+  chl:
+    # NOAA-20 VIIRS chlorophyll NRT, 4 km, daily (replaces the retired erdMH1chla1day_R2022NRT)
+    url: https://coastwatch.noaa.gov/erddap/griddap/noaacwN20VIIRSchlaDaily.json
+    name: "NOAA-20 VIIRS chlorophyll-a NRT (CoastWatch ERDDAP)"
+    variable: chlor_a
+    query: "chlor_a[(last)][(0.0)][({lat_max}):({lat_min})][({lon_min}):({lon_max})]"
+  imd:
+    # IP-whitelisted; until IMD approves the request, warnings come from snapshots only
+    url: https://api.imd.gov.in/api/v1/
+    name: "IMD"
+  incois_alerts:
+    # no machine-readable feed: bulletins are captured into snapshots
+    url: https://incois.gov.in/site/services/osf.jsp
+    name: "INCOIS Ocean State Forecast alerts"
+  incois_pfz:
+    url: https://incois.gov.in/MarineFisheries/PfzAdvisory
+    name: "INCOIS PFZ advisory"

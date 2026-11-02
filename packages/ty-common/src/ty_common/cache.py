@@ -18,6 +18,7 @@ import logging
 import time
 import unicodedata
 from collections.abc import Awaitable, Callable, Iterable
+from contextvars import ContextVar
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -26,6 +27,7 @@ from typing import Any, ParamSpec, TypeVar
 import orjson
 import redis.asyncio as aioredis
 from cachetools import TLRUCache
+from redis.exceptions import RedisError
 
 from .settings import find_config_dir, get_settings
 
@@ -41,6 +43,7 @@ LOCK_TTL_S = 30
 LOCK_WAIT_S = 2.0
 LOCK_POLL_S = 0.1
 EARLY_REFRESH_AT = 0.8
+REDIS_RECHECK_S = 30.0
 
 
 # ── Keys ────────────────────────────────────────────────────────────────────────
@@ -122,11 +125,18 @@ class _Metrics:
             self._counter = None
 
     def record(self, ns: str, tier: str, outcome: str) -> None:
+        _outcome.set(outcome)
         if self._counter is not None:
             self._counter.add(1, {"ns": ns, "tier": tier, "outcome": outcome})
 
 
 _metrics = _Metrics()
+_outcome: ContextVar[str] = ContextVar("ty_cache_outcome", default="miss")
+
+
+def last_outcome() -> str:
+    """Outcome of the most recent cached call in this task: hit, miss, stale or early."""
+    return _outcome.get()
 
 
 # ── The cache ───────────────────────────────────────────────────────────────────
@@ -158,17 +168,37 @@ class Cache:
         self.l1: TLRUCache[str, _Entry] = TLRUCache(maxsize=L1_MAXSIZE, ttu=_ttu, timer=time.monotonic)
         self._bg: set[asyncio.Task[None]] = set()
         self._listener: asyncio.Task[None] | None = None
+        self._redis_ok = True
+        self._ping_at = -REDIS_RECHECK_S
 
     # wiring
     @property
     def redis(self) -> aioredis.Redis:
         if self._client is None:
-            self._client = aioredis.from_url(get_settings().redis_url.get_secret_value())
+            self._client = aioredis.from_url(
+                get_settings().redis_url.get_secret_value(), socket_connect_timeout=0.5, socket_timeout=2
+            )
         return self._client
 
     @property
     def disabled(self) -> bool:
         return get_settings().cache_disabled if self._disabled is None else self._disabled
+
+    async def redis_available(self) -> bool:
+        """Ping at most every 30 s. When Redis is down, calls go straight to the source (no cache)."""
+        now = time.monotonic()
+        if now - self._ping_at < REDIS_RECHECK_S:
+            return self._redis_ok
+        self._ping_at = now
+        try:
+            await self.redis.ping()
+            ok = True
+        except (RedisError, OSError):
+            ok = False
+        if not ok and self._redis_ok:
+            log.warning("redis unreachable: cache bypassed for %ss", REDIS_RECHECK_S)
+        self._redis_ok = ok
+        return ok
 
     # L1 helpers
     def _l1_get(self, k: str) -> _Entry | None:
@@ -249,7 +279,8 @@ class Cache:
         tags: list[str],
         l1: bool,
     ) -> Any:
-        if self.disabled:
+        _outcome.set("miss")
+        if self.disabled or not await self.redis_available():
             return await compute()
 
         if l1 and (entry := self._l1_get(k)) is not None:

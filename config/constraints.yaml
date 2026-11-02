@@ -1,9 +1,10 @@
 # Yukti constraint catalogue (spec §13.6). Thresholds are data, not code.
 # Governed file: safety owner review + config version bump + 24 h safety-hold (spec §9.5, Annexure I).
-version: 1
+# v2 (Milestone 2): H2 alert rings (5 km warning, 2 km alarm; prompt §10.7) moved here from code.
+version: 2
 hard:
   H1: { name: "Official warning active", sources: [incois_alerts, imd_portwarning, imd_seabulletin] }
-  H2: { name: "IMBL buffer", imbl_min_km: 5 }
+  H2: { name: "IMBL buffer", imbl_min_km: 5, alert_rings_km: { warning: 5, alarm: 2 } }
   H3: { name: "Marine National Park", layer: mpa_gom }
   H4: { name: "Fishing ban (mechanised, EEZ)", east: ["04-15", "06-14"], west: ["06-01", "07-31"], exempt: [non_motorised] }
   H5: { name: "Wave limit", per_boat: max_wave_m }

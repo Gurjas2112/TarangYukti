@@ -32,3 +32,6 @@ video/public/
 supabase/.temp/
 supabase/.branches/
 .DS_Store
+
+# Source snapshots (stored in Supabase Storage; layers in data/layers are committed)
+data/snapshot/

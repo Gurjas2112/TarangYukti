@@ -5,8 +5,12 @@ export
 PY_PROJECTS := packages/ty-common apps/agent services/mcp services/channels services/worker
 COMPOSE := docker compose --env-file .env -f infra/docker-compose.yml
 
+DATE ?= $(shell date +%F)
+MCP := cd services/mcp && uv run python -m
+
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
-        snapshot snapshot-upload layers kb-index kb-query push-test test-rls test-local eval-rag demo trace-evals run-prod
+        snapshot snapshot-upload snapshot-download sim-warning layers \
+        kb-index kb-query push-test test-rls test-local eval-rag demo trace-evals run-prod
 
 install:
 	pnpm install
@@ -42,12 +46,26 @@ typecheck:
 	pnpm -C apps/app typecheck
 	pnpm -C services/copilot typecheck
 
+# ── Data (Milestone 2)
+snapshot:            # capture every live source for DATE, write the SHA-256 manifest, upload to Storage
+	$(MCP) tarangyukti.snapshot capture --date $(DATE) --upload
+
+snapshot-upload:     # (re)upload an existing local snapshot
+	$(MCP) tarangyukti.snapshot upload --date $(DATE)
+
+snapshot-download:   # fetch a snapshot from Storage and verify its checksums
+	$(MCP) tarangyukti.snapshot download --date $(DATE)
+
+sim-warning:         # add the labelled SIMULATED INCOIS high-wave warning (CLEAR=1 removes it)
+	$(MCP) tarangyukti.sim_warning --date $(DATE) $(if $(CLEAR),--clear,)
+
+layers:              # rebuild data/layers from the treaty positions and WDPA
+	$(MCP) tarangyukti.layers_build
+
 phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Supabase
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done
 
 # ── Later milestones (targets reserved so the interface is stable)
-snapshot snapshot-upload layers:
-	@echo "$@: Milestone 2" && exit 1
 kb-index kb-query eval-rag:
 	@echo "$@: Milestone 4" && exit 1
 test-local:

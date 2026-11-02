@@ -12,7 +12,31 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | Milestone | State |
 |---|---|
 | 1 · Scaffold | **Done** — see below |
-| 2 · Data tools + cache + snapshots | Next |
+| 2 · Data tools + cache + snapshots | **Done** — see below |
+| 3 · Yukti engine + route | Next |
+
+## Milestone 2 — data tools
+
+Tools on the MCP server (`services/mcp`, `:8001/mcp`), each returning a `ToolResult` and cached with
+`@cached(ns="tool")` (raw coordinates never enter the cache; keys use H3 cells):
+
+| Tool | Live source | Notes |
+|---|---|---|
+| `marine_forecast` | Open-Meteo Marine + Forecast | waves, swell, currents, SST, wind; QC ranges from `config/qc.yaml` |
+| `sst_grid` / `chl_grid` | NOAA CoastWatch ERDDAP (OISST NRT, NOAA-20 VIIRS) | cloud gaps left missing; age vs freshness limit in notes |
+| `imd_warnings` | snapshot only | IMD API needs IP whitelisting — request it at api.imd.gov.in |
+| `incois_alerts`, `pfz_incois` | snapshot only | INCOIS has no machine-readable feed |
+| `fence_check`, `geo_distance` | local layers | IMBL from the 1974/1976 treaty positions; marine park from WDPA |
+
+```bash
+make snapshot DATE=2026-11-02      # capture live sources → data/snapshot/<date>/ + manifest → Supabase Storage
+make sim-warning DATE=2026-11-02   # add the labelled SIMULATED INCOIS high-wave warning (CLEAR=1 removes it)
+DATA_MODE=snapshot SNAPSHOT_DATE=2026-11-02 …   # every tool reads only the snapshot (works offline)
+```
+
+With `DATA_MODE=online`, a tool whose live source is down falls back to the snapshot with
+`cache="snapshot"`, `confidence="low"` and a note; if there is no snapshot it returns
+`data.available=false`. The cache is bypassed (not fatal) when Redis is not running.
 
 ## Repository
 
