@@ -55,5 +55,10 @@ make dev                                # agent :8123, mcp :8001, channels :8002
   is `draft` until two native-speaker reviewers sign its phrase file.
 - Docling, Ragas and Schemathesis are added in their milestones (4 and later), not now.
 - CopilotKit runtime telemetry is opted out (`COPILOTKIT_TELEMETRY_DISABLED=true`).
+- **Azure is for a hosted demo prototype only**, not live testing with real users. After Milestones 2–7, the
+  demo deploys on pay-as-you-go as a *slim demo tier*: the spec's Container Apps + Bicep + GitHub deploy
+  pipeline, but 1 replica that scales to zero, no zone redundancy and no Azure Load Testing; Front Door + WAF
+  optional. The full Tier 1 of spec §15.2 (≥ 2 replicas, zone-redundant, load gate) applies only if live testing
+  with real users is ever started.
 
 Licence: see [LICENSE](LICENSE).
