@@ -170,6 +170,7 @@ class Cache:
         self._listener: asyncio.Task[None] | None = None
         self._redis_ok = True
         self._ping_at = -REDIS_RECHECK_S
+        self._ping_lock: asyncio.Lock | None = None
 
     # wiring
     @property
@@ -185,20 +186,27 @@ class Cache:
         return get_settings().cache_disabled if self._disabled is None else self._disabled
 
     async def redis_available(self) -> bool:
-        """Ping at most every 30 s. When Redis is down, calls go straight to the source (no cache)."""
-        now = time.monotonic()
-        if now - self._ping_at < REDIS_RECHECK_S:
+        """Ping at most every 30 s, one ping at a time. When Redis is down only L1 is used."""
+        if time.monotonic() - self._ping_at < REDIS_RECHECK_S:
             return self._redis_ok
-        self._ping_at = now
-        try:
-            await self.redis.ping()
-            ok = True
-        except (RedisError, OSError):
-            ok = False
+        if self._ping_lock is None:
+            self._ping_lock = asyncio.Lock()
+        async with self._ping_lock:
+            if time.monotonic() - self._ping_at < REDIS_RECHECK_S:  # another caller just pinged
+                return self._redis_ok
+            try:
+                await self.redis.ping()
+                ok = True
+            except (RedisError, OSError):
+                ok = False
+            self._set_redis_ok(ok)
+            return ok
+
+    def _set_redis_ok(self, ok: bool) -> None:
         if not ok and self._redis_ok:
-            log.warning("redis unreachable: cache bypassed for %ss", REDIS_RECHECK_S)
+            log.warning("redis unreachable: in-process cache only for %ss", REDIS_RECHECK_S)
         self._redis_ok = ok
-        return ok
+        self._ping_at = time.monotonic()
 
     # L1 helpers
     def _l1_get(self, k: str) -> _Entry | None:
@@ -282,16 +290,28 @@ class Cache:
         _outcome.set("miss")
         if self.disabled:
             return await compute()
-        if not await self.redis_available():  # degrade to the in-process tier only
-            if l1 and (entry := self._l1_get(k)) is not None:
-                _metrics.record(ns, "l1", "hit")
-                return entry.value
-            value = await compute()
-            if l1:
-                self._l1_put(k, _Entry(value=value, stored_at=time.time(), ttl=ttl), len(orjson.dumps(value)))
-            _metrics.record(ns, "compute", "miss")
-            return value
+        if not await self.redis_available():
+            return await self._local(ns, k, ttl, compute, l1)
+        try:
+            return await self._two_tier(ns, k, ttl, compute, tags, l1)
+        except (RedisError, OSError):  # Redis went away mid-request: degrade, never fail the caller
+            self._set_redis_ok(False)
+            return await self._local(ns, k, ttl, compute, l1)
 
+    async def _local(self, ns: str, k: str, ttl: int, compute: Callable[[], Awaitable[Any]], l1: bool) -> Any:
+        """In-process tier only (Redis down)."""
+        if l1 and (entry := self._l1_get(k)) is not None:
+            _metrics.record(ns, "l1", "hit")
+            return entry.value
+        value = await compute()
+        if l1:
+            self._l1_put(k, _Entry(value=value, stored_at=time.time(), ttl=ttl), len(orjson.dumps(value)))
+        _metrics.record(ns, "compute", "miss")
+        return value
+
+    async def _two_tier(
+        self, ns: str, k: str, ttl: int, compute: Callable[[], Awaitable[Any]], tags: list[str], l1: bool
+    ) -> Any:
         if l1 and (entry := self._l1_get(k)) is not None:
             _metrics.record(ns, "l1", "hit")
             self._maybe_refresh(k, entry, compute, tags, l1, ns)

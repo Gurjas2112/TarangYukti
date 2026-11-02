@@ -180,6 +180,29 @@ async def test_redis_down_bypasses_cache() -> None:
     assert len(c.l1) == 1
 
 
+async def test_redis_down_concurrent_callers_never_fail() -> None:
+    import redis.asyncio as aioredis
+
+    c = Cache(aioredis.Redis(host="127.0.0.1", port=1, socket_connect_timeout=0.2), disabled=False)
+    up = Upstream()
+    tool = make_tool(up, c)
+    results = await asyncio.gather(*[tool(f"cell{i % 3}", "v1") for i in range(12)])
+    assert all(r["wave_m"] == 1.2 for r in results)
+
+
+async def test_redis_failing_mid_request_degrades(cache: Cache, monkeypatch: pytest.MonkeyPatch) -> None:
+    from redis.exceptions import ConnectionError as RedisConnectionError
+
+    async def boom(*a: object, **k: object) -> None:
+        raise RedisConnectionError("gone")
+
+    await cache.redis_available()  # Redis looked healthy
+    monkeypatch.setattr(cache.redis, "get", boom)
+    up = Upstream()
+    assert (await make_tool(up, cache)("8761", "v1"))["wave_m"] == 1.2
+    assert not await cache.redis_available()
+
+
 async def test_large_values_skip_l1(cache: Cache) -> None:
     @cached(ns="kb", ttl=600, key=lambda q: fingerprint(q), cache=cache)
     async def big(q: str) -> dict[str, str]:

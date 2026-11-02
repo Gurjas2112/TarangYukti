@@ -14,6 +14,7 @@ Added as each milestone starts using a source.
 | India–Sri Lanka maritime boundary | UN DOALOS treaty texts: [1974](https://www.un.org/depts/los/LEGISLATIONANDTREATIES/PDFFILES/TREATIES/LKA-IND1974BW.PDF), [1976](https://www.un.org/depts/los/LEGISLATIONANDTREATIES/PDFFILES/TREATIES/LKA-IND1976MB.PDF) | Public treaty text | Agreements of 26/28 June 1974 and 23 March 1976 | IMBL line for H2 (`fence_check`) — `data/layers/imbl.geojson` |
 | World Database on Protected Areas | UNEP-WCMC WDPA site 556326231 | WDPA terms of use (non-commercial; no redistribution of the full dataset) | UNEP-WCMC and IUCN, Protected Planet | Gulf of Mannar marine park + eco-sensitive zone for H3 — `data/layers/mpa_gom.geojson` |
 | NDMA SACHET (CAP 1.2) | `sachet.ndma.gov.in` — active-alert list, CAP XML, alert polygons | Public alerting service of the Government of India; credit the issuing agency | IMD / INCOIS as issuer, disseminated by NDMA SACHET | Live IMD and INCOIS warnings (H1, H7) — `imd_warnings`, `incois_alerts` |
+| Natural Earth 1:10m land | `ne_10m_land` (GitHub mirror of naturalearthdata.com) | Public domain | Natural Earth | Land mask for route search — `data/layers/land.geojson` |
 | IMD API | `https://api.imd.gov.in/api/v1/` | IP-whitelisted; credit IMD | India Meteorological Department | Not used (IMD alerts arrive through SACHET) |
 | INCOIS PFZ advisories | `incois.gov.in` pages | Public pages; respect site terms | INCOIS, Ministry of Earth Sciences | PFZ — **captured into snapshots; no live feed** |
 

@@ -152,6 +152,7 @@ async def _capture(date: str, upload: bool) -> None:
         ("chl", grids.capture(store, "chl")),
         ("warnings_imd", cap.capture(store, "IMD")),
         ("warnings_incois", cap.capture(store, "INCOIS")),
+        ("warnings_sdma", cap.capture(store, "SDMA")),
     ):
         try:
             await coro

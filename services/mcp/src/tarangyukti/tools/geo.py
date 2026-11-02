@@ -10,7 +10,6 @@ from typing import Any
 
 import h3
 from pyproj import Geod
-from shapely.geometry import Polygon
 from ty_common.cache import cached, fingerprint
 from ty_common.models import ToolResult
 
@@ -103,17 +102,13 @@ def geo_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> dict[str
 )
 async def cell_fence(cell: str) -> dict[str, Any]:
     """Fence flags for a whole H3 cell: min km from any part of it to the IMBL, crosses or lies beyond the
-    IMBL, touches the marine park. Route search removes cells that fail H2/H3 (Milestone 3)."""
-    ly = layers.load()
-    boundary = [(lon, lat) for lat, lon in h3.cell_to_boundary(cell)]
-    poly = layers.to_m(Polygon(boundary))
-    min_km = round(ly.imbl.distance(poly) / 1000.0, 2)
-    lat, lon = h3.cell_to_latlng(cell)
-    centre_beyond = not ly.india_side.contains(layers.point_m(lat, lon))
+    IMBL, touches the marine park, centre on land. Route search removes cells that fail H2/H3."""
+    f = layers.fence_flags(cell)
     return {
         "cell": cell,
-        "imbl_min_km": min_km,
-        "beyond_or_crossing": centre_beyond or min_km == 0.0,
-        "touches_mpa": ly.mpa_prepared.intersects(poly),
-        "layer_version": ly.version[:12],
+        "imbl_min_km": f.imbl_min_km,
+        "beyond_or_crossing": f.beyond_or_crossing,
+        "touches_mpa": f.touches_mpa,
+        "land": f.land,
+        "layer_version": layers.load().version[:12],
     }

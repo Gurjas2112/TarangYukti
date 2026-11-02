@@ -169,14 +169,86 @@ def _steps(a: float, b: float) -> list[float]:
     return [round(a + i * GRID_STEP_DEG, 3) for i in range(n + 1)]
 
 
-async def capture_grid(store: SnapshotStore) -> None:
+async def fetch_grid() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Whole-region grid (0.25°) for the next 72 h: one multi-location request per API."""
     pts = grid_points()
     lats = ",".join(f"{p[0]}" for p in pts)
     lons = ",".join(f"{p[1]}" for p in pts)
-    for name, ep_name in (("marine", "open_meteo_marine"), ("wind", "open_meteo_wind")):
+    out: list[list[dict[str, Any]]] = []
+    for ep_name in ("open_meteo_marine", "open_meteo_wind"):
         ep = config.endpoint(ep_name)
         payload = await fetch.get_json(ep["url"], _params(lats, lons, ep["hourly"], MAX_HOURS), timeout=120)
-        if isinstance(payload, dict):
-            payload = [payload]
-        store.write(name, payload, ep["url"])
+        out.append([payload] if isinstance(payload, dict) else payload)
+    return out[0], out[1]
+
+
+async def capture_grid(store: SnapshotStore) -> None:
+    marine, wind = await fetch_grid()
+    store.write("marine", marine, config.endpoint("open_meteo_marine")["url"])
+    store.write("wind", wind, config.endpoint("open_meteo_wind")["url"])
+
+
+# ── whole-region grid for the Yukti engine ──────────────────────────────────────
+
+
+def grid_result(marine: list[dict[str, Any]], wind: list[dict[str, Any]], fetched_at: datetime) -> ToolResult:
+    """Sea grid points only, each with {hour: [wave_m, wind_kmh]} (QC applied)."""
+    wind_by_point = {(round(w["latitude"], 3), round(w["longitude"], 3)): w for w in wind}
+    points, rejected = [], 0
+    for i, m in enumerate(marine):
+        if not any(v is not None for v in m["hourly"].get("wave_height", [])):
+            continue  # land
+        w = wind_by_point.get((round(m["latitude"], 3), round(m["longitude"], 3))) or (
+            wind[i] if i < len(wind) else None
+        )
+        rows, bad = build_rows(m, w, None, MAX_HOURS)
+        rejected += bad
+        points.append(
+            {
+                "lat": round(m["latitude"], 4),
+                "lon": round(m["longitude"], 4),
+                "hours": {r["time"][:13]: [r["wave_m"], r["wind_kmh"]] for r in rows},
+            }
+        )
+    if not points:
+        raise fetch.SourceUnavailable("forecast grid has no sea points")
+    notes = [f"{len(points)} sea grid points, 0.25°"]
+    if rejected:
+        notes.append(f"{rejected} values outside plausible ranges were marked missing")
+    first = min(points[0]["hours"]) if points[0]["hours"] else None
+    return ToolResult(
+        data={"step_deg": GRID_STEP_DEG, "points": points},
+        source=f"{config.endpoint('open_meteo_marine')['name']} + {config.endpoint('open_meteo_wind')['name']}",
+        source_url=config.endpoint("open_meteo_marine")["url"],
+        fetched_at=fetched_at,
+        valid_at=datetime.fromisoformat(f"{first}:00:00+00:00") if first else None,
+        confidence="high",
+        notes=notes,
+    )
+
+
+@cached(
+    ns="tool",
+    ttl=config.ttl("forecast"),
+    key=lambda: fingerprint("forecast_grid", norm_hour(now()), *mode_key()),
+    tags=lambda: ["source:open-meteo", "grid"],
+)
+async def _grid() -> dict[str, Any]:
+    async def online() -> ToolResult:
+        m, w = await fetch_grid()
+        return grid_result(m, w, now())
+
+    def snap(store: SnapshotStore) -> ToolResult:
+        m, w = store.read("marine"), store.read("wind")
+        r = grid_result(m["payload"], w["payload"], datetime.fromisoformat(m["fetched_at"]))
+        return r.model_copy(update={"notes": [*r.notes, f"snapshot {store.date}"]})
+
+    return await resolve(online, snap)
+
+
+async def forecast_grid() -> dict[str, Any]:
+    """Hourly wave height (m) and wind (km/h) on the 0.25° sea grid of the whole region, next 72 h."""
+    try:
+        return finish(await _grid())
+    except fetch.SourceUnavailable as e:
+        return unavailable("Open-Meteo Marine", config.endpoint("open_meteo_marine")["url"], str(e))

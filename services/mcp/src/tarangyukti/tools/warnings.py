@@ -23,10 +23,11 @@ from ty_common.models import ToolResult
 from .. import config, fetch
 from ..snapshot import SnapshotStore
 from . import cap
-from .alert_model import Issuer, Warning_, active
+from .alert_model import AnyIssuer, Warning_, active
 from .common import finish, mode_key, now, resolve, unavailable
 
-SNAP_NAME: dict[Issuer, str] = {"IMD": "warnings_imd", "INCOIS": "warnings_incois"}
+SNAP_NAME: dict[AnyIssuer, str] = {"IMD": "warnings_imd", "INCOIS": "warnings_incois", "SDMA": "warnings_sdma"}
+ENDPOINT: dict[AnyIssuer, str] = {"IMD": "imd", "INCOIS": "incois_alerts", "SDMA": "sdma_alerts"}
 
 
 def _matches(w: Warning_, place: str | None) -> bool:
@@ -37,7 +38,7 @@ def _matches(w: Warning_, place: str | None) -> bool:
 
 
 def _result(
-    issuer: Issuer,
+    issuer: AnyIssuer,
     warnings: list[Warning_],
     place: str | None,
     at: datetime,
@@ -45,9 +46,10 @@ def _result(
     notes: list[str],
 ) -> ToolResult:
     act = [w for w in active(warnings, at) if _matches(w, place)]
-    if any(w.simulation for w in act):
+    upcoming = sorted((w for w in warnings if w.valid_from > at and _matches(w, place)), key=lambda w: w.valid_from)
+    if any(w.simulation for w in [*act, *upcoming]):
         notes = [*notes, "SIMULATION: contains a simulated warning for demonstration"]
-    ep = config.endpoint("imd" if issuer == "IMD" else "incois_alerts")
+    ep = config.endpoint(ENDPOINT[issuer])
     return ToolResult(
         data={
             "issuer": issuer,
@@ -55,6 +57,7 @@ def _result(
             "at": at.isoformat(),
             "count": len(act),
             "active": [w.model_dump(mode="json") for w in act],
+            "upcoming": [w.model_dump(mode="json") for w in upcoming],
         },
         source=ep["name"],
         source_url=ep["url"],
@@ -65,7 +68,7 @@ def _result(
     )
 
 
-def _make_warnings(issuer: Issuer) -> Any:
+def _make_warnings(issuer: AnyIssuer) -> Any:
     snap_name = SNAP_NAME[issuer]
 
     @cached(
@@ -92,7 +95,7 @@ def _make_warnings(issuer: Issuer) -> Any:
     return run
 
 
-_imd, _incois = _make_warnings("IMD"), _make_warnings("INCOIS")
+_imd, _incois, _sdma = _make_warnings("IMD"), _make_warnings("INCOIS"), _make_warnings("SDMA")
 
 
 async def imd_warnings(district: str | None = None) -> dict[str, Any]:
@@ -120,6 +123,16 @@ async def incois_alerts(sector: str | None = None) -> dict[str, Any]:
         return finish(await _incois(sector, norm_hour(now())))
     except fetch.SourceUnavailable as e:
         return unavailable(config.endpoint("incois_alerts")["name"], config.endpoint("incois_alerts")["url"], str(e))
+
+
+async def sdma_alerts(district: str | None = None) -> dict[str, Any]:
+    """Active alerts the state disaster authority issued on its own (not citing IMD or INCOIS) for the
+    region, e.g. lightning or cyclone advisories from Tamil Nadu SDMA. Rule H1 counts them too.
+    Same fields as imd_warnings."""
+    try:
+        return finish(await _sdma(district, norm_hour(now())))
+    except fetch.SourceUnavailable as e:
+        return unavailable(config.endpoint("sdma_alerts")["name"], config.endpoint("sdma_alerts")["url"], str(e))
 
 
 # ── PFZ ─────────────────────────────────────────────────────────────────────────

@@ -10,6 +10,9 @@ EXPECTED = {
     "chl_grid",
     "fence_check",
     "geo_distance",
+    "sdma_alerts",
+    "yukti_evaluate",
+    "route_safest",
     "ping",
 }
 

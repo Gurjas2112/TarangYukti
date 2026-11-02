@@ -11,7 +11,7 @@ from datetime import UTC, datetime
 from fastmcp import FastMCP
 from ty_common.models import ToolResult
 
-from .tools import geo, grids, marine, warnings
+from .tools import geo, grids, marine, warnings, yukti_tools
 
 mcp = FastMCP("tarangyukti")
 
@@ -19,11 +19,14 @@ for fn in (
     marine.marine_forecast,
     warnings.imd_warnings,
     warnings.incois_alerts,
+    warnings.sdma_alerts,
     warnings.pfz_incois,
     grids.sst_grid,
     grids.chl_grid,
     geo.fence_check,
     geo.geo_distance,
+    yukti_tools.yukti_evaluate,
+    yukti_tools.route_safest,
 ):
     mcp.tool(fn)
 

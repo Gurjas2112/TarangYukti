@@ -13,7 +13,25 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 |---|---|
 | 1 · Scaffold | **Done** — see below |
 | 2 · Data tools + cache + snapshots | **Done** — see below |
-| 3 · Yukti engine + route | Next |
+| 3 · Yukti engine + route | **Done** — see below |
+| 4 · RAG | Next |
+
+## Milestone 3 — Yukti constraint engine
+
+`yukti_evaluate` (MCP tool) answers "can I go?" for a boat type, a start point and an optional fishing
+spot: it checks H1–H8 (hard) and S1–S5 (soft) from `config/constraints.yaml` and `config/boats.yaml`,
+maps the result to **GO / CAUTION / NO-GO**, searches departures every 30 min for 24 h for the
+**earliest window** and the **recommended** one, and writes the Constraint Ledger to Neo4j
+(`answer_id`). `route_safest` returns the time-expanded A* route on H3 cells.
+
+- **H1** counts IMD, INCOIS **and state disaster authority (SDMA)** alerts — a deliberate extension of the
+  spec decided on 2026-11-03; thunderstorm/lightning alerts are H7.
+- Routes never enter land (Natural Earth 1:10m), the marine park, or cells within 5 km of the IMBL, and
+  skip cells whose forecast at the hour the boat is there breaks the boat's limits.
+- "Unknown" is never GO: missing or stale inputs fail H8; a missing forecast fails H5/H6 as unknown.
+- With `DATA_MODE=snapshot` the engine evaluates as of the snapshot's capture time.
+- S5 (two wave sources agree) is "not tested" until a second wave source exists; S1 needs a PFZ advisory.
+- The ledger stores no names, phones, coordinates or user cells; replay uses `known_at <= answer time`.
 
 ## Milestone 2 — data tools
 

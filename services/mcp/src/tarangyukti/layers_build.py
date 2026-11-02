@@ -26,6 +26,8 @@ WDPA_QUERY = (
     "The_World_Database_of_Protected_Areas/MapServer/1/query"
 )
 WDPA_SITE_ID = 556326231
+NATURAL_EARTH_LAND = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_land.geojson"
+LAND_CLIP = (77.5, 7.5, 81.0, 11.0)  # region box + margin (lon_min, lat_min, lon_max, lat_max)
 
 
 def dm(deg: int, minutes: float) -> float:
@@ -135,10 +137,38 @@ def build_mpa() -> dict[str, object]:
     }
 
 
+def build_land() -> dict[str, object]:
+    """Natural Earth 1:10m land (public domain), clipped to the region: route search never crosses land."""
+    from shapely.geometry import box
+
+    r = httpx.get(NATURAL_EARTH_LAND, timeout=300, follow_redirects=True)
+    r.raise_for_status()
+    clip = box(*LAND_CLIP)
+    parts = [shape(f["geometry"]).intersection(clip) for f in r.json()["features"]]
+    land = unary_union([p for p in parts if not p.is_empty])
+    return {
+        "type": "FeatureCollection",
+        "name": "land",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {
+                    "id": "land",
+                    "name": "Land (Natural Earth 1:10m), clipped to the region",
+                    "source": "Natural Earth ne_10m_land",
+                    "source_url": "https://www.naturalearthdata.com/downloads/10m-physical-vectors/",
+                    "licence": "Public domain",
+                },
+                "geometry": mapping(land),
+            }
+        ],
+    }
+
+
 def main() -> None:
     out = find_config_dir().parent / "data" / "layers"
     out.mkdir(parents=True, exist_ok=True)
-    for name, fc in (("imbl", build_imbl()), ("mpa_gom", build_mpa())):
+    for name, fc in (("imbl", build_imbl()), ("mpa_gom", build_mpa()), ("land", build_land())):
         (out / f"{name}.geojson").write_text(json.dumps(fc, ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"wrote {out / name}.geojson")
 

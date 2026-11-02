@@ -27,6 +27,7 @@ def env(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path]:
     monkeypatch.setattr(s, "data_mode", "online")
     monkeypatch.setattr(s, "snapshot_date", DATE)
     monkeypatch.setattr(s, "supabase_service_role_key", None)  # never reach real Storage from tests
+    monkeypatch.setattr(s, "neo4j_password", None)  # never write the real ledger from tests
     common.freeze(NOW)
     yield tmp_path
     common.freeze(None)

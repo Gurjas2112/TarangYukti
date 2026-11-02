@@ -1,6 +1,7 @@
 # Boat profiles (spec §13.7). Governed file: safety owner.
 # demo defaults — to be set with INCOIS guidance and fishing cooperatives
-version: 1
-non_motorised:      { max_wave_m: 1.0, max_wind_kmh: 25, speed_knots: 4,  range_km: 20 }
-small_frp:          { max_wave_m: 1.5, max_wind_kmh: 30, speed_knots: 8,  range_km: 60 }
-mechanised_trawler: { max_wave_m: 2.5, max_wind_kmh: 45, speed_knots: 9,  range_km: 200 }
+# v2 (Milestone 3): fish_h (hours spent at the fishing spot) and local_trip_h (trip with no destination).
+version: 2
+non_motorised:      { max_wave_m: 1.0, max_wind_kmh: 25, speed_knots: 4,  range_km: 20,  fish_h: 3, local_trip_h: 6 }
+small_frp:          { max_wave_m: 1.5, max_wind_kmh: 30, speed_knots: 8,  range_km: 60,  fish_h: 4, local_trip_h: 8 }
+mechanised_trawler: { max_wave_m: 2.5, max_wind_kmh: 45, speed_knots: 9,  range_km: 200, fish_h: 6, local_trip_h: 12 }

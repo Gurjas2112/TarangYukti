@@ -63,7 +63,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "ASYNC", "RUF"]
-ignore = ["UP046", "UP047", "RUF001", "RUF002", "ASYNC109"]  # en dashes are intentional; httpx owns timeouts
+ignore = ["UP046", "UP047", "RUF001", "RUF002", "RUF003", "ASYNC109"]  # en dashes are intentional; httpx owns timeouts
 
 [tool.mypy]
 strict = true

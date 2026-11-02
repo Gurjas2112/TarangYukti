@@ -1,8 +1,9 @@
 # Allow-listed data sources (spec §13.8). Tools fetch only from these domains. Governed file: data owner.
+# v4 (Milestone 3): sdma_alerts endpoint (H1 counts state authority alerts).
 # v3: + sachet.ndma.gov.in (NDMA CAP hub: live IMD + INCOIS alerts, free; the IMD API needs whitelisting).
 # v2 (Milestone 2): + coastwatch.noaa.gov (NOAA moved VIIRS chlorophyll there), + data-gis.unep-wcmc.org (WDPA),
 #                   endpoints per tool.
-version: 3
+version: 4
 allowlist_domains: [incois.gov.in, erddap.incois.gov.in, mosdac.gov.in, api.imd.gov.in, mausam.imd.gov.in,
                     marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov, coastwatch.noaa.gov,
                     globalfishingwatch.org, gateway.api.globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in,
@@ -50,6 +51,9 @@ endpoints:
   incois_alerts:
     url: https://sachet.ndma.gov.in/
     name: "INCOIS (via NDMA SACHET CAP)"
+  sdma_alerts:
+    url: https://sachet.ndma.gov.in/
+    name: "State disaster authority (via NDMA SACHET CAP)"
   incois_pfz:
     url: https://incois.gov.in/MarineFisheries/PfzAdvisory
     name: "INCOIS PFZ advisory"

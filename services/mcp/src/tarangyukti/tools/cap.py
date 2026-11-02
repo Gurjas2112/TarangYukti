@@ -25,7 +25,7 @@ from ty_common.cache import cached, fingerprint
 
 from .. import config, fetch, qc
 from ..snapshot import SnapshotStore
-from .alert_model import AnyIssuer, Issuer, Severity, Warning_
+from .alert_model import AnyIssuer, Severity, Warning_
 
 CAP = "{urn:oasis:names:tc:emergency:cap:1.2}"
 _SEVERITY: dict[str, Severity] = {"extreme": "warning", "severe": "warning", "moderate": "alert"}
@@ -213,7 +213,7 @@ async def cap_alert(identifier: str, office: str) -> dict[str, Any] | None:
     return None if w is None else w.model_dump(mode="json")
 
 
-async def regional_warnings(issuer: Issuer) -> tuple[list[Warning_], list[str]]:
+async def regional_warnings(issuer: AnyIssuer) -> tuple[list[Warning_], list[str]]:
     """Active alerts from `issuer` that touch the region, with notes. State-authority alerts in the region
     that cite neither IMD nor INCOIS are named in the notes (H1 decides what to do with them)."""
     items, notes = await list_active()
@@ -230,7 +230,7 @@ async def regional_warnings(issuer: Issuer) -> tuple[list[Warning_], list[str]]:
 
     ws = [w for w in await asyncio.gather(*(one(i) for i in items)) if w is not None and in_region(w)]
     for w in ws:
-        if w.issuer == "SDMA":
+        if w.issuer == "SDMA" and issuer != "SDMA":
             notes.append(
                 f"state authority alert in region, not attributed to IMD/INCOIS: {w.office}: {w.event} "
                 f"until {w.valid_to.isoformat()} ({w.id})"
@@ -238,9 +238,9 @@ async def regional_warnings(issuer: Issuer) -> tuple[list[Warning_], list[str]]:
     return [w for w in ws if w.issuer == issuer], notes
 
 
-async def capture(store: SnapshotStore, issuer: Issuer) -> None:
+async def capture(store: SnapshotStore, issuer: AnyIssuer) -> None:
     """Snapshot the region's active alerts; simulated warnings already in the file are kept."""
-    name = "warnings_imd" if issuer == "IMD" else "warnings_incois"
+    name = {"IMD": "warnings_imd", "INCOIS": "warnings_incois", "SDMA": "warnings_sdma"}[issuer]
     kept: list[dict[str, Any]] = []
     if store.has(name):
         kept = [w for w in store.read(name)["payload"]["warnings"] if w.get("simulation")]
