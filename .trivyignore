@@ -1,0 +1,7 @@
+# Accepted findings — each needs a reason and a review date (docs/review-checklist.md).
+
+# decode-uri-component 0.2.2 (DoS on crafted percent-encoding), via expo-router -> query-string@7.
+# The fixed 0.5.x is ESM-only and breaks query-string@7's require(), which breaks app routing.
+# Exposure: client-side only — it parses the viewer's own URL in their own browser/app; no server uses it.
+# Revisit when expo-router moves off query-string@7. Review by 2027-02-01.
+CVE-2026-118664

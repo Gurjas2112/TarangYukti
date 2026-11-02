@@ -2,7 +2,9 @@
   "name": "tarangyukti",
   "private": true,
   "description": "TarangYukti — constraint-reasoning marine copilot (monorepo root)",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "packageManager": "pnpm@10.34.9",
   "scripts": {
     "app": "pnpm -C apps/app start",
@@ -10,5 +12,11 @@
     "lint": "pnpm -C apps/app lint",
     "typecheck": "pnpm -C apps/app typecheck && pnpm -C services/copilot typecheck",
     "test": "pnpm -C apps/app test && pnpm -C services/copilot test"
+  },
+  "pnpm": {
+    "overrides": {
+      "undici@<6.29.1": "6.29.1",
+      "graphql-scalars@<2.0.1": "2.0.1"
+    }
   }
 }
