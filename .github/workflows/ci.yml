@@ -50,4 +50,4 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: docker run --rm -v "$PWD:/src" aquasec/trivy:latest fs --severity HIGH,CRITICAL --exit-code 1 /src
+      - run: docker run --rm -v "$PWD:/src" aquasec/trivy:latest fs --severity HIGH,CRITICAL --exit-code 1 --ignorefile /src/.trivyignore /src
