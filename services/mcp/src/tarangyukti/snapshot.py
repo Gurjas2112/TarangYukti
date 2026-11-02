@@ -143,22 +143,23 @@ def active_store() -> SnapshotStore | None:
 
 
 async def _capture(date: str, upload: bool) -> None:
-    from .tools import grids, marine  # imported here: tools import this module
+    from .tools import cap, grids, marine  # imported here: tools import this module
 
     store = SnapshotStore(date)
     for name, coro in (
         ("marine", marine.capture_grid(store)),
         ("sst", grids.capture(store, "sst")),
         ("chl", grids.capture(store, "chl")),
+        ("warnings_imd", cap.capture(store, "IMD")),
+        ("warnings_incois", cap.capture(store, "INCOIS")),
     ):
         try:
             await coro
             print(f"captured {name}")
         except Exception as e:  # one source down must not lose the others
             print(f"FAILED {name}: {e}")
-    for name in ("warnings_imd", "warnings_incois", "pfz_incois"):
-        if not store.has(name):
-            print(f"note: {name}.json not captured (no live feed) - add it by hand or with sim_warning")
+    if not store.has("pfz_incois"):
+        print("note: pfz_incois.json not captured (INCOIS has no PFZ feed) - add it by hand")
     m = store.write_manifest()
     print(f"manifest: {len(m)} files in {store.dir}")
     if upload:

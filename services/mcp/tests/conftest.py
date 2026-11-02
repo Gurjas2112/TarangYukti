@@ -33,6 +33,25 @@ def env(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[Path]:
 
 
 @pytest.fixture(autouse=True)
+def sachet_offline(request: pytest.FixtureRequest, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Live CAP alerts are stubbed as unavailable unless a test asks for `real_cap` (then use respx)."""
+    if "real_cap" in request.fixturenames:
+        return
+    from tarangyukti.fetch import SourceUnavailable
+    from tarangyukti.tools import cap
+
+    async def down(issuer: str) -> tuple[list[object], list[str]]:
+        raise SourceUnavailable("SACHET down (test)")
+
+    monkeypatch.setattr(cap, "regional_warnings", down)
+
+
+@pytest.fixture
+def real_cap() -> None:
+    """Marker fixture: keep the real CAP reader (mock HTTP with respx)."""
+
+
+@pytest.fixture(autouse=True)
 async def cache() -> AsyncIterator[Cache]:
     c = Cache(fakeredis.FakeAsyncRedis(server=fakeredis.FakeServer()), disabled=False)
     set_cache(c)

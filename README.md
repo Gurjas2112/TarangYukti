@@ -24,8 +24,8 @@ Tools on the MCP server (`services/mcp`, `:8001/mcp`), each returning a `ToolRes
 |---|---|---|
 | `marine_forecast` | Open-Meteo Marine + Forecast | waves, swell, currents, SST, wind; QC ranges from `config/qc.yaml` |
 | `sst_grid` / `chl_grid` | NOAA CoastWatch ERDDAP (OISST NRT, NOAA-20 VIIRS) | cloud gaps left missing; age vs freshness limit in notes |
-| `imd_warnings` | snapshot only | IMD API needs IP whitelisting — request it at api.imd.gov.in |
-| `incois_alerts`, `pfz_incois` | snapshot only | INCOIS has no machine-readable feed |
+| `imd_warnings`, `incois_alerts` | NDMA SACHET (official CAP alerts) | free; real issuer read from each alert (state authorities relay INCOIS alerts) |
+| `pfz_incois` | snapshot only | INCOIS publishes PFZ advisories as web pages only |
 | `fence_check`, `geo_distance` | local layers | IMBL from the 1974/1976 treaty positions; marine park from WDPA |
 
 ```bash

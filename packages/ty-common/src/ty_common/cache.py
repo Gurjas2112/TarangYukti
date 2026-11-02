@@ -280,8 +280,17 @@ class Cache:
         l1: bool,
     ) -> Any:
         _outcome.set("miss")
-        if self.disabled or not await self.redis_available():
+        if self.disabled:
             return await compute()
+        if not await self.redis_available():  # degrade to the in-process tier only
+            if l1 and (entry := self._l1_get(k)) is not None:
+                _metrics.record(ns, "l1", "hit")
+                return entry.value
+            value = await compute()
+            if l1:
+                self._l1_put(k, _Entry(value=value, stored_at=time.time(), ttl=ttl), len(orjson.dumps(value)))
+            _metrics.record(ns, "compute", "miss")
+            return value
 
         if l1 and (entry := self._l1_get(k)) is not None:
             _metrics.record(ns, "l1", "hit")

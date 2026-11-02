@@ -1,14 +1,13 @@
 """imd_warnings, incois_alerts and pfz_incois — official bulletins.
 
-Neither source has a feed this service can call today: the IMD API needs IP whitelisting and INCOIS
-publishes HTML/PDF only. So these tools read **normalised snapshot files** (captured by hand or by a
-parser, plus clearly labelled simulations from `tarangyukti.sim_warning`). Online mode tries the live
-source first and falls back to the snapshot; an old snapshot keeps its old `fetched_at`, so H8 marks
-it stale and the verdict can never be GO.
+Warnings: live from NDMA SACHET, the official CAP hub where IMD regional centres and INCOIS publish
+their alerts (see cap.py; free, no IP whitelisting). If SACHET is down, the configured snapshot is
+used; an old snapshot keeps its old `fetched_at`, so H8 marks it stale and the verdict is never GO.
+`DATA_MODE=snapshot` reads only the snapshot (which may also hold a labelled SIMULATION).
 
-Snapshot file `warnings_imd.json` / `warnings_incois.json` payload:
-    {"warnings": [{"id", "issuer", "kind", "title", "districts" | "sectors", "area" (GeoJSON|null),
-                   "valid_from", "valid_to", "issued_at", "severity", "simulation", "source_url"}]}
+PFZ: INCOIS publishes advisories as web pages only, so PFZ comes from snapshots.
+
+Snapshot file `warnings_imd.json` / `warnings_incois.json` payload: {"warnings": [Warning_, …]}
 Snapshot file `pfz_incois.json` payload:
     {"issued_at", "valid_to", "sector", "zones": [{"id", "lat", "lon", "text"}], "source_url"}
 """
@@ -16,54 +15,38 @@ Snapshot file `pfz_incois.json` payload:
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Literal
+from typing import Any
 
-from pydantic import BaseModel, ConfigDict
 from ty_common.cache import cached, fingerprint, norm_hour
 from ty_common.models import ToolResult
 
 from .. import config, fetch
 from ..snapshot import SnapshotStore
+from . import cap
+from .alert_model import Issuer, Warning_, active
 from .common import finish, mode_key, now, resolve, unavailable
 
-Issuer = Literal["IMD", "INCOIS"]
-
-
-class Warning_(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    id: str
-    issuer: Issuer
-    kind: str  # high_wave, cyclone, thunderstorm, swell_surge, strong_wind, …
-    title: str
-    districts: list[str] = []
-    sectors: list[str] = []
-    area: dict[str, Any] | None = None  # GeoJSON Polygon/MultiPolygon
-    valid_from: datetime
-    valid_to: datetime
-    issued_at: datetime
-    severity: Literal["warning", "alert", "watch"]
-    simulation: bool = False
-    source_url: str
-
-
-def active(warnings: list[Warning_], at: datetime) -> list[Warning_]:
-    return [w for w in warnings if w.valid_from <= at <= w.valid_to]
+SNAP_NAME: dict[Issuer, str] = {"IMD": "warnings_imd", "INCOIS": "warnings_incois"}
 
 
 def _matches(w: Warning_, place: str | None) -> bool:
     if place is None:
         return True
     p = place.strip().casefold()
-    return any(p == x.casefold() for x in [*w.districts, *w.sectors])
+    return any(p == x.casefold() for x in [*w.districts, *w.sectors]) or p in (w.area_desc or "").casefold()
 
 
-def _warnings_result(issuer: Issuer, doc: dict[str, Any], place: str | None, at: datetime, store: str) -> ToolResult:
-    ws = [Warning_.model_validate(w) for w in doc["payload"]["warnings"]]
-    act = [w for w in active(ws, at) if _matches(w, place)]
-    notes = [f"snapshot {store}"]
+def _result(
+    issuer: Issuer,
+    warnings: list[Warning_],
+    place: str | None,
+    at: datetime,
+    fetched_at: datetime,
+    notes: list[str],
+) -> ToolResult:
+    act = [w for w in active(warnings, at) if _matches(w, place)]
     if any(w.simulation for w in act):
-        notes.append("SIMULATION: contains a simulated warning for demonstration")
+        notes = [*notes, "SIMULATION: contains a simulated warning for demonstration"]
     ep = config.endpoint("imd" if issuer == "IMD" else "incois_alerts")
     return ToolResult(
         data={
@@ -75,7 +58,7 @@ def _warnings_result(issuer: Issuer, doc: dict[str, Any], place: str | None, at:
         },
         source=ep["name"],
         source_url=ep["url"],
-        fetched_at=datetime.fromisoformat(doc["fetched_at"]),
+        fetched_at=fetched_at,
         valid_at=at,
         confidence="high",
         notes=notes,
@@ -83,12 +66,7 @@ def _warnings_result(issuer: Issuer, doc: dict[str, Any], place: str | None, at:
 
 
 def _make_warnings(issuer: Issuer) -> Any:
-    snap_name = "warnings_imd" if issuer == "IMD" else "warnings_incois"
-    reason = (
-        "IMD API requires IP whitelisting (request pending)"
-        if issuer == "IMD"
-        else "INCOIS publishes alerts as web pages only; no machine-readable feed"
-    )
+    snap_name = SNAP_NAME[issuer]
 
     @cached(
         ns="tool",
@@ -100,11 +78,14 @@ def _make_warnings(issuer: Issuer) -> Any:
         at = now()
 
         async def online() -> ToolResult:
-            # TODO(tarangyukti): live parser once IMD whitelists our IP / INCOIS publishes a feed.
-            raise fetch.SourceUnavailable(reason)
+            fetched = now()
+            ws, notes = await cap.regional_warnings(issuer)
+            return _result(issuer, ws, place, at, fetched, ["live CAP alerts from NDMA SACHET", *notes])
 
         def snap(store: SnapshotStore) -> ToolResult:
-            return _warnings_result(issuer, store.read(snap_name), place, at, store.date)
+            doc = store.read(snap_name)
+            ws = [Warning_.model_validate(w) for w in doc["payload"]["warnings"]]
+            return _result(issuer, ws, place, at, datetime.fromisoformat(doc["fetched_at"]), [f"snapshot {store.date}"])
 
         return await resolve(online, snap)
 
@@ -115,27 +96,30 @@ _imd, _incois = _make_warnings("IMD"), _make_warnings("INCOIS")
 
 
 async def imd_warnings(district: str | None = None) -> dict[str, Any]:
-    """Active IMD warnings now (port warnings, sea-area bulletins, district thunderstorm nowcasts).
+    """Active IMD warnings now for the Gulf of Mannar / Palk Bay region (IMD Chennai CAP alerts:
+    district nowcasts such as thunderstorm and lightning, heavy rain, strong wind, cyclone).
 
-    district: e.g. "Ramanathapuram" (None = all in the region). Each warning has issuer, kind, title,
-    validity window (UTC) and a `simulation` flag. No warning listed does NOT mean safe: check `cache`,
-    `fetched_at` and `notes` for staleness.
+    district: e.g. "Ramanathapuram" (None = every alert touching the region). Each warning has issuer,
+    kind, event, CAP severity, title, area, validity window and a `simulation` flag. No warning listed
+    does NOT mean safe: check `cache`, `fetched_at` and `notes` for staleness.
     """
     try:
         return finish(await _imd(district, norm_hour(now())))
     except fetch.SourceUnavailable as e:
-        return unavailable("IMD", config.endpoint("imd")["url"], str(e))
+        return unavailable(config.endpoint("imd")["name"], config.endpoint("imd")["url"], str(e))
 
 
 async def incois_alerts(sector: str | None = None) -> dict[str, Any]:
-    """Active INCOIS ocean-state alerts now (high waves, swell surge, …) for a coastal sector.
+    """Active INCOIS ocean-state alerts now for the region (high waves, swell surge, storm surge,
+    tsunami), from INCOIS CAP alerts.
 
-    sector: e.g. "Ramanathapuram" or "Gulf of Mannar" (None = all). Same fields as imd_warnings.
+    sector: e.g. "Ramanathapuram" or "Gulf of Mannar" (None = every alert touching the region).
+    Same fields as imd_warnings.
     """
     try:
         return finish(await _incois(sector, norm_hour(now())))
     except fetch.SourceUnavailable as e:
-        return unavailable("INCOIS", config.endpoint("incois_alerts")["url"], str(e))
+        return unavailable(config.endpoint("incois_alerts")["name"], config.endpoint("incois_alerts")["url"], str(e))
 
 
 # ── PFZ ─────────────────────────────────────────────────────────────────────────

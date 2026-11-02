@@ -234,7 +234,7 @@ async def test_simulation_is_labelled(env: Path) -> None:
 async def test_imd_without_snapshot_is_unavailable() -> None:
     r = await warnings.imd_warnings("Ramanathapuram")
     assert r["data"]["available"] is False
-    assert "whitelisting" in r["data"]["reason"]
+    assert "SACHET down" in r["data"]["reason"]
 
 
 async def test_pfz_from_snapshot(env: Path) -> None:

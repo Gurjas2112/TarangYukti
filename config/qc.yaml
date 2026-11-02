@@ -1,10 +1,13 @@
 # Data quality checks run before any tool returns (spec §9.3, Table "Range"). Governed file: safety owner.
 # demo defaults
-version: 1
+# v2: alert_area_names (match CAP area descriptions when an alert has no polygon)
+version: 2
 region:
   # prototype bbox: Gulf of Mannar + Palk Bay
   bbox: { lon_min: 78.0, lon_max: 80.5, lat_min: 8.0, lat_max: 10.5 }
   home_harbour: { id: rameswaram, lat: 9.288, lon: 79.313 }
+  alert_area_names: [Ramanathapuram, Thoothukudi, Tuticorin, Pudukkottai, Thanjavur, Nagapattinam,
+                     Tiruvarur, Rameswaram, Mandapam, Gulf of Mannar, Palk Bay, Palk Strait]
 ranges:
   sst_c: { min: 10, max: 35 }
   chl_mg_m3: { min: 0 }

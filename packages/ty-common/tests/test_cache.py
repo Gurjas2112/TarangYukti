@@ -170,13 +170,14 @@ async def test_cache_disabled_writes_nothing(server: fakeredis.FakeServer) -> No
 async def test_redis_down_bypasses_cache() -> None:
     import redis.asyncio as aioredis
 
-    # nothing listens on port 1: ping fails fast, calls go straight to the source
+    # nothing listens on port 1: ping fails fast; the in-process tier still works
     c = Cache(aioredis.Redis(host="127.0.0.1", port=1, socket_connect_timeout=0.2), disabled=False)
     up = Upstream()
     tool = make_tool(up, c)
     assert (await tool("8761", "v1"))["wave_m"] == 1.2
     assert (await tool("8761", "v1"))["wave_m"] == 1.2
-    assert up.calls == 2
+    assert up.calls == 1
+    assert len(c.l1) == 1
 
 
 async def test_large_values_skip_l1(cache: Cache) -> None:

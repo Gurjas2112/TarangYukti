@@ -1,0 +1,63 @@
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+<cap:identifier>IN-1793611251003008_8</cap:identifier>
+<cap:sender>Andhra-Pradesh-SDMA</cap:sender>
+<cap:sent>2026-11-02T15:06:36+05:30</cap:sent>
+<cap:status>Actual</cap:status>
+<cap:msgType>Update</cap:msgType>
+<cap:scope>Public</cap:scope>
+<cap:restriction/>
+<cap:addresses/>
+<cap:note/>
+<cap:references>INCOIS,IN-1793611251003008_101,2026-11-02T14:50:19+05:30</cap:references>
+<cap:incidents/>
+<cap:info>
+<cap:language>en-IN</cap:language>
+<cap:category>Geo</cap:category>
+<cap:event>Storm Surge</cap:event>
+<cap:urgency>Expected</cap:urgency>
+<cap:severity>Severe</cap:severity>
+<cap:certainty>Likely</cap:certainty>
+<cap:audience>1</cap:audience>
+<cap:effective>2026-11-02T14:30:00+05:30</cap:effective>
+<cap:onset>2026-11-02T15:06:36+05:30</cap:onset>
+<cap:expires>2026-11-03T08:30:00+05:30</cap:expires>
+<cap:headline>For Severe Cyclonic Storm MURASU, INCOIS has issued storm surge alerts for the coasts of Guntur, Prakasam, and Nellore, Andhra Pradesh. Surges of 0.5-1.0 m above astronomical tide are forecast. Avoid beaches and low-lying coastal areas. Follow official advisories. Check the INCOIS SAMUDRA app</cap:headline>
+<cap:description/>
+<cap:instruction/>
+<cap:contact>04023895011</cap:contact>
+<cap:parameter>
+<cap:valueName>Polygon URL</cap:valueName>
+<cap:value>https://sachet.ndma.gov.in/cap_public_website/FetchPolygonXMLFile?identifier=1793611251003008</cap:value>
+</cap:parameter>
+<cap:area>
+<cap:areaDesc>Bapatla, Chirala, Karlapalem, Nizampatnam, Repalle, Chinaganjam, Gudluru, Kotha Patanam, Naguluppala padu, Ongole, Singarayakonda, Tangutur, Ulavapadu, Vetapalem, Kavali, Sullurpeta, Tada zones of ANDHRA PRADESH</cap:areaDesc>
+<cap:altitude>0</cap:altitude>
+<cap:ceiling>0</cap:ceiling>
+</cap:area>
+</cap:info>
+<cap:info>
+<cap:language>TL</cap:language>
+<cap:category>Geo</cap:category>
+<cap:event>Storm Surge</cap:event>
+<cap:urgency>Expected</cap:urgency>
+<cap:severity>Severe</cap:severity>
+<cap:certainty>Likely</cap:certainty>
+<cap:audience>1</cap:audience>
+<cap:effective>2026-11-02T14:30:00+05:30</cap:effective>
+<cap:onset>2026-11-02T15:06:36+05:30</cap:onset>
+<cap:expires>2026-11-03T08:30:00+05:30</cap:expires>
+<cap:headline>మురసు తుఫాను ప్రభావంతో గుంటూరు, ప్రకాశం, నెల్లూరు తీరాల్లో 0.5&amp;ndash;1 మీటర్ల ఎత్తులో అలలు ఎగిసిపడే అవకాశం ఉంది. ప్రజలు, మత్స్యకారులు బీచ్ లకు వెళ్లకుండా అప్రమత్తంగా ఉండాలి &amp;ndash; ఆంధ్రప్రదేశ్ ప్రభుత్వం.</cap:headline>
+<cap:description/>
+<cap:instruction/>
+<cap:contact>04023895011</cap:contact>
+<cap:parameter>
+<cap:valueName>Polygon URL</cap:valueName>
+<cap:value>https://sachet.ndma.gov.in/cap_public_website/FetchPolygonXMLFile?identifier=1793611251003008</cap:value>
+</cap:parameter>
+<cap:area>
+<cap:areaDesc>Bapatla, Chirala, Karlapalem, Nizampatnam, Repalle, Chinaganjam, Gudluru, Kotha Patanam, Naguluppala padu, Ongole, Singarayakonda, Tangutur, Ulavapadu, Vetapalem, Kavali, Sullurpeta, Tada zones of ANDHRA PRADESH</cap:areaDesc>
+<cap:altitude>0</cap:altitude>
+<cap:ceiling>0</cap:ceiling>
+</cap:area>
+</cap:info>
+</cap:alert>

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -26,6 +27,13 @@ def allowed(url: str) -> bool:
 
 
 async def get_json(url: str, params: dict[str, Any] | None = None, timeout: float = 30.0) -> Any:
+    try:
+        return json.loads(await get_bytes(url, params, timeout))
+    except ValueError as e:
+        raise SourceUnavailable(f"{urlsplit(url).hostname}: invalid JSON: {e}") from e
+
+
+async def get_bytes(url: str, params: dict[str, Any] | None = None, timeout: float = 30.0) -> bytes:
     if not allowed(url):
         raise NotAllowed(f"domain not in config/sources.yaml allow-list: {urlsplit(url).hostname}")
     try:
@@ -36,8 +44,8 @@ async def get_json(url: str, params: dict[str, Any] | None = None, timeout: floa
             if not allowed(str(r.url)):
                 raise NotAllowed(f"redirected outside the allow-list: {r.url.host}")
             r.raise_for_status()
-            return r.json()
+            return r.content
     except NotAllowed:
         raise
-    except (httpx.HTTPError, ValueError) as e:
+    except httpx.HTTPError as e:
         raise SourceUnavailable(f"{urlsplit(url).hostname}: {type(e).__name__}: {e}") from e

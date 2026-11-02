@@ -1,11 +1,12 @@
 # Allow-listed data sources (spec §13.8). Tools fetch only from these domains. Governed file: data owner.
+# v3: + sachet.ndma.gov.in (NDMA CAP hub: live IMD + INCOIS alerts, free; the IMD API needs whitelisting).
 # v2 (Milestone 2): + coastwatch.noaa.gov (NOAA moved VIIRS chlorophyll there), + data-gis.unep-wcmc.org (WDPA),
 #                   endpoints per tool.
-version: 2
+version: 3
 allowlist_domains: [incois.gov.in, erddap.incois.gov.in, mosdac.gov.in, api.imd.gov.in, mausam.imd.gov.in,
                     marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov, coastwatch.noaa.gov,
                     globalfishingwatch.org, gateway.api.globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in,
-                    data-gis.unep-wcmc.org]
+                    data-gis.unep-wcmc.org, sachet.ndma.gov.in]
 cache_ttl_s: { warnings: 300, forecast: 3600, pfz: 86400, sst: 86400, chl: 86400, layers: 2592000 }
 
 endpoints:
@@ -30,14 +31,25 @@ endpoints:
     name: "NOAA-20 VIIRS chlorophyll-a NRT (CoastWatch ERDDAP)"
     variable: chlor_a
     query: "chlor_a[(last)][(0.0)][({lat_max}):({lat_min})][({lon_min}):({lon_max})]"
+  sachet:
+    # NDMA SACHET: official CAP 1.2 alerts from IMD regional centres and INCOIS (public, free)
+    name: "NDMA SACHET (CAP)"
+    url: https://sachet.ndma.gov.in/
+    active_url: https://sachet.ndma.gov.in/cap_public_website/FetchAllAlertDetails
+    rss_url: https://sachet.ndma.gov.in/cap_public_website/rss/rss_india.xml
+    cap_url: "https://sachet.ndma.gov.in/cap_public_website/FetchXMLFile?identifier={identifier}"
+    polygon_url: "https://sachet.ndma.gov.in/cap_public_website/FetchPolygonXMLFile?identifier={identifier}"
+    # alerts are shortlisted by location (centroid within the region box + margin); the RSS fallback has no
+    # centroids, so it shortlists by these disseminating sources instead
+    rss_sources: ["IMD Chennai", "INCOIS", "Tamil Nadu SDMA", "Puducherry SDMA"]
+    prefilter_margin_deg: 2.0
   imd:
-    # IP-whitelisted; until IMD approves the request, warnings come from snapshots only
-    url: https://api.imd.gov.in/api/v1/
-    name: "IMD"
+    # the IMD API itself is IP-whitelisted (not used); IMD alerts arrive through SACHET
+    url: https://sachet.ndma.gov.in/
+    name: "IMD (via NDMA SACHET CAP)"
   incois_alerts:
-    # no machine-readable feed: bulletins are captured into snapshots
-    url: https://incois.gov.in/site/services/osf.jsp
-    name: "INCOIS Ocean State Forecast alerts"
+    url: https://sachet.ndma.gov.in/
+    name: "INCOIS (via NDMA SACHET CAP)"
   incois_pfz:
     url: https://incois.gov.in/MarineFisheries/PfzAdvisory
     name: "INCOIS PFZ advisory"
