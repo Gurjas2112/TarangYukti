@@ -1,0 +1,38 @@
+# Laptop infrastructure (spec §13.9). Run with --env-file .env from the repo root (make infra-up).
+# Dev uses Neo4j AuraDB, so the local neo4j container is opt-in: `docker compose --profile local-neo4j up -d`.
+name: tarangyukti-infra
+services:
+  neo4j:
+    image: neo4j:5-community
+    container_name: ty-neo4j
+    profiles: ["local-neo4j"]
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD}
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 256m
+    ports: ["127.0.0.1:7474:7474", "127.0.0.1:7687:7687"]
+    volumes: [neo4j-data:/data]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 || exit 1"]
+      interval: 15s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    container_name: ty-redis
+    command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}", "--maxmemory", "256mb",
+              "--maxmemory-policy", "allkeys-lru", "--appendonly", "yes"]
+    ports: ["127.0.0.1:6379:6379"]
+    volumes: [redis-data:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      retries: 5
+  lgtm:
+    image: grafana/otel-lgtm
+    container_name: ty-lgtm
+    ports: ["127.0.0.1:3001:3000", "127.0.0.1:4317:4317", "127.0.0.1:4318:4318"]
+    volumes: [lgtm-data:/data]
+volumes:
+  neo4j-data: {}
+  redis-data: {}
+  lgtm-data: {}

@@ -1,0 +1,19 @@
+# Approved safety wording for English (prompt §10). The LLM only fills {slots}.
+# Every config/phrases/<code>.yaml has the same keys. Drafts for other languages come from
+# sarvam-translate:v1 (Milestone 10a); only files with status: approved are released.
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: "Good to go."
+  CAUTION: "Go, but carefully — back by {back_by}."
+  NO-GO: "Don't go today. Next good time: {next_window}."
+why:
+  H5: "Waves get too high after {time}."
+  H2: "That route goes too close to the border line."
+  H1: "There is an official {issuer} warning: {warning_name}."
+spot: "Fish likely {distance_km} km {direction}."
+border: "Border line is {distance_km} km away."
+stale: "Old forecast — check again before leaving."
+footer: "Advisory only — follow official INCOIS/IMD warnings."

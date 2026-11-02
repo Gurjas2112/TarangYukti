@@ -1,0 +1,6 @@
+# Allow-listed data sources (spec §13.8). Tools fetch only from these domains. Governed file: data owner.
+version: 1
+allowlist_domains: [incois.gov.in, erddap.incois.gov.in, mosdac.gov.in, api.imd.gov.in, mausam.imd.gov.in,
+                    marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov,
+                    globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in]
+cache_ttl_s: { warnings: 300, forecast: 3600, pfz: 86400, sst: 86400, chl: 86400, layers: 2592000 }

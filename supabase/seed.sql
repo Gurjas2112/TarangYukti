@@ -1,0 +1,1 @@
+-- Seed data for local resets. Never seed real user data or real coordinates.

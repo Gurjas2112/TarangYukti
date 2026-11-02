@@ -1,0 +1,65 @@
+[project]
+name = "ty-agent"
+version = "0.1.0"
+description = "TarangYukti LangGraph agent (planner + specialists), served by FastAPI AG-UI"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "ty-common",
+    "langchain>=1.2",
+    "langgraph>=1.0.5",
+    "copilotkit>=0.1.77",
+    "ag-ui-langgraph>=0.0.10",
+    "langchain-google-genai>=3.0",
+    "langchain-mcp-adapters>=0.2.1",
+    "langgraph-checkpoint-postgres>=3.0",
+    "psycopg[binary,pool]>=3.2",
+    "neo4j>=5.27",
+    "redis>=5.2",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "python-dotenv>=1.0",
+    "pyjwt[crypto]>=2.10",
+    "azure-monitor-opentelemetry>=1.6",
+    "opentelemetry-distro>=0.49b0",
+    "opentelemetry-exporter-otlp>=1.28",
+    "openinference-instrumentation-langchain>=0.1",
+    "traceroot>=0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "hypothesis>=6.120",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "respx>=0.21",
+    "fakeredis>=2.26",
+    "httpx>=0.28",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+ty-common = { path = "../../packages/ty-common", editable = true }
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["llm: calls a live model", "gpu: needs a GPU"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "ASYNC", "RUF"]
+ignore = ["UP046", "UP047"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+ignore_missing_imports = true

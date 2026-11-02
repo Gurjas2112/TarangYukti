@@ -1,0 +1,56 @@
+[project]
+name = "ty-common"
+version = "0.1.0"
+description = "TarangYukti shared code: settings, ToolResult, two-tier cache (auth, telemetry and edge come in later milestones)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "redis>=5.2",
+    "cachetools>=5.5",
+    "orjson>=3.10",
+    "pyyaml>=6.0",
+    "h3>=4.1",
+    "pyjwt[crypto]>=2.10",
+    "fastapi>=0.115",
+]
+
+[project.optional-dependencies]
+otel = ["opentelemetry-api>=1.28"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "hypothesis>=6.120",
+    "fakeredis>=2.26",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "types-cachetools",
+    "types-pyyaml",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ty_common"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+markers = ["llm: calls a live model", "gpu: needs a GPU"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "ASYNC", "RUF"]
+ignore = ["UP046", "UP047"]  # keep explicit TypeVar/ParamSpec for readability
+
+[tool.mypy]
+strict = true
+python_version = "3.12"

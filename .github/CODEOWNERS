@@ -1,0 +1,20 @@
+# Governance (spec §9.5, prompt §12). Solo build: one person holds every role (Annexure I);
+# governed files still go through a PR, docs/review-checklist.md and the 24-hour `safety-hold` label.
+*                                   @Gurjas2112
+
+# Safety owner
+/config/constraints.yaml            @Gurjas2112
+/config/boats.yaml                  @Gurjas2112
+/config/qc.yaml                     @Gurjas2112
+
+# Language owner
+/config/phrases/                    @Gurjas2112
+/config/aliases.yaml                @Gurjas2112
+/config/languages.yaml              @Gurjas2112
+
+# AI owner (prompts and model settings)
+/apps/agent/src/prompts/            @Gurjas2112
+
+# Data owner
+/config/sources.yaml                @Gurjas2112
+/kb/sources/                        @Gurjas2112

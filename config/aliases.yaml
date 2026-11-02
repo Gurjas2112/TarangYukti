@@ -1,0 +1,10 @@
+# Term canonicalisation (spec §6.2.8) — reviewed by the team; unknown terms pass through unchanged.
+# Governed file: language owner. Every alias must map to exactly one slug (tested).
+version: 3
+terms:
+  rameswaram:   { name: Rameswaram,  kind: harbour, aliases: [rameshwaram, rameswaram harbour, "ராமேஸ்வரம்"] }
+  imbl:         { name: International Maritime Boundary Line, kind: boundary,
+                  aliases: [border line, border, sri lanka border, "எல்லைக் கோடு", "எல்லை"] }
+  fishing-ban:  { name: Annual fishing ban, kind: regulation, aliases: [ban period, 61-day ban, "மீன்பிடி தடை"] }
+  pfz:          { name: Potential Fishing Zone, kind: advisory, aliases: [fish zone, fishing zone, "மீன் கிடைக்கும் இடம்"] }
+  seer-fish:    { name: Seer fish, kind: species, aliases: [vanjiram, "வஞ்சிரம்", king mackerel] }

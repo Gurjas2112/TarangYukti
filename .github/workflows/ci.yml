@@ -1,0 +1,53 @@
+# CI (spec §14.5). Dev databases are cloud-hosted, so CI runs unit tests only (no `supabase start`);
+# tests that call live models are marked `llm` and run on the laptop with `make test-local`.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [packages/ty-common, apps/agent, services/mcp, services/channels, services/worker]
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy $([ "${{ matrix.project }}" = packages/ty-common ] && echo src || echo ". --exclude tests")
+      - run: uv run pytest -q -m "not gpu and not llm"
+
+  web:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -C apps/app lint
+      - run: pnpm -C apps/app typecheck
+      - run: pnpm -C apps/app test
+      - run: pnpm -C apps/app exec expo export -p web
+      - run: pnpm -C services/copilot typecheck
+      - run: pnpm -C services/copilot test
+
+  security:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker run --rm -v "$PWD:/src" aquasec/trivy:latest fs --severity HIGH,CRITICAL --exit-code 1 /src

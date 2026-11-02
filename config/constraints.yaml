@@ -1,0 +1,19 @@
+# Yukti constraint catalogue (spec §13.6). Thresholds are data, not code.
+# Governed file: safety owner review + config version bump + 24 h safety-hold (spec §9.5, Annexure I).
+version: 1
+hard:
+  H1: { name: "Official warning active", sources: [incois_alerts, imd_portwarning, imd_seabulletin] }
+  H2: { name: "IMBL buffer", imbl_min_km: 5 }
+  H3: { name: "Marine National Park", layer: mpa_gom }
+  H4: { name: "Fishing ban (mechanised, EEZ)", east: ["04-15", "06-14"], west: ["06-01", "07-31"], exempt: [non_motorised] }
+  H5: { name: "Wave limit", per_boat: max_wave_m }
+  H6: { name: "Wind limit", per_boat: max_wind_kmh }
+  H7: { name: "Thunderstorm nowcast", source: imd_districtnowcast }
+  H8: { name: "Data freshness", max_age_h: { waves: 6, warnings: 1, pfz: 24, sst: 48, chl: 48 } }
+soft:
+  S1: { name: "PFZ score and INCOIS agreement", weight: 0.4 }
+  S2: { name: "Fuel margin", margin: 0.2, weight: 0.2 }
+  S3: { name: "Risk margin", caution_at: 0.6 }
+  S4: { name: "Back before sunset (small boats)", applies: [non_motorised, small_frp], weight: 0.2 }
+  S5: { name: "Sources agree", wave_tolerance_m: 0.5, weight: 0.2 }
+search: { depart_step_min: 30, horizon_h: 24 }

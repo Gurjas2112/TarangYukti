@@ -1,0 +1,31 @@
+# All 22 scheduled languages + English (spec §6.5). No language is built in.
+# status changes only through spec §9.5: two native-speaker reviewers sign config/phrases/<code>.yaml
+# and the language's golden set + promptfoo tests pass. Every language starts as draft.
+# code = BCP-47 (app, testIDs, file names); sarvam_code = what Sarvam APIs expect.
+version: 1
+languages:
+  # Group A — voice in and out
+  - { code: hi-IN,  sarvam_code: hi-IN,  name: "हिन्दी",    group: A, script: Deva, rtl: false, status: draft, pilot_coasts: [Andaman and Nicobar Islands] }
+  - { code: bn-IN,  sarvam_code: bn-IN,  name: "বাংলা",     group: A, script: Beng, rtl: false, status: draft, pilot_coasts: [West Bengal] }
+  - { code: mr-IN,  sarvam_code: mr-IN,  name: "मराठी",     group: A, script: Deva, rtl: false, status: draft, pilot_coasts: [Maharashtra] }
+  - { code: te-IN,  sarvam_code: te-IN,  name: "తెలుగు",    group: A, script: Telu, rtl: false, status: draft, pilot_coasts: [Andhra Pradesh] }
+  - { code: ta-IN,  sarvam_code: ta-IN,  name: "தமிழ்",     group: A, script: Taml, rtl: false, status: draft, pilot_coasts: [Tamil Nadu, Puducherry] }
+  - { code: gu-IN,  sarvam_code: gu-IN,  name: "ગુજરાતી",   group: A, script: Gujr, rtl: false, status: draft, pilot_coasts: [Gujarat, Daman and Diu] }
+  - { code: kn-IN,  sarvam_code: kn-IN,  name: "ಕನ್ನಡ",     group: A, script: Knda, rtl: false, status: draft, pilot_coasts: [Karnataka] }
+  - { code: ml-IN,  sarvam_code: ml-IN,  name: "മലയാളം",    group: A, script: Mlym, rtl: false, status: draft, pilot_coasts: [Kerala, Lakshadweep] }
+  - { code: or-IN,  sarvam_code: od-IN,  name: "ଓଡ଼ିଆ",      group: A, script: Orya, rtl: false, status: draft, pilot_coasts: [Odisha] }
+  - { code: pa-IN,  sarvam_code: pa-IN,  name: "ਪੰਜਾਬੀ",    group: A, script: Guru, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: en-IN,  sarvam_code: en-IN,  name: "English",   group: A, script: Latn, rtl: false, status: draft, pilot_coasts: [] }
+  # Group B — voice in, text out
+  - { code: gom-IN, sarvam_code: kok-IN, name: "कोंकणी",    group: B, script: Deva, rtl: false, status: draft, pilot_coasts: [Goa, Karnataka, Maharashtra] }
+  - { code: ur-IN,  sarvam_code: ur-IN,  name: "اردو",      group: B, script: Arab, rtl: true,  status: draft, pilot_coasts: [] }
+  - { code: as-IN,  sarvam_code: as-IN,  name: "অসমীয়া",    group: B, script: Beng, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: ne-IN,  sarvam_code: ne-IN,  name: "नेपाली",    group: B, script: Deva, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: ks-IN,  sarvam_code: ks-IN,  name: "کٲشُر",     group: B, script: Arab, rtl: true,  status: draft, pilot_coasts: [] }
+  - { code: sd-IN,  sarvam_code: sd-IN,  name: "سنڌي",      group: B, script: Arab, rtl: true,  status: draft, pilot_coasts: [] }
+  - { code: sat-IN, sarvam_code: sat-IN, name: "ᱥᱟᱱᱛᱟᱲᱤ",   group: B, script: Olck, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: mni-IN, sarvam_code: mni-IN, name: "ꯃꯤꯇꯩꯂꯣꯟ",   group: B, script: Mtei, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: brx-IN, sarvam_code: brx-IN, name: "बड़ो",      group: B, script: Deva, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: mai-IN, sarvam_code: mai-IN, name: "मैथिली",    group: B, script: Deva, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: doi-IN, sarvam_code: doi-IN, name: "डोगरी",     group: B, script: Deva, rtl: false, status: draft, pilot_coasts: [] }
+  - { code: sa-IN,  sarvam_code: sa-IN,  name: "संस्कृतम्",  group: B, script: Deva, rtl: false, status: draft, pilot_coasts: [] }
