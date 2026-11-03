@@ -7,10 +7,11 @@ COMPOSE := docker compose --env-file .env -f infra/docker-compose.yml
 
 DATE ?= $(shell date +%F)
 MCP := cd services/mcp && uv run python -m
+WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
         snapshot snapshot-upload snapshot-download sim-warning layers \
-        kb-index kb-query push-test test-rls test-local eval-rag demo trace-evals run-prod
+        db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
 	pnpm install
@@ -62,12 +63,26 @@ sim-warning:         # add the labelled SIMULATED INCOIS high-wave warning (CLEA
 layers:              # rebuild data/layers from the treaty positions and WDPA
 	$(MCP) tarangyukti.layers_build
 
+# ── Knowledge base (Milestone 4)
+db-migrate:          # apply supabase/migrations to SUPABASE_DB_URL (records them like the Supabase CLI)
+	$(WORKER) ty_worker.migrate
+
+db-roles:            # create/rotate ty_api, ty_worker, ty_agent and write their URLs into .env
+	$(WORKER) ty_worker.db_roles
+
+kb-index:            # Docling → chunks → Gemini Embedding 2 → kb_documents / kb_chunks (ONLY="id …" to limit)
+	$(WORKER) ty_worker.kb_index $(if $(ONLY),--only $(ONLY),)
+
+kb-query:            # make kb-query Q="fishing ban east coast"
+	$(MCP) tarangyukti.rag.cli "$(Q)"
+
+eval-rag:            # recall@8 on apps/agent/tests/golden.jsonl, appended to docs/eval-report.md
+	$(MCP) tarangyukti.rag.eval --report ../../docs/eval-report.md
+
 phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Supabase
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done
 
 # ── Later milestones (targets reserved so the interface is stable)
-kb-index kb-query eval-rag:
-	@echo "$@: Milestone 4" && exit 1
 test-local:
 	@echo "$@: Milestone 5" && exit 1
 push-test:

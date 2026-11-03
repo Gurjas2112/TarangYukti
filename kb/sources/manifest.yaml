@@ -1,0 +1,90 @@
+# Allow-listed knowledge-base documents (spec §6.2.2). Governed file: data owner.
+# Every url's domain must be in config/sources.yaml allowlist_domains. `file` = a document kept in this repo
+# (its url is the published copy). Validity fields are ISO dates or null; region is null (national) or a
+# [lon_min, lat_min, lon_max, lat_max] box. Live bulletins (CAP alerts) are ingested by the job itself.
+# `captured`: a copy saved by hand from a browser (for sites that refuse automated clients); used when present,
+# otherwise the url is fetched.
+version: 1
+documents:
+  - source_id: dof:fishing-ban
+    title: "Assistance to Fishermen (uniform 61-day fishing ban, PIB release of 25 March 2025)"
+    issuer: DoF
+    doc_type: order
+    language: en-IN
+    url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2114930
+    captured: kb/sources/captured/pib-2114930.html   # PIB returns 403 to automated clients: save the page here
+    format: html
+    licence: "Government of India press release (PIB); reproduce with attribution"
+
+  - source_id: act:maritime-zones-1976
+    title: "Territorial Waters, Continental Shelf, Exclusive Economic Zone and other Maritime Zones Act, 1976"
+    issuer: GoI
+    doc_type: act
+    language: en-IN
+    url: https://www.un.org/depts/los/LEGISLATIONANDTREATIES/PDFFILES/IND_1976_Act.pdf
+    format: pdf
+    licence: "Act of Parliament (public); UN DOALOS copy"
+
+  - source_id: act:tn-marine-fishing-regulation-1983
+    title: "Tamil Nadu Marine Fishing Regulation Act, 1983"
+    issuer: GoTN
+    doc_type: act
+    language: en-IN
+    url: https://fisheries.tn.gov.in/uploads/Principal_TNMFR_ACT_1983.pdf
+    format: pdf
+    region: [76.2, 8.0, 80.4, 13.6]
+    licence: "State Act (public); Department of Fisheries, Tamil Nadu. Scanned gazette: OCR text"
+
+  - source_id: act:tn-marine-fishing-regulation-2017-amendment
+    title: "Tamil Nadu Marine Fishing Regulation (Amendment) Act, 2017 (Act 18 of 2017)"
+    issuer: GoTN
+    doc_type: act
+    language: en-IN
+    url: https://fisheries.tn.gov.in/uploads/TNMFR_Amendment_18_of_2017.pdf
+    format: pdf
+    region: [76.2, 8.0, 80.4, 13.6]
+    licence: "State Act (public); Department of Fisheries, Tamil Nadu"
+
+  # rules:tn-marine-fishing-regulation-2020 — not indexed: the link on fisheries.tn.gov.in/pages/view/Act_Rules
+  # returns 404 (checked 2026-11-03). Re-add when the department fixes it.
+
+  - source_id: cmfri:landings-2024
+    title: "Marine Fish Landings in India 2024 (ICAR-CMFRI)"
+    issuer: CMFRI
+    doc_type: statistics
+    language: en-IN
+    url: https://eprints.cmfri.org.in/19094/1/Marine%20Fish%20Landings%20in%20India%20-%202024.pdf
+    format: pdf
+    valid_from: 2024-01-01
+    licence: "ICAR-CMFRI technical report; cite FRAEED, CMFRI, 2025"
+
+  - source_id: sop:official-warning
+    title: "TarangYukti SOP: when an official warning is active (DRAFT)"
+    issuer: TarangYukti
+    doc_type: sop
+    language: en-IN
+    file: kb/sources/sop/official-warning.md
+    url: https://github.com/Gurjas2112/TarangYukti/blob/main/kb/sources/sop/official-warning.md
+    format: md
+    licence: "Written by the TarangYukti team; draft pending review"
+
+  - source_id: sop:border-line
+    title: "TarangYukti SOP: near the India–Sri Lanka border line (DRAFT)"
+    issuer: TarangYukti
+    doc_type: sop
+    language: en-IN
+    file: kb/sources/sop/border-line.md
+    url: https://github.com/Gurjas2112/TarangYukti/blob/main/kb/sources/sop/border-line.md
+    format: md
+    region: [78.8, 8.6, 80.5, 10.5]
+    licence: "Written by the TarangYukti team; draft pending review"
+
+  - source_id: sop:emergency-at-sea
+    title: "TarangYukti SOP: emergency at sea (DRAFT)"
+    issuer: TarangYukti
+    doc_type: sop
+    language: en-IN
+    file: kb/sources/sop/emergency-at-sea.md
+    url: https://github.com/Gurjas2112/TarangYukti/blob/main/kb/sources/sop/emergency-at-sea.md
+    format: md
+    licence: "Written by the TarangYukti team; draft pending review"

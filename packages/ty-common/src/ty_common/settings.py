@@ -49,6 +49,7 @@ class Settings(BaseSettings):
     worker_database_url: SecretStr | None = None
     agent_database_url: SecretStr | None = None
     supabase_service_role_key: SecretStr | None = None
+    supabase_db_url: SecretStr | None = None  # admin: migrations and role setup only, never services
 
     # LLM
     google_api_key: SecretStr | None = None
@@ -58,7 +59,7 @@ class Settings(BaseSettings):
     # RAG
     embed_model: str = "gemini-embedding-2"
     embed_dim: int = 768
-    rag_min_sim: float = 0.55
+    rag_min_sim: float = 0.70  # calibrated on the golden set (make eval-rag)
 
     # Speech, push
     sarvam_api_key: SecretStr | None = None

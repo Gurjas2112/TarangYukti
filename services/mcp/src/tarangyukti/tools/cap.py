@@ -62,6 +62,16 @@ def issuer_of(sender: str, references: str = "") -> AnyIssuer | None:
     return None
 
 
+def references(raw: str) -> list[str]:
+    """CAP <references>: space-separated "sender,identifier,sent" triples → identifiers."""
+    out = []
+    for triple in raw.split():
+        parts = triple.split(",")
+        if len(parts) >= 2 and parts[1]:
+            out.append(parts[1])
+    return out
+
+
 def kind_of(event: str) -> str:
     e = event.casefold()
     return next((k for needle, k in _KINDS if needle in e), re.sub(r"[^a-z0-9]+", "_", e).strip("_") or "other")
@@ -171,6 +181,8 @@ def parse_cap(raw: bytes, office: str, url: str, area: MultiPolygon | None) -> W
         cap_severity=cap_sev,
         office=office,
         area_desc=area_desc or None,
+        instruction=(info.findtext(f"{CAP}instruction") or "").strip() or None,
+        references=references(root.findtext(f"{CAP}references") or ""),
         districts=names if issuer != "INCOIS" else [],
         sectors=names if issuer == "INCOIS" else [],
         area=mapping(area.simplify(0.005, preserve_topology=True)) if area is not None else None,

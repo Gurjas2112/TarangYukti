@@ -13,6 +13,7 @@ dependencies = [
     "h3>=4.1",
     "pyjwt[crypto]>=2.10",
     "fastapi>=0.115",
+    "google-genai>=1.0",
 ]
 
 [project.optional-dependencies]
@@ -49,7 +50,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "ASYNC", "RUF"]
-ignore = ["UP046", "UP047"]  # keep explicit TypeVar/ParamSpec for readability
+ignore = ["UP046", "UP047", "RUF001"]  # explicit TypeVar/ParamSpec; typographic quotes are intentional (quotes.py)
 
 [tool.mypy]
 strict = true

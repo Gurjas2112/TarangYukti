@@ -18,6 +18,19 @@ Added as each milestone starts using a source.
 | IMD API | `https://api.imd.gov.in/api/v1/` | IP-whitelisted; credit IMD | India Meteorological Department | Not used (IMD alerts arrive through SACHET) |
 | INCOIS PFZ advisories | `incois.gov.in` pages | Public pages; respect site terms | INCOIS, Ministry of Earth Sciences | PFZ — **captured into snapshots; no live feed** |
 
+## Knowledge-base documents (Milestone 4) — `kb/sources/manifest.yaml`
+
+| Document | Source | Licence / terms | Notes |
+|---|---|---|---|
+| Uniform 61-day fishing ban (PIB release, 25 Mar 2025) | pib.gov.in | Government press release; attribute PIB | PIB refuses automated clients: indexed only from a copy saved by hand in `kb/sources/captured/` |
+| Maritime Zones of India Act, 1976 | UN DOALOS copy (un.org) | Act of Parliament | |
+| Tamil Nadu Marine Fishing Regulation Act 1983, Amendment 2017, Rules 2020 | fisheries.tn.gov.in | State law, public | 1983 Act is a scanned gazette: OCR text |
+| Marine Fish Landings in India 2024 | eprints.cmfri.org.in | ICAR-CMFRI technical report; cite FRAEED, CMFRI, 2025 | |
+| Live bulletins | NDMA SACHET CAP alerts | Credit the issuing agency | Indexed with their validity windows |
+| Safety SOPs | Written by the TarangYukti team | — | DRAFT, pending review by fisheries officials |
+
+Embeddings: Google Gemini Embedding 2 (`gemini-embedding-2`, 768-d). Conversion and chunking: Docling (MIT).
+
 Map displays must label the IMBL source and follow the Geospatial Guidelines 2021 (official India boundaries).
 
 ## Platform services

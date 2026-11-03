@@ -1,13 +1,15 @@
 # Allow-listed data sources (spec §13.8). Tools fetch only from these domains. Governed file: data owner.
+# v5 (Milestone 4): + fisheries.tn.gov.in, un.org (knowledge-base documents); kb supersession rule and
+#   sanitiser patterns.
 # v4 (Milestone 3): sdma_alerts endpoint (H1 counts state authority alerts).
 # v3: + sachet.ndma.gov.in (NDMA CAP hub: live IMD + INCOIS alerts, free; the IMD API needs whitelisting).
 # v2 (Milestone 2): + coastwatch.noaa.gov (NOAA moved VIIRS chlorophyll there), + data-gis.unep-wcmc.org (WDPA),
 #                   endpoints per tool.
-version: 4
+version: 5
 allowlist_domains: [incois.gov.in, erddap.incois.gov.in, mosdac.gov.in, api.imd.gov.in, mausam.imd.gov.in,
                     marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov, coastwatch.noaa.gov,
                     globalfishingwatch.org, gateway.api.globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in,
-                    data-gis.unep-wcmc.org, sachet.ndma.gov.in]
+                    data-gis.unep-wcmc.org, sachet.ndma.gov.in, fisheries.tn.gov.in, un.org]
 cache_ttl_s: { warnings: 300, forecast: 3600, pfz: 86400, sst: 86400, chl: 86400, layers: 2592000 }
 
 endpoints:
@@ -57,3 +59,18 @@ endpoints:
   incois_pfz:
     url: https://incois.gov.in/MarineFisheries/PfzAdvisory
     name: "INCOIS PFZ advisory"
+
+kb:
+  # Cross-document supersession (spec §6.2.9): a newer document replaces older ones it names.
+  # cap_references: a CAP alert whose <references> lists earlier alerts supersedes them.
+  supersession: [cap_references]
+  # Live bulletins ingested as documents (regional IMD / INCOIS / SDMA CAP alerts, with validity windows)
+  live_bulletins: [IMD, INCOIS, SDMA]
+  # Sanitiser: documents matching any of these (case-insensitive) are quarantined for review, never searched
+  quarantine_patterns:
+    - "ignore (all |any |the )?(previous|prior|above) (instructions|prompts?)"
+    - "disregard (all |any |the )?(previous|prior|above)"
+    - "you are now (a|an|the) "
+    - "(reveal|print|show) (your|the) (system )?prompt"
+    - '<\s*script'
+    - '\bact as (a|an) '

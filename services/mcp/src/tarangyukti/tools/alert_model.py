@@ -31,6 +31,8 @@ class Warning_(BaseModel):
     issued_at: datetime
     severity: Severity
     simulation: bool = False
+    instruction: str | None = None  # CAP <instruction>, as issued
+    references: list[str] = []  # CAP identifiers of earlier alerts this one updates or replaces
     source_url: str
 
 

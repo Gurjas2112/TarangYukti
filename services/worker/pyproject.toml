@@ -18,6 +18,9 @@ dependencies = [
     "pywebpush>=2.0",
     "opentelemetry-distro>=0.49b0",
     "opentelemetry-exporter-otlp>=1.28",
+    "docling>=2.40",
+    "defusedxml>=0.7",
+    "tarangyukti",
 ]
 
 [dependency-groups]
@@ -46,7 +49,7 @@ testpaths = ["tests"]
 markers = ["llm: calls a live model", "gpu: needs a GPU"]
 
 [tool.ruff]
-line-length = 110
+line-length = 120
 target-version = "py312"
 
 [tool.ruff.lint]
@@ -60,3 +63,4 @@ ignore_missing_imports = true
 
 [tool.uv.sources]
 ty-common = { path = "../../packages/ty-common", editable = true }
+tarangyukti = { path = "../mcp", editable = true }

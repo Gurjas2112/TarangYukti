@@ -1,0 +1,60 @@
+{"id": "en-mz-territorial", "lang": "en-IN", "question": "How far from the coast do India's territorial waters extend?", "expected": ["act:maritime-zones-1976"]}
+{"id": "en-mz-contiguous", "lang": "en-IN", "question": "What is the contiguous zone of India?", "expected": ["act:maritime-zones-1976"]}
+{"id": "en-mz-eez", "lang": "en-IN", "question": "What is India's exclusive economic zone?", "expected": ["act:maritime-zones-1976"]}
+{"id": "en-mz-foreign-fishing", "lang": "en-IN", "question": "Can foreign vessels fish in India's exclusive economic zone without permission?", "expected": ["act:maritime-zones-1976"]}
+{"id": "en-mz-innocent-passage", "lang": "en-IN", "question": "Do foreign ships have the right of innocent passage through Indian territorial waters?", "expected": ["act:maritime-zones-1976"]}
+{"id": "en-tn-purpose", "lang": "en-IN", "question": "What does the Tamil Nadu Marine Fishing Regulation Act regulate?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "en-tn-mechanised", "lang": "en-IN", "question": "What is a mechanised fishing vessel under Tamil Nadu fishing law?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "en-tn-prohibit-area", "lang": "en-IN", "question": "Can the Tamil Nadu government prohibit fishing in a specified area?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "en-tn-registration", "lang": "en-IN", "question": "Do fishing vessels have to be registered in Tamil Nadu?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "en-tn-licence", "lang": "en-IN", "question": "What are the rules for a fishing licence in Tamil Nadu?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "en-cm-total-2024", "lang": "en-IN", "question": "How much marine fish was landed in India in 2024?", "expected": ["cmfri:landings-2024"]}
+{"id": "en-cm-top-state", "lang": "en-IN", "question": "Which state had the highest marine fish landings in 2024?", "expected": ["cmfri:landings-2024"]}
+{"id": "en-cm-top-species", "lang": "en-IN", "question": "What was the most landed fish species in India in 2024?", "expected": ["cmfri:landings-2024"]}
+{"id": "en-cm-tamil-nadu", "lang": "en-IN", "question": "Did Tamil Nadu's fish landings increase in 2024?", "expected": ["cmfri:landings-2024"]}
+{"id": "en-cm-sector-share", "lang": "en-IN", "question": "What share of India's fish landings came from mechanised boats in 2024?", "expected": ["cmfri:landings-2024"]}
+{"id": "en-sop-cyclone-at-sea", "lang": "en-IN", "question": "What should I do if a cyclone warning is issued while I am at sea?", "expected": ["sop:official-warning"]}
+{"id": "en-sop-high-wave", "lang": "en-IN", "question": "Should I go fishing when there is an official high wave warning?", "expected": ["sop:official-warning"]}
+{"id": "en-sop-after-warning", "lang": "en-IN", "question": "What should I check after a warning has ended before my next trip?", "expected": ["sop:official-warning"]}
+{"id": "en-sop-cross-border", "lang": "en-IN", "question": "What happens if I cross the India Sri Lanka border line?", "expected": ["sop:border-line"]}
+{"id": "en-sop-drift-border", "lang": "en-IN", "question": "My engine failed and I am drifting towards the border line. What should I do?", "expected": ["sop:border-line"]}
+{"id": "en-sop-kachchatheevu", "lang": "en-IN", "question": "Is Kachchatheevu island on India's side of the boundary?", "expected": ["sop:border-line"]}
+{"id": "en-sop-coast-guard", "lang": "en-IN", "question": "Which number should I call for Coast Guard rescue at sea?", "expected": ["sop:emergency-at-sea"]}
+{"id": "en-sop-overboard", "lang": "en-IN", "question": "What should we do if someone falls overboard?", "expected": ["sop:emergency-at-sea"]}
+{"id": "en-ban-east-coast", "lang": "en-IN", "question": "When is the annual fishing ban on the east coast?", "expected": ["dof:fishing-ban"]}
+{"id": "en-x-fish-price", "lang": "en-IN", "question": "What is the price of seer fish in the Chennai market today?", "expected": []}
+{"id": "en-x-carburettor", "lang": "en-IN", "question": "How do I clean the carburettor of an outboard motor?", "expected": []}
+{"id": "en-x-cricket", "lang": "en-IN", "question": "What is the score of today's cricket match?", "expected": []}
+{"id": "en-x-recipe", "lang": "en-IN", "question": "What is a good recipe for fish curry?", "expected": []}
+{"id": "en-x-boat-price", "lang": "en-IN", "question": "How much does a new fibre boat cost?", "expected": []}
+{"id": "en-x-loan", "lang": "en-IN", "question": "How do I apply for a bank loan to buy a house?", "expected": []}
+{"id": "ta-mz-territorial", "lang": "ta-IN", "question": "இந்தியாவின் கடல் எல்லை நீர்ப்பரப்பு கரையிலிருந்து எவ்வளவு தூரம் வரை உள்ளது?", "expected": ["act:maritime-zones-1976"]}
+{"id": "ta-mz-contiguous", "lang": "ta-IN", "question": "இந்தியாவின் அண்டை மண்டலம் (contiguous zone) என்றால் என்ன?", "expected": ["act:maritime-zones-1976"]}
+{"id": "ta-mz-eez", "lang": "ta-IN", "question": "இந்தியாவின் பிரத்யேக பொருளாதார மண்டலம் என்றால் என்ன?", "expected": ["act:maritime-zones-1976"]}
+{"id": "ta-mz-foreign-fishing", "lang": "ta-IN", "question": "வெளிநாட்டுப் படகுகள் அனுமதி இல்லாமல் இந்தியாவின் பொருளாதார மண்டலத்தில் மீன் பிடிக்கலாமா?", "expected": ["act:maritime-zones-1976"]}
+{"id": "ta-mz-innocent-passage", "lang": "ta-IN", "question": "வெளிநாட்டுக் கப்பல்கள் இந்தியக் கடல் எல்லை வழியாகச் செல்ல உரிமை உள்ளதா?", "expected": ["act:maritime-zones-1976"]}
+{"id": "ta-tn-purpose", "lang": "ta-IN", "question": "தமிழ்நாடு கடல் மீன்பிடி ஒழுங்குமுறைச் சட்டம் எதை ஒழுங்குபடுத்துகிறது?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "ta-tn-mechanised", "lang": "ta-IN", "question": "தமிழ்நாடு மீன்பிடிச் சட்டப்படி இயந்திரப் படகு என்றால் என்ன?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "ta-tn-prohibit-area", "lang": "ta-IN", "question": "குறிப்பிட்ட கடல் பகுதியில் மீன்பிடிப்பதைத் தமிழ்நாடு அரசு தடை செய்ய முடியுமா?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "ta-tn-registration", "lang": "ta-IN", "question": "தமிழ்நாட்டில் மீன்பிடிப் படகுகளைப் பதிவு செய்ய வேண்டுமா?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "ta-tn-licence", "lang": "ta-IN", "question": "தமிழ்நாட்டில் மீன்பிடி உரிமத்திற்கான விதிகள் என்ன?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"]}
+{"id": "ta-cm-total-2024", "lang": "ta-IN", "question": "2024-இல் இந்தியாவில் எவ்வளவு கடல் மீன் இறக்கப்பட்டது?", "expected": ["cmfri:landings-2024"]}
+{"id": "ta-cm-top-state", "lang": "ta-IN", "question": "2024-இல் அதிக கடல் மீன் இறக்கிய மாநிலம் எது?", "expected": ["cmfri:landings-2024"]}
+{"id": "ta-cm-top-species", "lang": "ta-IN", "question": "2024-இல் இந்தியாவில் அதிகம் பிடிக்கப்பட்ட மீன் வகை எது?", "expected": ["cmfri:landings-2024"]}
+{"id": "ta-cm-tamil-nadu", "lang": "ta-IN", "question": "2024-இல் தமிழ்நாட்டின் மீன் பிடிப்பு அதிகரித்ததா?", "expected": ["cmfri:landings-2024"]}
+{"id": "ta-cm-sector-share", "lang": "ta-IN", "question": "2024-இல் இயந்திரப் படகுகள் மூலம் எத்தனை சதவீத மீன் பிடிக்கப்பட்டது?", "expected": ["cmfri:landings-2024"]}
+{"id": "ta-sop-cyclone-at-sea", "lang": "ta-IN", "question": "கடலில் இருக்கும்போது புயல் எச்சரிக்கை வந்தால் நான் என்ன செய்ய வேண்டும்?", "expected": ["sop:official-warning"]}
+{"id": "ta-sop-high-wave", "lang": "ta-IN", "question": "அதிகாரப்பூர்வ உயர் அலை எச்சரிக்கை இருக்கும்போது மீன்பிடிக்கச் செல்லலாமா?", "expected": ["sop:official-warning"]}
+{"id": "ta-sop-after-warning", "lang": "ta-IN", "question": "எச்சரிக்கை முடிந்த பிறகு அடுத்த பயணத்துக்கு முன் எதைச் சரிபார்க்க வேண்டும்?", "expected": ["sop:official-warning"]}
+{"id": "ta-sop-cross-border", "lang": "ta-IN", "question": "இந்தியா இலங்கை எல்லைக் கோட்டைத் தாண்டினால் என்ன நடக்கும்?", "expected": ["sop:border-line"]}
+{"id": "ta-sop-drift-border", "lang": "ta-IN", "question": "என் இயந்திரம் பழுதாகி எல்லைக் கோட்டை நோக்கி படகு நகர்கிறது. நான் என்ன செய்ய வேண்டும்?", "expected": ["sop:border-line"]}
+{"id": "ta-sop-kachchatheevu", "lang": "ta-IN", "question": "கச்சத்தீவு எல்லைக் கோட்டின் இந்தியப் பக்கத்தில் உள்ளதா?", "expected": ["sop:border-line"]}
+{"id": "ta-sop-coast-guard", "lang": "ta-IN", "question": "கடலில் கடலோரக் காவல்படை மீட்புக்கு எந்த எண்ணை அழைக்க வேண்டும்?", "expected": ["sop:emergency-at-sea"]}
+{"id": "ta-sop-overboard", "lang": "ta-IN", "question": "யாராவது படகிலிருந்து கடலில் விழுந்தால் என்ன செய்ய வேண்டும்?", "expected": ["sop:emergency-at-sea"]}
+{"id": "ta-ban-east-coast", "lang": "ta-IN", "question": "கிழக்குக் கடற்கரையில் ஆண்டு மீன்பிடி தடைக்காலம் எப்போது?", "expected": ["dof:fishing-ban"]}
+{"id": "ta-x-fish-price", "lang": "ta-IN", "question": "இன்று சென்னை சந்தையில் வஞ்சிரம் மீன் விலை என்ன?", "expected": []}
+{"id": "ta-x-carburettor", "lang": "ta-IN", "question": "வெளிப்புற மோட்டாரின் கார்புரேட்டரை எப்படிச் சுத்தம் செய்வது?", "expected": []}
+{"id": "ta-x-cricket", "lang": "ta-IN", "question": "இன்றைய கிரிக்கெட் போட்டியின் ஸ்கோர் என்ன?", "expected": []}
+{"id": "ta-x-recipe", "lang": "ta-IN", "question": "மீன் குழம்பு செய்வதற்கான நல்ல செய்முறை என்ன?", "expected": []}
+{"id": "ta-x-boat-price", "lang": "ta-IN", "question": "புதிய ஃபைபர் படகின் விலை எவ்வளவு?", "expected": []}
+{"id": "ta-x-loan", "lang": "ta-IN", "question": "வீடு வாங்க வங்கிக் கடனுக்கு எப்படி விண்ணப்பிப்பது?", "expected": []}

@@ -1,7 +1,7 @@
 """FastMCP server (streamable HTTP on :8001/mcp) with the data tools.
 
 Every tool returns a ToolResult (data, source, source_url, fetched_at, valid_at, confidence, cache, notes).
-Milestone 3 adds yukti_evaluate and route_safest; Milestone 4 adds kb_search.
+Milestone 3 added yukti_evaluate and route_safest; Milestone 4 added kb_search.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ from datetime import UTC, datetime
 from fastmcp import FastMCP
 from ty_common.models import ToolResult
 
+from .rag import search as rag_search
 from .tools import geo, grids, marine, warnings, yukti_tools
 
 mcp = FastMCP("tarangyukti")
@@ -27,6 +28,7 @@ for fn in (
     geo.geo_distance,
     yukti_tools.yukti_evaluate,
     yukti_tools.route_safest,
+    rag_search.kb_search,
 ):
     mcp.tool(fn)
 

@@ -13,6 +13,7 @@ EXPECTED = {
     "sdma_alerts",
     "yukti_evaluate",
     "route_safest",
+    "kb_search",
     "ping",
 }
 

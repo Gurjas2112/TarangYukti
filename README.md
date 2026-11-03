@@ -14,7 +14,33 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 1 · Scaffold | **Done** — see below |
 | 2 · Data tools + cache + snapshots | **Done** — see below |
 | 3 · Yukti engine + route | **Done** — see below |
-| 4 · RAG | Next |
+| 4 · RAG | **Done** — see below |
+| 5 · Agent graph | Next |
+
+## Milestone 4 — knowledge search (RAG)
+
+`kb_search` (MCP tool) answers "what does the law / order / bulletin say?" with up to 8 cited passages
+`[K1]…[K8]` from official documents, in any language.
+
+- **Corpus** (`kb/sources/manifest.yaml`): Maritime Zones of India Act 1976, Tamil Nadu Marine Fishing
+  Regulation Act 1983 + 2017 amendment, CMFRI Marine Fish Landings 2024, three team-written safety SOPs
+  (DRAFT), and the region's live IMD / INCOIS / SDMA CAP alerts with their validity windows.
+- **Ingest** (`make kb-index`, worker): fetch (allow-listed) → SHA-256 skip if unchanged → Docling →
+  sanitiser (quarantines prompt-injection text) → HybridChunker (≤ 512 tokens) → topics from
+  `config/aliases.yaml` → Gemini Embedding 2 (768-d) → Postgres. A new version supersedes the old one; a CAP
+  alert supersedes the alerts it references. Nothing is deleted.
+- **Search**: original question (aliases expanded) + an English rewrite (Gemini) → `kb_hybrid_search`
+  (pgvector + full text, filtered by validity, supersession, region, and `known_at` for replays) → RRF → top 8.
+  Without the embedding service it falls back to full text. Below `RAG_MIN_SIM` it reports "nothing relevant".
+- **Evaluation** (`make eval-rag`, report in `docs/eval-report.md`): 60 golden questions (30 English, 30 Tamil)
+  in `apps/agent/tests/golden.jsonl`; recall@8 0.958 in both languages (gate 0.9). `RAG_MIN_SIM` calibrated to
+  0.70. Ragas answer-quality scores need the agent and come with Milestone 5.
+- **Database**: `make db-migrate` applies `supabase/migrations`; `make db-roles` creates `ty_api` (reads as
+  `authenticated` under RLS), `ty_worker` and `ty_agent` and writes their URLs into `.env`.
+
+Not indexed yet: the PIB fishing-ban release (PIB refuses automated clients — save the page from a browser to
+`kb/sources/captured/pib-2114930.html` and run `make kb-index`), and the Tamil Nadu Rules 2020 (the
+department's link returns 404). Document search uses the cloud database, so it needs the network.
 
 ## Milestone 3 — Yukti constraint engine
 

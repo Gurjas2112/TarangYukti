@@ -3018,6 +3018,7 @@ source = { editable = "../../packages/ty-common" }
 dependencies = [
     { name = "cachetools" },
     { name = "fastapi" },
+    { name = "google-genai" },
     { name = "h3" },
     { name = "orjson" },
     { name = "pydantic" },
@@ -3031,6 +3032,7 @@ dependencies = [
 requires-dist = [
     { name = "cachetools", specifier = ">=5.5" },
     { name = "fastapi", specifier = ">=0.115" },
+    { name = "google-genai", specifier = ">=1.0" },
     { name = "h3", specifier = ">=4.1" },
     { name = "opentelemetry-api", marker = "extra == 'otel'", specifier = ">=1.28" },
     { name = "orjson", specifier = ">=3.10" },

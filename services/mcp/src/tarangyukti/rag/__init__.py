@@ -1,1 +1,1 @@
-"""rag — filled in later milestones (see AGENTS.md §15)."""
+"""Knowledge search (Milestone 4): kb_search over kb_documents / kb_chunks."""
