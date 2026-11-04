@@ -1,0 +1,39 @@
+{
+  "cli": { "version": ">= 16.0.0", "appVersionSource": "remote" },
+  "build": {
+    "base": { "env": { "APP_ENV": "production" } },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "environment": "development",
+      "env": { "APP_ENV": "development" },
+      "android": { "buildType": "apk" }
+    },
+    "preview": { "extends": "base", "distribution": "internal", "environment": "preview", "android": { "buildType": "apk" } },
+    "live": {
+      "extends": "base",
+      "distribution": "internal",
+      "environment": "production",
+      "autoIncrement": true,
+      "android": { "buildType": "apk" }
+    },
+    "store": {
+      "extends": "base",
+      "distribution": "store",
+      "environment": "production",
+      "autoIncrement": true,
+      "android": { "buildType": "app-bundle" }
+    },
+    "capture": {
+      "distribution": "internal",
+      "environment": "development",
+      "env": { "APP_ENV": "capture" },
+      "android": { "buildType": "apk" }
+    }
+  },
+  "submit": {
+    "store": {
+      "android": { "serviceAccountKeyPath": "./play-service-account.json", "track": "alpha", "releaseStatus": "completed" }
+    }
+  }
+}

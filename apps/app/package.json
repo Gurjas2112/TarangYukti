@@ -16,6 +16,7 @@
     "@copilotkit/react-native": "^1.83.0",
     "expo": "~57.0.31",
     "expo-constants": "~57.0.22",
+    "expo-dev-client": "~57.0.20",
     "expo-font": "~57.0.4",
     "expo-linking": "~57.0.13",
     "expo-localization": "~57.0.2",
@@ -52,5 +53,14 @@
       "/node_modules/",
       "/e2e/"
     ]
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "@types/jest",
+        "eslint-config-expo",
+        "jest"
+      ]
+    }
   }
 }

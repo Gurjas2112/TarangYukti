@@ -6,7 +6,8 @@ const isDev = appEnv === "development";
 
 const config: ExpoConfig = {
   name: "Kadal Mitra",
-  slug: "kadal-mitra",
+  slug: "tarangyukti",
+  owner: "gurjas_gandhi",
   version: "0.1.0",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
@@ -40,7 +41,7 @@ const config: ExpoConfig = {
     // expo-sqlite, expo-location (background) and expo-build-properties (cleartext only when isDev).
   ],
   experiments: { typedRoutes: true },
-  extra: { appEnv, cleartextAllowed: isDev },
+  extra: { appEnv, cleartextAllowed: isDev, eas: { projectId: "3d825c81-c777-423d-a423-b8b2e96a648f" } },
 };
 
 export default config;
