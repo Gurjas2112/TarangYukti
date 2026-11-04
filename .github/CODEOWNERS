@@ -18,3 +18,7 @@
 # Data owner
 /config/sources.yaml                @Gurjas2112
 /kb/sources/                        @Gurjas2112
+
+# Privacy officer
+/config/governance.yaml             @Gurjas2112
+/config/harbours.yaml               @Gurjas2112

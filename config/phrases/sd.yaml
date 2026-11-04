@@ -5,50 +5,51 @@ status: draft
 reviewers: []
 reviewed_on: null
 verdict:
-  GO: Good to go.
-  CAUTION: Go, but carefully — back by {back_by}.
-  NO-GO: 'Don''t go today. Next good time: {next_window}.'
+  GO: वञण लाइ सुठो आहे।
+  CAUTION: वञो, पर ध्यान सां — {back_by} सां पोइते वञो।
+  NO-GO: 'अॼु न वञो। अगि॒लो सुठो वक़्ति: {next_window}.'
 why:
   H5: Waves get too high after {time}.
-  H2: That route goes too close to the border line.
+  H2: उहो रस्तो सरहदी रेखा जे ॾाढो वेझो वेंदो आहे।
   H1: 'There is an official {issuer} warning: {warning_name}.'
-  H3: That area is inside the protected marine park.
-  H4: It is the fishing ban season for mechanised boats.
+  H3: اهو علائقو محفوظ سامونڊي پارڪ جي اندر آهي.
+  H4: इहा मशीनी किश्तियुनि जे लाइ मछी मारण जी रोक जो मौसमु आहे।
   H6: The wind gets too strong after {time}.
-  H7: 'There is an official thunderstorm warning: {warning_name}.'
-  H8: Some data is old or missing, so the sea cannot be checked.
+  H7: 'हिकु सरकारी तूफ़ानी चेतावनी आहे: {warning_name}.'
+  H8: कुझु डेटा पुराणा या गायब आहिनि, इन करे समुंड जी जाच नथी करे सघिजे।
 spot: Fish likely {distance_km} km {direction}.
-border: Border line is {distance_km} km away.
-stale: Old forecast — check again before leaving.
-footer: Advisory only — follow official INCOIS/IMD warnings.
-needs_network: 'I need the internet to answer that. The buttons still work: Today''s sea, Where to fish, Alerts, I''m back.'
+border: सीमा रेखा {distance_km} किलोमीटर परे आहे।
+stale: पुराणो पेशिंगोई — वञण खां पहिरीं वरी जाचि वठो।
+footer: सिर्फ़ सलाह - आधिकारिक आई.एन.सी.ओ.आई.एस./आई.एम.डी. चेताउनी जी पैरवी करियो।
+needs_network: 'मूंखे इन जो जवाबु ॾियणु लाइ इंटरनेट जी ज़रूरत आहे। बटन अञा बि कमु कनि था: अॼु जो समुंडु, मछी किथे पकड़िजे, अलर्ट, मां वापस अची वेई आहियां।'
 nothing_found: I found nothing about this in the official documents. Please ask the {source}.
-cannot_verify: I could not check this answer against the data, so I will not give it. Please use the buttons or ask again.
-no_window: none in the next 24 hours
+cannot_verify: मां हिन जवाब खे डेटा सां जाचि नथी सघियसि, तंहिंकरे मां इहो न ॾिंदसि। मेहरबानी करे बटननि खे इस्तेमाल करियो या वरी पुछो।
+no_window: अगि॒यनि 24 कलाकनि में को बि न।
 directions:
-  north: north
-  north_east: north-east
-  east: east
-  south_east: south-east
-  south: south
-  south_west: south-west
-  west: west
-  north_west: north-west
-ack: Checking the sea…
+  north: उतर
+  north_east: उतर-पूरब
+  east: ओभरि
+  south_east: ॾखण-ओभर
+  south: ॾखिण
+  south_west: ॾखिण-ओलह
+  west: मग़रिब
+  north_west: उतर-ओलह
+ack: समुंड जी जाच कंदे...
 brief_title: Morning brief · {harbour}
-push_test: Kadal Mitra alerts are on.
+push_test: कदल मित्रा अलर्ट चालू आहिनि।
 back_home: '{name} is back at {harbour}, {time}.'
 consent:
   notice_version: '2026-11-04'
-  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
-  agree: I agree
+  short: असां तव्हां जी जॻहि जो इस्तेमालु रुॿक जे वेझो ऐं ख़राब मौसम में तव्हां खे ख़बरदार करण लाइ कंदा आहियूं। तव्हां कॾहिं बि रोके सघो था।
+  agree: मां राज़ी आहियां।
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: कदल मित्रा अलर्ट
+  border-5km: सीमा रेखा {distance_km} किलोमीटर परे आहे। बंदरगाह ॾांहुं वापसि मुड़ो।
+  border-2km: 'ख़तरो: सरहदी रेखा सिर्फ़ {distance_km} किलोमीटर परे आहे। हाणे ई वापसि मुड़ो।'
+  beyond-imbl: 'ख़तरो: तव्हां सरहद जी लकीर खां अॻियां वञी विया आहियो। हाणे वापसि मुड़ो।'
+  mpa: तव्हां महफूज़ समुंडी बाग़ जे अंदर आहियो। हिते मछी मारण जी इजाज़त नाहे।
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: छा अॼु जी सलाह सही हुई? छा तव्हां खे इहो समझ में अची वियो?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: कदल मित्र · कुटुंब
+chat_paused: 'सवाल कुझु वक़्ति लाइ रुकी विया आहिनि। बटन अञा बि कमु कनि था: अॼु जो समुंडु, किथे मछी मारीजे, अलर्ट, मां वापसि आई आहियां।'

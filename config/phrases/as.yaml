@@ -43,12 +43,13 @@ consent:
   short: আমি আপোনাৰ অৱস্থান কেৱল আপোনাক সীমান্তৰ ওচৰত আৰু বেয়া বতৰত সতৰ্ক কৰিবলৈ ব্যৱহাৰ কৰোঁ। আপুনি যিকোনো সময়তে বন্ধ কৰিব পাৰে।
   agree: মই সন্মত।
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: কাদল মিত্ৰৰ সতৰ্কবাণী
+  border-5km: সীমান্ত ৰেখা {distance_km} কি.মি. দূৰত আছে। বন্দৰৰ দিশে উভতি যাওক।
+  border-2km: 'বিপদ: সীমান্ত ৰেখা মাত্ৰ {distance_km} কিলোমিটাৰ দূৰত আছে। এতিয়াই উভতি আহক।'
+  beyond-imbl: 'বিপদ: আপুনি সীমাৰেখা পাৰ হৈ গৈছে। এতিয়াই উভতি যাওক।'
+  mpa: আপুনি সুৰক্ষিত সামুদ্ৰিক উদ্যানৰ ভিতৰত আছে। ইয়াত মাছ ধৰিবলৈ অনুমতি নাই।
 trip:
-  feedback_ask: Was today's advice right?
-  right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+  feedback_ask: আজিৰ পৰামৰ্শটো ঠিকেই আছিল নে?
+  right_on: যোৱা {total} দিনৰ ঠিক {right} পাছত।
+family_title: কাদল মিত্ৰ · পৰিয়াল
+chat_paused: 'কিছু সময়ৰ বাবে প্ৰশ্নবোৰ স্থগিত ৰখা হৈছে। বুটামবোৰে এতিয়াও কাম কৰি আছে: আজিৰ সাগৰ, ক''ত মাছ ধৰিব লাগে, সতৰ্কবাণী, মই ঘূৰি আহিছো।'

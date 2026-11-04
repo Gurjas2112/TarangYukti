@@ -10,7 +10,7 @@ MCP := cd services/mcp && uv run python -m
 WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
-        channels outbox i18n-draft sim-boat snapshot snapshot-upload snapshot-download sim-warning layers \
+        channels outbox i18n-draft sim-boat housekeeping failures-pull snapshot snapshot-upload snapshot-download sim-warning layers \
         agent agent-purge brief-now db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
@@ -105,6 +105,16 @@ i18n-draft:          # draft missing interface strings + phrase files for every 
 outbox:              # send queued pushes once
 	$(WORKER) ty_worker.outbox
 
+# ── Auth, RLS, admin (Milestone 9)
+test-rls:            # cross-user row-level security tests against the dev database (test accounts)
+	cd services/channels && RLS_TESTS=1 uv run pytest -q tests/test_rls.py
+
+housekeeping:        # deletions past their 7-day undo, 30-day positions → H3 counts, 180-day answers/ledgers
+	$(WORKER) ty_worker.housekeeping $(if $(DRY),--dry-run,)
+
+failures-pull:       # admin "Add to failures dataset" → new rows in tests/failures/failures.yaml (then open a PR)
+	$(WORKER) ty_worker.failures_pull
+
 # ── Trips (Milestone 8)
 sim-boat:            # simulated trip toward the border and back: GPX=path writes a GPX; POST=1 sends it to /positions
 	cd services/mcp && uv run python ../../scripts/sim_boat.py $(if $(GPX),--gpx $(GPX),) $(if $(POST),--post,)
@@ -113,8 +123,6 @@ phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Su
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done
 
 # ── Later milestones (targets reserved so the interface is stable)
-test-rls:
-	@echo "$@: Milestone 9" && exit 1
 demo run-prod:
 	@echo "$@: Milestone 10" && exit 1
 trace-evals:

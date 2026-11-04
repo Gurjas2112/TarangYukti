@@ -92,6 +92,10 @@ async def onboarding(body: OnboardIn, claims: Claims, response: Response) -> dic
                 "insert into consents (user_id, purpose, notice_version, language) values (%s, %s, %s, %s)",
                 (uid, purpose, body.notice_version, body.language),
             )
+            await cur.execute(
+                "select public.audit('consent.given', %s, jsonb_build_object('notice', %s::text))",
+                (purpose, body.notice_version),
+            )
     assert row is not None
     return {"boat_id": str(row["id"])}
 
@@ -115,6 +119,8 @@ async def me(claims: Claims, response: Response) -> dict[str, Any]:
         consents = await cur.fetchall()
         await cur.execute("select kind, created_at, last_ok_at from push_subscriptions")
         subs = await cur.fetchall()
+        await cur.execute("select delete_after from deletion_requests where user_id = %s", (claims["sub"],))
+        deletion = await cur.fetchone()
 
     def _t(v: Any) -> Any:
         return v.strftime("%H:%M") if isinstance(v, time) else v
@@ -125,6 +131,7 @@ async def me(claims: Claims, response: Response) -> dict[str, Any]:
         "boats": [{**b, "id": str(b["id"])} for b in boats],
         "consents": consents,
         "push": subs,
+        "deleting_after": deletion["delete_after"] if deletion else None,
     }
 
 

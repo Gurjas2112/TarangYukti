@@ -43,12 +43,13 @@ consent:
   short: आमी तुमचें थळ फकत शिमे लागीं आनी वायट हवामानांत तुमकां चेतावणी दिवपाक वापरतात. तुमी केन्नाय थांबोवंक शकतात.
   agree: हांव मान्य करतां.
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: कदल मित्रा सतर्कताय
+  border-5km: शिमेची रेघ {distance_km} कि.मी. पयस आसा. परत बंदरा वटेन वळ.
+  border-2km: 'धोको: शिमेची रेषा फकत {distance_km} कि.मी. पयस आसा. आतांच फाटीं वळ.'
+  beyond-imbl: 'धोको: तुमी शिमेची वळ ओलांडल्यात. आतां फाटीं वचात.'
+  mpa: तूं संरक्षित दर्यादेगेच्या उद्यानांत आसा. हांगा नुस्तें मारपाक परवानगी ना.
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: आयजचो सल्लो बरो आशिल्लो काय?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: कदल मित्र · कुटुंब
+chat_paused: 'प्रस्न कांय वेळ थांबयल्यात. बटणां अजूनय काम करतात: आयचो दर्या, नुस्तें खंय मारचें, धोक्याची सुचोवणी, हांव परत आयल्या.'

@@ -12,6 +12,7 @@ import { signInWithGoogle } from "../../src/auth/google";
 import { signOut, useSession } from "../../src/auth/supabase";
 import { FamilySharing } from "../../src/components/FamilySharing";
 import { LanguageButton } from "../../src/components/LanguagePicker";
+import { MyData } from "../../src/components/MyData";
 import { registerPush } from "../../src/push/register";
 import { usePrefs } from "../../src/state/prefs";
 import { colors, font, radius, space, touch } from "../../src/ui/tokens";
@@ -96,6 +97,9 @@ export default function MeTab() {
           <Section label={t("family.title")}>
             <FamilySharing token={token} boatId={me.data?.boats[0]?.id ?? null} />
           </Section>
+          <Section label={t("mydata.title")}>
+            <MyData token={token} deleting={me.data?.deleting_after ?? null} />
+          </Section>
           <Button id="sign-out" label={t("me.signOut")} onPress={() => void signOut()} />
         </>
       ) : (
@@ -107,6 +111,9 @@ export default function MeTab() {
         />
       )}
       {note ? <Text style={styles.value}>{note}</Text> : null}
+      <Pressable onPress={() => router.push("/help")} accessibilityRole="link" testID="open-help">
+        <Text style={styles.link}>{t("help.title")}</Text>
+      </Pressable>
       <Pressable onPress={() => router.push("/notice")} accessibilityRole="link" testID="read-notice">
         <Text style={styles.link}>{t("me.notice")}</Text>
       </Pressable>

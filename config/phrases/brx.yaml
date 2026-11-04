@@ -5,50 +5,51 @@ status: draft
 reviewers: []
 reviewed_on: null
 verdict:
-  GO: Good to go.
-  CAUTION: Go, but carefully — back by {back_by}.
-  NO-GO: 'Don''t go today. Next good time: {next_window}.'
+  GO: थांनो मोजां।
+  CAUTION: थां, नाथाय सांग्राङै — {back_by} जों फिन।
+  NO-GO: 'दिनै दाथां। उननि मोजां सम: {next_window}.'
 why:
   H5: Waves get too high after {time}.
-  H2: That route goes too close to the border line.
+  H2: बै लामाया सिमा हांखोनि जोबोद खाथिसिम थाङो।
   H1: 'There is an official {issuer} warning: {warning_name}.'
-  H3: That area is inside the protected marine park.
-  H4: It is the fishing ban season for mechanised boats.
+  H3: बै ओनसोला रैखाथि होजानाय लैथोआरि पार्कनि सिङाव दं।
+  H4: बेयो मेसिनजों सोलिनाय दिङाफोरनि थाखाय ना हमनायनि होबथानाय बोथोर।
   H6: The wind gets too strong after {time}.
-  H7: 'There is an official thunderstorm warning: {warning_name}.'
-  H8: Some data is old or missing, so the sea cannot be checked.
-spot: Fish likely {distance_km} km {direction}.
-border: Border line is {distance_km} km away.
-stale: Old forecast — check again before leaving.
-footer: Advisory only — follow official INCOIS/IMD warnings.
-needs_network: 'I need the internet to answer that. The buttons still work: Today''s sea, Where to fish, Alerts, I''m back.'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
-cannot_verify: I could not check this answer against the data, so I will not give it. Please use the buttons or ask again.
-no_window: none in the next 24 hours
+  H7: 'मोनसे मावख''आरि बारहुंखा सिगांनि सांग्रांथि दं: {warning_name}।'
+  H8: माखासे खारिथिया गोजाम एबा गोमानाय, बेनिखायनो लैथोखौ नायसंनो हाया।
+spot: नाया जानो हागौ {distance_km} कि.मि. {direction}।
+border: सिमा हांखोआ {distance_km} कि.मि. गोजानाव।
+stale: गोजाम सिगांनि रादाब — ओंखारनायनि सिगां फिन खेबसे नाय।
+footer: सुबुरुनल' - मावख'आरि INCOIS/IMDनि सांग्रांथिफोरखौ फालि।
+needs_network: 'बेनि फिन होनो थाखाय आंनो इन्टारनेट नांगोन। बुथामफोरा दाबो खामानि मावो: दिनैनि लैथो, बबेयाव ना हमनो, सांग्रांथि, आं फैफिनबाय।'
+nothing_found: आं मावख'आरि खाख्रिफोराव बेनि सोमोन्दै जेबो मोनाखै। अन्नानै {source} खौ सों।
+cannot_verify: आं बे फिननायखौ डेटाजों रुजुना नायनो हायाखिसै, बेखायनो आं बेखौ होआ। अन्नानै बुथुमफोरखौ बाहाय एबा फिन सों।
+no_window: फैगौ 24 घन्टायाव रावबो गैया।
 directions:
-  north: north
-  north_east: north-east
-  east: east
-  south_east: south-east
-  south: south
-  south_west: south-west
-  west: west
-  north_west: north-west
-ack: Checking the sea…
+  north: साहा
+  north_east: सा-सानजा
+  east: सानजा
+  south_east: खोला-सानजा
+  south: खोला
+  south_west: खोला-सोनाब
+  west: सोनाब
+  north_west: सा-सोनाब
+ack: लैथोखौ नायबिजिरगासिनो दं...
 brief_title: Morning brief · {harbour}
-push_test: Kadal Mitra alerts are on.
+push_test: कादल मित्रनि सांग्रांथिफोरा सोलिगासिनो दं।
 back_home: '{name} is back at {harbour}, {time}.'
 consent:
   notice_version: '2026-11-04'
-  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
-  agree: I agree
+  short: जों नोंथांनि जायगाखौ सिमा खाथियाव आरो गाज्रि बोथोराव नोंथांखौ सांग्रां खालामनो थाखायल' बाहायो। नोंथाङा जेब्लाबो होबथानो हायो।
+  agree: आं गनायो।
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: कादल मित्र सांग्रां
+  border-5km: सिमा हांखोआ {distance_km} कि.मि. गोजानाव दं। जाहाज गाथोन फारसे गिदिंफिन।
+  border-2km: 'खैफोद: सिमा हांखोआ खालि {distance_km} कि.मि. गोजानाव। दासो गिदिंफिन।'
+  beyond-imbl: 'खैफोद: नों सिमा सिमा बारबाय। दाउन गिदिंफिन।'
+  mpa: नोंथाङा रैखाथि गोनां लैथोआरि पार्कनि सिङाव दं। बेवहाय ना हमनो गनायथि गैया।
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: दिनैनि बोसोनआ थारमोन नामा?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: कादल मित्र · नखर
+chat_paused: 'सोंथिफोरखौ दसे समनि थाखाय दोनथ''नाय जादों। बुथामफोरा दासिमबो खामानि मावो: दिनैनि लैथो, बबेयाव ना हमनो, सांग्रांथि, आं फैफिनबाय।'

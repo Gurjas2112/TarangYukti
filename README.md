@@ -19,7 +19,40 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 6 · Simple mode on both targets | **Done** — see below |
 | 7 · Expert console (web build) | **Done** — see below |
 | 8 · Alerts, trips, family, feedback | **Done** — see below |
-| 9 · Auth, RLS, admin | Next |
+| 9 · Auth, RLS, admin | **Done** — see below (one dashboard switch left for you) |
+| 10 · Tier 1 environment + docs | Next |
+
+## Milestone 9 — roles, row-level security, admin console, governance
+
+- **Roles**: `user_roles` + the `custom_access_token_hook` put `app_role` in every token. **Enable it once in the
+  Supabase dashboard** (Authentication → Hooks → *Customize Access Token* → `public.custom_access_token_hook`);
+  until then staff screens show "invited staff only". Staff (analyst, officer, platform_admin) must pass TOTP
+  (`aal2`): the web build enrols an authenticator app on first visit.
+- **RLS on every table**, with database helpers so policies never recurse. Cross-user tests against the real
+  database (`make test-rls`, 12 tests): strangers and anonymous users see nothing personal; family sees a shared
+  boat only while the grant is valid and can't write its positions; nobody can make themselves staff; admin
+  functions need MFA; officers see positions only inside **active official warning areas**, last hour, with MFA;
+  the agent role can only record answers and read the kill switches; audit tampering is detected.
+- **Audit log**: append-only, each row hashes the previous one; `audit_verify()` finds the first broken link.
+  Consents, data exports, deletion requests, sharing, role changes, kill switches and admin actions are logged.
+- **My data** (Me): download everything as JSON; delete the account with a 7-day undo, after which the worker
+  deletes the conversation threads and the account (everything cascades). **Help** names the grievance officer
+  from `config/governance.yaml` — still a placeholder.
+- **Answers**: every reply is stored with its model, prompt version and config version, guard flags and ledger id
+  (180 days). `GET /sources/answer/{id}` (owner or staff) and admin **Replay** show the ledger as it was known then.
+- **Admin console** (`/admin`, web, platform_admin + MFA): overview with daily-use measures, data sources,
+  knowledge base (approve/reject quarantine, *Supersede with…*), alerts (retry), guardrail review (*Add to failures
+  dataset* → `make failures-pull` → `failures.yaml` rows in a PR), replay, users & roles (invite staff), anonymised
+  live map, audit log with *Verify chain*, and the **kill switches**: free-form chat off (buttons keep working) and
+  non-critical alerts paused per harbour. Each action asks for a reason and lands in the audit log.
+- **Analyst tools** in the Expert console are now for analysts/admins with MFA.
+- **Retention** (`make housekeeping`, nightly): positions older than 30 days → per-day H3 cell counts with no user
+  id; answers and Neo4j ledgers older than 180 days deleted. Official warning polygons refresh every 15 minutes.
+- **Governance**: `scripts/check_governed.py` (CI workflow `governance`) fails when a governed config changes
+  without a `version:` bump, or phrases/prompts/model settings change without a line in `docs/releases.md`, or a
+  governed file lacks a code owner. A PR touching governed files needs the `safety-hold` label and stays red until
+  24 hours after its last commit (Annexure I, solo build). Branch protection is not switched on because changes
+  are pushed straight to `main` for now.
 
 ## Milestone 8 — trips, border alerts, family, feedback
 

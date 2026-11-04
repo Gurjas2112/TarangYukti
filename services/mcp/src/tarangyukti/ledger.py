@@ -199,3 +199,79 @@ async def replay(answer_id: str, driver: Any) -> list[dict[str, Any]]:
     async with driver.session(database=get_settings().neo4j_database) as session:
         result = await session.run(REPLAY, {"answer_id": answer_id})
         return [dict(r) async for r in result]
+
+
+READ_ANSWER = check_schema(
+    """
+MATCH (a:Answer {id: $answer_id})
+OPTIONAL MATCH (a)-[:CHECKED]->(c:ConstraintResult)
+OPTIONAL MATCH (c)-[:BASED_ON]->(o:Observation)-[:FROM]->(d:Dataset)
+WHERE o.known_at <= a.at
+WITH a, c, collect(CASE WHEN o IS NULL THEN NULL ELSE {var: o.var, value: o.value, valid_at: toString(o.valid_at),
+     known_at: toString(o.known_at), dataset: d.name, version: d.version, url: d.url} END) AS obs
+ORDER BY c.id
+WITH a, collect(CASE WHEN c IS NULL THEN NULL ELSE {id: c.id, kind: c.kind, ok: c.ok, value: c.value, unit: c.unit,
+     detail: c.detail, unknown: c.unknown, observations: obs} END) AS results
+OPTIONAL MATCH (a)-[q:CITES]->(k:Chunk)
+RETURN a {.id, at: toString(a.at), .kind, .verdict, .lang, .config_version, .boat_type, depart: toString(a.depart)}
+       AS answer, results, collect(CASE WHEN k IS NULL THEN NULL ELSE {chunk_id: k.id, version: k.version,
+       quote: q.quote} END) AS citations
+"""
+)
+
+
+async def read(answer_id: str, driver: Any | None = None) -> dict[str, Any] | None:
+    """One answer's full ledger as it was known when the answer was given (observations with known_at ≤ a.at)."""
+    own = driver is None
+    if driver is None:
+        s = get_settings()
+        if s.neo4j_password is None:
+            return None
+        from neo4j import AsyncGraphDatabase
+
+        driver = AsyncGraphDatabase.driver(
+            s.neo4j_uri,
+            auth=(s.neo4j_username, s.neo4j_password.get_secret_value()),
+            notifications_min_severity="OFF",  # CITES/Chunk may not exist yet: not an error
+        )
+    assert driver is not None
+    try:
+        async with driver.session(database=get_settings().neo4j_database) as session:
+            rec = await (await session.run(READ_ANSWER, {"answer_id": answer_id})).single()
+        return dict(rec) if rec else None
+    finally:
+        if own:
+            await driver.close()
+
+
+PURGE = check_schema(
+    """
+MATCH (a:Answer) WHERE a.at < datetime() - duration({days: $days})
+OPTIONAL MATCH (a)-[:CHECKED]->(c:ConstraintResult)
+OPTIONAL MATCH (c)-[:BASED_ON]->(o:Observation)
+WITH a, collect(DISTINCT c) AS cs, collect(DISTINCT o) AS os
+FOREACH (x IN os | DETACH DELETE x)
+FOREACH (x IN cs | DETACH DELETE x)
+DETACH DELETE a
+RETURN count(*) AS answers
+"""
+)
+
+
+async def purge(days: int = 180) -> int:
+    """Delete answers (and their results and observations) older than `days` — retention (spec §8.5).
+    Datasets and passages are shared and stay."""
+    s = get_settings()
+    if s.neo4j_password is None:
+        return 0
+    from neo4j import AsyncGraphDatabase
+
+    driver = AsyncGraphDatabase.driver(
+        s.neo4j_uri, auth=(s.neo4j_username, s.neo4j_password.get_secret_value()), notifications_min_severity="OFF"
+    )
+    try:
+        async with driver.session(database=s.neo4j_database) as session:
+            rec = await (await session.run(PURGE, {"days": days})).single()
+        return int(rec["answers"]) if rec else 0
+    finally:
+        await driver.close()

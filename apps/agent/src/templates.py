@@ -51,6 +51,10 @@ def verdict(y: dict[str, Any], lang: str) -> str:
     return " ".join([head, *dict.fromkeys(reasons)])
 
 
+def chat_paused(lang: str) -> str:
+    return str(phrases(lang)[0].get("chat_paused") or phrases("en-IN")[0]["chat_paused"])
+
+
 def needs_network(lang: str) -> str:
     return str(phrases(lang)[0]["needs_network"])
 

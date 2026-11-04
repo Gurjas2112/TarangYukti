@@ -68,7 +68,9 @@ async def open_memory() -> tuple[Any, Any]:
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     init_tracing("ty-agent")
     pool, saver = await open_memory()
-    state.update(pool=pool, graph=await make_graph(saver))
+    from src.records import PostgresRecorder
+
+    state.update(pool=pool, graph=await make_graph(saver, recorder=PostgresRecorder(pool)))
     yield
     await pool.close()
 

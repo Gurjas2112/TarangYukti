@@ -43,12 +43,13 @@ consent:
   short: हम आपके स्थान का उपयोग केवल आपको सीमा के पास और खराब मौसम में चेतावनी देने के लिए करते हैं। आप कभी भी रोक सकती हैं।
   agree: मैं सहमत हूँ।
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: कदल मित्र अलर्ट
+  border-5km: सीमा रेखा {distance_km} किलोमीटर दूर है। बंदरगाह की ओर वापस मुड़ो।
+  border-2km: 'खतरा: सीमा रेखा केवल {distance_km} किलोमीटर दूर है। अभी वापस मुड़ो।'
+  beyond-imbl: 'खतरा: आप सीमा रेखा पार कर चुकी हैं। अभी वापस मुड़ जाइए।'
+  mpa: आप संरक्षित समुद्री पार्क के अंदर हैं। यहाँ मछली पकड़ने की अनुमति नहीं है।
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: क्या आज की सलाह सही थी?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: कदल मित्र · परिवार
+chat_paused: 'कुछ देर के लिए प्रश्न रोके जाते हैं। बटन अभी भी काम करते हैं: आज का समुद्र, मछली कहाँ पकड़ें, अलर्ट, मैं वापस आ गई हूँ।'

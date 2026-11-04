@@ -5,50 +5,51 @@ status: draft
 reviewers: []
 reviewed_on: null
 verdict:
-  GO: Good to go.
-  CAUTION: Go, but carefully — back by {back_by}.
-  NO-GO: 'Don''t go today. Next good time: {next_window}.'
+  GO: जाए लेल नीक अछि।
+  CAUTION: जाउ, मुदा सावधानी सँ - {back_by} सँ पाछाँ।
+  NO-GO: 'आइ नहि जाऊ। अगिला नीक समय: {next_window}.'
 why:
   H5: Waves get too high after {time}.
-  H2: That route goes too close to the border line.
-  H1: 'There is an official {issuer} warning: {warning_name}.'
-  H3: That area is inside the protected marine park.
-  H4: It is the fishing ban season for mechanised boats.
-  H6: The wind gets too strong after {time}.
-  H7: 'There is an official thunderstorm warning: {warning_name}.'
-  H8: Some data is old or missing, so the sea cannot be checked.
-spot: Fish likely {distance_km} km {direction}.
-border: Border line is {distance_km} km away.
-stale: Old forecast — check again before leaving.
-footer: Advisory only — follow official INCOIS/IMD warnings.
-needs_network: 'I need the internet to answer that. The buttons still work: Today''s sea, Where to fish, Alerts, I''m back.'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
-cannot_verify: I could not check this answer against the data, so I will not give it. Please use the buttons or ask again.
-no_window: none in the next 24 hours
+  H2: ओ रास्ता सीमा रेखाक बहुत नजदीक जाइत अछि।
+  H1: 'एकटा आधिकारिक {issuer} चेतावनी अछि: {warning_name}।'
+  H3: ओ क्षेत्र संरक्षित समुद्री उद्यान केर भीतर अछि।
+  H4: ई मशीनीकृत नावसभक लेल माछ पकड़बाक प्रतिबन्धक मौसम अछि।
+  H6: '{time} के बाद हवा बहुत तेज भऽ जाइत अछि।'
+  H7: 'आधिकारिक रूप सँ गरजक चेतावनी अछि: {warning_name}।'
+  H8: किछु डेटा पुरान वा गायब अछि, तेँ समुद्रक जाँच नहि कयल जा सकैत अछि।
+spot: मछली शायद {distance_km} किमी {direction} दूर अछि।
+border: सीमा रेखा {distance_km} किलोमीटर दूर अछि।
+stale: पुरान पूर्वानुमान - जाए सँ पहिने फेर जाँच करू।
+footer: केवल सलाह - आधिकारिक आईएनसीओआईएस/आईएमडी चेतौनीक पालन करू।
+needs_network: 'ओकरा जवाब देबाक लेल हमरा इंटरनेट चाही। बटन सभ अखनो काज क'' रहल अछि: आइ केर समुद्र, माछ कत'' मारब, अलर्ट, हम वापस आबि गेल छी।'
+nothing_found: हमरा आधिकारिक कागजात मे एकरा बारे मे किछुओ नहि भेटल। कृपया {source} सँ पुछू।
+cannot_verify: हम ई उत्तर के डेटा सँ नहि जाँचि सकलौं, तेँ हम नहि देब। कृपया बटन सभक उपयोग करू या फेर सँ पुछू।
+no_window: अगिला 24 घंटा मे किछुओ नहि।
 directions:
-  north: north
-  north_east: north-east
-  east: east
-  south_east: south-east
-  south: south
-  south_west: south-west
-  west: west
-  north_west: north-west
-ack: Checking the sea…
+  north: उत्तर
+  north_east: उत्तर-पूरब
+  east: पूरब
+  south_east: दक्षिण-पूरब
+  south: दक्षिण
+  south_west: दक्षिण-पश्चिम
+  west: पश्चिम
+  north_west: उत्तर-पश्चिम
+ack: समुद्रक जाँच कएल जा रहल अछि...
 brief_title: Morning brief · {harbour}
-push_test: Kadal Mitra alerts are on.
+push_test: कदल मित्र अलर्ट चालू अछि।
 back_home: '{name} is back at {harbour}, {time}.'
 consent:
   notice_version: '2026-11-04'
-  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
-  agree: I agree
+  short: हम अहाँक स्थानक उपयोग केवल अहाँकेँ सीमाक लग आ खराब मौसममे चेतावनी देबाक लेल करैत छी। अहाँ कोनो समय रोकि सकैत छी।
+  agree: हम सहमत छी।
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: कदल मित्र अलर्ट
+  border-5km: सीमा रेखा {distance_km} किलोमीटर दूर अछि। बंदरगाह दिस वापस मुड़ू।
+  border-2km: 'खतरा: सीमा रेखा मात्र {distance_km} किलोमीटर दूर अछि। एखन वापस मुड़ू।'
+  beyond-imbl: 'खतरा: अहाँ सीमा रेखा पार कए लेने छी। आब वापस मुड़ू।'
+  mpa: अहाँ संरक्षित समुद्री उद्यान के भीतर छी। एतय माछ मारबाक अनुमति नहि अछि।
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: की आइ के सलाह सही छल?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: कदल मित्र · परिवार
+chat_paused: 'प्रश्न किछु समयक लेल रुकल अछि। बटन अखनो काज करैत अछि: आइ केर समुद्र, माछ कतय मारू, अलर्ट, हम वापस आबि गेल छी।'

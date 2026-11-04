@@ -56,3 +56,5 @@ trip:
   feedback_ask: "Was today's advice right?"
   right_on: "Right on {right} of the last {total} days."
 family_title: "Kadal Mitra · family"
+# Milestone 9: admin kill switch "free-form chat off" (draft until reviewed)
+chat_paused: "Questions are paused for a while. The buttons still work: Today's sea, Where to fish, Alerts, I'm back."

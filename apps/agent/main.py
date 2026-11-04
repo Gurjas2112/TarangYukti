@@ -30,6 +30,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.types import Checkpointer
 from pydantic import BaseModel, Field
+from ty_common.cache import config_version
 from ty_common.settings import get_settings
 from ty_common.telemetry import record_guardrails
 
@@ -38,6 +39,7 @@ from src.agents import language
 from src.agents.base import Evidence, Turn, home_harbour, prompt
 from src.agents.specialists import make_tools
 from src.gateway import Gateway, MCPGateway
+from src.records import NullRecorder, Recorder
 
 log = logging.getLogger(__name__)
 PROMPTS = Path(__file__).parent / "src" / "prompts"
@@ -192,11 +194,13 @@ async def make_graph(
     model: BaseChatModel | None = None,
     rewrite_model: BaseChatModel | None = None,
     gateway: Gateway | None = None,
+    recorder: Recorder | None = None,
 ) -> Any:
     """Build the compiled graph. The server passes an AsyncPostgresSaver; tests pass fakes."""
     gw = gateway or MCPGateway()
     planner_model = model or make_model(planner_effort())
     rewriter = rewrite_model or model or make_model("low")
+    rec: Recorder = recorder or NullRecorder()
     system = load_prompt("planner")  # first and byte-identical on every call (implicit prompt caching)
 
     async def prepare(state: OrcaState, config: RunnableConfig) -> dict[str, Any]:
@@ -214,9 +218,11 @@ async def make_graph(
             "rewritten": False,
             "fallback": None,
             "guard": {},
-        }
+        } | ({"fallback": "chat_off"} if p.get("intent") not in BUTTONS and await rec.free_chat_off() else {})
 
     def route(state: OrcaState) -> str:
+        if state.get("fallback") == "chat_off":
+            return "finalize"  # kill switch: free-form chat paused, buttons still answer
         return "button" if state.get("intent") in BUTTONS else "planner"
 
     async def button(state: OrcaState) -> dict[str, Any]:
@@ -302,7 +308,7 @@ async def make_graph(
             return "validate"  # check the rewrite
         return "finalize"
 
-    async def finalize(state: OrcaState) -> dict[str, Any]:
+    async def finalize(state: OrcaState, config: RunnableConfig) -> dict[str, Any]:
         lang = state.get("lang", "en-IN")
         mode = state.get("mode", "simple")
         fallback = state.get("fallback")
@@ -310,7 +316,9 @@ async def make_graph(
         draft = state.get("draft") or {}
         notes: list[str] = []
         translated = False
-        if yuktis and (fallback or mode == "simple"):
+        if fallback == "chat_off":
+            body = templates.chat_paused(lang)
+        elif yuktis and (fallback or mode == "simple"):
             body = templates.verdict(yuktis[-1], lang)  # safety wording from approved phrases only
         elif fallback == "llm":
             body = templates.needs_network(lang)
@@ -348,6 +356,25 @@ async def make_graph(
                 "guard": guard,
             },
         )
+        user = (config.get("configurable", {}) or {}).get("auth_user") or {}
+        await rec.record(
+            {
+                "thread_id": str((config.get("configurable", {}) or {}).get("thread_id", "")),
+                "user_id": user.get("sub"),
+                "lang": lang,
+                "mode": mode,
+                "question": _last_user_text(state)[:2000],
+                "reply": final,
+                "verdict": yuktis[-1]["verdict"] if yuktis else None,
+                "ledger_answer_id": answer_id,
+                "citations": verified,
+                "guard": guard,
+                "fallback": fallback,
+                "model": get_settings().orca_model,
+                "prompt_version": prompt_version(),
+                "config_version": config_version(),
+            }
+        )
         return {
             "messages": [msg],
             "answer_id": answer_id,
@@ -370,7 +397,7 @@ async def make_graph(
     g.add_node("validate", validate)
     g.add_node("finalize", finalize)
     g.add_edge(START, "prepare")
-    g.add_conditional_edges("prepare", route, {"button": "button", "planner": "planner"})
+    g.add_conditional_edges("prepare", route, {"button": "button", "planner": "planner", "finalize": "finalize"})
     g.add_edge("button", "finalize")
     g.add_edge("planner", "validate")
     g.add_conditional_edges("validate", after_validate, {"validate": "validate", "finalize": "finalize"})

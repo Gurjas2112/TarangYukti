@@ -5,50 +5,51 @@ status: draft
 reviewers: []
 reviewed_on: null
 verdict:
-  GO: Good to go.
-  CAUTION: Go, but carefully — back by {back_by}.
-  NO-GO: 'Don''t go today. Next good time: {next_window}.'
+  GO: گژھنہٕ خٲطرٕ اصل۔
+  CAUTION: گژھِو، مگر احتیاط سان — {back_by} پتہٕ۔
+  NO-GO: 'اَز مہٕ گژھِو۔ بیٛاکھ اَصٕل وقت: {next_window}۔'
 why:
   H5: Waves get too high after {time}.
-  H2: That route goes too close to the border line.
+  H2: یہِ وتہِ چھِ سرحدٕچ لٲنہِ  واریاہ نزدیٖک گژھان ۔
   H1: 'There is an official {issuer} warning: {warning_name}.'
-  H3: That area is inside the protected marine park.
-  H4: It is the fishing ban season for mechanised boats.
+  H3: یہِ علاقہٕ چھٗ محفوظ سمندری پاركہِ اندر ۔
+  H4: یہِ چھٗ مَشیٖنی ناوَن ہِنٛدِ گاڈٕ رٹنہٕ کِس مٗدتس پیٹھ پابٔنٛدی ہُنٛد موسم۔
   H6: The wind gets too strong after {time}.
-  H7: 'There is an official thunderstorm warning: {warning_name}.'
-  H8: Some data is old or missing, so the sea cannot be checked.
+  H7: 'تَتہِ چھُ اکھ سرکٲرِ گگرایہِ ہُنٛد انتباہ: {warning_name}۔'
+  H8: کینٛہہ ڈیٹا چھ پرٛون یا غٲب، لہذا ہیٚکہ نہٕ سمندرٕچ جانٛچ کرنہٕ یتھ۔
 spot: Fish likely {distance_km} km {direction}.
 border: Border line is {distance_km} km away.
-stale: Old forecast — check again before leaving.
-footer: Advisory only — follow official INCOIS/IMD warnings.
-needs_network: 'I need the internet to answer that. The buttons still work: Today''s sea, Where to fish, Alerts, I''m back.'
+stale: پرٛون پیشین گوئی — نیرنہٕ برٛونٛہہ کٔرِو دوبارٕ چیک۔
+footer: صرف مشورٕ — سرکٲرۍ INCOIS/IMD انتباہن پیٹھ کٔرِو عمل۔
+needs_network: 'مےٚ چھُ امہِ کِس جوابس خٲطرٕ انٹرنیٹٕچ ضروٗرت۔ بٹن چھِ وُنہِ تہِ کٲم کران: ازُک سمندر، گاڈٕ کَتہِ رٹِو، الرٹ، بہٕ چھےٚ واپس آمٕژ۔'
 nothing_found: I found nothing about this in the official documents. Please ask the {source}.
-cannot_verify: I could not check this answer against the data, so I will not give it. Please use the buttons or ask again.
-no_window: none in the next 24 hours
+cannot_verify: بہٕ ہیوٚک نہٕ یہِ جواب ڈیٹا سۭتۍ موازنہٕ کٔرِتھ، اَمہِ کِنۍ دِتھ نہٕ بہٕ یہِ۔ مہربٲنی کٔرِتھ کٔرِو بٹن اِستعمال یا پرٛژھِو بیٚیہِ۔
+no_window: ینہٕ والٮ۪ن 24 گٲنٛٹن منٛز چھُنہٕ کانٛہہ تہِ۔
 directions:
-  north: north
-  north_east: north-east
-  east: east
-  south_east: south-east
-  south: south
-  south_west: south-west
-  west: west
-  north_west: north-west
-ack: Checking the sea…
+  north: شمال
+  north_east: شمال-مشرق
+  east: مشرِق
+  south_east: جنوٗب مشرِق
+  south: جنوٗب
+  south_west: جنوٗب مغرِبی
+  west: مَغرِب
+  north_west: شمال مغرِب
+ack: سمندر وُچھُن...
 brief_title: Morning brief · {harbour}
-push_test: Kadal Mitra alerts are on.
+push_test: کڈل مترا الرٹ چھِ جٲری۔
 back_home: '{name} is back at {harbour}, {time}.'
 consent:
   notice_version: '2026-11-04'
-  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
-  agree: I agree
+  short: أسۍ چھِو تُہٕنٛز لوکیشن صرف تُہہِ سرحدَس نزدیٖک تہٕ خراب موسمس منٛز خبردار کرنہٕ خٲطرٕ استعمال کران۔ تُہہِ ہیٚکو کُنہِ تہِ وِزِ رُکِتھ۔
+  agree: بہٕ چھُس رٲضی۔
 alerts:
-  title: Kadal Mitra alert
+  title: کڈل مِترا الرٹ
   border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  border-2km: 'خطرٕ: سرحدی لٲن چھِ صرف {distance_km} کلومیٹر دوٗر۔ وۄنۍ پھِرِو واپس۔'
+  beyond-imbl: 'خطرٕ: ژٕ چِھو سرحدٕچ لٲن پار کٔرمٕژ۔ وۄنۍ پھِرِو واپس۔'
+  mpa: تۄہہِ چِھو مَحفوٗظ سمندری پارکہِ منٛز۔ ییٚتہِ چُھنہٕ گاڈٕ رٹنہٕ ہٗند  اجازت۔
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: اَزِچ مشوَرٕ ٲسۍ صٔحیٖح؟
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: کڈل مِترا · خاندان
+chat_paused: 'سوال چھُ کینٛہَس وِزِ رُکان۔ بٹن چھِ وُنہِ تہِ کٲم کَران: ازُک سمندر، گاڈٕ کَتہِ رٹُن، الرٹ، بہٕ چھےٚ واپس آمٕژ۔'

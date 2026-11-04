@@ -13,7 +13,7 @@ from ty_common.models import ToolResult
 
 from . import brief
 from .rag import search as rag_search
-from .tools import geo, grids, marine, ocean, warnings, yukti_tools
+from .tools import geo, grids, marine, ocean, provenance, warnings, yukti_tools
 
 mcp = FastMCP("tarangyukti")
 
@@ -33,6 +33,7 @@ for fn in (
     yukti_tools.route_safest,
     rag_search.kb_search,
     brief.sea_brief,
+    provenance.answer_ledger,
 ):
     mcp.tool(fn)
 

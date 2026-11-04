@@ -58,6 +58,7 @@ const MeSchema = z.object({
     z.object({ purpose: z.string(), notice_version: z.string(), language: z.string(), given_at: z.string() }),
   ),
   push: z.array(z.object({ kind: z.enum(["web", "expo"]) })),
+  deleting_after: z.string().nullable().optional(),
 });
 export type Me = z.infer<typeof MeSchema>;
 
@@ -184,6 +185,25 @@ export const api = {
     call(`/share/${id}`, z.object({ status: z.string() }), { method: "DELETE", token }),
   family: (token: string) =>
     call("/family", z.object({ boats: z.array(FamilyBoatSchema) }), { token }).then((r) => r.boats),
+  exportUrl: () => `${getEnv().CHANNELS_URL}/me/export`,
+  exportData: async (token: string): Promise<string> => {
+    const r = await fetch(`${getEnv().CHANNELS_URL}/me/export`, { headers: { Authorization: `Bearer ${token}` } });
+    if (!r.ok) throw new ApiError(r.status, r.statusText);
+    return r.text();
+  },
+  requestDelete: (token: string) =>
+    call("/me/delete", z.object({ delete_after: z.string() }), { method: "POST", token }),
+  cancelDelete: (token: string) => call("/me/delete", z.object({ status: z.string() }), { method: "DELETE", token }),
+  help: () =>
+    call(
+      "/help",
+      z.object({
+        grievance_officer: z.object({ name: z.string(), email: z.string() }),
+        response_days: z.number(),
+        erasure_days: z.number(),
+        deletion_undo_days: z.number(),
+      }),
+    ),
   phoneLink: (token: string) =>
     call("/phone-link", z.object({ token_hash: z.string(), type: z.string(), expires_in: z.number(), qr: z.string() }), {
       method: "POST",

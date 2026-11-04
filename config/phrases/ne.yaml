@@ -26,29 +26,30 @@ nothing_found: I found nothing about this in the official documents. Please ask 
 cannot_verify: मैले यो उत्तरलाई डेटासँग जाँच गर्न सकिनँ, त्यसैले म यो दिने छैन। कृपया बटनहरू प्रयोग गर्नुहोस् वा फेरि सोध्नुहोस्।
 no_window: आगामी 24 घण्टामा कोही पनि छैन।
 directions:
-  north: north
+  north: उत्तर
   north_east: उत्तर-पूर्व
-  east: east
-  south_east: south-east
-  south: south
-  south_west: south-west
-  west: west
-  north_west: north-west
-ack: Checking the sea…
+  east: पूर्व
+  south_east: दक्षिण-पूर्व
+  south: दक्षिण
+  south_west: दक्षिण-पश्चिम
+  west: पश्चिम
+  north_west: उत्तर-पश्चिम
+ack: समुद्र जाँच गर्दै...
 brief_title: Morning brief · {harbour}
-push_test: Kadal Mitra alerts are on.
+push_test: कदल मित्र अलर्टहरू सक्रिय छन्।
 back_home: '{name} is back at {harbour}, {time}.'
 consent:
   notice_version: '2026-11-04'
-  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
-  agree: I agree
+  short: हामी तपाईंको स्थान सिमाना नजिक र खराब मौसममा मात्र तपाईंलाई चेतावनी दिन प्रयोग गर्छौं। तपाईंले जुनसुकै बेला रोक्न सक्नुहुन्छ।
+  agree: म सहमत छु।
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: कदल मित्र सतर्कता
+  border-5km: सिमाना रेखा {distance_km} किलोमिटर टाढा छ। बन्दरगाहतिर फर्कनुहोस्।
+  border-2km: 'खतरा: सिमाना रेखा यहाँबाट {distance_km} किलोमिटर मात्र टाढा छ। अहिले फर्केर जानुहोस्।'
+  beyond-imbl: 'खतरा: तपाईं सीमा रेखा पार गरिसक्नुभयो। अहिले फर्केर जानुहोस्।'
+  mpa: तपाईँ संरक्षित समुद्री उद्यानभित्र हुनुहुन्छ। यहाँ माछा मार्न अनुमति छैन।
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: के आजको सल्लाह सही थियो?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: कदल मित्र · परिवार
+chat_paused: 'प्रश्नहरू केही बेरको लागि रोकिएका छन्। बटनहरूले अझै काम गर्छन्: आजको समुद्र, कहाँ माछा मार्ने, सतर्कता, म फर्केँ।'

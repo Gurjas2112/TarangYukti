@@ -20,6 +20,8 @@ import { runUiActions, useExpertTools, useSeaTools } from "../copilot/useSeaTool
 import { OceanMap } from "../map/OceanMap.web";
 import { mapRef } from "../map/ref";
 import { ALL_LAYERS, type LayerId, type PfzZone } from "../map/types";
+import { aalOf, roleOf } from "../auth/claims";
+import { useSession } from "../auth/supabase";
 import { usePrefs } from "../state/prefs";
 import { colors } from "../ui/tokens";
 
@@ -33,6 +35,9 @@ type Turn = { q: string; a: AgentTurn };
 export function ExpertScreen() {
   const { t } = useTranslation();
   const { prefs, update } = usePrefs();
+  const { session } = useSession();
+  const staffAnalyst =
+    ["analyst", "platform_admin"].includes(roleOf(session?.access_token) ?? "") && aalOf(session?.access_token) === "aal2";
   const harbours = useQuery({ queryKey: ["harbours"], queryFn: api.harbours });
   const harbour = prefs.harbour ?? harbours.data?.[0]?.id ?? null;
   const [boat, setBoat] = useState<BoatKind>(prefs.boatKind ?? "small_frp");
@@ -257,10 +262,15 @@ export function ExpertScreen() {
             {analyst ? "▾" : "▸"} {t("expert.analyst")}
           </button>
         </div>
-        {analyst && d ? (
+        {analyst && d && staffAnalyst ? (
           <div style={{ maxHeight: "45vh", overflowY: "auto" }}>
             <AnalystPanel lat={d.harbour.lat} lon={d.harbour.lon} />
           </div>
+        ) : null}
+        {analyst && !staffAnalyst ? (
+          <p data-testid="analyst-locked" style={{ fontSize: 14, margin: 0 }}>
+            {t("staff.analystOnly")}
+          </p>
         ) : null}
       </footer>
       <CitationDrawer c={citation} onClose={() => setCitation(null)} />

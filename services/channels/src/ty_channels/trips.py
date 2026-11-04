@@ -248,6 +248,9 @@ async def share(body: ShareIn, claims: Claims, request: Request, response: Respo
             (body.boat_id, body.email, body.days),
         )
         row = await cur.fetchone()
+        await cur.execute(
+            "select public.audit('share.created', %s, jsonb_build_object('days', %s))", (body.boat_id, body.days)
+        )
     assert row is not None
     return {"id": str(row["id"]), "expires_at": row["expires_at"]}
 
@@ -275,6 +278,7 @@ async def revoke(grant_id: str, claims: Claims, response: Response) -> dict[str,
         )
         if await cur.fetchone() is None:
             raise HTTPException(404, "no such grant")
+        await cur.execute("select public.audit('share.revoked', %s, '{}'::jsonb)", (grant_id,))
     return {"status": "revoked"}
 
 

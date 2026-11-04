@@ -5,50 +5,51 @@ status: draft
 reviewers: []
 reviewed_on: null
 verdict:
-  GO: Good to go.
-  CAUTION: Go, but carefully — back by {back_by}.
-  NO-GO: 'Don''t go today. Next good time: {next_window}.'
+  GO: ᱪᱟᱞᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱵᱷᱟᱜᱮ ᱜᱮᱭᱟ ᱾
+  CAUTION: ᱪᱟᱞᱟᱜ ᱢᱮ, ᱢᱮᱱᱠᱷᱟᱱ ᱥᱚᱱᱛᱚᱨ ᱠᱟᱛᱮᱫ - {back_by} ᱛᱮ ᱨᱩᱣᱟᱹᱲ ᱢᱮ ᱾
+  NO-GO: 'ᱛᱮᱦᱮᱧ ᱟᱞᱚᱢ ᱪᱟᱞᱟᱜᱼᱟ ᱾ ᱛᱟᱭᱚᱢ ᱵᱷᱟᱹᱜᱤ ᱚᱠᱛᱚ: {next_window} ᱾'
 why:
   H5: Waves get too high after {time}.
-  H2: That route goes too close to the border line.
+  H2: ᱚᱱᱟ ᱰᱟᱦᱟᱨ ᱫᱚ ᱥᱤᱢᱟᱹ ᱨᱮᱠᱷᱟ ᱨᱮᱭᱟᱜ ᱟᱹᱰᱤ ᱥᱩᱨ ᱛᱮ ᱪᱟᱞᱟᱜᱼᱟ ᱾
   H1: 'There is an official {issuer} warning: {warning_name}.'
-  H3: That area is inside the protected marine park.
-  H4: It is the fishing ban season for mechanised boats.
-  H6: The wind gets too strong after {time}.
-  H7: 'There is an official thunderstorm warning: {warning_name}.'
-  H8: Some data is old or missing, so the sea cannot be checked.
-spot: Fish likely {distance_km} km {direction}.
-border: Border line is {distance_km} km away.
-stale: Old forecast — check again before leaving.
-footer: Advisory only — follow official INCOIS/IMD warnings.
-needs_network: 'I need the internet to answer that. The buttons still work: Today''s sea, Where to fish, Alerts, I''m back.'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
-cannot_verify: I could not check this answer against the data, so I will not give it. Please use the buttons or ask again.
-no_window: none in the next 24 hours
+  H3: ᱚᱱᱟ ᱴᱚᱴᱷᱟ ᱫᱚ ᱨᱟᱠᱷᱟ ᱫᱚᱦᱚ ᱟᱠᱟᱱ ᱥᱟᱹᱢᱩᱫ ᱵᱟᱜᱽᱣᱟᱱ ᱵᱷᱤᱛᱟᱹᱨ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾
+  H4: ᱱᱚᱣᱟ ᱫᱚ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ ᱡᱚᱱᱛᱨᱤᱠ ᱞᱟᱹᱣᱠᱟᱹ ᱛᱮ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱨᱮᱭᱟᱜ ᱚᱠᱛᱚ ᱾
+  H6: ᱦᱚᱭ {time} ᱛᱟᱭᱚᱢ ᱟᱹᱰᱤ ᱡᱳᱨ ᱦᱩᱭᱩᱜᱼᱟ ᱾
+  H7: 'ᱢᱤᱫᱴᱟᱝ ᱥᱚᱨᱠᱟᱨᱤ ᱦᱚᱭ ᱥᱟᱶ ᱵᱤᱡᱽᱞᱤ ᱪᱮᱜᱷᱟᱣᱱᱟ ᱢᱮᱱᱟᱜᱼᱟ: {warning_name} ᱾'
+  H8: ᱠᱤᱪᱷᱩ ᱰᱚᱜᱚᱨ ᱢᱟᱨᱮ ᱥᱮ ᱟᱫ ᱟᱠᱟᱱᱟ, ᱚᱱᱟᱛᱮ ᱥᱟᱹᱢᱩᱫ ᱵᱟᱝ ᱵᱤᱰᱟᱹᱣ ᱜᱟᱱᱚᱜᱼᱟ ᱾
+spot: ᱦᱟᱹᱠᱩ ᱫᱚ ᱥᱚᱢᱵᱷᱚᱵᱚᱛᱚ {distance_km} ᱠᱤᱞᱳᱢᱤᱴᱟᱨ {direction} ᱥᱟᱹᱜᱤᱧ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾
+border: ᱥᱤᱢᱟᱹ ᱨᱮᱠᱷᱟ ᱫᱚ {distance_km} ᱠᱤᱞᱳᱢᱤᱴᱟᱨ ᱥᱟᱹᱜᱤᱧ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾
+stale: ᱢᱟᱨᱮ ᱟᱜᱟᱢ ᱵᱟᱰᱟᱭ ᱼ ᱪᱟᱞᱟᱜ ᱞᱟᱦᱟᱨᱮ ᱟᱨᱦᱚᱸ ᱵᱤᱰᱟᱹᱣ ᱢᱮ ᱾
+footer: ᱥᱩᱪᱤᱛᱚ ᱥᱩᱪᱤ ᱠᱷᱟᱹᱞᱤ ᱼ ᱟᱠᱷᱲᱟ ᱞᱮᱠᱟᱛᱮ INCOIS/IMD ᱨᱮᱭᱟᱜ ᱥᱚᱱᱛᱚᱨ ᱠᱚ ᱯᱟᱸᱡᱟᱭ ᱢᱮ ᱾
+needs_network: ᱤᱧ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱛᱮᱞᱟ ᱮᱢ ᱞᱟᱹᱜᱤᱫ ᱤᱱᱴᱟᱨᱱᱮᱴ ᱞᱟᱹᱠᱛᱤᱭᱟ ᱾ ᱵᱳᱛᱟᱢ ᱠᱚ ᱱᱤᱛᱦᱚᱸ ᱠᱟᱹᱢᱤ ᱮᱫᱟᱺ ᱛᱮᱦᱮᱧᱟᱜ ᱥᱟᱹᱢᱩᱫᱽ, ᱡᱟᱦᱟᱸ ᱨᱮ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱦᱩᱭᱩᱜᱼᱟ, ᱥᱚᱱᱛᱚᱨ, ᱤᱧ ᱨᱩᱣᱟᱹᱲ ᱦᱮᱡ ᱟᱠᱟᱱᱟ ᱾
+nothing_found: ᱤᱧ ᱟᱠᱷᱲᱟ ᱱᱚᱛᱷᱤ ᱨᱮ ᱱᱚᱣᱟ ᱵᱟᱨᱮᱛᱮ ᱪᱮᱫ ᱦᱚᱸ ᱵᱟᱹᱧ ᱧᱟᱢ ᱟᱠᱟᱫᱟ ᱾ ᱫᱟᱭᱟ ᱠᱟᱛᱮᱫ {source} ᱠᱩᱞᱤᱭᱮᱢ ᱾
+cannot_verify: ᱤᱧ ᱱᱚᱣᱟ ᱛᱮᱞᱟ ᱫᱚ ᱰᱮᱴᱟ ᱥᱟᱶ ᱵᱟᱹᱧ ᱛᱩᱞᱩᱪ ᱫᱟᱲᱮᱭᱟᱫᱟ, ᱚᱱᱟᱛᱮ ᱤᱧ ᱵᱟᱹᱧ ᱮᱢᱟ ᱾ ᱫᱟᱭᱟ ᱠᱟᱛᱮᱫ ᱵᱳᱛᱟᱢ ᱠᱚ ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱥᱮ ᱫᱚᱲᱦᱟ ᱠᱩᱞᱤ ᱢᱮ ᱾
+no_window: ᱫᱟᱨᱟᱭ ᱠᱟᱱ 24 ᱴᱟᱲᱟᱝ ᱨᱮ ᱚᱠᱚᱭ ᱦᱚᱸ ᱵᱟᱝ ᱾
 directions:
-  north: north
-  north_east: north-east
-  east: east
-  south_east: south-east
-  south: south
-  south_west: south-west
-  west: west
-  north_west: north-west
-ack: Checking the sea…
+  north: ᱩᱛᱛᱚᱨ
+  north_east: ᱩᱛᱛᱚᱨᱼᱯᱩᱨᱩᱵᱽ
+  east: ᱯᱩᱨᱩᱵᱽ ᱥᱮᱡᱽ
+  south_east: ᱫᱚᱠᱷᱤᱱᱼᱯᱩᱨᱵᱚ
+  south: ᱫᱚᱠᱷᱤᱱ
+  south_west: ᱫᱚᱠᱷᱤᱱᱼᱯᱚᱪᱷᱤᱢ
+  west: ᱯᱚᱪᱷᱤᱢ
+  north_west: ᱩᱛᱛᱚᱨᱼᱯᱚᱪᱷᱤᱢ
+ack: ᱥᱟᱹᱢᱩᱫ ᱵᱤᱰᱟᱹᱣ ᱮᱫᱟ ᱠᱚ ᱾
 brief_title: Morning brief · {harbour}
-push_test: Kadal Mitra alerts are on.
-back_home: '{name} is back at {harbour}, {time}.'
+push_test: ᱠᱟᱫᱟᱞ ᱢᱤᱛᱨᱚ ᱮᱞᱟᱨᱴ ᱠᱚ ᱪᱟᱞᱩ ᱢᱮᱱᱟᱜᱼᱟ ᱾
+back_home: '{name} ᱫᱚ {harbour} ᱨᱮ ᱨᱩᱭᱟᱹᱲ ᱦᱮᱡ ᱟᱠᱟᱱᱟ, {time}.'
 consent:
   notice_version: '2026-11-04'
-  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
-  agree: I agree
+  short: ᱟᱞᱮ ᱫᱚ ᱟᱢᱟᱜ ᱴᱷᱟᱶ ᱮᱠᱮᱱ ᱥᱤᱢᱟᱹ ᱴᱷᱮᱱ ᱟᱨ ᱵᱟᱹᱲᱤᱡ ᱦᱚᱭᱦᱤᱥᱤᱫ ᱨᱮ ᱟᱢᱮ ᱥᱚᱱᱛᱚᱨ ᱫᱟᱲᱮᱭᱟᱢᱟ ᱾ ᱟᱢ ᱡᱟᱦᱟᱸ ᱡᱚᱠᱷᱮᱡ ᱦᱚᱸᱢ ᱦᱟᱹᱯᱤᱫ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾
+  agree: ᱤᱧ ᱨᱟᱹᱡᱤᱜ ᱠᱟᱱᱟ ᱾
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: ᱠᱟᱫᱟᱞ ᱢᱤᱛᱨᱚ ᱥᱚᱱᱛᱚᱨ ᱾
+  border-5km: ᱥᱤᱢᱟᱹ ᱨᱮᱠᱷᱟ {distance_km} ᱠᱤᱞᱳᱢᱤᱴᱟᱨ ᱥᱟᱹᱜᱤᱧ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾ ᱵᱚᱱᱫᱚᱨ ᱥᱮᱫ ᱨᱩᱣᱟᱹᱲ ᱪᱟᱞᱟᱜ ᱢᱮ ᱾
+  border-2km: 'ᱵᱤᱯᱚᱫᱽ: ᱥᱤᱢᱟᱹ ᱨᱮᱠᱷᱟ ᱫᱚ ᱮᱠᱮᱱ {distance_km} ᱠᱤᱞᱳᱢᱤᱴᱟᱨ ᱥᱟᱺᱜᱤᱧ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱾ ᱱᱤᱛᱚᱜ ᱨᱩᱣᱟᱹᱲ ᱢᱮ ᱾'
+  beyond-imbl: ᱵᱤᱯᱚᱫᱽ ᱺ ᱟᱢ ᱥᱤᱢᱟᱹ ᱨᱮᱠᱷᱟ ᱯᱟᱨᱚᱢ ᱟᱠᱟᱫᱟᱢ ᱾ ᱱᱤᱛᱚᱜ ᱨᱩᱣᱟᱹᱲ ᱢᱮ ᱾
+  mpa: ᱟᱢ ᱫᱚ ᱱᱤᱨᱟᱹᱭ ᱥᱟᱹᱢᱩᱫ ᱵᱟᱜᱽᱣᱟᱱ ᱵᱷᱤᱛᱤᱨ ᱨᱮᱢ ᱢᱮᱱᱟᱜ ᱠᱟᱱᱟ ᱾ ᱱᱚᱸᱰᱮ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱨᱮᱭᱟᱜ ᱫᱚ ᱵᱟᱝ ᱠᱚ ᱪᱷᱟᱹᱲ ᱟᱢᱟ ᱾
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: ᱛᱮᱦᱮᱧ ᱨᱮᱭᱟᱜ ᱯᱚᱨᱟᱢᱚᱥ ᱫᱚ ᱥᱟᱹᱨᱤ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ ᱥᱮ ?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: ᱠᱟᱫᱟᱞ ᱢᱤᱛᱨᱚ · ᱜᱷᱟᱨᱚᱸᱡᱽ
+chat_paused: ᱠᱩᱠᱞᱤ ᱠᱚ ᱛᱷᱚᱲᱟ ᱜᱷᱟᱹᱲᱤᱡᱽ ᱞᱟᱹᱜᱤᱫ ᱦᱟᱯᱤᱫ ᱦᱩᱭ ᱟᱠᱟᱱᱟ ᱾ ᱵᱳᱛᱟᱢ ᱠᱚ ᱱᱤᱛ ᱦᱚᱸ ᱠᱟᱹᱢᱤ ᱮᱫᱟᱺ ᱛᱮᱦᱮᱧᱟᱜ ᱥᱟᱹᱢᱩᱫᱽ, ᱡᱟᱦᱟᱸ ᱨᱮ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱦᱩᱭᱩᱜᱼᱟ, ᱥᱚᱱᱛᱚᱨ, ᱤᱧ ᱨᱩᱣᱟᱹᱲ ᱦᱮᱡᱽ ᱟᱠᱟᱱᱟ ᱾

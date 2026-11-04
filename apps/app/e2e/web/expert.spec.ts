@@ -38,13 +38,11 @@ test("expert console hero flow", async ({ page }) => {
   await page.getByTestId("show-how").uncheck();
   await expect(page.getByTestId("mission-control")).toHaveCount(0);
 
-  // analyst tools
+  // analyst tools are for analysts/admins with MFA (Milestone 9): a public visitor sees the lock message
   await page.getByTestId("analyst-toggle").click();
-  await expect(page.getByTestId("analyst-panel")).toBeVisible();
-  await expect(page.getByTestId("kb-browser")).toContainText(/CMFRI|Act|SOP/i);
-  await expect(page.getByTestId("downloads")).toBeVisible();
-  await expect(page.getByTestId("csv-sst")).toHaveAttribute("href", /\/grids\/sst\/csv$/);
-  await page.screenshot({ path: "test-results/expert-04-analyst.png", fullPage: true });
+  await expect(page.getByTestId("analyst-locked")).toBeVisible();
+  await expect(page.getByTestId("analyst-panel")).toHaveCount(0);
+  await page.screenshot({ path: "test-results/expert-04-analyst-locked.png", fullPage: true });
 
   expect(errors).toEqual([]);
 });

@@ -43,12 +43,13 @@ consent:
   short: അതിർത്തിക്ക് സമീപവും മോശം കാലാവസ്ഥയിലും നിങ്ങളെ അറിയിക്കാൻ മാത്രമാണ് ഞങ്ങൾ നിങ്ങളുടെ ലൊക്കേഷൻ ഉപയോഗിക്കുന്നത്. നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും ഇത് നിർത്താം.
   agree: ഞാൻ സമ്മതിക്കുന്നു.
 alerts:
-  title: Kadal Mitra alert
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
-  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
-  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
-  mpa: You are inside the protected marine park. Fishing is not allowed here.
+  title: കടൽ മിത്ര അലേർട്ട്
+  border-5km: അതിർത്തി രേഖ {distance_km} കിലോമീറ്റർ അകലെയാണ്. തുറമുഖത്തേക്ക് തിരികെ പോകുക.
+  border-2km: 'അപകടം: അതിർത്തി രേഖ ഇവിടെ നിന്ന് {distance_km} കി.മീ. ദൂരെ മാത്രമേയുള്ളൂ. ഇപ്പോൾ തിരികെ പോകൂ.'
+  beyond-imbl: 'അപകടം: നിങ്ങൾ അതിർത്തി കടന്നുപോയിരിക്കുന്നു. ഇപ്പോൾ തിരികെ പോകുക.'
+  mpa: നിങ്ങൾ സംരക്ഷിത മറൈൻ പാർക്കിനുള്ളിലാണ്. ഇവിടെ മീൻപിടിക്കാൻ അനുവാദമില്ല.
 trip:
-  feedback_ask: Was today's advice right?
+  feedback_ask: ഇന്നത്തെ ഉപദേശം ശരിയായിരുന്നോ?
   right_on: Right on {right} of the last {total} days.
-family_title: Kadal Mitra · family
+family_title: കടൽ മിത്ര · കുടുംബം
+chat_paused: 'ചോദ്യങ്ങൾ കുറച്ചു നേരത്തേക്ക് താൽക്കാലികമായി നിർത്തിവച്ചിരിക്കുന്നു. ബട്ടണുകൾ ഇപ്പോഴും പ്രവർത്തിക്കുന്നു: ഇന്നത്തെ കടൽ, എവിടെ മീൻ പിടിക്കാം, അറിയിപ്പുകൾ, ഞാൻ തിരിച്ചെത്തി.'
