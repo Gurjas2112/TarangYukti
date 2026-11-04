@@ -1,22 +1,22 @@
-# syntax=docker/dockerfile:1.7
 # docker/Dockerfile.python — ty-agent, ty-mcp, ty-channels, ty-worker (spec §15.2.1). Build from the repo root:
 #   docker build -f docker/Dockerfile.python --build-arg SERVICE_DIR=services/channels -t ty-channels .
 # Path dependencies resolve as on the laptop: ../../packages/ty-common → /packages/ty-common; the worker's ../mcp → /mcp.
 FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:0.9.4 /uv /uvx /bin/
-ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy PYTHONUNBUFFERED=1 ORCA_CONFIG_DIR=/app/config TY_DATA_DIR=/app/data \
+# no BuildKit cache mounts: ACR Tasks builds with the classic builder
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_NO_CACHE=1 PYTHONUNBUFFERED=1 ORCA_CONFIG_DIR=/app/config TY_DATA_DIR=/app/data \
     HOST=0.0.0.0
 ARG SERVICE_DIR
 WORKDIR /app
 COPY packages/ /packages/
 COPY services/mcp/ /mcp/
 COPY ${SERVICE_DIR}/pyproject.toml ${SERVICE_DIR}/uv.lock ./
-RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+RUN uv sync --frozen --no-dev --no-install-project
 COPY ${SERVICE_DIR}/ ./
 COPY config/ /app/config/
 COPY data/layers/ /app/data/layers/
 COPY kb/ /app/kb/
-RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev
+RUN uv sync --frozen --no-dev
 RUN useradd --create-home --uid 10001 ty && chown -R ty:ty /app
 USER ty
 ENV PATH="/app/.venv/bin:$PATH"

@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1.7
 # docker/Dockerfile.copilot — ty-copilot, CopilotKit runtime on Node 24 (spec §15.2.1, §17.8).
 # ty-copilot is a pnpm workspace member, so `pnpm deploy` produces its standalone production node_modules.
 FROM node:24-alpine AS build
