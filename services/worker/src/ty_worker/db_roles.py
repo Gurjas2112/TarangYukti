@@ -26,6 +26,7 @@ ROLES = {  # role → (.env variable, attributes)
 
 GRANTS = """
 grant authenticated to ty_api;
+grant anon to ty_api;
 grant usage on schema public to ty_worker;
 grant select, insert, update on all tables in schema public to ty_worker;
 grant usage, select on all sequences in schema public to ty_worker;

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 from typing import Any
 from urllib.parse import urlsplit
@@ -33,19 +34,27 @@ async def get_json(url: str, params: dict[str, Any] | None = None, timeout: floa
         raise SourceUnavailable(f"{urlsplit(url).hostname}: invalid JSON: {e}") from e
 
 
-async def get_bytes(url: str, params: dict[str, Any] | None = None, timeout: float = 30.0) -> bytes:
+async def get_bytes(url: str, params: dict[str, Any] | None = None, timeout: float = 30.0, retries: int = 1) -> bytes:
+    """GET an allow-listed URL. A 5xx answer or a dropped connection is retried `retries` times after 3 s
+    (NOAA ERDDAP often answers 503 for a moment); 4xx answers are not retried."""
     if not allowed(url):
         raise NotAllowed(f"domain not in config/sources.yaml allow-list: {urlsplit(url).hostname}")
-    try:
-        async with httpx.AsyncClient(
-            timeout=timeout, follow_redirects=True, headers={"User-Agent": USER_AGENT}
-        ) as client:
-            r = await client.get(url, params=params)
-            if not allowed(str(r.url)):
-                raise NotAllowed(f"redirected outside the allow-list: {r.url.host}")
-            r.raise_for_status()
-            return r.content
-    except NotAllowed:
-        raise
-    except httpx.HTTPError as e:
-        raise SourceUnavailable(f"{urlsplit(url).hostname}: {type(e).__name__}: {e}") from e
+    for attempt in range(retries + 1):
+        try:
+            async with httpx.AsyncClient(
+                timeout=timeout, follow_redirects=True, headers={"User-Agent": USER_AGENT}
+            ) as client:
+                r = await client.get(url, params=params)
+                if not allowed(str(r.url)):
+                    raise NotAllowed(f"redirected outside the allow-list: {r.url.host}")
+                r.raise_for_status()
+                return r.content
+        except NotAllowed:
+            raise
+        except httpx.HTTPError as e:
+            server_side = not isinstance(e, httpx.HTTPStatusError) or e.response.status_code >= 500
+            if attempt < retries and server_side:
+                await asyncio.sleep(3)
+                continue
+            raise SourceUnavailable(f"{urlsplit(url).hostname}: {type(e).__name__}: {e}") from e
+    raise AssertionError("unreachable")

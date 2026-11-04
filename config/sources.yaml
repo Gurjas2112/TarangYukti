@@ -5,7 +5,9 @@
 # v3: + sachet.ndma.gov.in (NDMA CAP hub: live IMD + INCOIS alerts, free; the IMD API needs whitelisting).
 # v2 (Milestone 2): + coastwatch.noaa.gov (NOAA moved VIIRS chlorophyll there), + data-gis.unep-wcmc.org (WDPA),
 #                   endpoints per tool.
-version: 5
+# v6 (Milestone 7): sst_anomaly (OISST anomaly vs 1991-2020) for anomaly_series; sst_fronts (MUR 1 km, sampled
+#                   every 0.05°) for pfz_compute — OISST 0.25° is too smooth to show thermal fronts.
+version: 6
 allowlist_domains: [incois.gov.in, erddap.incois.gov.in, mosdac.gov.in, api.imd.gov.in, mausam.imd.gov.in,
                     marine-api.open-meteo.com, api.open-meteo.com, coastwatch.pfeg.noaa.gov, coastwatch.noaa.gov,
                     globalfishingwatch.org, gateway.api.globalfishingwatch.org, pib.gov.in, eprints.cmfri.org.in,
@@ -28,6 +30,16 @@ endpoints:
     name: "NOAA OISST v2.1 NRT (CoastWatch ERDDAP)"
     variable: sst
     query: "sst[(last)][(0.0)][({lat_min}):({lat_max})][({lon_min}):({lon_max})]"
+  sst_anomaly:
+    # same OISST NRT dataset: daily anomaly vs the 1991-2020 climatology plus SST, last N days at one grid point
+    url: https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21NrtAgg.json
+    name: "NOAA OISST v2.1 NRT anomaly (CoastWatch ERDDAP)"
+    query: "anom[last-{n}:1:last][(0.0)][({lat})][({lon})],sst[last-{n}:1:last][(0.0)][({lat})][({lon})]"
+  sst_fronts:
+    # JPL MUR SST v4.1, 0.01° daily analysis, sampled every 5th cell (0.05°) over the region for front detection
+    url: https://coastwatch.pfeg.noaa.gov/erddap/griddap/jplMURSST41.json
+    name: "JPL MUR SST v4.1 (CoastWatch ERDDAP)"
+    query: "analysed_sst[(last)][({lat_min}):5:({lat_max})][({lon_min}):5:({lon_max})]"
   chl:
     # NOAA-20 VIIRS chlorophyll NRT, 4 km, daily (replaces the retired erdMH1chla1day_R2022NRT)
     url: https://coastwatch.noaa.gov/erddap/griddap/noaacwN20VIIRSchlaDaily.json

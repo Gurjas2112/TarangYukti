@@ -1,6 +1,7 @@
 """ty-channels FastAPI app (:8002): the voice and device API used by the app on Android and the web.
 
 Public: /health, /languages, /harbours, /brief, /stt, /tts (rate-limited).
+Expert + analyst (public): /expert/plan, /layers/*, /grids/*, /pfz, /anomaly, /sources/chunk/*, /kb/documents.
 Signed in: /onboarding, /me, /me/prefs, /push/subscribe, /push/unsubscribe, /phone-link.
 /positions and /trips arrive in Milestone 8.
 """
@@ -15,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from ty_common import db
 from ty_common.settings import get_settings
 
-from . import me, public, voice
+from . import expert, me, public, voice
 
 
 @asynccontextmanager
@@ -37,6 +38,7 @@ app.add_middleware(
 app.include_router(public.router)
 app.include_router(voice.router)
 app.include_router(me.router)
+app.include_router(expert.router)
 
 
 @app.get("/health")

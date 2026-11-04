@@ -35,3 +35,7 @@ supabase/.branches/
 
 # Source snapshots (stored in Supabase Storage; layers in data/layers are committed)
 data/snapshot/
+
+# Playwright
+apps/app/test-results/
+apps/app/playwright-report/

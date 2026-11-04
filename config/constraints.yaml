@@ -3,7 +3,8 @@
 # v2 (Milestone 2): H2 alert rings (5 km warning, 2 km alarm; prompt §10.7) moved here from code.
 # v3 (Milestone 3): H1 also counts state disaster authority (SDMA) alerts (decided 2026-11-03, beyond the
 #   spec's IMD/INCOIS); H1/H7 split by alert kind; H4 coast; S1 radius; search limits for route planning.
-version: 3
+# v4 (Milestone 7): pfz_compute thresholds (thermal fronts x chlorophyll) and the marine-heatwave anomaly.
+version: 4
 hard:
   H1:
     name: "Official warning active"
@@ -27,3 +28,16 @@ search:
   horizon_h: 24
   local_radius_km: 10       # a trip with no destination is checked over sea cells this close to the harbour
   max_expansions: 60000     # A* node budget per route
+
+# Computed fishing zones (pfz_compute, spec §7 Table): thermal fronts (Sobel gradient of SST) where chlorophyll is
+# high. Demo defaults, to be tuned against INCOIS PFZ advisories (the overlap score measures exactly that).
+pfz_compute:
+  front_c_per_10km: 0.15     # SST gradient magnitude (MUR, 0.05° sampling) that counts as a thermal front
+  chl_min_mg_m3: 1.0         # chlorophyll at or above this near a front (coastal median here is ~1.7)
+  front_reach_km: 15         # a chlorophyll point counts if a front cell is this close
+  zone_buffer_km: 8          # each qualifying point becomes a disc this wide (≥ the 4 km chlorophyll grid); merged
+  min_points: 2              # zones with fewer qualifying points are dropped
+# Marine heatwave test (anomaly_series, "why has catch dropped?"): mean anomaly over the window at or above this.
+heatwave:
+  anom_c: 1.0
+  min_days: 5

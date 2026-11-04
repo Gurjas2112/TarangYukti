@@ -56,7 +56,7 @@ export function MicButton({ lang, token }: { lang: string; token?: string | null
       }
       form.append("lang", lang);
       const heard = await api.stt(form, token);
-      const reply = await ask(heard.text);
+      const { reply } = await ask(heard.text);
       setTurn({ you: heard.text, reply });
       if (reply) void speak(reply, lang);
     } catch {

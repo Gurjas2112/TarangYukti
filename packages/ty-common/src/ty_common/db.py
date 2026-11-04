@@ -55,3 +55,11 @@ async def user_tx(claims: dict[str, Any]) -> AsyncIterator[AsyncCursor[DictRow]]
         await cur.execute("select set_config('request.jwt.claims', %s, true)", (orjson.dumps(claims).decode(),))
         await cur.execute("set local role authenticated")
         yield cur
+
+
+@asynccontextmanager
+async def anon_tx() -> AsyncIterator[AsyncCursor[DictRow]]:
+    """One transaction as `anon`: public reads (documents, citations) under the same RLS as the Data API."""
+    async with pool().connection() as conn, conn.transaction(), conn.cursor(row_factory=dict_row) as cur:
+        await cur.execute("set local role anon")
+        yield cur

@@ -46,6 +46,14 @@ export default function MeTab() {
         <Text style={styles.value}>{prefs.boatKind ? t(`onboarding.boat.${prefs.boatKind}`) : "—"}</Text>
       </Section>
       <Button
+        id="open-expert"
+        label={`🧭 ${t("me.openExpert")}`}
+        onPress={() => {
+          void update({ mode: "expert" });
+          router.push("/expert");
+        }}
+      />
+      <Button
         id="me-redo-onboarding"
         label={t("me.redo")}
         onPress={() => {

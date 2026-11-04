@@ -13,7 +13,7 @@ from ty_common.models import ToolResult
 
 from . import brief
 from .rag import search as rag_search
-from .tools import geo, grids, marine, warnings, yukti_tools
+from .tools import geo, grids, marine, ocean, warnings, yukti_tools
 
 mcp = FastMCP("tarangyukti")
 
@@ -25,6 +25,8 @@ for fn in (
     warnings.pfz_incois,
     grids.sst_grid,
     grids.chl_grid,
+    ocean.anomaly_series,
+    ocean.pfz_compute,
     geo.fence_check,
     geo.geo_distance,
     yukti_tools.yukti_evaluate,

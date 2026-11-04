@@ -17,7 +17,42 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 4 · RAG | **Done** — see below |
 | 5 · Agent graph | **Done** — see below |
 | 6 · Simple mode on both targets | **Done** — see below |
-| 7 · Expert console (web build) | Next |
+| 7 · Expert console (web build) | **Done** — see below |
+| 8 · Alerts, trips, family, feedback | Next |
+
+## Milestone 7 — Expert console (web build)
+
+`/expert` on the web build (Me → *Open the Expert console*; the Android build shows where to open it instead).
+
+- **Map** (`src/map/OceanMap.web.tsx`): MapLibre GL JS with a deck.gl overlay, drawn in one fixed order: sea-surface
+  temperature, chlorophyll, land, marine park, the H2 border buffer (width from `constraints.yaml`, in metres),
+  the border line, computed fishing zones, INCOIS points, route, harbour. Layers are toggled by the user or the
+  agent. There are no third-party basemap tiles: land, border and park come from our own layers (`/layers/*`).
+  `OceanMap.native.tsx` honours the same contract until Milestone 11 brings MapLibre Native with offline PMTiles.
+- **Sea Signal + Constraint Ledger** (open by default): the verdict, earliest and recommended windows, and every
+  H1–H8 / S1–S5 row with value, **limit** (from config), time and evidence. Tapping H2 draws the border buffer.
+- **Drag the departure**: 0 to +24 h in 30-minute steps; the plan is re-evaluated for that time.
+- **Copilot panel**: questions go to the agent through `ty-copilot`. The agent's final state now carries
+  `mission` (which specialists ran → **Mission Control**, behind "Show how it works"), `ui_actions` (fly to the
+  harbour; open the ledger in Expert mode) and `citations` (passage id, issuer, title, valid till → **citation
+  chips** that open the verbatim passage). CopilotKit frontend tools: `flyTo`, `openWhy` on both targets;
+  `showLayer`, `drawRoute`, `setTime`, `openLedger`, `openCitation` on Expert routes only.
+- **Analyst tools**: SST anomaly chart (30 days, vs 1991–2020) with the marine-heatwave test; computed fishing
+  zones vs INCOIS (overlap score); CSV downloads and NetCDF links straight to the source; the knowledge-base list.
+- **New data tools** (MCP): `anomaly_series` (NOAA OISST anomaly) and `pfz_compute` (thermal fronts from a Sobel
+  gradient of JPL MUR 1 km SST sampled at 0.05°, intersected with VIIRS chlorophyll, merged into zones). OISST's
+  0.25° grid is too smooth to show fronts. Thresholds are in `constraints.yaml` (`pfz_compute`, `heatwave`) as
+  demo defaults to tune against INCOIS advisories.
+- **Channels** (public, cacheable): `/expert/plan`, `/layers/{imbl,mpa,land}`, `/grids/{sst,chl}` (+ `/csv`,
+  `/netcdf`), `/pfz`, `/anomaly`, `/sources/chunk/{id}`, `/kb/documents` (read as `anon` under RLS).
+- **Tests**: Playwright hero flow on the exported web build (`pnpm -C apps/app e2e:web`; needs channels + MCP
+  running) and an `@llm` chat test (`--grep @llm`; needs agent + copilot + Gemini). Jest covers the map contract,
+  UI actions, ledger and Mission Control.
+
+Not done yet: `openLedger` shows the ledger of the plan on screen, not a stored answer's ledger (answer lookup by
+id is the provenance API, Milestone 9); officer screens and human-in-the-loop broadcasts (Milestones 8–9); the
+PMTiles basemap (Milestone 11). The new Expert strings are in English in every catalogue until Sarvam credit is
+topped up (`make i18n-draft`).
 
 ## Milestone 6 — Simple mode (Android + web)
 

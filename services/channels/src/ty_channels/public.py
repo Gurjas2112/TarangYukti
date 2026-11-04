@@ -6,6 +6,7 @@ from typing import Any, Literal
 
 from fastapi import APIRouter, HTTPException, Response
 from fastmcp import Client
+from fastmcp.exceptions import ToolError
 from ty_common.phrases import available_languages, harbours, nearest_language, phrases
 from ty_common.settings import get_settings
 
@@ -32,8 +33,11 @@ async def harbour_list(response: Response) -> dict[str, Any]:
 
 
 async def call_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
-    async with Client(get_settings().mcp_url, timeout=90) as c:
-        r = await c.call_tool(name, args)
+    try:
+        async with Client(get_settings().mcp_url, timeout=120) as c:
+            r = await c.call_tool(name, args)
+    except ToolError as e:  # bad input (e.g. a point outside the region): the tool explains why
+        raise HTTPException(422, str(e)) from e
     data = r.structured_content
     if not isinstance(data, dict):
         raise HTTPException(502, "data service returned no result")

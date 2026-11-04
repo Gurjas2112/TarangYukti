@@ -35,7 +35,7 @@ from ty_common.telemetry import record_guardrails
 
 from src import templates, validator
 from src.agents import language
-from src.agents.base import Evidence, Turn, prompt
+from src.agents.base import Evidence, Turn, home_harbour, prompt
 from src.agents.specialists import make_tools
 from src.gateway import Gateway, MCPGateway
 
@@ -81,6 +81,11 @@ class OrcaState(TypedDict):
     intent: NotRequired[str | None]  # app button for this turn
     answer_id: NotRequired[str | None]
     evidence: NotRequired[list[str]]  # ids of the evidence of the last answer (answer ids, passage markers)
+    # for the app (AG-UI state): which specialists ran (Mission Control) and the map/ledger actions to run through
+    # its CopilotKit frontend tools (flyTo, openLedger, drawRoute) — deterministic, never invented by the LLM
+    mission: NotRequired[list[str]]
+    citations: NotRequired[list[dict[str, Any]]]  # verified [Kn] with passage id, issuer, title, valid_to
+    ui_actions: NotRequired[list[dict[str, Any]]]
     # per-turn working fields (cleared by finalize)
     digests: NotRequired[list[dict[str, Any]]]
     passages: NotRequired[dict[str, str]]
@@ -111,6 +116,62 @@ def planner_effort() -> Literal["low", "medium", "high"]:
 
     e = os.environ.get("ORCA_PLANNER_EFFORT", "low")
     return e if e in ("low", "medium", "high") else "low"  # type: ignore[return-value]
+
+
+# digest kind → the specialist that produced it (Mission Control, spec §7.10)
+AGENT_OF_KIND = {
+    "catalogue": "discovery",
+    "weather": "weather",
+    "pfz": "ocean",
+    "ocean": "ocean",
+    "geo": "geo",
+    "fence": "geo",
+    "distance": "geo",
+    "knowledge": "knowledge",
+    "yukti": "yukti",
+    "card": "explain",
+}
+
+
+def mission_steps(state: OrcaState) -> list[str]:
+    """Specialists that ran this turn, in order: language and planner (or the button flow) first, explain last."""
+    ran = [AGENT_OF_KIND[d["kind"]] for d in state.get("digests", []) if d.get("kind") in AGENT_OF_KIND]
+    head = ["language", "button" if state.get("fallback") == "button" else "planner"]
+    return [*head, *dict.fromkeys(a for a in ran if a != "explain"), "explain"]
+
+
+def citation_cards(state: OrcaState, verified: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Citation chips for the app: each verified [Kn] with its passage id and document (issuer · title · valid till)."""
+    meta = {
+        p["marker"]: p for d in state.get("digests", []) if d.get("kind") == "knowledge" for p in d.get("passages", [])
+    }
+    out = []
+    for c in verified:
+        m = meta.get(c["marker"].strip("[] "), {})
+        out.append(
+            {
+                "marker": c["marker"],
+                "quote": c["quote"],
+                "chunk_id": m.get("chunk_id"),
+                "issuer": m.get("issuer"),
+                "title": m.get("title"),
+                "valid_to": m.get("valid_to"),
+            }
+        )
+    return out
+
+
+def ui_actions(state: OrcaState, answer_id: str | None, mode: str) -> list[dict[str, Any]]:
+    """Map and ledger actions for the app: fly to the harbour when a verdict was checked; open the ledger in
+    Expert mode. Coordinates are the public harbour position from config, never the user's."""
+
+    out: list[dict[str, Any]] = []
+    if any(d.get("kind") == "yukti" and d.get("verdict") for d in state.get("digests", [])):
+        lat, lon = home_harbour()
+        out.append({"tool": "flyTo", "args": {"lat": lat, "lon": lon, "zoom": 9}})
+        if answer_id and mode == "expert":
+            out.append({"tool": "openLedger", "args": {"answerId": answer_id}})
+    return out
 
 
 def _last_user_text(state: OrcaState) -> str:
@@ -290,6 +351,9 @@ async def make_graph(
         return {
             "messages": [msg],
             "answer_id": answer_id,
+            "mission": mission_steps(state),
+            "citations": citation_cards(state, verified),
+            "ui_actions": ui_actions(state, answer_id, mode),
             "intent": None,
             "evidence": [x for x in [answer_id, *(c["marker"] for c in verified)] if x],
             "digests": [],

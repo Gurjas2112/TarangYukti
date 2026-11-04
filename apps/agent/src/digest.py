@@ -159,6 +159,7 @@ def knowledge(tr: dict[str, Any]) -> dict[str, Any]:
         "passages": [
             {
                 "marker": c["marker"],
+                "chunk_id": c.get("chunk_id"),
                 "issuer": c["document"]["issuer"],
                 "title": c["document"]["title"],
                 "valid_to": c["document"]["valid_to"],

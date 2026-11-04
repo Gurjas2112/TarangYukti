@@ -93,8 +93,10 @@ async def test_citation_must_be_verbatim() -> None:
             ),
         ]
     )
-    _, msg = await ask(good, {"kb_search": kb_result(chunk)}, "When may mechanised boats leave?")
+    out, msg = await ask(good, {"kb_search": kb_result(chunk)}, "When may mechanised boats leave?")
     assert "[K1]" in msg.content and msg.additional_kwargs["citations"][0]["marker"] == "K1"
+    card = out["citations"][0]
+    assert card["marker"] == "K1" and card["quote"].startswith("leave the notified") and card["issuer"]
 
     bad = ScriptedModel(
         script=[
@@ -135,3 +137,24 @@ async def test_out_of_region_tool_error_is_reported_not_invented() -> None:
     m = ScriptedModel(script=[call("weather_intel", {}), answer("Wave data is not available right now.")])
     _, msg = await ask(m, {}, "How are the waves?")
     assert "not available" in msg.content
+
+
+async def test_mission_control_and_map_actions_in_expert_mode() -> None:
+    m = ScriptedModel(fail=RuntimeError("no LLM should be called"))
+    out, _ = await ask(m, {"yukti_evaluate": yukti_result("NO-GO")}, "Today's sea", intent="todays_sea", mode="expert")
+    assert out["mission"][0] == "language" and "yukti" in out["mission"] and out["mission"][-1] == "explain"
+    tools = [a["tool"] for a in out["ui_actions"]]
+    assert tools[0] == "flyTo" and out["ui_actions"][0]["args"]["zoom"] == 9
+    assert ("openLedger" in tools) == bool(out["answer_id"])
+
+
+async def test_simple_mode_never_opens_the_ledger() -> None:
+    m = ScriptedModel(fail=RuntimeError("no LLM should be called"))
+    out, _ = await ask(m, {"yukti_evaluate": yukti_result("GO")}, "Today's sea", intent="todays_sea", mode="simple")
+    assert [a["tool"] for a in out["ui_actions"]] == ["flyTo"]
+
+
+async def test_no_verdict_no_map_actions() -> None:
+    m = ScriptedModel(fail=TimeoutError("504"))
+    out, _ = await ask(m, {}, "What does the law say?")
+    assert out["ui_actions"] == [] and out["mission"][:2] == ["language", "planner"]

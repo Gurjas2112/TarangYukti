@@ -10,6 +10,11 @@ export const colors = {
   caution: "#7A4A00",
   noGo: "#A30000",
   link: "#0040A0",
+  // Expert mode (spec Table 7-1)
+  deep: "#0B1D2E",
+  foam: "#F5F7F6",
+  action: "#2F6FDE",
+  isro: "#F26B21",
 } as const;
 
 export const font = {
