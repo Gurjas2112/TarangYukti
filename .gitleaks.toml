@@ -1,0 +1,10 @@
+# Gitleaks settings: the default rules, plus allowances for public values that look like keys.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Azure built-in role definition IDs (public, the same in every tenant)"
+regexes = [
+  '''7f951dda-4ed3-4680-a7ca-43fe172d538d''',  # AcrPull
+  '''4633458b-17de-408a-b874-0445c86b69e6''',  # Key Vault Secrets User
+]

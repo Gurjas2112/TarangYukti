@@ -8,6 +8,7 @@ from typing import Any
 import httpx
 import pytest
 import respx
+from pydantic import SecretStr
 from pywebpush import WebPushException
 from ty_common.settings import get_settings
 
@@ -61,7 +62,7 @@ async def test_expo_outage_is_retryable() -> None:
 
 @pytest.mark.parametrize(("status", "deleted"), [(410, True), (404, True), (500, False)])
 async def test_web_push_status(monkeypatch: pytest.MonkeyPatch, status: int, deleted: bool) -> None:
-    monkeypatch.setattr(get_settings(), "vapid_private_key", get_settings().vapid_private_key or "x")
+    monkeypatch.setattr(get_settings(), "vapid_private_key", get_settings().vapid_private_key or SecretStr("x"))
 
     def fail(**kw: Any) -> None:
         raise WebPushException("gone", response=httpx.Response(status))  # type: ignore[arg-type]
@@ -73,7 +74,7 @@ async def test_web_push_status(monkeypatch: pytest.MonkeyPatch, status: int, del
 
 
 async def test_web_payload_has_no_coordinates(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(get_settings(), "vapid_private_key", get_settings().vapid_private_key or "x")
+    monkeypatch.setattr(get_settings(), "vapid_private_key", get_settings().vapid_private_key or SecretStr("x"))
     seen: dict[str, Any] = {}
     monkeypatch.setattr(push, "webpush", lambda **kw: seen.update(kw))
     row = {"id": "a1", "kind": "brief", "title": "t", "body": "b", "url": "/brief?harbour=rameswaram&boat=small_frp"}
