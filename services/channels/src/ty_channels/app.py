@@ -2,8 +2,8 @@
 
 Public: /health, /languages, /harbours, /brief, /stt, /tts (rate-limited).
 Expert + analyst (public): /expert/plan, /layers/*, /grids/*, /pfz, /anomaly, /sources/chunk/*, /kb/documents.
-Signed in: /onboarding, /me, /me/prefs, /push/subscribe, /push/unsubscribe, /phone-link.
-/positions and /trips arrive in Milestone 8.
+Signed in: /onboarding, /me, /me/prefs, /push/subscribe, /push/unsubscribe, /phone-link,
+/positions, /trips, /trips/back, /trips/{id}/feedback, /share, /family.
 """
 
 from __future__ import annotations
@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from ty_common import db
 from ty_common.settings import get_settings
 
-from . import expert, me, public, voice
+from . import expert, me, public, trips, voice
 
 
 @asynccontextmanager
@@ -39,6 +39,7 @@ app.include_router(public.router)
 app.include_router(voice.router)
 app.include_router(me.router)
 app.include_router(expert.router)
+app.include_router(trips.router)
 
 
 @app.get("/health")

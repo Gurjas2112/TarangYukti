@@ -18,7 +18,38 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 5 · Agent graph | **Done** — see below |
 | 6 · Simple mode on both targets | **Done** — see below |
 | 7 · Expert console (web build) | **Done** — see below |
-| 8 · Alerts, trips, family, feedback | Next |
+| 8 · Alerts, trips, family, feedback | **Done** — see below |
+| 9 · Auth, RLS, admin | Next |
+
+## Milestone 8 — trips, border alerts, family, feedback
+
+- **Live positions**: while the app is open and alerts are on, one fix a minute goes to channels `POST /positions`
+  (web: `watchPosition`; Android: foreground location — background trip mode is Milestone 11). A batch of up to
+  100 fixes is accepted for the phone's outbox. Fixes must be inside the region, not in the future, at most a day
+  old, and stored under RLS (only the boat's owner can post or read them; family can't).
+- **Trips**: leaving the 1.5 km harbour circle (`config/harbours.yaml`) opens a trip; re-entering closes it; the
+  **I'm back** button closes it too. Then the Trip tab asks *Was today's advice right?* 👍/👎 and shows *Right on N
+  of the last M days*. Feedback never changes thresholds by itself.
+- **Border and park alerts**: the newest fix is checked with `fence_check`; 5 km → warning, 2 km → alarm, past the
+  line → alarm (rings from `constraints.yaml`), marine park → non-critical. Same rule at most once per 2 hours
+  unless the level rises. Channels queues them through a narrow database function (owner's boat, fixed rule list);
+  the worker sends them after the alert budget and quiet hours. The 15-minute watch job re-checks every boat at sea
+  with a position in the last 30 minutes (safety net).
+- **Family**: Me → *Share my boat with family* (Google e-mail, up to 90 days, revocable). When that person signs in,
+  the grant is attached to their account (`claim_share_grants`) and they get the boat card at `/family/<boat>`:
+  *At sea since 05:10* / *Back at Rameswaram at 14:20*. When a trip closes, the worker sends each of them
+  *"<boat> is back at <harbour>, HH:MM"* in their own language.
+- **Simulation**: `make sim-boat GPX=artifacts/sim_trip.gpx` (emulator route) or `make sim-boat POST=1` (dev account
+  → `/positions`, local only). Verified live: trip opened on leaving the harbour, 2 km alarm queued as critical,
+  trip closed on return, family notice queued for the family test account.
+- **Tests**: trip rules with fixed times (`ty_common.trips`), channels validation, the worker's family notice, the
+  alert budget; dev-only Playwright flows for the signed-in Trip tab, sharing and the family card
+  (`TY_SESSIONS=<file> pnpm -C apps/app e2e:web trip-family`).
+
+Not done yet: background trip mode, on-device border alerts and the offline outbox on Android (Milestone 11);
+officer views of boats in warning areas (Milestone 9). New strings and phrases are in English in the other
+languages until Sarvam credit is topped up (`make i18n-draft`). The boat's name defaults to the harbour name at
+onboarding, so the family notice reads "Rameswaram is back at Rameswaram" until the fisher names the boat.
 
 ## Milestone 7 — Expert console (web build)
 

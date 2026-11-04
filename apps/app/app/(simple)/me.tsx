@@ -10,6 +10,7 @@ import QRCode from "react-native-qrcode-svg";
 import { api } from "../../src/api/channels";
 import { signInWithGoogle } from "../../src/auth/google";
 import { signOut, useSession } from "../../src/auth/supabase";
+import { FamilySharing } from "../../src/components/FamilySharing";
 import { LanguageButton } from "../../src/components/LanguagePicker";
 import { registerPush } from "../../src/push/register";
 import { usePrefs } from "../../src/state/prefs";
@@ -92,6 +93,9 @@ export default function MeTab() {
               ))}
             </Section>
           ) : null}
+          <Section label={t("family.title")}>
+            <FamilySharing token={token} boatId={me.data?.boats[0]?.id ?? null} />
+          </Section>
           <Button id="sign-out" label={t("me.signOut")} onPress={() => void signOut()} />
         </>
       ) : (

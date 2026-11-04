@@ -45,3 +45,14 @@ consent:
   notice_version: "2026-11-04"
   short: "We use your location only to warn you near the border and in bad weather. You can stop anytime."
   agree: "I agree"
+# Milestone 8: border and park alerts, trips, family (draft until reviewed)
+alerts:
+  title: "Kadal Mitra alert"
+  border-5km: "Border line is {distance_km} km away. Turn back toward the harbour."
+  border-2km: "DANGER: the border line is only {distance_km} km away. Turn back now."
+  beyond-imbl: "DANGER: you are past the border line. Turn back now."
+  mpa: "You are inside the protected marine park. Fishing is not allowed here."
+trip:
+  feedback_ask: "Was today's advice right?"
+  right_on: "Right on {right} of the last {total} days."
+family_title: "Kadal Mitra · family"

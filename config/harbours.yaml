@@ -4,7 +4,9 @@
 # TODO(tarangyukti): coordinates other than Rameswaram are approximate (map reading, ±1 km). Verify each
 #   landing centre on site or against the Department of Fisheries list before the 1.5 km geofence uses it.
 # Governed file: data owner.
-version: 1
+version: 2
+# v2 (Milestone 8): geofence radius — a trip opens when a position leaves this circle and closes when it re-enters.
+geofence_m: 1500
 suggested_language: { Tamil Nadu: ta-IN, Puducherry: ta-IN, Kerala: ml-IN, Andhra Pradesh: te-IN }
 harbours:
   - { id: rameswaram,      name: Rameswaram,      state: Tamil Nadu, lat: 9.288, lon: 79.313, verified: true }

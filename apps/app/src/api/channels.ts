@@ -87,6 +87,48 @@ async function call<T>(path: string, schema: z.ZodType<T>, init: RequestInit & {
   return schema.parse(await res.json());
 }
 
+const TripSchema = z.object({
+  id: z.string(),
+  boat_id: z.string(),
+  departed_at: z.string(),
+  returned_at: z.string().nullable(),
+  closed_by: z.string().nullable(),
+  advice_verdict: z.string().nullable(),
+  feedback: z.enum(["right", "wrong"]).nullable(),
+});
+export type Trip = z.infer<typeof TripSchema>;
+
+const PositionsOut = z.object({
+  stored: z.number(),
+  trip: z.object({ id: z.string(), departed_at: z.string() }).nullable(),
+  events: z.array(z.string()),
+  border: z.object({ km: z.number(), ring: z.string(), in_marine_park: z.boolean() }),
+  alerts: z.array(z.string()),
+});
+export type PositionsResult = z.infer<typeof PositionsOut>;
+
+export type Fix = { lat: number; lon: number; recorded_at: string; speed_knots?: number | null };
+
+const FamilyBoatSchema = z.object({
+  boat_id: z.string(),
+  name: z.string(),
+  harbour: z.string().nullable(),
+  at_sea: z.boolean(),
+  departed_at: z.string().nullable(),
+  returned_at: z.string().nullable(),
+  advice_verdict: z.string().nullable(),
+});
+export type FamilyBoat = z.infer<typeof FamilyBoatSchema>;
+
+const GrantSchema = z.object({
+  id: z.string(),
+  boat_id: z.string(),
+  grantee_email: z.string(),
+  accepted: z.boolean(),
+  expires_at: z.string(),
+  revoked_at: z.string().nullable(),
+});
+
 export const api = {
   brief: (harbour: string, boatType: BoatKind, lang: string) =>
     call(`/brief?${new URLSearchParams({ harbour, boat_type: boatType, lang })}`, BriefSchema),
@@ -111,6 +153,37 @@ export const api = {
     token: string,
     body: { kind: "web" | "expo"; endpoint: string; p256dh?: string; auth?: string; user_agent?: string },
   ) => call("/push/subscribe", z.object({ status: z.string() }), { method: "POST", body: JSON.stringify(body), token }),
+  positions: (token: string, boatId: string, source: "web_live" | "mobile_app", fixes: Fix[]) =>
+    call("/positions", PositionsOut, { method: "POST", body: JSON.stringify({ boat_id: boatId, source, fixes }), token }),
+  trips: (token: string) =>
+    call(
+      "/trips",
+      z.object({
+        open: TripSchema.nullable(),
+        closed: z.array(TripSchema),
+        right_on: z.object({ right: z.number(), total: z.number() }),
+      }),
+      { token },
+    ),
+  back: (token: string) =>
+    call("/trips/back", z.object({ closed: z.object({ id: z.string() }).nullable() }), { method: "POST", token }),
+  feedback: (token: string, tripId: string, feedback: "right" | "wrong", note?: string) =>
+    call(`/trips/${tripId}/feedback`, z.object({ status: z.string() }), {
+      method: "POST",
+      body: JSON.stringify(note ? { feedback, note } : { feedback }),
+      token,
+    }),
+  share: (token: string, boatId: string, email: string, days = 90) =>
+    call("/share", z.object({ id: z.string(), expires_at: z.string() }), {
+      method: "POST",
+      body: JSON.stringify({ boat_id: boatId, email, days }),
+      token,
+    }),
+  shares: (token: string) => call("/share", z.object({ grants: z.array(GrantSchema) }), { token }).then((r) => r.grants),
+  revokeShare: (token: string, id: string) =>
+    call(`/share/${id}`, z.object({ status: z.string() }), { method: "DELETE", token }),
+  family: (token: string) =>
+    call("/family", z.object({ boats: z.array(FamilyBoatSchema) }), { token }).then((r) => r.boats),
   phoneLink: (token: string) =>
     call("/phone-link", z.object({ token_hash: z.string(), type: z.string(), expires_in: z.number(), qr: z.string() }), {
       method: "POST",

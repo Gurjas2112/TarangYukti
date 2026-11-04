@@ -100,3 +100,25 @@ def harbour(harbour_id: str) -> dict[str, Any]:
     if h is None:
         raise ValueError(f"unknown harbour {harbour_id!r}")
     return h
+
+
+def text(lang: str, key: str, **slots: object) -> tuple[str, str]:
+    """One approved sentence by dotted key ("alerts.border-2km"), filled with slots: (text, language used).
+    A key missing from a draft language's file falls back to English for that sentence only."""
+
+    def get(doc: dict[str, Any] | None) -> str | None:
+        cur: Any = doc
+        for part in key.split("."):
+            if not isinstance(cur, dict) or part not in cur:
+                return None
+            cur = cur[part]
+        return cur if isinstance(cur, str) else None
+
+    doc, used = phrases(lang)
+    s = get(doc)
+    if s is None:
+        en, used = phrases("en-IN")
+        s = get(en)
+    if s is None:
+        raise KeyError(f"no approved phrase {key!r}")
+    return s.format(**slots), used

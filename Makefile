@@ -10,7 +10,7 @@ MCP := cd services/mcp && uv run python -m
 WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
-        channels outbox i18n-draft snapshot snapshot-upload snapshot-download sim-warning layers \
+        channels outbox i18n-draft sim-boat snapshot snapshot-upload snapshot-download sim-warning layers \
         agent agent-purge brief-now db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
@@ -104,6 +104,10 @@ i18n-draft:          # draft missing interface strings + phrase files for every 
 
 outbox:              # send queued pushes once
 	$(WORKER) ty_worker.outbox
+
+# ── Trips (Milestone 8)
+sim-boat:            # simulated trip toward the border and back: GPX=path writes a GPX; POST=1 sends it to /positions
+	cd services/mcp && uv run python ../../scripts/sim_boat.py $(if $(GPX),--gpx $(GPX),) $(if $(POST),--post,)
 
 phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Supabase
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done

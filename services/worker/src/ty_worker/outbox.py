@@ -108,8 +108,12 @@ async def send_pending(conn: psycopg.AsyncConnection[dict[str, Any]], only: str 
 
 
 async def run() -> None:
+    from . import family
+
     async with await connect() as conn:
+        notices = await family.notify_family(conn)  # "back at harbour" notices queue before sending
         counts = await send_pending(conn)
+        counts["family_queued"] = notices
     if any(counts.values()):
         log.info("outbox: %s", counts)
 

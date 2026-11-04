@@ -42,3 +42,13 @@ consent:
   notice_version: '2026-11-04'
   short: ਅਸੀਂ ਤੁਹਾਡੀ ਲੋਕੇਸ਼ਨ ਦੀ ਵਰਤੋਂ ਸਿਰਫ਼ ਤੁਹਾਨੂੰ ਸਰਹੱਦ ਦੇ ਨੇੜੇ ਅਤੇ ਖਰਾਬ ਮੌਸਮ ਵਿੱਚ ਚੇਤਾਵਨੀ ਦੇਣ ਲਈ ਕਰਦੇ ਹਾਂ। ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਸਮੇਂ ਰੋਕ ਸਕਦੇ ਹੋ।
   agree: ਮੈਂ ਸਹਿਮਤ ਹਾਂ।
+alerts:
+  title: Kadal Mitra alert
+  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
+  border-2km: 'DANGER: the border line is only {distance_km} km away. Turn back now.'
+  beyond-imbl: 'DANGER: you are past the border line. Turn back now.'
+  mpa: You are inside the protected marine park. Fishing is not allowed here.
+trip:
+  feedback_ask: Was today's advice right?
+  right_on: Right on {right} of the last {total} days.
+family_title: Kadal Mitra · family

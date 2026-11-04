@@ -63,6 +63,8 @@ def test_every_slot_is_fillable() -> None:
         "harbour": "Rameswaram",
         "name": "Appa",
         "source": "IMD",
+        "right": 26,
+        "total": 30,
     }
     for key, val in flat(p).items():
         if isinstance(val, str):

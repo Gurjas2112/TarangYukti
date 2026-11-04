@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import type { BoatKind } from "../api/channels";
+import { api, type BoatKind } from "../api/channels";
 import { useSession } from "../auth/supabase";
 import { useBrief } from "../brief/useBrief";
 import { type ButtonId, FourButtons } from "../components/FourButtons";
@@ -39,7 +39,10 @@ export function TodayScreen({ harbour, boatKind, lang, autoplay = false }: Props
       if (brief) void speak(brief.speak, lang).then(setPlaying);
     } else if (id === "fish") router.push("/map");
     else if (id === "alerts") router.push("/alerts");
-    else router.push("/trip");
+    else {
+      if (session?.access_token) void api.back(session.access_token).catch(() => undefined);
+      router.push("/trip");
+    }
   }
 
   return (

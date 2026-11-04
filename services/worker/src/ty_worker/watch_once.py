@@ -1,10 +1,10 @@
-"""watch_once (every 15 minutes): morning briefs now; trips and border/warning alerts arrive in Milestone 8."""
+"""watch_once (every 15 minutes): morning briefs and the border safety-net sweep over live positions."""
 
 from __future__ import annotations
 
 import logging
 
-from . import morning
+from . import family, morning, outbox
 from .runtime import run_async
 
 log = logging.getLogger(__name__)
@@ -12,8 +12,11 @@ log = logging.getLogger(__name__)
 
 async def run() -> None:
     n = await morning.run()
-    log.info("watch_once: %d briefs queued", n)
-    # TODO(tarangyukti): Milestone 8 adds the fence sweep over live positions and trip open/close.
+    async with await outbox.connect() as conn:
+        border = await family.sweep_border(conn)
+        if border:
+            await outbox.send_pending(conn)
+    log.info("watch_once: %d briefs, %d border alerts queued", n, border)
 
 
 if __name__ == "__main__":
