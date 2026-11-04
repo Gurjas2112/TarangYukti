@@ -9,7 +9,13 @@
       "env": { "APP_ENV": "development" },
       "android": { "buildType": "apk" }
     },
-    "preview": { "extends": "base", "distribution": "internal", "environment": "preview", "android": { "buildType": "apk" } },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "environment": "preview",
+      "env": { "APP_ENV": "preview" },
+      "android": { "buildType": "apk" }
+    },
     "live": {
       "extends": "base",
       "distribution": "internal",
