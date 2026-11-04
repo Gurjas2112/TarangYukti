@@ -16,7 +16,45 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 3 · Yukti engine + route | **Done** — see below |
 | 4 · RAG | **Done** — see below |
 | 5 · Agent graph | **Done** — see below |
-| 6 · Simple mode on both targets | Next |
+| 6 · Simple mode on both targets | **Done** — see below |
+| 7 · Expert console (web build) | Next |
+
+## Milestone 6 — Simple mode (Android + web)
+
+Kadal Mitra's everyday screens, in every language, with no login needed for public advice.
+
+- **Today**: the verdict in plain words (≥ 40 px, icon + word), a 24-hour ribbon (the verdict for leaving at each
+  hour), "Why?" (one approved sentence per reason), the fishing spot and the border line, the voice (Group A
+  languages), the advisory footer and the four buttons *Today's sea · Where to fish · Alerts · I'm back*. The card
+  comes from the new `sea_brief` MCP tool through channels `GET /brief`: approved phrases only, never a code
+  (PFZ, IMBL, H1–H8). It is cached per harbour, boat type and language, and saved on the phone for offline use.
+- **Voice**: hold the mic → a "checking the sea…" clip starts within a second → channels `/stt` (Sarvam Saaras v4)
+  → the agent → the reply is shown and spoken through `/tts` (Bulbul v3, mp3 cached in the public `tts` bucket).
+- **Onboarding** (language first, then harbour, boat type, spoken consent): **Turn on alerts** signs in with Google,
+  records the consents, the boat and the fisher role (channels `/onboarding`) and only then asks for notification
+  permission. **Not now** keeps everything public.
+- **Push**: one sender, the worker. Channels `/push/subscribe` stores Expo tokens (Android) or Web Push
+  subscriptions (web) and queues the "alerts are on" test push; the worker's outbox (every minute) sends Expo +
+  VAPID pushes, deletes dead subscriptions and applies the alert budget (critical always; ≤ 3 others a day; quiet
+  hours; 2-hour repeat gap). `make push-test USER=<uuid>`.
+- **Morning brief**: the 15-minute watch job sends each fisher their card 30 min before their usual departure
+  (median of the last 10 trips; default 04:00 IST). Tapping it opens `/brief` and plays the voice; the web service
+  worker keeps that page offline. `make brief-now USER=<uuid>`.
+- **Add this phone**: Me → QR with a one-time sign-in token (10 minutes) for the same account (`/phone-link`).
+- **Languages**: i18next catalogues and safety phrase files for all 23 languages. Everything except English was
+  drafted with `sarvam-translate:v1` (`make i18n-draft`) and is `status: draft`: development builds show every
+  language marked *Draft*, and production builds show only released ones. A string whose `{slots}`, numbers or times
+  did not survive translation stays in English and is listed in `apps/app/src/i18n/drafts.json` for reviewers.
+  CI checks that every catalogue and phrase file has every key with the same slots. Note that `ENV=live` serves
+  only **approved** phrase files, and English is still a draft too, so phrase sign-off comes before Tier 1.
+- **Database** (`make db-migrate`): `user_roles`, `boats`, `positions`, `push_subscriptions`, `share_grants`,
+  `user_prefs`, `trips`, `consents`, `alerts`, all under RLS (owner-only; family via an unexpired grant), the
+  `tts` bucket, and `config/harbours.yaml` (harbours other than Rameswaram are approximate until verified).
+- **Expo / EAS**: the app is linked to the Expo project `@gurjas_gandhi/tarangyukti`; `eas.json` has the spec's
+  build profiles (development, preview, live, store, capture).
+
+Not done yet: the map (Milestones 7 and 11), trips and "I'm back" (Milestone 8), right-to-left layout checks and
+Noto fonts for every script (Milestone 10a), and native-speaker review of every language.
 
 ## Milestone 5 — the agent
 
@@ -114,7 +152,7 @@ apps/app            Expo SDK 57 + Expo Router — Kadal Mitra (Android) + web bu
 apps/agent          LangGraph agent on Gemini; FastAPI server (/ok now, AG-UI /agent in Milestone 5)
 services/copilot    ty-copilot — CopilotKit runtime (Node 24) → ty-agent
 services/mcp        package "tarangyukti" — FastMCP data tools, Yukti engine, RAG
-services/channels   ty-channels — voice/device API (/health now)
+services/channels   ty-channels — voice, brief, onboarding, push subscriptions (make channels)
 services/worker     ty-worker — scheduled jobs, push sender
 packages/ty-common  shared settings, ToolResult, two-tier cache (@cached)
 config/             constraints, boats, qc, sources, languages (23), aliases, phrases

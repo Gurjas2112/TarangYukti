@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 from src import templates, validator
 from src.agents import language
 from src.digest import ist
@@ -78,8 +80,21 @@ def test_templates_cover_every_hard_constraint() -> None:
 
 
 def test_unknown_language_falls_back_to_english_phrases() -> None:
-    _, used = templates.phrases("ta-IN")  # no approved Tamil phrase file yet
+    _, used = templates.phrases("xx-IN")  # no phrase file at all
     assert used == "en-IN"
+
+
+def test_live_uses_only_approved_phrase_files(monkeypatch: pytest.MonkeyPatch) -> None:
+    from ty_common import phrases as ph
+    from ty_common.settings import get_settings
+
+    monkeypatch.setattr(get_settings(), "env", "live")
+    ph.load.cache_clear()
+    try:
+        with pytest.raises(RuntimeError):  # English is still a draft too, so nothing may be served in live
+            templates.phrases("ta-IN")
+    finally:
+        ph.load.cache_clear()
 
 
 def test_ist_format() -> None:

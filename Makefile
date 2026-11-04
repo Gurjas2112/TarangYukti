@@ -10,8 +10,8 @@ MCP := cd services/mcp && uv run python -m
 WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
-        snapshot snapshot-upload snapshot-download sim-warning layers \
-        agent agent-purge db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
+        channels outbox i18n-draft snapshot snapshot-upload snapshot-download sim-warning layers \
+        agent agent-purge brief-now db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
 	pnpm install
@@ -26,7 +26,7 @@ infra-down:
 dev: infra-up
 	(cd apps/agent && uv run python serve.py --port 8123) & \
 	(cd services/mcp && uv run python -m tarangyukti.server) & \
-	(cd services/channels && uv run uvicorn ty_channels.app:app --port 8002 --reload) & \
+	(cd services/channels && uv run python -m ty_channels.serve --port 8002) & \
 	(cd services/worker && uv run python -m ty_worker) & \
 	(cd services/copilot && node --env-file-if-exists=.env src/server.ts) & \
 	(cd apps/app && npx expo start --dev-client) & \
@@ -89,12 +89,26 @@ agent-purge:         # delete conversation threads unused for 30 days
 test-local:          # tests that call live models (Gemini) — run on the laptop, commit the report
 	cd apps/agent && uv run pytest -q -m llm
 
+# ── Simple mode (Milestone 6)
+channels:            # ty-channels on :8002 (voice, brief, onboarding, push subscriptions)
+	cd services/channels && uv run python -m ty_channels.serve --port 8002
+
+push-test:           # make push-test USER=<uuid>: "alerts are on" push to every device of a user
+	$(WORKER) ty_worker.push_test --user $(USER)
+
+brief-now:           # make brief-now USER=<uuid>: send that fisher's morning brief now
+	$(WORKER) ty_worker.morning --user $(USER)
+
+i18n-draft:          # draft missing interface strings + phrase files for every language (Sarvam; status: draft)
+	cd services/channels && PYTHONIOENCODING=utf-8 uv run python ../../scripts/i18n_draft.py $(if $(ONLY),--only $(ONLY),)
+
+outbox:              # send queued pushes once
+	$(WORKER) ty_worker.outbox
+
 phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Supabase
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done
 
 # ── Later milestones (targets reserved so the interface is stable)
-push-test:
-	@echo "$@: Milestone 6" && exit 1
 test-rls:
 	@echo "$@: Milestone 9" && exit 1
 demo run-prod:

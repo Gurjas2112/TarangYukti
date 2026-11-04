@@ -1,0 +1,44 @@
+# ಕನ್ನಡ (kn-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: ಹೋಗಲು ಸಿದ್ಧವಾಗಿದೆ.
+  CAUTION: ಹೋಗು, ಆದರೆ ಎಚ್ಚರಿಕೆಯಿಂದ - {back_by} ಮೂಲಕ ಹಿಂತಿರುಗಿ.
+  NO-GO: 'ಇವತ್ತು ಹೋಗಬೇಡಿ. ಮುಂದಿನ ಒಳ್ಳೆಯ ಸಮಯ: {next_window}.'
+why:
+  H5: '{time} ನಂತರ ಅಲೆಗಳು ತುಂಬಾ ಎತ್ತರಕ್ಕೆ ಏರುತ್ತವೆ.'
+  H2: ಆ ಮಾರ್ಗವು ಗಡಿ ರೇಖೆಗೆ ತುಂಬಾ ಹತ್ತಿರದಲ್ಲಿದೆ.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: ಆ ಪ್ರದೇಶವು ಸಂರಕ್ಷಿತ ಸಾಗರ ಉದ್ಯಾನವನದ ಒಳಗಿದೆ.
+  H4: ಇದು ಯಾಂತ್ರೀಕೃತ ದೋಣಿಗಳಿಗೆ ಮೀನುಗಾರಿಕೆ ನಿಷೇಧದ ಋತು.
+  H6: '{time} ಆದ ಮೇಲೆ ಗಾಳಿ ತುಂಬಾ ಜೋರಾಗುತ್ತದೆ.'
+  H7: 'ಅಧಿಕೃತ ಗುಡುಗು ಸಹಿತ ಬಿರುಗಾಳಿಯ ಎಚ್ಚರಿಕೆ ಇದೆ: {warning_name}.'
+  H8: ಕೆಲವು ದತ್ತಾಂಶಗಳು ಹಳೆಯದಾಗಿವೆ ಅಥವಾ ಕಾಣೆಯಾಗಿವೆ, ಆದ್ದರಿಂದ ಸಮುದ್ರವನ್ನು ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.
+spot: ಮೀನು ಬಹುಶಃ {distance_km} ಕಿಮೀ {direction} ದೂರದಲ್ಲಿರಬಹುದು.
+border: ಗಡಿ ರೇಖೆಯು {distance_km} ಕಿ.ಮೀ ದೂರದಲ್ಲಿದೆ.
+stale: ಹಳೆಯ ಮುನ್ಸೂಚನೆ - ಹೊರಡುವ ಮೊದಲು ಮತ್ತೊಮ್ಮೆ ಪರಿಶೀಲಿಸಿ.
+footer: ಕೇವಲ ಸಲಹೆ ಮಾತ್ರ — ಅಧಿಕೃತ ಐ.ಎನ್‌.ಸಿ.ಓ.ಐ.ಎಸ್./ಐ.ಎಂ.ಡಿ. ಎಚ್ಚರಿಕೆಗಳನ್ನು ಅನುಸರಿಸಿ.
+needs_network: 'ಅದಕ್ಕೆ ಉತ್ತರಿಸಲು ನನಗೆ ಇಂಟರ್ನೆಟ್ ಬೇಕು. ಗುಂಡಿಗಳು ಇನ್ನೂ ಕೆಲಸ ಮಾಡುತ್ತಿವೆ: ಇಂದಿನ ಸಮುದ್ರ, ಎಲ್ಲಿ ಮೀನು ಹಿಡಿಯುವುದು, ಎಚ್ಚರಿಕೆಗಳು, ನಾನು ವಾಪಸ್ ಬಂದಿದ್ದೇನೆ.'
+nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+cannot_verify: ನನಗೆ ಈ ಉತ್ತರವನ್ನು ದತ್ತಾಂಶದೊಂದಿಗೆ ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಾನು ಅದನ್ನು ನೀಡುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಗುಂಡಿಗಳನ್ನು ಬಳಸಿ ಅಥವಾ ಮತ್ತೆ ಕೇಳಿ.
+no_window: ಮುಂದಿನ 24 ಗಂಟೆಗಳಲ್ಲಿ ಯಾರೂ ಇಲ್ಲ
+directions:
+  north: ಉತ್ತರ
+  north_east: ಈಶಾನ್ಯ
+  east: ಪೂರ್ವ
+  south_east: ಆಗ್ನೇಯ
+  south: ದಕ್ಷಿಣ
+  south_west: ನೈಋತ್ಯ
+  west: ಪಶ್ಚಿಮ
+  north_west: ವಾಯವ್ಯ
+ack: ಸಮುದ್ರವನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ...
+brief_title: Morning brief · {harbour}
+push_test: ಕಡಲ್ ಮಿತ್ರ ಎಚ್ಚರಿಕೆಗಳು ಆನ್ ಆಗಿವೆ.
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ನಾವು ಗಡಿಯ ಬಳಿ ಮತ್ತು ಕೆಟ್ಟ ಹವಾಮಾನದಲ್ಲಿ ನಿಮಗೆ ಎಚ್ಚರಿಕೆ ನೀಡಲು ಮಾತ್ರ ಬಳಸುತ್ತೇವೆ. ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ನಿಲ್ಲಿಸಬಹುದು.
+  agree: ನಾನು ಒಪ್ಪುತ್ತೇನೆ.

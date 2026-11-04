@@ -1,0 +1,44 @@
+# कोंकणी (gom-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: वचपाक बरें.
+  CAUTION: वच, पूण जतनायेन - {back_by} फाटीन.
+  NO-GO: 'आयज वच नाका. फुडली बरी वेळ: {next_window}.'
+why:
+  H5: '{time} उपरांत ल्हारां खूब ऊंच जातात.'
+  H2: तो मार्ग शिमेच्या रेषेच्या खूब लागीं वता.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: तो वाठार संरक्षित दर्यादेगेच्या उद्यानांत आसा.
+  H4: यंत्रीकृत बोटींनी नुस्तें धरपाचेर बंदी घालपाचो हो काळ.
+  H6: The wind gets too strong after {time}.
+  H7: 'एक अधिकृत वादळाची शिटकावणी आसा: {warning_name}.'
+  H8: कांय म्हायती पोरणी वा ना, देखून दर्या तपासूंक मेळना.
+spot: Fish likely {distance_km} km {direction}.
+border: शिमेची रेषा {distance_km} कि.मी. पयस आसा.
+stale: पोरणो अदमास - भायर सरचे पयलीं परत तपासून घे.
+footer: फकत सल्लो - अधिकृत INCOIS/IMD चे इशारे पाळचे.
+needs_network: 'म्हाका ताचें जाप दिवपाक इंटरनॅट जाय. बटणां अजूनय काम करतात: आयचो दर्या, नुस्तें खंय मारचें, अलर्ट, हांव परत आयल्या.'
+nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+cannot_verify: हांवें हें उतर डेटा आड तपासूंक शकलेना, देखून हांव तें दिवचो ना. कृपया बटणां वापरचें वा परत विचारचें.
+no_window: फुडल्या 24 वरां भितर कोणूच ना.
+directions:
+  north: उत्तर
+  north_east: उत्तर-पूर्व
+  east: पूर्व
+  south_east: दक्षिण-पूर्व
+  south: दक्षिणेक
+  south_west: नैऋत्य
+  west: अस्तंत
+  north_west: उत्तर-पश्चिम
+ack: दर्या तपासता...
+brief_title: Morning brief · {harbour}
+push_test: कदल मित्राचे अलर्ट चालू आसात.
+back_home: '{name} {harbour} हांगा परत आयल्या, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: आमी तुमचें थळ फकत शिमे लागीं आनी वायट हवामानांत तुमकां चेतावणी दिवपाक वापरतात. तुमी केन्नाय थांबोवंक शकतात.
+  agree: हांव मान्य करतां.

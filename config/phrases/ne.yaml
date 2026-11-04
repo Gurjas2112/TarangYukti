@@ -1,0 +1,44 @@
+# नेपाली (ne-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: जानका लागि ठीक छ।
+  CAUTION: जानुहोस्, तर ध्यानपूर्वक - {back_by} बाट पछाडि फर्कनुहोस्।
+  NO-GO: 'आज नजानुहोस्। अर्को राम्रो समय: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: त्यो बाटो सिमाना रेखाको धेरै नजिक जान्छ।
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: त्यो क्षेत्र संरक्षित समुद्री निकुञ्जभित्र छ।
+  H4: यो मेकानिकृत डुङ्गाहरूका लागि माछा मार्ने प्रतिबन्धको मौसम हो।
+  H6: The wind gets too strong after {time}.
+  H7: 'आधिकारिक आँधीबेहरीको चेतावनी छ: {warning_name}।'
+  H8: केही डेटा पुरानो वा हराएको छ, त्यसैले समुद्र जाँच गर्न सकिँदैन।
+spot: माछा सम्भवतः {distance_km} कि.मि. {direction} टाढा छ।
+border: सिमाना रेखा {distance_km} किलोमिटर टाढा छ।
+stale: पुरानो पूर्वानुमान - निस्कनुअघि फेरि जाँच गर्नुहोस्।
+footer: सल्लाह मात्र - आधिकारिक इन्कोइस/आइएमडी चेतावनीहरू पालना गर्नुहोस्।
+needs_network: 'मलाई त्यसको जवाफ दिन इन्टरनेट चाहिन्छ। बटनहरूले अझै काम गर्छन्: आजको समुद्र, कहाँ माछा मार्ने, अलर्टहरू, म फर्केँ।'
+nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+cannot_verify: मैले यो उत्तरलाई डेटासँग जाँच गर्न सकिनँ, त्यसैले म यो दिने छैन। कृपया बटनहरू प्रयोग गर्नुहोस् वा फेरि सोध्नुहोस्।
+no_window: आगामी 24 घण्टामा कोही पनि छैन।
+directions:
+  north: north
+  north_east: उत्तर-पूर्व
+  east: east
+  south_east: south-east
+  south: south
+  south_west: south-west
+  west: west
+  north_west: north-west
+ack: Checking the sea…
+brief_title: Morning brief · {harbour}
+push_test: Kadal Mitra alerts are on.
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
+  agree: I agree

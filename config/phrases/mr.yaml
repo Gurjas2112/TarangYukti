@@ -1,0 +1,44 @@
+# मराठी (mr-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: जाण्यासाठी ठीक आहे.
+  CAUTION: जा, पण जपून - {back_by} च्या मागे.
+  NO-GO: 'आज जाऊ नकोस. पुढची चांगली वेळ: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: तो मार्ग सीमेच्या अगदी जवळ जातो.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: तो भाग संरक्षित सागरी उद्यानाच्या आत आहे.
+  H4: यांत्रिक नौकांसाठी हा मासेमारी बंदीचा काळ आहे.
+  H6: The wind gets too strong after {time}.
+  H7: 'अधिकृत वादळाचा इशारा आहे: {warning_name}.'
+  H8: काही माहिती जुनी किंवा गहाळ आहे, त्यामुळे समुद्र तपासला जाऊ शकत नाही.
+spot: मासे बहुधा {distance_km} किमी {direction} अंतरावर आहेत.
+border: सीमा रेषा {distance_km} कि.मी. अंतरावर आहे.
+stale: जुना अंदाज - निघण्यापूर्वी पुन्हा तपासा.
+footer: फक्त सूचना - अधिकृत INCOIS/IMD चे इशारे पाळा.
+needs_network: 'मला त्याचे उत्तर देण्यासाठी इंटरनेटची आवश्यकता आहे. बटणे अजूनही काम करतात: आजचा समुद्र, कोठे मासे पकडावे, सूचना, मी परत आले आहे.'
+nothing_found: मला अधिकृत कागदपत्रांमध्ये याबद्दल काहीही आढळले नाही. कृपया {source} ला विचारा.
+cannot_verify: मी हे उत्तर डेटाच्या विरुद्ध तपासू शकले नाही, म्हणून मी ते देणार नाही. कृपया बटणे वापरा किंवा पुन्हा विचारा.
+no_window: पुढील 24 तासांत कोणीही नाही.
+directions:
+  north: उत्तर
+  north_east: ईशान्य
+  east: पूर्व
+  south_east: आग्नेय
+  south: दक्षिण
+  south_west: नैऋत्य
+  west: पश्चिम
+  north_west: वायव्य
+ack: समुद्र तपासत आहे...
+brief_title: Morning brief · {harbour}
+push_test: कदल मित्रा अलर्ट्स चालू आहेत.
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: आम्ही तुमचे स्थान फक्त तुम्हाला सीमेजवळ आणि खराब हवामानात सावध करण्यासाठी वापरतो. तुम्ही कधीही थांबू शकता.
+  agree: मी सहमत आहे.

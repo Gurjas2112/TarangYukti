@@ -6,7 +6,7 @@ export const colors = {
   text: "#000000",
   textMuted: "#333333",
   border: "#1A1A1A",
-  go: "#0B6E2E",
+  go: "#07612A", // 7.6:1 on white
   caution: "#7A4A00",
   noGo: "#A30000",
   link: "#0040A0",
@@ -37,3 +37,6 @@ export function contrast(a: string, b: string): number {
   const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x);
   return (hi + 0.05) / (lo + 0.05);
 }
+
+/** One-thumb targets (spec §17.10). */
+export const touch = { min: 48 } as const;

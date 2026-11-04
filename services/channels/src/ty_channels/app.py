@@ -1,19 +1,42 @@
-"""ty-channels FastAPI app (:8002). /stt, /tts, /positions, /push/subscribe, /trips arrive in Milestone 6+."""
+"""ty-channels FastAPI app (:8002): the voice and device API used by the app on Android and the web.
+
+Public: /health, /languages, /harbours, /brief, /stt, /tts (rate-limited).
+Signed in: /onboarding, /me, /me/prefs, /push/subscribe, /push/unsubscribe, /phone-link.
+/positions and /trips arrive in Milestone 8.
+"""
 
 from __future__ import annotations
 
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from ty_common import db
 from ty_common.settings import get_settings
 
+from . import me, public, voice
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    if get_settings().database_url is not None:
+        await db.open_pool()
+    yield
+    await db.close_pool()
+
+
 settings = get_settings()
-app = FastAPI(title="ty-channels", version="0.1.0")
+app = FastAPI(title="ty-channels", version="0.2.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.web_origin],
-    allow_methods=["GET", "POST", "DELETE"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
+app.include_router(public.router)
+app.include_router(voice.router)
+app.include_router(me.router)
 
 
 @app.get("/health")

@@ -1,0 +1,44 @@
+# हिन्दी (hi-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: जाने के लिए ठीक है।
+  CAUTION: जाओ, लेकिन सावधानी से - {back_by} के पीछे।
+  NO-GO: 'आज मत जाओ। अगली अच्छी तारीख: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: वह रास्ता सीमा रेखा के बहुत करीब से जाता है।
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: वह क्षेत्र संरक्षित समुद्री उद्यान के अंदर है।
+  H4: यह मशीनीकृत नावों के लिए मछली पकड़ने पर प्रतिबंध का मौसम है।
+  H6: The wind gets too strong after {time}.
+  H7: 'आधिकारिक गरज के साथ तूफान की चेतावनी है: {warning_name}।'
+  H8: कुछ डेटा पुराना या गायब है, इसलिए समुद्र की जाँच नहीं की जा सकती है।
+spot: मछली शायद {distance_km} किमी {direction} दूर है।
+border: सीमा रेखा {distance_km} कि.मी. दूर है।
+stale: पुराना पूर्वानुमान - जाने से पहले फिर से जांच लें।
+footer: केवल सलाह - आधिकारिक आई.एन.सी.ओ.आई.एस./आई.एम.डी. चेतावनियों का पालन करें।
+needs_network: 'मुझे उसका जवाब देने के लिए इंटरनेट चाहिए। बटन अभी भी काम करते हैं: आज का समुद्र, मछली कहाँ पकड़ें, अलर्ट, मैं वापस आ गई हूँ।'
+nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+cannot_verify: मैं इस उत्तर को डेटा के साथ नहीं जाँच सकी, इसलिए मैं इसे नहीं दूँगी। कृपया बटनों का उपयोग करें या फिर से पूछें।
+no_window: अगले 24 घंटों में कोई नहीं।
+directions:
+  north: उत्तर
+  north_east: उत्तर-पूर्व
+  east: पूर्व
+  south_east: दक्षिण-पूर्व
+  south: दक्षिण
+  south_west: दक्षिण-पश्चिम
+  west: पश्चिम
+  north_west: उत्तर-पश्चिम
+ack: समुद्र की जाँच कर रही हूँ...
+brief_title: Morning brief · {harbour}
+push_test: कदल मित्रा अलर्ट चालू हैं।
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: हम आपके स्थान का उपयोग केवल आपको सीमा के पास और खराब मौसम में चेतावनी देने के लिए करते हैं। आप कभी भी रोक सकती हैं।
+  agree: मैं सहमत हूँ।

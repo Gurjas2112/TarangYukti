@@ -1,0 +1,44 @@
+# ગુજરાતી (gu-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: જાવા માટે તૈયાર.
+  CAUTION: જાઓ, પણ કાળજીપૂર્વક - {back_by} દ્વારા પાછા.
+  NO-GO: 'આજે જશો નહીં. પછીનો સારો સમય: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: તે માર્ગ સરહદ રેખાની ખૂબ નજીક જાય છે.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: તે વિસ્તાર સંરક્ષિત દરિયાઈ ઉદ્યાનની અંદર છે.
+  H4: યાંત્રિક બોટ માટે માછીમારી પર પ્રતિબંધની મોસમ છે.
+  H6: The wind gets too strong after {time}.
+  H7: 'ત્યાં સત્તાવાર વાવાઝોડાની ચેતવણી છે: {warning_name}.'
+  H8: કેટલોક ડેટા જૂનો અથવા ગુમ છે, તેથી સમુદ્રને ચકાસી શકાતો નથી.
+spot: માછલી સંભવતઃ {distance_km} કિમી {direction} દૂર છે.
+border: સરહદ રેખા {distance_km} કિમી દૂર છે.
+stale: જૂની આગાહી - નીકળતા પહેલા ફરીથી તપાસો.
+footer: માત્ર સલાહ - સત્તાવાર INCOIS/IMD ચેતવણીઓનું પાલન કરો.
+needs_network: 'મારે તેનો જવાબ આપવા માટે ઇન્ટરનેટની જરૂર છે. બટનો હજી પણ કામ કરે છે: આજનો સમુદ્ર, માછલી ક્યાં પકડવી, ચેતવણીઓ, હું પાછી આવી ગઈ છું.'
+nothing_found: મને સત્તાવાર દસ્તાવેજોમાં આ વિશે કંઈ મળ્યું નથી. કૃપા કરીને {source} ને પૂછો.
+cannot_verify: હું આ જવાબને ડેટા સામે ચકાસી શકી નહીં, તેથી હું તે આપીશ નહીં. કૃપા કરીને બટનોનો ઉપયોગ કરો અથવા ફરીથી પૂછો.
+no_window: આગામી 24 કલાકમાં કોઈ નહીં.
+directions:
+  north: ઉત્તર
+  north_east: ઉત્તર-પૂર્વ
+  east: પૂર્વ
+  south_east: દક્ષિણ-પૂર્વ
+  south: દક્ષિણ
+  south_west: દક્ષિણ-પશ્ચિમ
+  west: પશ્ચિમ
+  north_west: ઉત્તર-પશ્ચિમ
+ack: દરિયો તપાસી રહ્યા છીએ...
+brief_title: Morning brief · {harbour}
+push_test: કદલ મિત્રા એલર્ટ ચાલુ છે.
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: અમે તમારું સ્થાન ફક્ત તમને સરહદ નજીક અને ખરાબ હવામાનમાં ચેતવણી આપવા માટે વાપરીએ છીએ. તમે ગમે ત્યારે બંધ કરી શકો છો.
+  agree: હું સંમત છું.

@@ -7,34 +7,11 @@ Slot values come only from Yukti digests (verdict times already formatted in IST
 
 from __future__ import annotations
 
-import functools
-from pathlib import Path
 from typing import Any
 
-import yaml
-from ty_common.settings import find_config_dir, get_settings
+from ty_common.phrases import phrases, phrases_version
 
-
-@functools.cache
-def _load(lang: str) -> dict[str, Any] | None:
-    p: Path = find_config_dir() / "phrases" / f"{lang.split('-')[0]}.yaml"
-    if not p.is_file():
-        return None
-    doc: dict[str, Any] = yaml.safe_load(p.read_text(encoding="utf-8"))
-    if get_settings().env == "live" and doc.get("status") != "approved":
-        return None
-    return doc
-
-
-def phrases(lang: str) -> tuple[dict[str, Any], str]:
-    """(phrase table, the language actually used)."""
-    doc = _load(lang)
-    if doc is not None:
-        return doc, lang
-    en = _load("en-IN")
-    if en is None:
-        raise RuntimeError("config/phrases/en.yaml is missing or not approved")
-    return en, "en-IN"
+__all__ = ["cannot_verify", "footer", "needs_network", "nothing_found", "phrases", "phrases_version", "verdict"]
 
 
 def footer(lang: str) -> str:
@@ -84,13 +61,3 @@ def cannot_verify(lang: str) -> str:
 
 def nothing_found(lang: str, source: str = "Department of Fisheries, INCOIS or IMD") -> str:
     return str(phrases(lang)[0]["nothing_found"]).format(source=source)
-
-
-@functools.cache
-def phrases_version() -> str:
-    import hashlib
-
-    h = hashlib.sha256()
-    for f in sorted((find_config_dir() / "phrases").glob("*.yaml")):
-        h.update(f.read_bytes())
-    return h.hexdigest()[:12]

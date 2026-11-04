@@ -1,0 +1,44 @@
+# اردو (ur-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: جانے کے لیے تیار۔
+  CAUTION: جاؤ، لیکن احتیاط سے — {back_by} کے ذریعے۔
+  NO-GO: 'آج مت جاؤ۔ اگلی مناسب وقت: {next_window}۔'
+why:
+  H5: Waves get too high after {time}.
+  H2: وہ راستہ سرحد کی لکیر کے بہت قریب سے گزرتا ہے۔
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: یہ علاقہ محفوظ سمندری پارک کے اندر ہے۔
+  H4: یہ میکانکی کشتیوں کے لیے ماہی گیری کی پابندی کا موسم ہے۔
+  H6: The wind gets too strong after {time}.
+  H7: 'آندھی کے طوفان کی ایک سرکاری وارننگ ہے: {warning_name}۔'
+  H8: کچھ ڈیٹا پرانا یا غائب ہے، اس لیے سمندر کی جانچ نہیں کی جا سکتی۔
+spot: مچھلی غالباً {distance_km} کلومیٹر {direction} دور ہے۔
+border: سرحدی لائن {distance_km} کلومیٹر دور ہے۔
+stale: پرانا پیش گوئی — روانہ ہونے سے پہلے دوبارہ چیک کریں۔
+footer: صرف مشورہ — آفیشل انکواس/آئی ایم ڈی کی انتباہات پر عمل کریں۔
+needs_network: 'مجھے اس کا جواب دینے کے لیے انٹرنیٹ کی ضرورت ہے۔ بٹن اب بھی کام کرتے ہیں: آج کا سمندر، مچھلی کہاں پکڑنی ہے، الرٹس، میں واپس آ گئی ہوں۔'
+nothing_found: مجھے سرکاری دستاویزات میں اس بارے میں کچھ نہیں ملا۔ براہ کرم {source} سے پوچھیں۔
+cannot_verify: میں اس جواب کو ڈیٹا سے نہیں جانچ سکی، اس لیے میں یہ نہیں دوں گی۔ براہ کرم بٹن استعمال کریں یا دوبارہ پوچھیں۔
+no_window: اگلے 24 گھنٹوں میں کوئی نہیں
+directions:
+  north: شمال
+  north_east: شمال مشرق
+  east: مشرق
+  south_east: جنوب مشرق
+  south: جنوب
+  south_west: جنوب مغربی
+  west: مغرب
+  north_west: شمال مغرب
+ack: سمندر کی جانچ پڑتال...
+brief_title: Morning brief · {harbour}
+push_test: کڈل مترا کے الرٹس آن ہیں۔
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: ہم آپ کی لوکیشن صرف آپ کو سرحد کے قریب اور خراب موسم میں خبردار کرنے کے لیے استعمال کرتے ہیں۔ آپ کسی بھی وقت روک سکتے ہیں۔
+  agree: میں متفق ہوں۔

@@ -1,0 +1,44 @@
+# ਪੰਜਾਬੀ (pa-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: ਜਾਣ ਲਈ ਤਿਆਰ।
+  CAUTION: ਜਾਓ, ਪਰ ਧਿਆਨ ਨਾਲ — {back_by} ਦੁਆਰਾ ਵਾਪਸ।
+  NO-GO: 'ਅੱਜ ਨਾ ਜਾਓ। ਅਗਲਾ ਵਧੀਆ ਸਮਾਂ: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: ਉਹ ਰਸਤਾ ਸਰਹੱਦ ਲਾਈਨ ਦੇ ਬਹੁਤ ਨੇੜੇ ਜਾਂਦਾ ਹੈ।
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: ਇਹ ਖੇਤਰ ਸੁਰੱਖਿਅਤ ਸਮੁੰਦਰੀ ਪਾਰਕ ਦੇ ਅੰਦਰ ਹੈ।
+  H4: ਇਹ ਮਸ਼ੀਨੀ ਕਿਸ਼ਤੀਆਂ ਲਈ ਮੱਛੀ ਫੜਨ ਦੀ ਪਾਬੰਦੀ ਦਾ ਮੌਸਮ ਹੈ।
+  H6: The wind gets too strong after {time}.
+  H7: 'ਇੱਕ ਅਧਿਕਾਰਤ ਤੂਫਾਨ ਦੀ ਚੇਤਾਵਨੀ ਹੈ: {warning_name}।'
+  H8: ਕੁੱਝ ਅੰਕੜੇ ਪੁਰਾਣੇ ਜਾਂ ਗੁੰਮ ਹਨ, ਇਸ ਲਈ ਸਮੁੰਦਰ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।
+spot: ਮੱਛੀ ਸ਼ਾਇਦ {distance_km} ਕਿਲੋਮੀਟਰ {direction} ਦੂਰ ਹੈ।
+border: ਬਾਰਡਰ ਲਾਈਨ {distance_km} ਕਿਲੋਮੀਟਰ ਦੂਰ ਹੈ।
+stale: ਪੁਰਾਣੀ ਭਵਿੱਖਬਾਣੀ — ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਦੁਬਾਰਾ ਜਾਂਚ ਕਰੋ।
+footer: ਸਲਾਹ ਸਿਰਫ਼ - ਅਧਿਕਾਰਤ INCOIS/IMD ਚੇਤਾਵਨੀਆਂ ਦੀ ਪਾਲਣਾ ਕਰੋ।
+needs_network: 'ਮੈਨੂੰ ਉਸਦਾ ਜਵਾਬ ਦੇਣ ਲਈ ਇੰਟਰਨੈੱਟ ਦੀ ਲੋੜ ਹੈ। ਬਟਨ ਅਜੇ ਵੀ ਕੰਮ ਕਰਦੇ ਹਨ: ਅੱਜ ਦਾ ਸਮੁੰਦਰ, ਕਿੱਥੇ ਮੱਛੀ ਫੜਨੀ ਹੈ, ਚੇਤਾਵਨੀਆਂ, ਮੈਂ ਵਾਪਸ ਆ ਗਈ ਹਾਂ।'
+nothing_found: ਮੈਨੂੰ ਅਧਿਕਾਰਤ ਦਸਤਾਵੇਜ਼ਾਂ ਵਿੱਚ ਇਸ ਬਾਰੇ ਕੁਝ ਨਹੀਂ ਮਿਲਿਆ। ਕਿਰਪਾ ਕਰਕੇ {source} ਤੋਂ ਪੁੱਛੋ।
+cannot_verify: ਮੈਂ ਇਸ ਜਵਾਬ ਨੂੰ ਡੇਟਾ ਨਾਲ ਨਹੀਂ ਜਾਂਚ ਸਕੀ, ਇਸ ਲਈ ਮੈਂ ਇਹ ਨਹੀਂ ਦੇਵਾਂਗੀ। ਕਿਰਪਾ ਕਰਕੇ ਬਟਨਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ ਜਾਂ ਦੁਬਾਰਾ ਪੁੱਛੋ।
+no_window: ਅਗਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਕੋਈ ਨਹੀਂ।
+directions:
+  north: ਉੱਤਰ
+  north_east: ਉੱਤਰ-ਪੂਰਬ
+  east: ਪੂਰਬ
+  south_east: ਦੱਖਣ-ਪੂਰਬ
+  south: ਦੱਖਣ
+  south_west: ਦੱਖਣ-ਪੱਛਮ
+  west: ਪੱਛਮ
+  north_west: ਉੱਤਰ-ਪੱਛਮ
+ack: ਸਮੁੰਦਰ ਦੀ ਜਾਂਚ ਕਰ ਰਹੀ ਹੈ...
+brief_title: Morning brief · {harbour}
+push_test: ਕਦਲ ਮਿੱਤਰ ਅਲਰਟ ਚਾਲੂ ਹਨ।
+back_home: '{name} {harbour} ਤੇ ਵਾਪਸ ਆ ਗਈ ਹੈ, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: ਅਸੀਂ ਤੁਹਾਡੀ ਲੋਕੇਸ਼ਨ ਦੀ ਵਰਤੋਂ ਸਿਰਫ਼ ਤੁਹਾਨੂੰ ਸਰਹੱਦ ਦੇ ਨੇੜੇ ਅਤੇ ਖਰਾਬ ਮੌਸਮ ਵਿੱਚ ਚੇਤਾਵਨੀ ਦੇਣ ਲਈ ਕਰਦੇ ਹਾਂ। ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਸਮੇਂ ਰੋਕ ਸਕਦੇ ਹੋ।
+  agree: ਮੈਂ ਸਹਿਮਤ ਹਾਂ।

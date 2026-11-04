@@ -1,0 +1,44 @@
+# অসমীয়া (as-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: যোৱাৰ বাবে ঠিক আছে।
+  CAUTION: যোৱা, কিন্তু সাৱধানে — {back_by} ৰ দ্বাৰা উভতি আহিবা।
+  NO-GO: 'আজি নাযাবা। পৰৱৰ্তী ভাল সময়: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: সেই ৰুটটো সীমাৰেখাৰ অতি ওচৰলৈ যায়।
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: সেই অঞ্চলটো সুৰক্ষিত সামুদ্ৰিক উদ্যানখনৰ ভিতৰত আছে।
+  H4: এয়া যান্ত্ৰিক নাওবোৰৰ বাবে মাছ ধৰাৰ নিষেধাজ্ঞাৰ সময়।
+  H6: '{time}ৰ পিছত বতাহ বেছি জোৰেৰে বলি।'
+  H7: 'এটা চৰকাৰী ধুমুহাৰ সতৰ্কবাণী আছে: {warning_name}.'
+  H8: কিছুমান তথ্য পুৰণি বা অনুপস্থিত, সেয়ে সাগৰখন পৰীক্ষা কৰিব নোৱাৰি।
+spot: মাছটো সম্ভৱতঃ {distance_km} কি.মি. {direction} দূৰত আছে।
+border: সীমান্ত ৰেখা {distance_km} কি.মি. দূৰত আছে।
+stale: পুৰণি বতৰৰ পূৰ্বাভাস — ওলাই যোৱাৰ আগতে পুনৰ এবাৰ পৰীক্ষা কৰক।
+footer: কেৱল পৰামৰ্শমূলক — আনুষ্ঠানিক আইএনচিঅ'আইএছ/আইএমডি-ৰ সতৰ্কবাণী অনুসৰণ কৰক।
+needs_network: 'সেইটোৰ উত্তৰ দিবলৈ মোৰ ইণ্টাৰনেটৰ প্ৰয়োজন। বুটামবোৰ এতিয়াও কাম কৰি আছে: আজিৰ সাগৰ, ক''ত মাছ ধৰিব লাগে, এলাৰ্ট, মই উভতি আহিছো।'
+nothing_found: মই চৰকাৰী নথিপত্ৰত এই বিষয়ে একো পোৱা নাই। অনুগ্ৰহ কৰি {source} ক সুধিব।
+cannot_verify: মই এই উত্তৰটো তথ্যৰ সৈতে পৰীক্ষা কৰিব নোৱাৰিলো, সেয়েহে মই ইয়াক নিদিওঁ। অনুগ্ৰহ কৰি বুটামবোৰ ব্যৱহাৰ কৰক বা পুনৰ সুধিব।
+no_window: অহা 24 ঘণ্টাত কোনো নাই।
+directions:
+  north: উত্তৰ
+  north_east: উত্তৰ-পূব
+  east: পূব
+  south_east: দক্ষিণ-পূব
+  south: দক্ষিণ
+  south_west: দক্ষিণ-পশ্চিম
+  west: পশ্চিম
+  north_west: উত্তৰ-পশ্চিম
+ack: সাগৰখন পৰীক্ষা কৰি আছো...
+brief_title: Morning brief · {harbour}
+push_test: কাদল মিত্ৰৰ এলাৰ্টসমূহ অন আছে।
+back_home: '{name} {harbour} লৈ ঘূৰি আহিছে, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: আমি আপোনাৰ অৱস্থান কেৱল আপোনাক সীমান্তৰ ওচৰত আৰু বেয়া বতৰত সতৰ্ক কৰিবলৈ ব্যৱহাৰ কৰোঁ। আপুনি যিকোনো সময়তে বন্ধ কৰিব পাৰে।
+  agree: মই সন্মত।

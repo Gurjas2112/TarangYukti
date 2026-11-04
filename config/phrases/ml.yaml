@@ -1,0 +1,44 @@
+# മലയാളം (ml-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: പോകാന് തയ്യാറാണ്.
+  CAUTION: പോവുക, പക്ഷേ ശ്രദ്ധയോടെ - {back_by} വഴി തിരികെ പോകുക.
+  NO-GO: 'ഇന്ന് പോകേണ്ട. അടുത്ത നല്ല സമയം: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: ആ വഴി അതിർത്തി രേഖയോട് വളരെ അടുത്താണ് പോകുന്നത്.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: ആ പ്രദേശം സംരക്ഷിത സമുദ്രോദ്യാനത്തിനുള്ളിലാണ്.
+  H4: യാന്ത്രിക ബോട്ടുകൾക്കുള്ള മത്സ്യബന്ധന നിരോധന കാലമാണിത്.
+  H6: The wind gets too strong after {time}.
+  H7: 'ഒരു ഔദ്യോഗിക ഇടിമിന്നൽ മുന്നറിയിപ്പ് ഉണ്ട്: {warning_name}.'
+  H8: ചില ഡാറ്റ പഴയതോ കാണാതെയോ ആയതിനാല്‍ കടല്‍ പരിശോധിക്കാന്‍ കഴിയില്ല.
+spot: മീൻ ഏകദേശം {distance_km} കി.മീ. {direction} ദൂരത്തിലുണ്ട്.
+border: അതിർത്തി രേഖ {distance_km} കിലോമീറ്റർ അകലെയാണ്.
+stale: പഴയ പ്രവചനം - പുറപ്പെടുന്നതിന് മുമ്പ് വീണ്ടും പരിശോധിക്കുക.
+footer: ഉപദേശം മാത്രം - ഔദ്യോഗിക ഇൻകോയിസ്/ഐഎംഡി മുന്നറിയിപ്പുകൾ പാലിക്കുക.
+needs_network: 'അതിന് ഉത്തരം നൽകാൻ എനിക്ക് ഇൻ്റർനെറ്റ് വേണം. ബട്ടണുകൾ ഇപ്പോഴും പ്രവർത്തിക്കുന്നു: ഇന്നത്തെ കടൽ, എവിടെ മീൻ പിടിക്കാം, അറിയിപ്പുകൾ, ഞാൻ തിരിച്ചെത്തി.'
+nothing_found: ഔദ്യോഗിക രേഖകളിൽ ഇതിനെക്കുറിച്ച് ഒന്നും കണ്ടെത്തിയില്ല. ദയവായി {source} യോട് ചോദിക്കുക.
+cannot_verify: എനിക്ക് ഈ ഉത്തരം ഡാറ്റയുമായി ഒത്തുനോക്കാൻ കഴിഞ്ഞില്ല, അതിനാൽ ഞാൻ ഇത് നൽകുന്നില്ല. ദയവായി ബട്ടണുകൾ ഉപയോഗിക്കുക അല്ലെങ്കിൽ വീണ്ടും ചോദിക്കുക.
+no_window: അടുത്ത 24 മണിക്കൂറിനുള്ളിൽ ആരുമില്ല.
+directions:
+  north: വടക്ക്
+  north_east: വടക്കുകിഴക്ക്
+  east: കിഴക്ക്
+  south_east: തെക്ക്-കിഴക്ക്
+  south: തെക്ക്
+  south_west: തെക്ക്-പടിഞ്ഞാറ്
+  west: പടിഞ്ഞാറ്
+  north_west: വടക്ക്-പടിഞ്ഞാറ്
+ack: കടൽ പരിശോധിക്കുന്നു...
+brief_title: Morning brief · {harbour}
+push_test: കടൽ മിത്ര അലേർട്ടുകൾ ഓൺ ആണ്.
+back_home: '{name} {harbour}-ൽ തിരിച്ചെത്തിയിരിക്കുന്നു, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: അതിർത്തിക്ക് സമീപവും മോശം കാലാവസ്ഥയിലും നിങ്ങളെ അറിയിക്കാൻ മാത്രമാണ് ഞങ്ങൾ നിങ്ങളുടെ ലൊക്കേഷൻ ഉപയോഗിക്കുന്നത്. നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും ഇത് നിർത്താം.
+  agree: ഞാൻ സമ്മതിക്കുന്നു.

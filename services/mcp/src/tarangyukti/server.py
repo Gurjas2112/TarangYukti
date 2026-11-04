@@ -11,6 +11,7 @@ from datetime import UTC, datetime
 from fastmcp import FastMCP
 from ty_common.models import ToolResult
 
+from . import brief
 from .rag import search as rag_search
 from .tools import geo, grids, marine, warnings, yukti_tools
 
@@ -29,6 +30,7 @@ for fn in (
     yukti_tools.yukti_evaluate,
     yukti_tools.route_safest,
     rag_search.kb_search,
+    brief.sea_brief,
 ):
     mcp.tool(fn)
 

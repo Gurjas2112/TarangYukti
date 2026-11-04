@@ -1,0 +1,44 @@
+# বাংলা (bn-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: যাওয়ার জন্য প্রস্তুত।
+  CAUTION: যাও, তবে সাবধানে - {back_by} দিয়ে ফিরে এসো।
+  NO-GO: 'আজ যেও না। পরবর্তী ভালো সময়: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: ঐ রাস্তাটি সীমান্তরেখার খুব কাছে চলে গেছে।
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: ওই এলাকাটি সুরক্ষিত সামুদ্রিক উদ্যানের ভিতরে।
+  H4: এটি যান্ত্রিক নৌকাগুলির জন্য মাছ ধরার নিষেধাজ্ঞার মরসুম।
+  H6: The wind gets too strong after {time}.
+  H7: 'একটি সরকারি বজ্রঝড়ের সতর্কতা আছে: {warning_name}।'
+  H8: কিছু তথ্য পুরানো বা অনুপস্থিত, তাই সমুদ্র পরীক্ষা করা যাবে না।
+spot: মাছ সম্ভবত {distance_km} কিমি {direction} দূরে আছে।
+border: সীমান্তরেখাটি {distance_km} কিমি দূরে অবস্থিত।
+stale: পুরোনো পূর্বাভাস - বেরোনোর আগে আবার দেখে নিন।
+footer: শুধুমাত্র পরামর্শমূলক — আইএনসিওআইএস/আইএমডি-র সরকারি সতর্কতাগুলি অনুসরণ করুন।
+needs_network: 'আমার সেটার উত্তর দেওয়ার জন্য ইন্টারনেটের দরকার। বোতামগুলো এখনও কাজ করছে: আজকের সমুদ্র, কোথায় মাছ ধরতে যাব, সতর্কতা, আমি ফিরে এসেছি।'
+nothing_found: আমি দাপ্তরিক নথিতে এ বিষয়ে কিছুই খুঁজে পাইনি। অনুগ্রহ করে {source}-কে জিজ্ঞাসা করুন।
+cannot_verify: আমি এই উত্তরটি ডেটার সাথে মিলিয়ে দেখতে পারিনি, তাই আমি এটা দেব না। অনুগ্রহ করে বোতামগুলো ব্যবহার করুন অথবা আবার জিজ্ঞাসা করুন।
+no_window: আগামী 24 ঘন্টায় কেউ নেই।
+directions:
+  north: উত্তর
+  north_east: উত্তর-পূর্ব
+  east: পূর্ব
+  south_east: দক্ষিণ-পূর্ব
+  south: দক্ষিণ
+  south_west: দক্ষিণ-পশ্চিম
+  west: পশ্চিম
+  north_west: উত্তর-পশ্চিম
+ack: সমুদ্র পরীক্ষা করা হচ্ছে...
+brief_title: Morning brief · {harbour}
+push_test: কাদল মিত্রের সতর্কতা চালু আছে।
+back_home: '{name} {harbour}-এ ফিরে এসেছেন, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: আমরা আপনার লোকেশন শুধুমাত্র সীমান্তের কাছাকাছি এবং খারাপ আবহাওয়ায় আপনাকে সতর্ক করার জন্য ব্যবহার করি। আপনি যেকোনো সময় বন্ধ করতে পারেন।
+  agree: আমি सहमत।

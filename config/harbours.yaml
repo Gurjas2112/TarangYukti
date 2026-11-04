@@ -1,0 +1,16 @@
+# Harbours offered at onboarding (spec §7.4: "a list of the nearest five") and used as the trip start point
+# and the harbour geofence centre (Milestone 8). Prototype region only: Gulf of Mannar + Palk Bay.
+# The state picks the suggested language (spec Table 6-12); any other language is accepted.
+# TODO(tarangyukti): coordinates other than Rameswaram are approximate (map reading, ±1 km). Verify each
+#   landing centre on site or against the Department of Fisheries list before the 1.5 km geofence uses it.
+# Governed file: data owner.
+version: 1
+suggested_language: { Tamil Nadu: ta-IN, Puducherry: ta-IN, Kerala: ml-IN, Andhra Pradesh: te-IN }
+harbours:
+  - { id: rameswaram,      name: Rameswaram,      state: Tamil Nadu, lat: 9.288, lon: 79.313, verified: true }
+  - { id: pamban,          name: Pamban,          state: Tamil Nadu, lat: 9.279, lon: 79.207, verified: false }
+  - { id: mandapam,        name: Mandapam,        state: Tamil Nadu, lat: 9.277, lon: 79.125, verified: false }
+  - { id: keelakarai,      name: Keelakarai,      state: Tamil Nadu, lat: 9.231, lon: 78.785, verified: false }
+  - { id: thondi,          name: Thondi,          state: Tamil Nadu, lat: 9.741, lon: 79.018, verified: false }
+  - { id: jegathapattinam, name: Jegathapattinam, state: Tamil Nadu, lat: 9.960, lon: 79.175, verified: false }
+  - { id: thoothukudi,     name: Thoothukudi,     state: Tamil Nadu, lat: 8.800, lon: 78.160, verified: false }

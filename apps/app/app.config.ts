@@ -17,6 +17,7 @@ const config: ExpoConfig = {
   android: {
     package: "in.tarangyukti.kadalmitra",
     allowBackup: false,
+    permissions: ["android.permission.RECORD_AUDIO", "android.permission.POST_NOTIFICATIONS"],
     adaptiveIcon: {
       backgroundColor: "#FFFFFF",
       foregroundImage: "./assets/images/android-icon-foreground.png",
@@ -37,8 +38,20 @@ const config: ExpoConfig = {
       "expo-splash-screen",
       { backgroundColor: "#FFFFFF", image: "./assets/images/splash-icon.png", imageWidth: 76 },
     ],
-    // TODO(tarangyukti): Milestones 6–11 add @maplibre/maplibre-react-native, expo-notifications,
-    // expo-sqlite, expo-location (background) and expo-build-properties (cleartext only when isDev).
+    [
+      "expo-notifications",
+      { icon: "./assets/images/android-icon-monochrome.png", color: "#0B1D2E", defaultChannel: "default" },
+    ],
+    "expo-sqlite",
+    [
+      "expo-audio",
+      {
+        microphonePermission: "Kadal Mitra listens only while you hold the speak button, to answer your question.",
+      },
+    ],
+    "@react-native-google-signin/google-signin",
+    // TODO(tarangyukti): Milestones 7–11 add @maplibre/maplibre-react-native, expo-location (background) and
+    // expo-build-properties (cleartext only when isDev).
   ],
   experiments: { typedRoutes: true },
   extra: { appEnv, cleartextAllowed: isDev, eas: { projectId: "3d825c81-c777-423d-a423-b8b2e96a648f" } },

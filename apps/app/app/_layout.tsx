@@ -3,17 +3,55 @@ import "react-native-get-random-values";
 import "@copilotkit/react-native/polyfills";
 import "react-native-url-polyfill/auto";
 import "../src/tasks";
+import "../src/i18n";
 
-import { Stack } from "expo-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { router, Stack } from "expo-router";
+import { useEffect } from "react";
+import { Platform } from "react-native";
 
+import { useSession } from "../src/auth/supabase";
 import { CopilotProvider } from "../src/copilot/Provider";
-import { deviceLanguage } from "../src/i18n";
+import { registerServiceWorker } from "../src/push/register";
+import { PrefsProvider, usePrefs } from "../src/state/prefs";
 
-export default function RootLayout() {
-  // TODO(tarangyukti): Milestone 9 — session from Supabase auth; mode/lang from user_prefs.
+const queryClient = new QueryClient();
+
+function useOpenFromPush() {
+  useEffect(() => {
+    if (Platform.OS === "web") {
+      void registerServiceWorker(); // offline brief + push (public/sw.js); web only
+      return;
+    }
+    // Android: tapping a push opens its app path (payload carries a path, never coordinates)
+    let sub: { remove: () => void } | undefined;
+    void import("expo-notifications").then((N) => {
+      sub = N.addNotificationResponseReceivedListener((r) => {
+        const url = r.notification.request.content.data?.url;
+        if (typeof url === "string" && url.startsWith("/")) router.push(url as never);
+      });
+    });
+    return () => sub?.remove();
+  }, []);
+}
+
+function Shell() {
+  const { prefs, lang } = usePrefs();
+  const { session } = useSession();
+  useOpenFromPush();
   return (
-    <CopilotProvider mode="simple" lang={deviceLanguage()}>
+    <CopilotProvider mode={prefs.mode} lang={lang} accessToken={session?.access_token}>
       <Stack screenOptions={{ headerShown: false }} />
     </CopilotProvider>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <PrefsProvider>
+        <Shell />
+      </PrefsProvider>
+    </QueryClientProvider>
   );
 }

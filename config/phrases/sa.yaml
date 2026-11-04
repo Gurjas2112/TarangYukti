@@ -1,0 +1,44 @@
+# संस्कृतम् (sa-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: Good to go.
+  CAUTION: Go, but carefully — back by {back_by}.
+  NO-GO: 'Don''t go today. Next good time: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: That route goes too close to the border line.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: That area is inside the protected marine park.
+  H4: It is the fishing ban season for mechanised boats.
+  H6: The wind gets too strong after {time}.
+  H7: 'There is an official thunderstorm warning: {warning_name}.'
+  H8: Some data is old or missing, so the sea cannot be checked.
+spot: Fish likely {distance_km} km {direction}.
+border: Border line is {distance_km} km away.
+stale: Old forecast — check again before leaving.
+footer: Advisory only — follow official INCOIS/IMD warnings.
+needs_network: 'I need the internet to answer that. The buttons still work: Today''s sea, Where to fish, Alerts, I''m back.'
+nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+cannot_verify: I could not check this answer against the data, so I will not give it. Please use the buttons or ask again.
+no_window: none in the next 24 hours
+directions:
+  north: north
+  north_east: north-east
+  east: east
+  south_east: south-east
+  south: south
+  south_west: south-west
+  west: west
+  north_west: north-west
+ack: Checking the sea…
+brief_title: Morning brief · {harbour}
+push_test: Kadal Mitra alerts are on.
+back_home: '{name} is back at {harbour}, {time}.'
+consent:
+  notice_version: '2026-11-04'
+  short: We use your location only to warn you near the border and in bad weather. You can stop anytime.
+  agree: I agree

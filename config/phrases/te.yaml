@@ -1,0 +1,44 @@
+# తెలుగు (te-IN) — DRAFT machine translation (sarvam-translate:v1) of config/phrases/en.yaml.
+# Not released: two native-speaker reviewers must check and sign every sentence (spec §6.5, SR-14).
+# Governed file: language owner.
+status: draft
+reviewers: []
+reviewed_on: null
+verdict:
+  GO: వెళ్ళడానికి సిద్ధంగా ఉంది.
+  CAUTION: వెళ్ళు, కానీ జాగ్రత్తగా - {back_by} ద్వారా వెనక్కి.
+  NO-GO: 'ఈరోజు వెళ్ళకు. తదుపరి మంచి సమయం: {next_window}.'
+why:
+  H5: Waves get too high after {time}.
+  H2: ఆ మార్గం సరిహద్దు రేఖకు చాలా దగ్గరగా వెళుతుంది.
+  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H3: ఆ ప్రాంతం రక్షిత సముద్ర ఉద్యానవనం లోపల ఉంది.
+  H4: ఇది యాంత్రిక పడవలకు చేపల వేట నిషేధం కాలం.
+  H6: '{time} తర్వాత గాలి చాలా బలంగా వస్తుంది.'
+  H7: 'అధికారిక ఉరుములతో కూడిన వర్ష సూచన ఉంది: {warning_name}.'
+  H8: కొన్ని డేటా పాతది లేదా కనిపించకుండా పోయింది, కాబట్టి సముద్రాన్ని తనిఖీ చేయలేము.
+spot: చేపలు బహుశా {distance_km} కిలోమీటర్ల {direction} దూరంలో ఉన్నాయి.
+border: సరిహద్దు రేఖ {distance_km} కిలోమీటర్ల దూరంలో ఉంది.
+stale: పాత సూచన - బయలుదేరే ముందు మళ్ళీ ఒకసారి సరిచూసుకోండి.
+footer: సలహా మాత్రమే-అధికారిక ఐఎన్‌సీఓఐఎస్/ఐఎమ్‌డి హెచ్చరికలను అనుసరించండి.
+needs_network: 'దానికి సమాధానం చెప్పడానికి నాకు ఇంటర్నెట్ కావాలి. బటన్లు ఇంకా పనిచేస్తున్నాయి: నేటి సముద్రం, ఎక్కడ చేపలు పట్టాలి, హెచ్చరికలు, నేను తిరిగి వచ్చాను.'
+nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+cannot_verify: నేను ఈ సమాధానాన్ని డేటాతో సరిపోల్చలేకపోయాను, కాబట్టి నేను దానిని ఇవ్వలేను. దయచేసి బటన్లను ఉపయోగించండి లేదా మళ్ళీ అడగండి.
+no_window: రాబోయే 24 గంటల్లో ఎవరూ లేరు.
+directions:
+  north: ఉత్తరం
+  north_east: ఈశాన్య
+  east: తూర్పు
+  south_east: ఆగ్నేయం
+  south: దక్షిణం
+  south_west: నైరుతి
+  west: పశ్చిమం
+  north_west: వాయువ్య
+ack: సముద్రాన్ని తనిఖీ చేస్తోంది...
+brief_title: Morning brief · {harbour}
+push_test: కదల్ మిత్ర హెచ్చరికలు ఆన్‌లో ఉన్నాయి.
+back_home: '{name} తిరిగి {harbour} కి, {time} కి వచ్చారు.'
+consent:
+  notice_version: '2026-11-04'
+  short: మేము మీ స్థానాన్ని సరిహద్దు దగ్గర మరియు చెడు వాతావరణంలో మిమ్మల్ని హెచ్చరించడానికి మాత్రమే ఉపయోగిస్తాము. మీరు ఎప్పుడైనా ఆపవచ్చు.
+  agree: నేను అంగీకరిస్తున్నాను.
