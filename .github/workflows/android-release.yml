@@ -1,0 +1,46 @@
+# Android release (spec §17.12): tag kadal-mitra-v<version> → checks → EAS live APK (release-signed) → verify the
+# signing certificate, package, target SDK and no cleartext → checksum → GitHub release → Play closed testing.
+# Needs: secret EXPO_TOKEN, secret PLAY_SERVICE_ACCOUNT_JSON (for the Play step), variable RELEASE_CERT_SHA256.
+name: android-release
+on: { push: { tags: ["kadal-mitra-v*"] } }
+permissions: { contents: write }
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    environment: live
+    defaults: { run: { working-directory: apps/app } }
+    env:
+      HAS_PLAY_KEY: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - uses: expo/expo-github-action@v8
+        with: { eas-version: latest, token: "${{ secrets.EXPO_TOKEN }}" }
+      - run: pnpm install --frozen-lockfile
+      - name: Checks that must pass before a release build
+        run: pnpm exec tsc --noEmit && pnpm exec jest --ci && pnpm run check:i18n
+      - name: Build the live APK (EAS, release-signed)
+        run: eas build --profile live --platform android --non-interactive --wait --json > build.json
+      - name: Download and verify
+        run: |
+          curl -fsSL -o kadal-mitra.apk "$(jq -r '.[0].artifacts.buildUrl' build.json)"
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/apksigner" verify --print-certs kadal-mitra.apk | tee signer.txt
+          CERT=$(grep -m1 "certificate SHA-256 digest" signer.txt | awk '{print $NF}')
+          test "$CERT" = "$(echo '${{ vars.RELEASE_CERT_SHA256 }}' | tr -d ':' | tr 'A-F' 'a-f')"
+          "$BT/aapt2" dump badging kadal-mitra.apk | tee badging.txt
+          grep -q "package: name='in.tarangyukti.kadalmitra'" badging.txt
+          grep -q "targetSdkVersion:'36'" badging.txt
+          ! "$BT/aapt2" dump xmltree --file AndroidManifest.xml kadal-mitra.apk | grep -q 'usesCleartextTraffic.*=true'
+          sha256sum kadal-mitra.apk > kadal-mitra.apk.sha256
+      - name: Publish the signed APK and checksum on the GitHub release
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh release create "${GITHUB_REF_NAME}" kadal-mitra.apk kadal-mitra.apk.sha256 --notes "Release record in docs/releases.md"
+      - name: Build the Play bundle and submit to closed testing
+        if: env.HAS_PLAY_KEY == 'true'
+        run: |
+          printf '%s' '${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}' > play-service-account.json
+          eas build --profile store --platform android --non-interactive --wait --auto-submit
+          rm -f play-service-account.json

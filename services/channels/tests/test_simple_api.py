@@ -118,3 +118,15 @@ def test_consent_wording_has_a_version() -> None:
     assert r.status_code == 200
     body = r.json()
     assert body["notice_version"] and body["short"] and body["agree"]
+
+
+def test_app_version_and_client_errors(monkeypatch: pytest.MonkeyPatch) -> None:
+    from ty_channels.release import scrub
+
+    monkeypatch.setenv("APP_MIN_VERSION_CODE", "3")
+    v = client.get("/app/version").json()
+    assert v["minVersionCode"] == 3 and "latestVersionCode" in v
+    ok = {"message": "boom at 9.2881, 79.3133 for a@b.in", "platform": "android", "version": "0.1.0"}
+    assert client.post("/client-errors", json=ok).status_code == 204
+    assert client.post("/client-errors", json={**ok, "platform": "ios"}).status_code == 422
+    assert scrub("boom at 9.2881, 79.3133 for a@b.in") == "boom at <coords> for <email>"

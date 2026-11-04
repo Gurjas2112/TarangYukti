@@ -11,7 +11,7 @@ WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
         channels outbox i18n-draft sim-boat housekeeping failures-pull snapshot snapshot-upload snapshot-download sim-warning layers \
-        agent agent-purge brief-now db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
+        agent agent-purge smoke bicep brief-now db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
 	pnpm install
@@ -123,7 +123,21 @@ phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Su
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done
 
 # ── Later milestones (targets reserved so the interface is stable)
-demo run-prod:
-	@echo "$@: Milestone 10" && exit 1
+# ── Deployment (Milestone 10)
+demo:                # snapshot-mode demo on the laptop: every service + web build, then the smoke test
+	SNAPSHOT_DATE=$(DATE) scripts/demo.sh
+
+smoke:               # smoke test (laptop by default; CHANNELS=… COPILOT=… WEB=… for Azure)
+	scripts/smoke.sh
+
+bicep:               # validate the Azure templates (must build warning-free) — spec §16 Infra
+	for f in infra/azure/*.bicep; do az bicep build -f $$f --stdout > /dev/null || exit 1; done
+
+run-prod:            # build every image locally (Docker) the way ACR builds them
+	for s in agent:apps/agent mcp:services/mcp channels:services/channels worker:services/worker; do \
+	  docker build -f docker/Dockerfile.python --build-arg SERVICE_DIR=$${s#*:} -t ty-$${s%%:*}:local . || exit 1; done
+	docker build -f docker/Dockerfile.copilot -t ty-copilot:local .
+	pnpm -C apps/app exec expo export -p web && docker build -f docker/Dockerfile.web -t ty-web:local .
+
 trace-evals:
 	@echo "$@: Milestone 13" && exit 1

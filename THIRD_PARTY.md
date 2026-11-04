@@ -10,6 +10,8 @@ Added as each milestone starts using a source.
 | Open-Meteo Marine | `https://marine-api.open-meteo.com/v1/marine` | CC BY 4.0; free for non-commercial use | "Weather data by Open-Meteo.com" | Hourly waves, swell, currents, SST (`marine_forecast`) |
 | Open-Meteo Forecast | `https://api.open-meteo.com/v1/forecast` | CC BY 4.0; free for non-commercial use | "Weather data by Open-Meteo.com" | Wind and gusts at 10 m (`marine_forecast`, H6) |
 | NOAA OISST v2.1 NRT | CoastWatch ERDDAP `ncdcOisst21NrtAgg` | US Government work, public domain | NOAA NCEI / CoastWatch | Sea-surface temperature grid (`sst_grid`) |
+| NOAA OISST v2.1 NRT anomaly | CoastWatch ERDDAP `ncdcOisst21NrtAgg` (`anom`) | US Government work, public domain | NOAA NCEI / CoastWatch | SST anomaly vs 1991–2020 and the marine-heatwave test (`anomaly_series`) |
+| JPL MUR SST v4.1 | CoastWatch ERDDAP `jplMURSST41` | NASA/JPL PO.DAAC; free and open, cite the dataset | JPL MUR MEaSUREs Project (2015), GHRSST L4 MUR SST v4.1 | High-resolution SST for thermal fronts (`pfz_compute`) |
 | NOAA-20 VIIRS chlorophyll-a NRT | CoastWatch ERDDAP `noaacwN20VIIRSchlaDaily` | US Government work, public domain | NOAA CoastWatch / NESDIS | Chlorophyll grid (`chl_grid`) |
 | India–Sri Lanka maritime boundary | UN DOALOS treaty texts: [1974](https://www.un.org/depts/los/LEGISLATIONANDTREATIES/PDFFILES/TREATIES/LKA-IND1974BW.PDF), [1976](https://www.un.org/depts/los/LEGISLATIONANDTREATIES/PDFFILES/TREATIES/LKA-IND1976MB.PDF) | Public treaty text | Agreements of 26/28 June 1974 and 23 March 1976 | IMBL line for H2 (`fence_check`) — `data/layers/imbl.geojson` |
 | World Database on Protected Areas | UNEP-WCMC WDPA site 556326231 | WDPA terms of use (non-commercial; no redistribution of the full dataset) | UNEP-WCMC and IUCN, Protected Planet | Gulf of Mannar marine park + eco-sensitive zone for H3 — `data/layers/mpa_gom.geojson` |
@@ -42,3 +44,22 @@ Map displays must label the IMBL source and follow the Geospatial Guidelines 202
 | Google Gemini API | Agents and embeddings (Milestones 4–5) |
 | Sarvam AI | Speech and translation (Milestone 6) |
 | CopilotKit | Agent runtime and client (MIT) |
+| Azure Container Apps, Container Registry, Key Vault, Front Door, Application Insights | Hosting (Milestone 10); Central India |
+| Expo / EAS | App builds and push delivery (MIT for the SDK) |
+
+## Libraries in the app (open source)
+
+| Library | Licence | Use |
+|---|---|---|
+| React Native, Expo SDK, Expo Router | MIT | One app for Android and the web |
+| MapLibre GL JS | BSD-3-Clause | Expert map (web) |
+| deck.gl | MIT | Data layers on the map |
+| PMTiles | BSD-3-Clause | Offline map tiles (protocol registered; basemap in Milestone 11) |
+| Recharts | MIT | Analyst charts |
+| i18next, react-i18next | MIT | Interface languages |
+| TanStack Query, Zod | MIT | Data fetching and validation |
+| react-native-qrcode-svg | MIT | "Add this phone" and MFA codes |
+| Noto fonts (Milestone 10a) | SIL Open Font License | Every Indian script |
+
+Server-side Python libraries (FastAPI, LangGraph, LangChain, FastMCP, psycopg, Shapely, pyproj, h3, NumPy, xarray,
+Docling, pywebpush) are under MIT, BSD or Apache-2.0 licences; see each service's `uv.lock`.

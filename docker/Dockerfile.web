@@ -1,0 +1,8 @@
+# docker/Dockerfile.web — the Expo web build behind nginx with the single-page fallback (spec §17.12).
+# Build `pnpm -C apps/app exec expo export -p web` first (EXPO_PUBLIC_* are public values compiled into the build).
+FROM nginx:1.27-alpine
+COPY apps/app/dist/ /usr/share/nginx/html/
+# filled from FRONTDOOR_ID at start-up by the image's envsubst step (/etc/nginx/templates → conf.d)
+COPY docker/nginx.conf.template /etc/nginx/templates/default.conf.template
+ENV FRONTDOOR_ID=""
+EXPOSE 8080

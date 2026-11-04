@@ -27,6 +27,17 @@ jobs:
       - run: uv run mypy $([ "${{ matrix.project }}" = packages/ty-common ] && echo src || echo ". --exclude tests")
       - run: uv run pytest -q -m "not gpu and not llm"
 
+  bicep:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bicep builds warning-free (spec §16 Infra)
+        run: |
+          az bicep install
+          for f in infra/azure/*.bicep; do az bicep build -f "$f" --stdout > /dev/null 2> err.txt; cat err.txt; test ! -s err.txt; done
+      - name: No TraceRoot settings in Tier 1 (SEC-14)
+        run: "! grep -ri traceroot infra/azure"
+
   web:
     runs-on: ubuntu-24.04
     steps:
@@ -38,6 +49,7 @@ jobs:
       - run: pnpm -C apps/app lint
       - run: pnpm -C apps/app typecheck
       - run: pnpm -C apps/app test
+      - run: pnpm -C apps/app run check:i18n
       - run: pnpm -C apps/app exec expo export -p web
       - run: pnpm -C services/copilot typecheck
       - run: pnpm -C services/copilot test

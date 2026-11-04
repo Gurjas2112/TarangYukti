@@ -1,0 +1,35 @@
+# ty-web (spec §15.2.1, §17.12). The nginx image fills ${FRONTDOOR_ID} at start-up (templates → conf.d).
+# Allowed: no Front Door configured (laptop, slim demo tier), or the request carries this profile's X-Azure-FDID.
+# /healthz is exempt for the platform's probes. Hashed assets are immutable; the service worker is never cached.
+map "$http_x_azure_fdid|${FRONTDOOR_ID}" $ty_edge_ok {
+    default                              0;
+    "~\|$"                               1;
+    "${FRONTDOOR_ID}|${FRONTDOOR_ID}"    1;
+}
+
+server {
+    listen 8080;
+    root /usr/share/nginx/html;
+    server_tokens off;
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
+
+    location = /healthz { access_log off; default_type text/plain; return 200 "ok\n"; }
+
+    location /_expo/static/ {
+        if ($ty_edge_ok = 0) { return 403; }
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        try_files $uri =404;
+    }
+
+    location = /sw.js {
+        if ($ty_edge_ok = 0) { return 403; }
+        add_header Cache-Control "no-cache";
+        try_files $uri =404;
+    }
+
+    location / {
+        if ($ty_edge_ok = 0) { return 403; }
+        try_files $uri /index.html;
+    }
+}

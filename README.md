@@ -20,7 +20,39 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 7 · Expert console (web build) | **Done** — see below |
 | 8 · Alerts, trips, family, feedback | **Done** — see below |
 | 9 · Auth, RLS, admin | **Done** — see below (one dashboard switch left for you) |
-| 10 · Tier 1 environment + docs | Next |
+| 10 · Deployment (Azure slim demo tier) + docs | **Done** — templates, images and pipelines ready; not deployed yet (see below) |
+| 10a · Every Indian language (fonts, RTL, reviews) | Next |
+
+## Milestone 10 — deployment and docs
+
+Everything needed to run TarangYukti on **Azure Container Apps in Central India** — the slim demo tier chosen for
+the hosted prototype, and the full Tier 1 of the specification behind one parameter. Step-by-step:
+[docs/go-live.md](docs/go-live.md).
+
+- **Images** (`docker/`): one Python image for agent, MCP, channels and worker (`--build-arg SERVICE_DIR=…`, non-root,
+  config/data/kb baked in); the CopilotKit runtime on Node 24; the web build behind nginx with the single-page
+  fallback, immutable hashed assets and the Front Door check.
+- **Infrastructure** (`infra/azure/*.bicep`, warning-free): registry, Key Vault (RBAC, purge protection), managed
+  identity, Log Analytics (180 days), Container Apps environment, 6 apps (web, copilot, channels public; agent, MCP,
+  Redis internal), 4 jobs (watch every 15 min, push outbox every minute, nightly ingest, nightly purge/retention),
+  Application Insights with availability test, alerts and a budget. `tier=demo` scales to zero with no VNet;
+  `tier=live` adds zone redundancy, 2+ replicas and Front Door + WAF (300 req/min per IP, `/admin` from India only).
+- **Edge**: `ty_common.edge.FrontDoorOnly` (channels), the copilot wrapper and the nginx template answer 403 unless
+  the request came through this Front Door profile (health paths exempt); off when no Front Door is configured.
+- **Pipelines**: `deploy-azure.yml` (OIDC, ACR builds, Bicep deploy, smoke test incl. the direct-origin 403) runs
+  after CI once the repository variable `AZURE_DEPLOY=true` is set; `android-release.yml` builds, verifies (signing
+  certificate, package, target SDK, no cleartext) and publishes the APK from a `kadal-mitra-v*` tag; CI now also
+  checks the Bicep templates and the 23 language catalogues.
+- **App release info**: channels `GET /app/version` (update banner / forced update) and `POST /client-errors`
+  (scrubbed of coordinates, e-mails and tokens).
+- **Operations**: `make demo` (snapshot mode, every service, smoke test), `make smoke` (laptop or Azure URLs),
+  `make bicep`, `make run-prod` (build the images with Docker), `tests/load/dawn_rush.py` (Gate L1).
+- **Docs**: [go-live](docs/go-live.md), [incident runbook](docs/incident-runbook.md), [DPIA draft](docs/dpia.md),
+  [governance](docs/governance.md), [test report](docs/test-report.md), [releases](docs/releases.md).
+
+Not done yet, and why: nothing is deployed — that needs the pay-as-you-go subscription and your go-ahead (costs
+money); the container images have not been built on this laptop because Docker was not running (ACR builds them on
+the first deployment); Gate L1, the restore drill and VAPT belong to live testing with real users.
 
 ## Milestone 9 — roles, row-level security, admin console, governance
 

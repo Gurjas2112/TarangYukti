@@ -1,0 +1,71 @@
+# Deploy to Azure Container Apps (spec §15.2.4). Runs after CI passes on main — only when the repository variable
+# AZURE_DEPLOY is "true" (set it once the platform, secrets and OIDC app registration exist; docs/go-live.md) —
+# or by hand (workflow_dispatch). GitHub signs in with OpenID Connect; the `live` environment can require approval.
+#
+# Repository/environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID, AZURE_RESOURCE_GROUP,
+# ACR_NAME, AZURE_TIER (demo|live), AZURE_FRONT_DOOR (true|false), SUPABASE_URL, SNAPSHOT_DATE, ONCALL_EMAIL,
+# ONCALL_PHONE, EXPO_PUBLIC_SUPABASE_URL, EXPO_PUBLIC_SUPABASE_ANON_KEY, EXPO_PUBLIC_COPILOT_URL,
+# EXPO_PUBLIC_CHANNELS_URL, EXPO_PUBLIC_VAPID_PUBLIC_KEY, EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID (all public values).
+name: deploy-azure
+on:
+  workflow_run: { workflows: ["ci"], types: [completed], branches: [main] }
+  workflow_dispatch: {}
+permissions: { id-token: write, contents: read }
+concurrency: { group: deploy-azure, cancel-in-progress: false }
+
+jobs:
+  deploy:
+    if: >-
+      vars.AZURE_DEPLOY == 'true' &&
+      (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-24.04
+    environment: live
+    env:
+      ACR: ${{ vars.ACR_NAME }}
+      RG: ${{ vars.AZURE_RESOURCE_GROUP || 'ty-live' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - name: Web export (public values only)
+        env:
+          EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          EXPO_PUBLIC_COPILOT_URL: ${{ vars.EXPO_PUBLIC_COPILOT_URL }}
+          EXPO_PUBLIC_CHANNELS_URL: ${{ vars.EXPO_PUBLIC_CHANNELS_URL }}
+          EXPO_PUBLIC_VAPID_PUBLIC_KEY: ${{ vars.EXPO_PUBLIC_VAPID_PUBLIC_KEY }}
+          EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID: ${{ vars.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID }}
+          APP_ENV: production
+        run: pnpm install --frozen-lockfile && pnpm -C apps/app exec expo export -p web
+      - name: Validate the templates
+        run: |
+          az bicep build -f infra/azure/main.bicep --stdout > /dev/null
+      - name: Build images in ACR
+        run: |
+          T=${GITHUB_SHA::12}
+          for s in agent:apps/agent mcp:services/mcp channels:services/channels worker:services/worker; do
+            az acr build -r "$ACR" -t "ty-${s%%:*}:$T" -f docker/Dockerfile.python --build-arg SERVICE_DIR="${s#*:}" .
+          done
+          az acr build -r "$ACR" -t "ty-copilot:$T" -f docker/Dockerfile.copilot .
+          az acr build -r "$ACR" -t "ty-web:$T" -f docker/Dockerfile.web .
+      - name: Deploy (new revisions; traffic moves only when probes pass)
+        run: |
+          az deployment group create -g "$RG" -n main -f infra/azure/main.bicep \
+            -p tier=${{ vars.AZURE_TIER || 'demo' }} useFrontDoor=${{ vars.AZURE_FRONT_DOOR || 'false' }} \
+               deployApps=true imageTag=${GITHUB_SHA::12} supabaseUrl=${{ vars.SUPABASE_URL }} \
+               snapshotDate=${{ vars.SNAPSHOT_DATE }} oncallEmail=${{ vars.ONCALL_EMAIL }} \
+               oncallPhone=${{ vars.ONCALL_PHONE }} budgetStart=$(date +%Y-%m-01)
+      - name: Smoke test
+        run: |
+          curl -fsS --retry 6 --retry-delay 20 --retry-all-errors "${{ vars.EXPO_PUBLIC_CHANNELS_URL }}/health"
+          curl -fsS "${{ vars.EXPO_PUBLIC_CHANNELS_URL }}/languages" > /dev/null
+          if [ "${{ vars.AZURE_FRONT_DOOR }}" = "true" ]; then
+            ORIGIN=$(az containerapp show -g "$RG" -n ty-channels --query properties.configuration.ingress.fqdn -o tsv)
+            test "$(curl -s -o /dev/null -w '%{http_code}' "https://$ORIGIN/languages")" = "403"   # origin refuses direct calls
+          fi

@@ -15,9 +15,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from ty_common import db
+from ty_common.edge import FrontDoorOnly
 from ty_common.settings import get_settings
 
-from . import admin, expert, me, public, rights, trips, voice
+from . import admin, expert, me, public, release, rights, trips, voice
 
 
 @asynccontextmanager
@@ -36,6 +37,7 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
+app.add_middleware(FrontDoorOnly, exempt=("/health",))  # Tier 1: only Front Door reaches channels
 app.include_router(public.router)
 app.include_router(voice.router)
 app.include_router(me.router)
@@ -43,6 +45,7 @@ app.include_router(expert.router)
 app.include_router(trips.router)
 app.include_router(rights.router)
 app.include_router(admin.router)
+app.include_router(release.router)
 
 
 @app.get("/health")

@@ -11,7 +11,8 @@
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
     "test": "jest --ci",
-    "e2e:web": "playwright test"
+    "e2e:web": "playwright test",
+    "check:i18n": "node scripts/check-i18n.mjs"
   },
   "dependencies": {
     "@copilotkit/react-native": "^1.83.0",

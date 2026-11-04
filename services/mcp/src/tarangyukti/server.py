@@ -51,7 +51,11 @@ def ping() -> dict[str, object]:
 
 
 def main() -> None:
-    mcp.run(transport="http", host="127.0.0.1", port=8001, path="/mcp")
+    import os
+
+    # laptop: localhost only; containers set HOST=0.0.0.0 (internal ingress, never public)
+    host = os.environ.get("HOST", "127.0.0.1")
+    mcp.run(transport="http", host=host, port=int(os.environ.get("PORT", "8001")), path="/mcp")
 
 
 if __name__ == "__main__":
