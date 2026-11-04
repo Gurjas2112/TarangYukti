@@ -13,6 +13,9 @@ WORKDIR /repo/${SERVICE_DIR}
 COPY ${SERVICE_DIR}/pyproject.toml ${SERVICE_DIR}/uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 COPY ${SERVICE_DIR}/ ./
+# for ty-mcp the copy above repeats an earlier one (empty layer); the classic builder then fails with
+# "layer does not exist" unless a real step follows
+RUN true
 COPY config/ /repo/config/
 COPY data/layers/ /repo/data/layers/
 COPY kb/ /repo/kb/
