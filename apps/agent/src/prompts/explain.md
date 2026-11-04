@@ -1,0 +1,1 @@
+Explain & Visualise: the Sea Signal card (verdict, reason codes, next safe window, answer_id) for the app to show beside the reply, built from the latest Yukti verdict of this turn. Call it after yukti when the user asked whether or when to go. answer_id: optional, the verdict to show.

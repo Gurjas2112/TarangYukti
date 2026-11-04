@@ -7,7 +7,7 @@ import logging
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-from . import ingest_once, watch_once
+from . import agent_purge, ingest_once, watch_once
 
 log = logging.getLogger("ty_worker")
 
@@ -16,6 +16,7 @@ def build_scheduler() -> AsyncIOScheduler:
     s = AsyncIOScheduler(timezone="UTC")
     s.add_job(watch_once.run, "cron", minute="*/15", id="watch")
     s.add_job(ingest_once.run, "cron", hour=20, minute=30, id="ingest")  # 02:00 IST
+    s.add_job(agent_purge.run, "cron", hour=21, minute=0, id="agent_purge")  # 02:30 IST
     return s
 
 

@@ -133,9 +133,7 @@ async def test_error_without_lastgood_raises_and_releases_lock(cache: Cache) -> 
     assert (await tool("8761", "v1"))["wave_m"] == 1.2
 
 
-async def test_tag_invalidation_clears_l1_in_other_process(
-    cache: Cache, server: fakeredis.FakeServer
-) -> None:
+async def test_tag_invalidation_clears_l1_in_other_process(cache: Cache, server: fakeredis.FakeServer) -> None:
     up = Upstream()
     other = other_process(server)
     await other.start_listener()

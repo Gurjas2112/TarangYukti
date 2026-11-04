@@ -21,6 +21,7 @@ dependencies = [
     "docling>=2.40",
     "defusedxml>=0.7",
     "tarangyukti",
+    "langgraph-checkpoint-postgres>=3.0",
 ]
 
 [dependency-groups]

@@ -1,0 +1,1 @@
+Ocean Analytics: sea-surface temperature or chlorophyll for the whole Gulf of Mannar / Palk Bay region (min, mean, max, data time, cloud-masked share), or the latest official INCOIS Potential Fishing Zone advisory. what: "sst" | "chlorophyll" | "pfz".

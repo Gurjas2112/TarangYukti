@@ -37,7 +37,11 @@ def find_config_dir() -> Path:
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=_find_env_file(), env_file_encoding="utf-8", extra="ignore", case_sensitive=False
+        env_file=_find_env_file(),
+        env_file_encoding="utf-8",
+        extra="ignore",
+        case_sensitive=False,
+        env_ignore_empty=True,  # "KEY=" in .env means unset, not an empty secret
     )
 
     env: Literal["local", "ci", "preview", "live"] = "local"

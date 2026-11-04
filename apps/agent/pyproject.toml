@@ -24,6 +24,7 @@ dependencies = [
     "opentelemetry-exporter-otlp>=1.28",
     "openinference-instrumentation-langchain>=0.1",
     "traceroot>=0.1",
+    "sarvamai>=0.1",
 ]
 
 [dependency-groups]
@@ -52,14 +53,17 @@ pythonpath = ["."]
 markers = ["llm: calls a live model", "gpu: needs a GPU"]
 
 [tool.ruff]
-line-length = 110
+line-length = 120
 target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "ASYNC", "RUF"]
-ignore = ["UP046", "UP047"]
+ignore = ["UP046", "UP047", "RUF001", "RUF002", "RUF003", "B008"]  # en dashes intended; FastAPI Depends defaults
 
 [tool.mypy]
 strict = true
 python_version = "3.12"
 ignore_missing_imports = true
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501", "RUF012", "RUF059"]

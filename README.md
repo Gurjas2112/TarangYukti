@@ -15,7 +15,32 @@ voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Ma
 | 2 · Data tools + cache + snapshots | **Done** — see below |
 | 3 · Yukti engine + route | **Done** — see below |
 | 4 · RAG | **Done** — see below |
-| 5 · Agent graph | Next |
+| 5 · Agent graph | **Done** — see below |
+| 6 · Simple mode on both targets | Next |
+
+## Milestone 5 — the agent
+
+`apps/agent` serves the LangGraph agent over AG-UI (`make agent`, `POST /agent`, `GET /ok`); `ty-copilot` forwards to it.
+
+- **Graph**: prepare (Language agent: keeps the reply language, mode, boat) → button flow (deterministic, no LLM)
+  or planner (Gemini, `create_agent`, 7 specialists wrapped as tools: data discovery, weather, ocean, geospatial,
+  knowledge, Yukti, explain) → validator → finalize.
+- **Specialists** call the MCP tools in parallel and return compact digests with IST times; the planner only sees
+  digests, so every figure it can use comes from a ToolResult.
+- **Validator**: numbers and times grounded in the turn's tool outputs, `[Kn]` citations verbatim, no codes in
+  Simple mode, never "safe" without "advisory"; one rewrite, then a template from the ledger.
+- **Simple mode** shows the verdict from approved phrases only; free text is drafted in English and translated
+  with Sarvam (international numerals; English is sent if any number changed). Footer always added.
+- **LLM down** (timeout or API error): button flows still answer from the Yukti ledger; free-form questions get the
+  "needs the internet" phrase. Planner effort is `low` by default (`ORCA_PLANNER_EFFORT`): medium and high hit the
+  20 s timeout in live runs.
+- **Memory**: thread state in Postgres schema `agent` (`AsyncPostgresSaver`); the first caller owns a thread
+  (another user → 403); one run per thread (Redis lock → 409); nightly purge after 30 days (`make agent-purge`).
+  Verified: a new server process continues a conversation started before the restart.
+- **Failures harness**: `tests/failures/failures.yaml` (+ `ids.lock`) is replayed by `make test`; rows can't be removed.
+- **Telemetry**: one tracer per process (OTLP → Grafana, Azure Monitor in Tier 1, TraceRoot for test runs only);
+  exported spans are scrubbed of tokens, phones, e-mails and coordinates. Seeing traces in Grafana needs Docker
+  (`make infra-up`) — not verified yet because Docker Desktop was not running.
 
 ## Milestone 4 — knowledge search (RAG)
 

@@ -65,9 +65,7 @@ def embed_sync(texts: list[str]) -> list[list[float]]:
 @cached(
     ns="emb",
     ttl=7 * 86400,
-    key=lambda query: fingerprint(
-        norm_text(query, lower=True), get_settings().embed_model, get_settings().embed_dim
-    ),
+    key=lambda query: fingerprint(norm_text(query, lower=True), get_settings().embed_model, get_settings().embed_dim),
 )
 async def embed_query(query: str) -> list[float]:
     vecs = await asyncio.to_thread(embed_sync, [query_text(norm_text(query))])

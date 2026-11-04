@@ -1,0 +1,61 @@
+# Every failure becomes a permanent test (prompt §13, spec §6.4.4).
+# Each wrong answer found by the team, a fisher's thumbs-down or the Guardrail review gets a row here. `make test`
+# replays every row: rows with layer "agent" run in apps/agent/tests/test_failures.py, rows with layer "tools"
+# in services/mcp/tests/test_failures.py. A fix is done only when its row passes. Rows are never deleted:
+# tests/failures/ids.lock lists every id ever added and CI fails if one disappears.
+#
+# Fields: id, found, layer, input, snapshot, wrong, cause, guard, expect.
+
+- id: F-001
+  found: 2026-11-03 · build (Milestone 3 live run)
+  layer: tools
+  input: { boat_type: small_frp, start: [9.288, 79.313], goal: [9.55, 79.30] }
+  snapshot: null
+  wrong: "Rameswaram → Palk Bay returned NO-GO 'no route' although open water connects them"
+  cause: the harbour's own H3 cell is land at resolution 7, so route search refused to leave it on the way back
+  guard: start and goal cells are exempt from the land mask (route.removed keep-set; astar only refuses a fenced goal)
+  expect: { route_found: true }
+
+- id: F-002
+  found: 2026-11-03 · build (Milestone 3 live run)
+  layer: tools
+  input: { concurrent_calls: 12, redis: down }
+  snapshot: null
+  wrong: "tools crashed with redis TimeoutError when several started together while Redis was down"
+  cause: concurrent callers pinged Redis before the first ping recorded it as down; a mid-request Redis error was not caught
+  guard: one ping at a time (lock) and any Redis error mid-request degrades to the in-process cache
+  expect: { all_answered: true }
+
+- id: F-003
+  found: 2026-11-04 · build (Milestone 5 live run)
+  layer: agent
+  input: { text: "What does the Tamil Nadu law say about when mechanised boats may leave harbour?", lang: en-IN }
+  snapshot: null
+  wrong: "Gemini returned 504 DEADLINE_EXCEEDED at high (and later medium) reasoning effort"
+  cause: planner reasoning effort too high for the 20 s LLM timeout
+  guard: planner runs at low effort (ORCA_PLANNER_EFFORT); any LLM error gives the approved needs-network phrase,
+    never invented text
+  expect: { contains: "I need the internet", template_fallback: true }
+
+- id: F-004
+  found: 2026-11-04 · spec example (§16 Grounding)
+  layer: agent
+  input: { draft: "Waves will reach 2.7 m by noon.", tool_texts: ["{\"max_wave_m\": 0.7}"] }
+  snapshot: null
+  wrong: "a draft stated a wave height that no tool returned"
+  cause: the LLM invented a number
+  guard: numeric grounding check in the validator
+  expect: { ungrounded: ["2.7 m"] }
+
+- id: F-005
+  found: 2026-11-04 · spec example (§16 Provenance)
+  layer: agent
+  input:
+    draft: "Mechanised boats may leave only after 6 am [K1]."
+    citations: [{ marker: K1, quote: "leave the harbour only after 6 am" }]
+    passages: { K1: "The mechanised fishing vessel shall leave the notified place of berthing only after 5 am." }
+  snapshot: null
+  wrong: "a citation paraphrased the document and changed the time"
+  cause: the quote was not copied word for word
+  guard: verbatim quote check drops the sentence
+  expect: { quote_dropped: ["K1"], text: "" }

@@ -1,0 +1,1 @@
+Data Discovery: list the datasets TarangYukti can use, whether each is live or snapshot-only, and how fresh it must be. Call it when the user asks what data is available or where an answer comes from. No arguments.

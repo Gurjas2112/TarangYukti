@@ -29,6 +29,7 @@ dev = [
     "mypy>=1.13",
     "types-cachetools",
     "types-pyyaml",
+    "opentelemetry-sdk>=1.28",
 ]
 
 [build-system]
@@ -45,7 +46,7 @@ testpaths = ["tests"]
 markers = ["llm: calls a live model", "gpu: needs a GPU"]
 
 [tool.ruff]
-line-length = 110
+line-length = 120
 target-version = "py312"
 
 [tool.ruff.lint]
@@ -55,3 +56,7 @@ ignore = ["UP046", "UP047", "RUF001"]  # explicit TypeVar/ParamSpec; typographic
 [tool.mypy]
 strict = true
 python_version = "3.12"
+
+[[tool.mypy.overrides]]
+module = ["traceroot.*", "azure.*", "opentelemetry.*", "openinference.*"]
+ignore_missing_imports = true

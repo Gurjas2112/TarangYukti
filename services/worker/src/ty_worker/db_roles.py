@@ -32,6 +32,16 @@ grant usage, select on all sequences in schema public to ty_worker;
 alter default privileges in schema public grant select, insert, update on tables to ty_worker;
 alter default privileges in schema public grant usage, select on sequences to ty_worker;
 grant usage on schema extensions to ty_worker, ty_api;
+do $$ begin
+  if exists (select from pg_namespace where nspname = 'agent') then
+    grant usage, create on schema agent to ty_agent;
+    grant select, insert, update, delete on all tables in schema agent to ty_agent;
+    alter default privileges in schema agent grant select, insert, update, delete on tables to ty_agent;
+    grant usage on schema agent to ty_worker;
+    grant select, delete on all tables in schema agent to ty_worker;
+    alter default privileges in schema agent grant select, delete on tables to ty_worker;
+  end if;
+end $$;
 """
 
 

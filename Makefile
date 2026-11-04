@@ -11,7 +11,7 @@ WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
         snapshot snapshot-upload snapshot-download sim-warning layers \
-        db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
+        agent agent-purge db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
 	pnpm install
@@ -24,7 +24,7 @@ infra-down:
 	$(COMPOSE) down
 
 dev: infra-up
-	(cd apps/agent && uv run uvicorn server:app --port 8123 --reload) & \
+	(cd apps/agent && uv run python serve.py --port 8123) & \
 	(cd services/mcp && uv run python -m tarangyukti.server) & \
 	(cd services/channels && uv run uvicorn ty_channels.app:app --port 8002 --reload) & \
 	(cd services/worker && uv run python -m ty_worker) & \
@@ -79,12 +79,20 @@ kb-query:            # make kb-query Q="fishing ban east coast"
 eval-rag:            # recall@8 on apps/agent/tests/golden.jsonl, appended to docs/eval-report.md
 	$(MCP) tarangyukti.rag.eval --report ../../docs/eval-report.md
 
+# ── Agent (Milestone 5)
+agent:               # ty-agent on :8123 (Postgres thread memory; selector loop on Windows)
+	cd apps/agent && uv run python serve.py --port 8123
+
+agent-purge:         # delete conversation threads unused for 30 days
+	$(WORKER) ty_worker.agent_purge
+
+test-local:          # tests that call live models (Gemini) — run on the laptop, commit the report
+	cd apps/agent && uv run pytest -q -m llm
+
 phone:       # USB phone's localhost → laptop: Metro, ty-copilot, channels, Supabase
 	for p in 8081 8200 8002 54321; do adb.exe reverse tcp:$$p tcp:$$p; done
 
 # ── Later milestones (targets reserved so the interface is stable)
-test-local:
-	@echo "$@: Milestone 5" && exit 1
 push-test:
 	@echo "$@: Milestone 6" && exit 1
 test-rls:
