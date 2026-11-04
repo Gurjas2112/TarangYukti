@@ -1,10 +1,11 @@
 # Governance contacts shown in Me → Help in every language (spec §9.5, DPDP grievance redressal).
 # Solo build (Annexure I): one person holds every role. Governed file: privacy officer.
-# TODO(tarangyukti): replace the placeholders with the real grievance officer and contact before any real user.
-version: 1
+# v2 (2026-11-04): SAMPLE contact for the prototype demo (reserved example.org domain, no real person).
+# TODO(tarangyukti): replace with the real grievance officer and a monitored address before any real user (Gate LT).
+version: 2
 grievance_officer:
-  name: "TarangYukti grievance officer (to be named)"
-  email: "grievance@tarangyukti.invalid"
+  name: "Grievance Officer, TarangYukti prototype (sample)"
+  email: "grievance@example.org"
 response_days: 30          # acknowledge within; erasure completes within 90 days (DPDP Rules, REG-01)
 erasure_days: 90
 deletion_undo_days: 7

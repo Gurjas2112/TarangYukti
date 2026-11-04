@@ -12,3 +12,4 @@ what changed, why, the evaluation, and who approved it. Solo build (Annexure I):
 | 2026-11-04 | `constraints.yaml` v4: `pfz_compute` and `heatwave` thresholds; `sources.yaml` v6: OISST anomaly + MUR SST | Analyst tools (Milestone 7); OISST 0.25° too smooth for fronts | Ocean tool tests; live run (4 zones, +1.79 °C anomaly) | Owner |
 | 2026-11-04 | `harbours.yaml` v2: 1.5 km geofence; phrases: border/park alerts, trip, family | Trips and alerts (Milestone 8) | Trip rule tests; live simulated trip | Owner |
 | 2026-11-04 | Phrases: `chat_paused` (kill switch); `governance.yaml` v1 (grievance officer placeholder) | Milestone 9 | Agent record tests; RLS tests | Owner — grievance contact still to be named |
+| 2026-11-04 | `governance.yaml` v2: sample grievance officer (`grievance@example.org`) | Help must name a contact; the real one is still to be appointed | `/help` returns it | Owner — replace before any real user |
