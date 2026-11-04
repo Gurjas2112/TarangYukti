@@ -44,7 +44,9 @@ not approved, and none are approved yet (see `docs/releases.md`).
      read -rsp "$s: " v && echo && az keyvault secret set --vault-name "$KV" -n "$s" --value "$v" -o none
    done
    ```
-4. **Images** (CI does this on every deploy; by hand the first time):
+4. **Images** (CI does this on every deploy; by hand the first time). On Windows, build from a clean export of
+   the commit (`git archive HEAD | tar -x -C <dir>` plus `apps/app/dist`) — packing the working tree with
+   `node_modules` is slow enough for the upload link to expire:
    ```bash
    az acr import --name "$ACR" --source docker.io/library/redis:7.4-alpine --image redis:7.4-alpine
    T=$(git rev-parse --short=12 HEAD)
@@ -53,7 +55,7 @@ not approved, and none are approved yet (see `docs/releases.md`).
    az acr build -r "$ACR" -t "ty-copilot:$T" -f docker/Dockerfile.copilot .
    EXPO_PUBLIC_COPILOT_URL=<copilotUrl> EXPO_PUBLIC_CHANNELS_URL=<channelsUrl> EXPO_PUBLIC_SUPABASE_URL=<…> \
    EXPO_PUBLIC_SUPABASE_ANON_KEY=<publishable key> EXPO_PUBLIC_VAPID_PUBLIC_KEY=<azure public key> \
-     pnpm -C apps/app exec expo export -p web
+     APP_ENV=preview pnpm -C apps/app exec expo export -p web --clear   # --clear: Metro caches inlined values
    az acr build -r "$ACR" -t "ty-web:$T" -f docker/Dockerfile.web .
    ```
 5. **Apps and jobs**: `az deployment group create -g ty-live -n main -f infra/azure/main.bicep -p deployApps=true imageTag=$T $P`

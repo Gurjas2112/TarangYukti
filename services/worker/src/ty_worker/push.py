@@ -32,8 +32,9 @@ class Message(TypedDict):
 
 async def _expo(sub: dict[str, Any], msg: Message, urgent: bool, s: Settings) -> bool | None:
     headers = {"Accept": "application/json", "Content-Type": "application/json"}
-    if s.expo_access_token is not None:
-        headers["Authorization"] = f"Bearer {s.expo_access_token.get_secret_value()}"
+    token = s.expo_access_token.get_secret_value() if s.expo_access_token is not None else ""
+    if token and token != "none":  # "none" = Key Vault placeholder: Expo push without enhanced security
+        headers["Authorization"] = f"Bearer {token}"
     payload = {
         "to": sub["endpoint"],
         "title": msg["title"],
