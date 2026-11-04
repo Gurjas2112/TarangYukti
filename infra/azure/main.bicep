@@ -430,7 +430,8 @@ module redis 'app.bicep' = if (deployApps) {
 
 var jobs = [
   { name: 'ty-watch', cron: '*/15 * * * *', cpu: '0.5', memory: '1Gi', timeout: 600, cmd: ['python', '-m', 'ty_worker.watch_once'] }
-  { name: 'ty-outbox', cron: '* * * * *', cpu: '0.25', memory: '0.5Gi', timeout: 55, cmd: ['python', '-m', 'ty_worker.outbox'] }
+  // push sender: one start every 5 min (the worker image is large), sending every 30 s for 4.5 min
+  { name: 'ty-outbox', cron: '*/5 * * * *', cpu: '0.25', memory: '0.5Gi', timeout: 299, cmd: ['python', '-m', 'ty_worker.outbox', '--loop', '270'] }
   { name: 'ty-ingest', cron: '30 20 * * *', cpu: '1', memory: '2Gi', timeout: 3600, cmd: ['python', '-m', 'ty_worker.ingest_once'] } // 02:00 IST
   {
     name: 'ty-nightly' // 02:30 IST: 30-day thread purge, deletions after the 7-day undo, retention

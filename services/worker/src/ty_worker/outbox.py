@@ -118,9 +118,29 @@ async def run() -> None:
         log.info("outbox: %s", counts)
 
 
+async def loop(seconds: float, every: float = 30.0) -> None:
+    """Send queued pushes every `every` seconds for `seconds` (one job start covers several minutes)."""
+    import asyncio
+
+    end = asyncio.get_running_loop().time() + seconds
+    while True:
+        try:
+            await run()
+        except Exception:
+            log.exception("outbox pass failed; trying again")
+        if asyncio.get_running_loop().time() + every >= end:
+            return
+        await asyncio.sleep(every)
+
+
 def main() -> None:
+    import argparse
+
     logging.basicConfig(level=logging.INFO)
-    run_async(run())
+    ap = argparse.ArgumentParser(prog="ty_worker.outbox")
+    ap.add_argument("--loop", type=float, default=0, help="keep sending every 30 s for this many seconds")
+    a = ap.parse_args()
+    run_async(loop(a.loop) if a.loop > 0 else run())
 
 
 if __name__ == "__main__":
