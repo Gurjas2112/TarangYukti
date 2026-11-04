@@ -124,3 +124,10 @@ def test_briefs_and_tests_bypass_the_budget() -> None:
     night = datetime(2026, 11, 3, 22, 0, tzinfo=UTC)  # 03:30 IST
     assert budget.decide(kind="brief", critical=False, now=night, sent_non_critical_today=5) == "send"
     assert budget.decide(kind="test", critical=False, now=night) == "send"
+
+
+def test_slot_stops_before_next_scheduled_start() -> None:
+    # Job starts at 18:40:00 (slot 300 s); the image takes 75 s to pull.
+    start = 1_793_904_000.0  # a multiple of 300
+    assert outbox.seconds_left_in_slot(300, now=start + 75) == 300 - 20 - 75
+    assert outbox.seconds_left_in_slot(300, now=start + 290) == 0.0

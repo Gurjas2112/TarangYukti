@@ -133,14 +133,25 @@ async def loop(seconds: float, every: float = 30.0) -> None:
         await asyncio.sleep(every)
 
 
+def seconds_left_in_slot(slot: float, margin: float = 20.0, now: float | None = None) -> float:
+    """Seconds until `margin` before the next multiple of `slot` (Unix time). A scheduled job started every
+    `slot` seconds stops before its deadline however long the image took to pull."""
+    import time as _time
+
+    t = _time.time() if now is None else now
+    return max(0.0, (t // slot + 1) * slot - margin - t)
+
+
 def main() -> None:
     import argparse
 
     logging.basicConfig(level=logging.INFO)
     ap = argparse.ArgumentParser(prog="ty_worker.outbox")
     ap.add_argument("--loop", type=float, default=0, help="keep sending every 30 s for this many seconds")
+    ap.add_argument("--slot", type=float, default=0, help="keep sending until 20 s before the next slot boundary")
     a = ap.parse_args()
-    run_async(loop(a.loop) if a.loop > 0 else run())
+    seconds = seconds_left_in_slot(a.slot) if a.slot > 0 else a.loop
+    run_async(loop(seconds) if seconds > 0 else run())
 
 
 if __name__ == "__main__":
