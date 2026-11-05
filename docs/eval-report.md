@@ -22,3 +22,30 @@ Misses:
 
 - `en-ban-east-coast` When is the annual fishing ban on the east coast? — expected ['dof:fishing-ban'], got ['act:tn-marine-fishing-regulation-2017-amendment', 'act:tn-marine-fishing-regulation-2017-amendment', 'act:tn-marine-fishing-regulation-1983']
 - `ta-ban-east-coast` கிழக்குக் கடற்கரையில் ஆண்டு மீன்பிடி தடைக்காலம் எப்போது? — expected ['dof:fishing-ban'], got ['act:tn-marine-fishing-regulation-2017-amendment', 'act:tn-marine-fishing-regulation-1983', 'act:tn-marine-fishing-regulation-2017-amendment']
+
+## RAG retrieval evaluation, every language — 2026-11-05
+
+Golden sets of Milestone 10a: 20 machine-drafted questions for each of 21 languages (16 answerable, 4 the corpus
+cannot answer; `apps/agent/tests/golden/<code>.jsonl`, pending native-speaker review) and 20 code-mixed
+cross-language questions (`golden/cross.jsonl`). 440 questions, `kb_hybrid_search` with the cache off, measured with
+`python -m tarangyukti.rag.eval --golden <file>`. Gate: recall@8 ≥ 0.9.
+
+| Set | recall@8 | unanswerable recognised |
+|---|---|---|
+| doi, gom, gu, hi, kn, ks, mai, ml, mni, mr, ne, or, pa, sat, sd, te, ur | 0.938 each | 1.00 each |
+| sa | 0.938 | 0.75 |
+| as, bn, brx | 0.875 each | 1.00 each |
+| cross (code-mixed) | 0.833 | 1.00 |
+| **mean** | **0.925** | |
+
+**Why the misses happen.** 24 of the 30 misses are one question, "When is the annual fishing ban on the east
+coast?", in every language: its source, the Department of Fisheries ban order (PIB release 2114930), is **not in the
+index** because PIB refuses automated clients and the page has not been saved by hand yet
+(`kb/sources/captured/pib-2114930.html`, see `kb/sources/manifest.yaml`). The retriever returns the Tamil Nadu
+Marine Fishing Regulation Act instead, which is the closest document present. Without that question every language
+set is at or above the gate except the cross set (0.875: the Kachchatheevu question in Telugu script with English
+names). The remaining real weakness is the "official high wave warning" question in Assamese, Bengali and Bodo (the
+safety SOP is not retrieved).
+
+**Next:** save the PIB page and re-index (`make kb-index`), then re-run; add Assamese, Bengali and Bodo spellings of
+"high wave warning" to `config/aliases.yaml` once their reviewers confirm the terms.

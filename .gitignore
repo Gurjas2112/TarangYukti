@@ -45,3 +45,4 @@ apps/app/promptfoo/pf-latest.json
 video/out/
 video/recordings/
 video/props.*.json
+data/capture/
