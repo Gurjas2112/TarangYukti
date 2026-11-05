@@ -1,0 +1,9 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F12–F13 (route and offline tiles: Milestone 11)
+- tapOn: { id: "tab-map" }
+- extendedWaitUntil: { visible: { id: "map-screen" }, timeout: 60000 }
+- waitForAnimationToEnd: { timeout: 8000 }
+- takeScreenshot: A04-map/01-pfz
+- scrollUntilVisible: { element: { id: "map-border" }, direction: DOWN, timeout: 20000 }
+- takeScreenshot: A04-map/04-border-mpa

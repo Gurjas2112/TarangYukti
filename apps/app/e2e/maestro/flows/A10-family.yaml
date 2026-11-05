@@ -1,0 +1,9 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F23: sharing needs a signed-in test fisher
+- tapOn: { id: "tab-me" }
+- extendedWaitUntil: { visible: { id: "me-screen" }, timeout: 30000 }
+- runFlow:
+    when: { visible: { id: "family-sharing" } }
+    commands:
+      - takeScreenshot: A10-family/01-share

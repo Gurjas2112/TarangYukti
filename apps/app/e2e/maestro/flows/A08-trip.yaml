@@ -1,0 +1,19 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F18–F21: needs a signed-in test fisher with a boat; background alerts are Milestone 11.
+- tapOn: { id: "tab-trip" }
+- extendedWaitUntil: { visible: { id: "trip-screen" }, timeout: 30000 }
+- runFlow:
+    when: { visible: { id: "trip-none" } }
+    commands:
+      - travel: { points: ["9.288, 79.313", "9.35, 79.45"], speed: 30 }
+- runFlow:
+    when: { visible: { id: "trip-open" } }
+    commands:
+      - takeScreenshot: A08-trip/01-trip-started
+      - takeScreenshot: A08-trip/02-distance
+      - tapOn: { id: "trip-im-back" }
+      - takeScreenshot: A08-trip/10-im-back
+      - tapOn: { id: "feedback-right" }
+      - takeScreenshot: A08-trip/11-feedback
+      - takeScreenshot: A08-trip/12-track-record

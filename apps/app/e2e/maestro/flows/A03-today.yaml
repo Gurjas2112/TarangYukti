@@ -1,0 +1,15 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F09–F11
+- tapOn: { id: "tab-today" }
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- takeScreenshot: A03-today/01-verdict
+- scrollUntilVisible: { element: { id: "time-ribbon" }, direction: DOWN, timeout: 20000 }
+- takeScreenshot: A03-today/02-ribbon
+- scrollUntilVisible: { element: { id: "why-button" }, direction: DOWN, timeout: 20000 }
+- tapOn: { id: "why-button" }
+- extendedWaitUntil: { visible: { id: "why-sheet" }, timeout: 20000 }
+- takeScreenshot: A03-today/03-why
+- tapOn: { id: "why-close" }
+- scrollUntilVisible: { element: { id: "four-buttons" }, direction: DOWN, timeout: 20000 }
+- takeScreenshot: A03-today/05-four-buttons

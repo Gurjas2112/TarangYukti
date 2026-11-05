@@ -30,6 +30,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.types import Checkpointer
 from pydantic import BaseModel, Field
+from ty_common import capture
 from ty_common.cache import config_version
 from ty_common.phrases import nearest_language
 from ty_common.settings import get_settings
@@ -247,6 +248,8 @@ async def make_graph(
             f"{state.get('lang') or nearest_language(None)}."
         )
         try:
+            if capture.active("llm-offline"):  # walkthrough: the model is unreachable
+                raise TimeoutError("capture scenario: llm-offline")
             out = await agent.ainvoke(
                 {"messages": [context, *history[-12:]]}, {"recursion_limit": 2 * MAX_TOOL_CALLS + 4}
             )

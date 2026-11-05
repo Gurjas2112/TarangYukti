@@ -1,0 +1,12 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F32: scenario kill-switch-chat
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- tapOn: { id: "tab-today" }
+- scrollUntilVisible: { element: { id: "suggested-0" }, direction: DOWN, timeout: 20000 }
+- tapOn: { id: "suggested-0" }
+- extendedWaitUntil: { notVisible: { id: "asking" }, timeout: 120000 }
+- scrollUntilVisible: { element: { id: "chat-reply" }, direction: DOWN, timeout: 20000 }
+- takeScreenshot: A17-kill-switch/01-chat-off

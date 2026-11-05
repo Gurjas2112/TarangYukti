@@ -1,0 +1,21 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F25: the right-to-left layout, in Urdu (draft), then back to the run's language
+- tapOn: { id: "tab-today" }
+- tapOn: { id: "language-button" }
+- scrollUntilVisible: { element: { id: "lang-ur-IN" }, direction: DOWN, timeout: 30000 }
+- tapOn: { id: "lang-ur-IN" }
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- takeScreenshot: A21-rtl/01-rtl-today
+- tapOn: { id: "tab-map" }
+- extendedWaitUntil: { visible: { id: "map-screen" }, timeout: 60000 }
+- takeScreenshot: A21-rtl/02-rtl-map
+- tapOn: { id: "tab-today" }
+- tapOn: { id: "language-button" }
+- scrollUntilVisible: { element: { id: "lang-${APP_LANG}" }, direction: DOWN, timeout: 30000 }
+- tapOn: { id: "lang-${APP_LANG}" }
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }

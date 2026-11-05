@@ -15,6 +15,8 @@ import logging
 import time
 from typing import Any, Protocol
 
+from ty_common import capture
+
 log = logging.getLogger(__name__)
 FLAG_TTL_S = 30.0
 
@@ -61,6 +63,8 @@ class PostgresRecorder:
             log.warning("answer record failed: %s", type(e).__name__)
 
     async def free_chat_off(self) -> bool:
+        if capture.active("kill-switch-chat"):  # walkthrough: the admin switch, without touching the database
+            return True
         at, value = self._flag
         if time.monotonic() - at < FLAG_TTL_S:
             return value

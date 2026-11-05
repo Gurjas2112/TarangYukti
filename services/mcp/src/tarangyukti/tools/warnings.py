@@ -17,6 +17,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
+from ty_common import capture
 from ty_common.cache import cached, fingerprint, norm_hour
 from ty_common.models import ToolResult
 
@@ -45,6 +46,8 @@ def _result(
     fetched_at: datetime,
     notes: list[str],
 ) -> ToolResult:
+    if capture.enabled() and not capture.active("simulated-warning"):
+        warnings = [w for w in warnings if not w.simulation]  # walkthrough: the simulation is its own scenario
     act = [w for w in active(warnings, at) if _matches(w, place)]
     upcoming = sorted((w for w in warnings if w.valid_from > at and _matches(w, place)), key=lambda w: w.valid_from)
     if any(w.simulation for w in [*act, *upcoming]):

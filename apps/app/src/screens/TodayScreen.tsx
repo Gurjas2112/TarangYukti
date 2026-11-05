@@ -9,6 +9,7 @@ import { useSession } from "../auth/supabase";
 import { useBrief } from "../brief/useBrief";
 import { type ButtonId, FourButtons } from "../components/FourButtons";
 import { MicButton } from "../components/MicButton";
+import { UpdateBanner } from "../components/UpdateBanner";
 import { TimeRibbon } from "../components/TimeRibbon";
 import { VerdictCard } from "../components/VerdictCard";
 import { WhySheet } from "../components/WhySheet";
@@ -49,6 +50,7 @@ export function TodayScreen({ harbour, boatKind, lang, autoplay = false }: Props
   return (
     <View style={styles.root}>
       <ScrollView contentContainerStyle={styles.scroll} testID="today-screen">
+        <UpdateBanner />
         {loading && !brief ? (
           <View style={styles.center} accessibilityLiveRegion="polite">
             <ActivityIndicator size="large" color={colors.text} />
@@ -56,9 +58,20 @@ export function TodayScreen({ harbour, boatKind, lang, autoplay = false }: Props
           </View>
         ) : null}
         {error ? (
-          <Text style={styles.note} testID="today-offline">
-            {brief ? t("today.error") : t("today.noSaved")}
-          </Text>
+          <View style={styles.errorRow}>
+            <Text style={styles.note} testID="today-offline">
+              {brief ? t("today.error") : t("today.noSaved")}
+            </Text>
+            <Pressable
+              onPress={() => void refetch()}
+              style={styles.retry}
+              accessibilityRole="button"
+              accessibilityLabel={t("today.retry")}
+              testID="today-retry"
+            >
+              <Text style={styles.retryText}>{t("today.retry")}</Text>
+            </Pressable>
+          </View>
         ) : null}
         {brief ? (
           <>
@@ -120,6 +133,17 @@ export function TodayScreen({ harbour, boatKind, lang, autoplay = false }: Props
 }
 
 const styles = StyleSheet.create({
+  errorRow: { gap: space.sm },
+  retry: {
+    minHeight: touch.min,
+    borderWidth: 2,
+    borderColor: colors.border,
+    borderRadius: radius.md,
+    justifyContent: "center",
+    paddingHorizontal: space.md,
+    alignSelf: "flex-start",
+  },
+  retryText: { fontSize: font.body, fontWeight: "700", color: colors.text },
   root: { flex: 1, backgroundColor: colors.background },
   scroll: { padding: space.md, gap: space.md },
   center: { alignItems: "center", gap: space.sm, padding: space.lg },

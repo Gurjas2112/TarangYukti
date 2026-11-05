@@ -86,6 +86,7 @@ DIGITS = re.compile(r"\d+(?:[.:]\d+)?")
 def _numbers(text: str) -> Counter[str]:
     """Every number and time, digit for digit. Units are compared as words in English only: a translation must
     keep "5" and "05:30" identical, but it is supposed to translate "km" (கி.மீ., کلومیٹر …)."""
+
     def norm(x: str) -> str:
         if ":" in x:  # "05:30" and "5:30" are the same time
             h, m = x.split(":")

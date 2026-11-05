@@ -1,0 +1,7 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F30: scenario stale-data
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- takeScreenshot: A15-stale-data/01-stale

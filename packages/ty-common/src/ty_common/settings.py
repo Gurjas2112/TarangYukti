@@ -46,6 +46,10 @@ class Settings(BaseSettings):
 
     env: Literal["local", "ci", "preview", "live"] = "local"
 
+    # Walkthrough capture (spec §17.14.3): laptop only, never set in Tier 1
+    capture_scenarios: bool = False
+    capture_token: SecretStr | None = None
+
     # Supabase
     supabase_url: str = "http://127.0.0.1:54321"
     supabase_jwks_url: str | None = None

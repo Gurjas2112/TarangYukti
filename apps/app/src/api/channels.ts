@@ -134,6 +134,16 @@ export const api = {
   brief: (harbour: string, boatType: BoatKind, lang: string) =>
     call(`/brief?${new URLSearchParams({ harbour, boat_type: boatType, lang })}`, BriefSchema),
   harbours: () => call("/harbours", z.object({ harbours: z.array(HarbourSchema) })).then((r) => r.harbours),
+  appVersion: () =>
+    call(
+      "/app/version",
+      z.object({
+        latestVersionCode: z.number(),
+        minVersionCode: z.number(),
+        apkUrl: z.string().nullable(),
+        sha256: z.string().nullable(),
+      }),
+    ),
   consent: (lang: string) =>
     call(
       `/consent?${new URLSearchParams({ lang })}`,

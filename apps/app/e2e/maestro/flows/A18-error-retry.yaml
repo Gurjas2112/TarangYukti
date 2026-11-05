@@ -1,0 +1,10 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F33: scenario fault-next-request (channels fails exactly one request)
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "today-retry" }, timeout: 60000 }
+- takeScreenshot: A18-error-retry/01-error
+- tapOn: { id: "today-retry" }
+- extendedWaitUntil: { notVisible: { id: "today-retry" }, timeout: 60000 }
+- takeScreenshot: A18-error-retry/02-retried

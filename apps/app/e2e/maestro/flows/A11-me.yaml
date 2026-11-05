@@ -1,0 +1,23 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F24–F27
+- tapOn: { id: "tab-me" }
+- extendedWaitUntil: { visible: { id: "me-screen" }, timeout: 30000 }
+- takeScreenshot: A11-me/01-profile
+- tapOn: { id: "language-button" }
+- takeScreenshot: A11-me/04-language-switch
+- back
+- runFlow:
+    when: { visible: { id: "my-data" } }
+    commands:
+      - takeScreenshot: A11-me/06-download
+- scrollUntilVisible: { element: { id: "open-help" }, direction: DOWN, timeout: 20000 }
+- tapOn: { id: "open-help" }
+- extendedWaitUntil: { visible: { id: "grievance-name" }, timeout: 30000 }
+- takeScreenshot: A11-me/08-help-grievance
+- back
+- scrollUntilVisible: { element: { id: "read-notice" }, direction: DOWN, timeout: 20000 }
+- tapOn: { id: "read-notice" }
+- extendedWaitUntil: { visible: { id: "notice-screen" }, timeout: 30000 }
+- takeScreenshot: A11-me/09-about-privacy
+- back

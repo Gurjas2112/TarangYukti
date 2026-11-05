@@ -57,9 +57,7 @@ export function MicButton({ lang, token }: { lang: string; token?: string | null
       }
       form.append("lang", lang);
       const heard = await api.stt(form, token);
-      const { reply } = await ask(heard.text);
-      setTurn({ you: heard.text, reply });
-      if (reply) void speak(reply, lang);
+      await send(heard.text, false);
     } catch {
       setNote(t("mic.needsNetwork"));
     } finally {
@@ -68,6 +66,23 @@ export function MicButton({ lang, token }: { lang: string; token?: string | null
     }
   }
 
+  /** One question to the agent; the reply is shown and spoken. Chips call this directly (no recording). */
+  async function send(text: string, acknowledge = true) {
+    if (acknowledge) void speak(t("today.loading"), lang);
+    setNote(null);
+    setState("working");
+    try {
+      const { reply } = await ask(text);
+      setTurn({ you: text, reply });
+      if (reply) void speak(reply, lang);
+    } catch {
+      setNote(t("mic.needsNetwork"));
+    } finally {
+      setState("idle");
+    }
+  }
+
+  const chips = [t("ask.q.border"), t("ask.q.ban"), t("ask.q.catch"), t("ask.q.elsewhere")];
   const label = state === "recording" ? t("mic.release") : t("mic.hold");
   return (
     <View style={styles.wrap}>
@@ -88,6 +103,27 @@ export function MicButton({ lang, token }: { lang: string; token?: string | null
           {state === "working" ? t("today.loading") : state === "recording" ? t("mic.listening") : label}
         </Text>
       </Pressable>
+      {state === "working" ? (
+        <Text style={styles.note} testID="asking" accessibilityLiveRegion="polite">
+          {t("today.loading")}
+        </Text>
+      ) : null}
+      <Text style={styles.or}>{t("ask.or")}</Text>
+      <View style={styles.chips}>
+        {chips.map((q, i) => (
+          <Pressable
+            key={q}
+            onPress={() => void send(q)}
+            disabled={state !== "idle" || busy}
+            style={styles.chip}
+            accessibilityRole="button"
+            accessibilityLabel={q}
+            testID={`suggested-${i}`}
+          >
+            <Text style={styles.chipText}>{q}</Text>
+          </Pressable>
+        ))}
+      </View>
       {note ? (
         <Text style={styles.note} testID="mic-note">
           {note}
@@ -122,6 +158,18 @@ const styles = StyleSheet.create({
   micIcon: { fontSize: font.body + 4 },
   micText: { color: colors.background, fontSize: font.body, fontWeight: "700" },
   note: { fontSize: font.body, color: colors.text },
+  or: { fontSize: font.small, color: colors.textMuted },
+  chips: { gap: space.sm },
+  chip: {
+    minHeight: touch.min,
+    borderWidth: 2,
+    borderColor: colors.border,
+    borderRadius: radius.md,
+    paddingHorizontal: space.md,
+    paddingVertical: space.sm,
+    justifyContent: "center",
+  },
+  chipText: { fontSize: font.body, color: colors.text },
   turn: { gap: space.xs, borderWidth: 1, borderColor: colors.border, borderRadius: radius.sm, padding: space.sm },
   who: { fontSize: font.small, color: colors.textMuted, fontWeight: "700" },
   text: { fontSize: font.body, color: colors.text },

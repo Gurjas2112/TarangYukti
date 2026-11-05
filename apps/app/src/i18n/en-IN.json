@@ -265,5 +265,16 @@
   "help.grievance": "Grievances and data requests",
   "help.times": "We reply within {{reply}} days. Deletion requests are completed within {{erase}} days.",
   "help.whatItIs": "What Kadal Mitra is",
-  "help.whatItIsBody": "Kadal Mitra checks official ocean data and rules for your trip and explains its advice. It is a student prototype: it does not replace INCOIS or IMD warnings, the Coast Guard, or your own judgement at sea."
+  "help.whatItIsBody": "Kadal Mitra checks official ocean data and rules for your trip and explains its advice. It is a student prototype: it does not replace INCOIS or IMD warnings, the Coast Guard, or your own judgement at sea.",
+  "ask.or": "Or tap a question:",
+  "ask.q.border": "How far is the border line from my harbour?",
+  "ask.q.ban": "When is the fishing ban on this coast?",
+  "ask.q.catch": "Why has my catch dropped here?",
+  "ask.q.elsewhere": "Can I go fishing from Kochi tomorrow?",
+  "update.available": "A new version of the app is ready.",
+  "update.download": "Update",
+  "update.required.title": "Please update the app",
+  "update.required.body": "This version is too old. Border and weather alerts keep working, but update to see today's advice.",
+  "update.openAlerts": "Open alerts",
+  "today.retry": "Try again"
 }

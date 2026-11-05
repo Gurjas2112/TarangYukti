@@ -1,0 +1,97 @@
+# Feature coverage catalogue (spec Table 17-12) as data. scripts/check_coverage.py fails the capture when any
+# feature has no screenshot in any captured language or no scene in the story video's narration (Milestone 12).
+# Platform: android (Maestro flows), web (Playwright W01–W08) or release (R01 against Tier 1).
+version: 1
+features:
+  - { id: F01, flow: A01-onboarding, platform: android, chapter: 2, shots: [01-language-picker, 02-language-spoken],
+      feature: "Language picker with every language in its own script, spoken where a voice exists" }
+  - { id: F02, flow: A01-onboarding, platform: android, chapter: 2, shots: [03-harbour],
+      feature: "Harbour list; suggested language by coast" }
+  - { id: F03, flow: A01-onboarding, platform: android, chapter: 2, shots: [04-boat],
+      feature: "Boat type picture buttons" }
+  - { id: F04, flow: A01-onboarding, platform: android, chapter: 2, shots: [05-consent, 06-full-notice],
+      feature: "Spoken consent, full written notice" }
+  - { id: F05, flow: A01-onboarding, platform: android, chapter: 2, shots: [07-permission-explained, 08-permissions],
+      feature: "Location, notification and background-location permissions with explanation" }
+  - { id: F06, flow: A01-onboarding, platform: android, chapter: 2, shots: [09-sign-in, 10-signed-in],
+      feature: "Google sign-in" }
+  - { id: F07, flow: A12-add-phone, platform: android, chapter: 2, shots: [01-qr, 02-linked],
+      feature: "\"Add this phone\" QR link" }
+  - { id: F08, flow: A02-morning-brief, platform: android, chapter: 3, shots: [01-notification, 02-brief-card, 03-voice-playing],
+      feature: "Morning brief push, opened from the notification, voice plays" }
+  - { id: F09, flow: A03-today, platform: android, chapter: 3, shots: [01-verdict, 02-ribbon],
+      feature: "Verdict card GO / CAUTION / NO-GO, 24-hour ribbon" }
+  - { id: F10, flow: A03-today, platform: android, chapter: 3, shots: [03-why, 04-all-reasons],
+      feature: "\"Why?\" in one sentence, then all reasons" }
+  - { id: F11, flow: A03-today, platform: android, chapter: 3, shots: [05-four-buttons],
+      feature: "Four buttons" }
+  - { id: F12, flow: A04-map, platform: android, chapter: 4, shots: [01-pfz, 02-incois-agreement],
+      feature: "Where to fish: PFZ, agreement with INCOIS" }
+  - { id: F13, flow: A04-map, platform: android, chapter: 4, shots: [03-route, 04-border-mpa, 05-offline-tiles],
+      feature: "Safest route, border line, protected area, own position, offline tiles" }
+  - { id: F14, flow: A05-ask, platform: android, chapter: 5, shots: [01-mic, 02-checking],
+      feature: "Ask: voice button, instant acknowledgement" }
+  - { id: F15, flow: A05-ask, platform: android, chapter: 5, shots: [03-answer, 04-citation, 05-source, 06-supersession],
+      feature: "Cited answer with verbatim quote and labelled translation; source page with supersession chain" }
+  - { id: F16, flow: A06-catch-dropped, platform: android, chapter: 5, shots: [01-question, 02-causes],
+      feature: "\"Why has catch dropped?\" ranked causes" }
+  - { id: F17, flow: A07-out-of-coverage, platform: android, chapter: 5, shots: [01-refusal],
+      feature: "Out-of-coverage refusal naming the official source" }
+  - { id: F18, flow: A08-trip, platform: android, chapter: 6, shots: [01-trip-started, 02-distance],
+      feature: "Trip mode starts on leaving the harbour; time at sea, distance to border" }
+  - { id: F19, flow: A08-trip, platform: android, chapter: 6, shots: [03-alert-5km, 04-alert-2km, 05-alert-mpa, 06-alert-warning],
+      feature: "Border alerts at 5 km and 2 km; protected-area and warning-area alerts" }
+  - { id: F20, flow: A08-trip, platform: android, chapter: 6, shots: [07-offline-map, 08-offline-alert, 09-synced],
+      feature: "Offline at sea: map, route, brief and alerts work; outbox syncs later" }
+  - { id: F21, flow: A08-trip, platform: android, chapter: 6, shots: [10-im-back, 11-feedback, 12-track-record],
+      feature: "\"I'm back\", trip closed; feedback and track record" }
+  - { id: F22, flow: A09-alerts, platform: android, chapter: 7, shots: [01-list, 02-quiet-hours, 03-budget],
+      feature: "Alerts list with reasons; quiet hours; alert budget; critical always on" }
+  - { id: F23, flow: A10-family, platform: android, chapter: 8, shots: [01-share, 02-family-card-at-sea, 03-back-notice, 04-family-card-back],
+      feature: "Family sharing: grant with expiry; family view at sea / back; family notice" }
+  - { id: F24, flow: A11-me, platform: android, chapter: 9, shots: [01-profile, 02-boats, 03-mode-switch],
+      feature: "Me: profile and boats; mode switch (Expert → open on a computer)" }
+  - { id: F25, flow: A11-me, platform: android, chapter: 9, shots: [04-language-switch],
+      feature: "Language switch to any language, including right-to-left" }
+  - { id: F26, flow: A11-me, platform: android, chapter: 9, shots: [05-consents, 06-download, 07-delete-undo],
+      feature: "Consent history and withdrawal; download my data; delete with 7-day undo" }
+  - { id: F27, flow: A11-me, platform: android, chapter: 9, shots: [08-help-grievance, 09-about-privacy],
+      feature: "Help with grievance officer; About and privacy" }
+  - { id: F28, flow: A13-simulated-warning, platform: android, chapter: 10, shots: [01-nogo-simulation, 02-why-warning],
+      feature: "Simulated official warning forces NO-GO, labelled SIMULATION" }
+  - { id: F29, flow: A14-no-safe-window, platform: android, chapter: 10, shots: [01-no-window],
+      feature: "No safe window: next good time" }
+  - { id: F30, flow: A15-stale-data, platform: android, chapter: 10, shots: [01-stale],
+      feature: "Stale data: old forecast, never Good to go" }
+  - { id: F31, flow: A16-llm-offline, platform: android, chapter: 10, shots: [01-templates-only, 02-free-form-offline],
+      feature: "LLM unreachable: buttons answer from templates; free-form says it needs the network" }
+  - { id: F32, flow: A17-kill-switch, platform: android, chapter: 10, shots: [01-chat-off],
+      feature: "Kill switch: free-form chat off, buttons and alerts on" }
+  - { id: F33, flow: A18-error-retry, platform: android, chapter: 10, shots: [01-error, 02-retried],
+      feature: "Error with retry" }
+  - { id: F34, flow: A19-update, platform: android, chapter: 10, shots: [01-update-banner, 02-update-required],
+      feature: "Update available banner; update required screen with alerts still working" }
+  - { id: F35, flow: A20-large-text, platform: android, chapter: 9, shots: [01-today-200, 02-map-200],
+      feature: "Large text at 200 % without clipping" }
+  - { id: F36, flow: W01-public, platform: web, chapter: 11, shots: [01-public-verdict, 02-install],
+      feature: "Public web verdict without login; install as an app (PWA)" }
+  - { id: F37, flow: W02-staff-sign-in, platform: web, chapter: 11, shots: [01-sign-in, 02-totp, 03-signed-in],
+      feature: "Staff sign-in with Google and TOTP (aal2)" }
+  - { id: F38, flow: W03-expert, platform: web, chapter: 11, shots: [01-sea-signal, 02-ledger, 03-h2-buffer, 04-citations],
+      feature: "Expert console: Sea Signal and ribbon, ledger open, H2 row draws the border buffer, citations drawer" }
+  - { id: F39, flow: W03-expert, platform: web, chapter: 11, shots: [05-fly-to, 06-mission-control, 07-drag-departure],
+      feature: "Agent drives the map; Mission Control; drag the departure" }
+  - { id: F40, flow: W04-analyst, platform: web, chapter: 12, shots: [01-anomaly, 02-overlap, 03-downloads, 04-kb-browser],
+      feature: "Analyst: anomaly charts, PFZ-vs-INCOIS overlap, CSV/NetCDF downloads, knowledge-base browser" }
+  - { id: F41, flow: W05-officer, platform: web, chapter: 13, shots: [01-warning-areas, 02-boats, 03-compose, 04-approve, 05-delivered-languages],
+      feature: "Officer: warning areas, anonymised boats, broadcast from approved templates, approval, delivery per language" }
+  - { id: F42, flow: W06-admin, platform: web, chapter: 14, shots: [01-overview, 02-data-sources, 03-knowledge-base, 04-supersede, 05-alerts, 06-ai-usage, 07-kill-switches],
+      feature: "Admin: overview, data sources, knowledge base and quarantine, supersede, alerts, AI usage, kill switches" }
+  - { id: F43, flow: W06-admin, platform: web, chapter: 14, shots: [08-guardrails, 09-replay, 10-users, 11-live-map, 12-audit, 13-health, 14-languages],
+      feature: "Admin: guardrail review, replay with PDF, users and roles, live map, audit log, system health, languages" }
+  - { id: F44, flow: W07-family-web, platform: web, chapter: 8, shots: [01-family-web, 02-push-opt-in, 03-alert-card],
+      feature: "Family on the web; web-push opt-in and in-app alert card" }
+  - { id: F45, flow: W08-accessibility, platform: web, chapter: 9, shots: [01-rtl, 02-zoom-200],
+      feature: "Web in a right-to-left language and at 200 % zoom" }
+  - { id: F46, flow: R01-release-smoke, platform: release, chapter: 15, shots: [01-today, 02-map, 03-alerts],
+      feature: "Release build against Tier 1: Today, Map, Alerts" }

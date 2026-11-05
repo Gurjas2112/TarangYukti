@@ -15,6 +15,7 @@ from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Request, Response
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+from ty_common import capture
 from ty_common.auth import current_user
 
 from . import limits
@@ -35,12 +36,21 @@ def scrub(text: str) -> str:
     return text
 
 
+def _min_version() -> int:
+    if capture.active("update-required"):  # walkthrough scenario: every installed build is below the minimum
+        return 1_000_000
+    return int(os.environ.get("APP_MIN_VERSION_CODE", "1"))
+
+
 @router.get("/app/version")
 async def app_version(response: Response) -> dict[str, Any]:
     response.headers["Cache-Control"] = PUBLIC_CACHE
     return {
         "latestVersionCode": int(os.environ.get("APP_LATEST_VERSION_CODE", "1")),
-        "minVersionCode": int(os.environ.get("APP_MIN_VERSION_CODE", "1")),
+        # walkthrough scenario: every installed build is below the minimum
+        "minVersionCode": 1_000_000
+        if capture.active("update-required")
+        else int(os.environ.get("APP_MIN_VERSION_CODE", "1")),
         "apkUrl": os.environ.get("APP_APK_URL") or None,
         "sha256": os.environ.get("APP_APK_SHA256") or None,
     }

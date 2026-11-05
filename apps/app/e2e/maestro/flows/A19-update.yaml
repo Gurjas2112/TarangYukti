@@ -1,0 +1,8 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F34: scenario update-required
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "update-required" }, timeout: 60000 }
+- takeScreenshot: A19-update/02-update-required
+- tapOn: { id: "update-alerts" }

@@ -1,0 +1,9 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F08: scenario brief-now. The push needs a signed-in test fisher; the brief screen opens by deep link.
+- openLink: tarangyukti://brief
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- takeScreenshot: A02-morning-brief/02-brief-card
+- scrollUntilVisible: { element: { id: "play-brief" }, direction: DOWN, timeout: 20000 }
+- tapOn: { id: "play-brief" }
+- takeScreenshot: A02-morning-brief/03-voice-playing

@@ -7,12 +7,14 @@ the snapshot day as it was and H8 measures freshness against that moment.
 from __future__ import annotations
 
 import asyncio
+import dataclasses
 import functools
 import math
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 import h3
+from ty_common import capture
 from ty_common.settings import get_settings
 
 from .. import config, layers
@@ -88,8 +90,15 @@ async def gather(boat_type: str, start_cell: str) -> tuple[Ctx, list[dict[str, A
             ws += [Warning_.model_validate(w) for w in [*d.get("active", []), *d.get("upcoming", [])]]
 
     points = grid["data"].get("points", []) if isinstance(grid["data"], dict) else []
+    if capture.active("no-safe-window"):  # walkthrough: every hour above every boat's wave limit
+        points = [p | {"hours": {t: [9.9, *row[1:]] for t, row in p["hours"].items()}} for p in points]
     snapshot_mode = get_settings().data_mode == "snapshot"
     as_of = inputs[0].fetched_at if snapshot_mode and inputs[0].available else now()
+    if capture.active("stale-data"):  # walkthrough: warnings older than the H8 limit → never GO
+        inputs = [
+            dataclasses.replace(i, fetched_at=as_of - timedelta(hours=72)) if i.kind == "warnings" else i
+            for i in inputs
+        ]
     lat0, lon0 = h3.cell_to_latlng(start_cell)
 
     def sunset(day: date) -> datetime:

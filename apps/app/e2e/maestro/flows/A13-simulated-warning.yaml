@@ -1,0 +1,12 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F28: scenario simulated-warning
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- extendedWaitUntil: { visible: { id: "verdict-simulation" }, timeout: 60000 }
+- takeScreenshot: A13-simulated-warning/01-nogo-simulation
+- scrollUntilVisible: { element: { id: "why-button" }, direction: DOWN, timeout: 20000 }
+- tapOn: { id: "why-button" }
+- takeScreenshot: A13-simulated-warning/02-why-warning
+- tapOn: { id: "why-close" }

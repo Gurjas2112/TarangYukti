@@ -18,7 +18,7 @@ from ty_common import db
 from ty_common.edge import FrontDoorOnly
 from ty_common.settings import get_settings
 
-from . import admin, expert, me, public, release, rights, trips, voice
+from . import admin, capture, expert, me, public, release, rights, trips, voice
 
 
 @asynccontextmanager
@@ -37,6 +37,7 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Authorization", "Content-Type"],
 )
+app.add_middleware(capture.CaptureFault)  # laptop walkthrough only (no-op unless ENV=local + CAPTURE_SCENARIOS=1)
 app.add_middleware(FrontDoorOnly, exempt=("/health",))  # Tier 1: only Front Door reaches channels
 app.include_router(public.router)
 app.include_router(voice.router)
@@ -46,6 +47,7 @@ app.include_router(trips.router)
 app.include_router(rights.router)
 app.include_router(admin.router)
 app.include_router(release.router)
+app.include_router(capture.router)
 
 
 @app.get("/health")

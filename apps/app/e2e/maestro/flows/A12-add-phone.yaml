@@ -1,0 +1,10 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F07: the QR is shown to a signed-in user
+- tapOn: { id: "tab-me" }
+- runFlow:
+    when: { visible: { id: "phone-link-qr" } }
+    commands:
+      - tapOn: { id: "phone-link-qr" }
+      - takeScreenshot: A12-add-phone/01-qr
+      - back

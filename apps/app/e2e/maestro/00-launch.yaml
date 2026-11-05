@@ -1,0 +1,5 @@
+appId: in.tarangyukti.kadalmitra
+---
+# Every language's run starts from a clean install state (spec §17.14.3).
+- launchApp: { clearState: true }
+- extendedWaitUntil: { visible: { id: "onboarding-language" }, timeout: 60000 }

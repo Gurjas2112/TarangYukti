@@ -1,0 +1,10 @@
+# Flow → backend/emulator state (spec §17.14.3). Laptop only; every other flow runs in `normal`.
+A02-morning-brief: brief-now
+A13-simulated-warning: simulated-warning
+A14-no-safe-window: no-safe-window
+A15-stale-data: stale-data
+A16-llm-offline: llm-offline
+A17-kill-switch: kill-switch-chat
+A18-error-retry: fault-next-request
+A19-update: update-required
+A20-large-text: font-scale-200

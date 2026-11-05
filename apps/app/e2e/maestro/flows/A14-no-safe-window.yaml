@@ -1,0 +1,7 @@
+appId: in.tarangyukti.kadalmitra
+---
+# F29: scenario no-safe-window
+- stopApp
+- launchApp
+- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- takeScreenshot: A14-no-safe-window/01-no-window

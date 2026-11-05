@@ -3,6 +3,8 @@ import type { ExpoConfig } from "expo/config";
 // APP_ENV: development | preview | live | store | capture (EAS build profiles, spec §17.12)
 const appEnv = process.env.APP_ENV ?? "development";
 const isDev = appEnv === "development";
+// Plain HTTP to the laptop backend: development builds and the never-distributed capture build only (spec §17.14).
+const laptopBackend = isDev || appEnv === "capture";
 
 const config: ExpoConfig = {
   name: "Kadal Mitra",
@@ -50,11 +52,12 @@ const config: ExpoConfig = {
       },
     ],
     "@react-native-google-signin/google-signin",
+    ["expo-build-properties", { android: { usesCleartextTraffic: laptopBackend } }],
     // TODO(tarangyukti): Milestones 7–11 add @maplibre/maplibre-react-native, expo-location (background) and
     // expo-build-properties (cleartext only when isDev).
   ],
   experiments: { typedRoutes: true },
-  extra: { appEnv, cleartextAllowed: isDev, eas: { projectId: "3d825c81-c777-423d-a423-b8b2e96a648f" } },
+  extra: { appEnv, cleartextAllowed: laptopBackend, eas: { projectId: "3d825c81-c777-423d-a423-b8b2e96a648f" } },
 };
 
 export default config;
