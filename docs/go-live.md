@@ -60,7 +60,13 @@ not approved, and none are approved yet (see `docs/releases.md`).
    ```
 5. **Apps and jobs**: `az deployment group create -g ty-live -n main -f infra/azure/main.bicep -p deployApps=true imageTag=$T $P`
 6. **Supabase**: Authentication → URL Configuration → Site URL = `webUrl`; add it and `tarangyukti://` to the
-   redirect URLs. Google sign-in on the web then works from the Azure host.
+   redirect URLs (as `<url>/**`). Google sign-in on the web then works from the Azure host.
+   **Google clients** live in one Google Cloud project (TarangYuktiDev): a *Web application* client (JavaScript
+   origins = web URL + `http://localhost:8081`; redirect URI = `https://<ref>.supabase.co/auth/v1/callback`; its ID
+   and secret go in Supabase → Google provider, "Skip nonce checks" on) and one *Android* client per signing
+   certificate (package `in.tarangyukti.kadalmitra`; SHA-1 of the EAS keystore, later also Play App Signing).
+   The Android client must be in the **same project** as the web client, or the phone shows DEVELOPER_ERROR.
+   `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` (EAS env + `apps/app/.env.local`) is the web client ID, not the Android one.
 7. **Smoke**: `CHANNELS=<channelsUrl> COPILOT=<copilotUrl> WEB=<webUrl> scripts/smoke.sh`
 
 ## Continuous deployment
