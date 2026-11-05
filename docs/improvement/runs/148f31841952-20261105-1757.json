@@ -1,0 +1,274 @@
+{
+ "candidate_version": "148f31841952",
+ "traced_to_traceroot": true,
+ "model": "gemini-3.8-flash",
+ "runs": 86,
+ "summary": {
+  "as-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "bn-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "brx-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "cross": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 17
+  },
+  "doi-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "en-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "gom-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "gu-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "hi-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "kn-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "ks-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "mai-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "ml-IN": {
+   "same_language": 0.667,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "mni-IN": {
+   "same_language": 0.667,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "mr-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "ne-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "or-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "pa-IN": {
+   "same_language": 0.667,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "sa-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "sat-IN": {
+   "same_language": 0.667,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "sd-IN": {
+   "same_language": 0.333,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "ta-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "te-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  },
+  "ur-IN": {
+   "same_language": 1.0,
+   "footer": 1.0,
+   "no_unsafe_word": 1.0,
+   "draft_clean": 1.0,
+   "no_template": 1.0,
+   "no_figures_if_unanswerable": 1.0,
+   "runs": 3
+  }
+ },
+ "failures": [
+  {
+   "id": "ml-IN-mz-eez",
+   "lang": "ml-IN",
+   "failed": [
+    "same_language"
+   ],
+   "reply": "Under the Territorial Waters, Continental Shelf, Exclusive Economic Zone and other Maritime Zones Act, 1976, India's exclusive economic zone is an area beyond and adjacent to the territorial waters extending up to two hundred nautical miles from the baseline [K1]. Within this zone, India holds sover"
+  },
+  {
+   "id": "mni-IN-mz-eez",
+   "lang": "mni-IN",
+   "failed": [
+    "same_language"
+   ],
+   "reply": "India's exclusive economic zone is an area beyond and adjacent to the territorial waters extending up to two hundred nautical miles from the baseline [K1]. Within this zone, India has sovereign rights to explore, exploit, conserve, and manage living and non-living natural resources [K1]. Fishing by "
+  },
+  {
+   "id": "pa-IN-mz-territorial",
+   "lang": "pa-IN",
+   "failed": [
+    "same_language"
+   ],
+   "reply": "Under official Indian law, the limit of India's territorial waters is twelve nautical miles from the nearest point of the baseline [K1]. India holds full sovereignty over these waters, as well as the seabed, subsoil, and airspace above them [K1].\n\nਸਲਾਹ ਸਿਰਫ਼ - ਅਧਿਕਾਰਤ INCOIS/IMD ਚੇਤਾਵਨੀਆਂ ਦੀ ਪਾਲਣਾ ਕ"
+  },
+  {
+   "id": "sat-IN-mz-territorial",
+   "lang": "sat-IN",
+   "failed": [
+    "same_language"
+   ],
+   "reply": "Under the Maritime Zones Act, 1976, the limit of India's territorial waters extends to a distance of twelve nautical miles from the nearest point of the appropriate baseline [K1]. India holds sovereignty over these territorial waters, including the seabed, subsoil, and airspace above them [K1].\n\nᱥᱩᱪ"
+  },
+  {
+   "id": "sd-IN-mz-territorial",
+   "lang": "sd-IN",
+   "failed": [
+    "same_language"
+   ],
+   "reply": "प्रादेशिक पाणी, महाद्वीपी शेल्फ़, ख़ास माली ज़ोन ऐं ॿियनि सामुंडी इलाइक़नि जे क़ानून, 1976 जे तहत, भारत जे प्रादेशिक पाणीअ जी हद मुनासिब बुनियाद जी सभ खां वेझिड़ी नुक़्ते खां बा॒रहं नॉटिकल मील ताईं आहे। [K1] भारत इन पाणीअ सां गॾोगॾु समुंड जी सतह, उपमटी ऐं इन जे मथां हवाई इलाक़े ते ख़ुदमुख़्तियारी रखे थो। [K1]"
+  },
+  {
+   "id": "sd-IN-x-fish-price",
+   "lang": "sd-IN",
+   "failed": [
+    "same_language"
+   ],
+   "reply": "तरंग युक्ति जा बाज़ार जा अघ न आहिनि। मेहरबानी करे मछीअ जे बाज़ार या फ़िशरीज़ डिपार्टमेंट में पुछो।\n\nसिर्फ़ सलाह - आधिकारिक आई.एन.सी.ओ.आई.एस./आई.एम.डी. चेताउनी जी पैरवी करियो।"
+  }
+ ]
+}

@@ -8,6 +8,7 @@ from typing import Any
 
 from ty_common.cache import cached, config_version, fingerprint, norm_window30, to_cell
 from ty_common.models import ToolResult
+from ty_common.telemetry import observe_tool
 
 from .. import layers, ledger, qc, route
 from ..yukti import engine, facts
@@ -67,6 +68,7 @@ async def _plan(parts: list[str], ctx: Ctx, start: str, goal: str | None, depart
     }
 
 
+@observe_tool("yukti_evaluate")
 async def yukti_evaluate(
     boat_type: str,
     lat: float,
@@ -163,6 +165,7 @@ async def _route(parts: list[str], ctx: Ctx, start: str, goal: str, depart: date
     }
 
 
+@observe_tool("route_safest")
 async def route_safest(
     boat_type: str, lat: float, lon: float, goal_lat: float, goal_lon: float, depart_at: str | None = None
 ) -> dict[str, Any]:

@@ -53,6 +53,9 @@ def ping() -> dict[str, object]:
 def main() -> None:
     import os
 
+    from ty_common.telemetry import init_tracing
+
+    init_tracing("ty-mcp")  # one tracer per process: TraceRoot in improvement runs, else OTLP / Azure Monitor
     # laptop: localhost only; containers set HOST=0.0.0.0 (internal ingress, never public)
     host = os.environ.get("HOST", "127.0.0.1")
     mcp.run(transport="http", host=host, port=int(os.environ.get("PORT", "8001")), path="/mcp")

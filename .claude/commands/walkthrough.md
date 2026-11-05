@@ -3,8 +3,9 @@ Capture the complete Kadal Mitra walkthrough: $ARGUMENTS
 Arguments: `<capture-apk> <live-apk> [langs]` (spec §17.14). No languages means every language released in
 `config/languages.yaml`.
 
-1. Make sure the laptop backend runs in snapshot mode with capture on: `.env` has `CAPTURE_SCENARIOS=1`, a
-   `CAPTURE_TOKEN` and `DATA_MODE=snapshot`; channels, mcp, agent and ty-copilot run with `CACHE_DISABLED=1`.
+1. Make sure the laptop backend runs in snapshot mode with capture on: `.env` has a `CAPTURE_TOKEN`; start
+   channels, mcp, agent and ty-copilot with `CAPTURE_SCENARIOS=1 CACHE_DISABLED=1 DATA_MODE=snapshot` in their
+   environment (never leave `CAPTURE_SCENARIOS=1` in `.env`: it hides the demo's labelled simulation).
    Then run `scripts/capture_all.sh $ARGUMENTS` and note the output folder it prints.
 2. If a flow fails, open its log under `<folder>/<lang>/maestro/<flow>.log` (or the Playwright report), find the
    failing step, fix the flow in `apps/app/e2e/` (selectors are `testID`s; never change app code or test data

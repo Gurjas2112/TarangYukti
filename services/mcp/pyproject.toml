@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "TarangYukti — FastMCP data tools, Yukti constraint engine and RAG retriever"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "traceroot>=0.5",  # improvement runs only (TRACEROOT_ENABLED, never in live)
     "ty-common",
     "fastmcp>=2.3",
     "pydantic>=2.9",

@@ -27,6 +27,7 @@ from ty_common.cache import cached, fingerprint, norm_hour, norm_text
 from ty_common.embed import EmbeddingUnavailable, embed_query
 from ty_common.models import ToolResult
 from ty_common.settings import get_settings
+from ty_common.telemetry import observe_tool
 
 from ..tools.common import now
 
@@ -255,6 +256,7 @@ async def _search(q: str, cell: str | None, hour: str, idx: int, at_iso: str, kn
     }
 
 
+@observe_tool("kb_hybrid_search")
 async def kb_search(
     query: str,
     lang: str | None = None,

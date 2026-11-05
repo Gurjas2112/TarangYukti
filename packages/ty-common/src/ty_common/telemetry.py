@@ -13,11 +13,13 @@ from __future__ import annotations
 import hashlib
 import logging
 import re
+from collections.abc import Callable
 from contextlib import AbstractContextManager, nullcontext
-from typing import Any
+from typing import Any, TypeVar
 
 from .settings import get_settings
 
+F = TypeVar("F", bound=Callable[..., Any])
 log = logging.getLogger(__name__)
 
 _SCRUB = [
@@ -114,7 +116,11 @@ def init_tracing(service: str) -> str:
             import traceroot
             from traceroot import Integration
 
-            traceroot.initialize(integrations=[Integration.LANGCHAIN, Integration.GOOGLE_GENAI])
+            traceroot.initialize(
+                api_key=s.traceroot_api_key.get_secret_value() if s.traceroot_api_key else None,
+                host_url=s.traceroot_host_url,  # .env is read by settings, not by the SDK
+                integrations=[Integration.LANGCHAIN, Integration.GOOGLE_GENAI],
+            )
             return "traceroot"
         if s.applicationinsights_connection_string is not None:
             from azure.monitor.opentelemetry import configure_azure_monitor
@@ -132,6 +138,21 @@ def init_tracing(service: str) -> str:
     except ImportError as e:
         log.warning("tracing not initialised (%s)", e)
         return "none"
+
+
+def observe_tool(name: str) -> Callable[[F], F]:
+    """`@observe(type="tool")` from TraceRoot in improvement runs (spec §10.4); the function itself otherwise."""
+
+    def deco(fn: F) -> F:
+        if not get_settings().traceroot_enabled:
+            return fn
+        try:
+            from traceroot import observe
+        except ImportError:
+            return fn
+        return observe(name=name, type="tool")(fn)  # type: ignore[no-any-return]
+
+    return deco
 
 
 def pseudonym(user_sub: str | None) -> str | None:

@@ -139,8 +139,9 @@ run-prod:            # build every image locally (Docker) the way ACR builds the
 	docker build -f docker/Dockerfile.copilot -t ty-copilot:local .
 	pnpm -C apps/app exec expo export -p web && docker build -f docker/Dockerfile.web -t ty-web:local .
 
-trace-evals:
-	@echo "$@: Milestone 13" && exit 1
+trace-evals:         # spec §10.4: golden + cross-language sets through the running agent, scored, into TraceRoot
+	# start first: TRACEROOT_ENABLED=true make mcp · TRACEROOT_ENABLED=true make agent (never with ENV=live)
+	cd apps/agent && TRACEROOT_ENABLED=true PYTHONIOENCODING=utf-8 uv run python ../../scripts/eval_traceroot.py --cross $(if $(PER_LANG),--per-lang $(PER_LANG),) $(if $(LANGS),--langs $(LANGS),)
 
 # ── walkthrough capture (Milestone 10b, spec §17.14) ─────────────────────────────────────────────────────
 capture:             # make capture CAP=<capture.apk> LIVE=<live.apk> [LANGS="ml-IN hi-IN"]
