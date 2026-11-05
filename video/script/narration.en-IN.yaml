@@ -1,0 +1,309 @@
+# Story video narration, English reference (spec §17.15). Every other language keeps the same scene ids, kinds,
+# shots, clips and covers, with its own `text`, drafted from this file and approved by that language's owner.
+# Every sentence must be true of the build shown; nothing is invented. `covers` lists the features of
+# apps/app/e2e/coverage.yaml each scene shows; scripts/check_coverage.py checks every feature has a scene.
+version: 1
+chapters:
+  "1": The question at dawn
+  "2": Getting started in your language
+  "3": Every morning, before leaving
+  "4": Where to fish, the safest way
+  "5": Ask anything
+  "6": At sea
+  "7": Alerts that respect you
+  "8": The family at home
+  "9": Your data, your language, your way
+  "10": When things go wrong
+  "11": For the expert on the shore
+  "12": For the scientist
+  "13": For the district officer
+  "14": Running the system safely
+  "15": Why you can trust it
+  "16": Kadal Mitra
+scenes:
+  - id: ch01-hook
+    chapter: 1
+    kind: illustration
+    art: dawn-harbour
+    min_seconds: 9
+    text: "Half past four in the morning at Rameswaram harbour. Murugan has one question before he takes his boat out: can I go to sea today?"
+  - id: ch01-scattered
+    chapter: 1
+    kind: illustration
+    art: bulletins
+    min_seconds: 8
+    text: "The answer is spread across forecasts, warnings and long official bulletins, mostly in English, and the border line at sea cannot be seen."
+
+  - id: ch02-language
+    chapter: 2
+    kind: phone-shots
+    shots: ["android/A01-onboarding/01-language-picker.png", "android/A01-onboarding/02-language-spoken.png"]
+    taps: [{ x: 0.88, y: 0.18, at: 3.0 }]
+    covers: [F01]
+    text: "Kadal Mitra starts by asking for his language. Every Indian language is written in its own script, and where a voice exists he can hear each name spoken."
+  - id: ch02-harbour-boat
+    chapter: 2
+    kind: phone-shots
+    shots: ["android/A01-onboarding/03-harbour.png", "android/A01-onboarding/04-boat.png"]
+    taps: [{ x: 0.3, y: 0.2, at: 2.5 }]
+    covers: [F02, F03]
+    text: "He picks his harbour, and the app offers the language most used on that coast. Then his boat, from three picture buttons."
+  - id: ch02-consent
+    chapter: 2
+    kind: phone-shots
+    shots: ["android/A01-onboarding/05-consent.png", "android/A01-onboarding/06-full-notice.png"]
+    covers: [F04]
+    text: "Before anything personal, a short spoken consent explains what is used and why, with the full written notice one tap away."
+  - id: ch02-permissions
+    chapter: 2
+    kind: phone-shots
+    shots: ["android/A01-onboarding/07-permission-explained.png", "android/A01-onboarding/08-permissions.png"]
+    covers: [F05]
+    text: "Turning on alerts first explains why the app needs his location even with the phone locked, and only then does Android ask."
+  - id: ch02-sign-in
+    chapter: 2
+    kind: phone-shots
+    shots: ["android/A01-onboarding/09-sign-in.png", "android/A01-onboarding/10-signed-in.png"]
+    covers: [F06]
+    text: "Signing in uses his Google account. The public advice never needs a login; sign-in is only for his boat, alerts and family."
+  - id: ch02-add-phone
+    chapter: 2
+    kind: phone-shots
+    shots: ["android/A12-add-phone/01-qr.png", "android/A12-add-phone/02-linked.png"]
+    covers: [F07]
+    text: "If he has no account of his own, a family member who is signed in can show a code, and his phone joins with one scan."
+
+  - id: ch03-brief
+    chapter: 3
+    kind: phone-shots
+    shots: ["android/A02-morning-brief/01-notification.png", "android/A02-morning-brief/02-brief-card.png", "android/A02-morning-brief/03-voice-playing.png"]
+    covers: [F08]
+    text: "Half an hour before he usually leaves, the morning brief arrives. One tap opens it, and it reads itself aloud in his language."
+  - id: ch03-verdict
+    chapter: 3
+    kind: phone-shots
+    shots: ["android/A03-today/01-verdict.png", "android/A03-today/02-ribbon.png"]
+    covers: [F09]
+    text: "The answer comes first: go, go carefully, or don't go today, with a good time to leave and the next twenty-four hours as a ribbon."
+  - id: ch03-why
+    chapter: 3
+    kind: phone-shots
+    shots: ["android/A03-today/03-why.png", "android/A03-today/04-all-reasons.png"]
+    taps: [{ x: 0.2, y: 0.62, at: 1.5 }]
+    covers: [F10]
+    text: "One tap on Why gives the reason in a sentence, with the official sources it came from."
+  - id: ch03-buttons
+    chapter: 3
+    kind: phone-shots
+    shots: ["android/A03-today/05-four-buttons.png"]
+    covers: [F11]
+    text: "Four big buttons cover the rest of his day: today's sea, where to fish, alerts, and I'm back."
+
+  - id: ch04-map
+    chapter: 4
+    kind: phone-shots
+    shots: ["android/A04-map/01-pfz.png", "android/A04-map/02-incois-agreement.png"]
+    covers: [F12]
+    text: "The map shows where fish are likely, and how far it is from his harbour."
+  - id: ch04-route
+    chapter: 4
+    kind: phone-shots
+    shots: ["android/A04-map/03-route.png", "android/A04-map/04-border-mpa.png", "android/A04-map/05-offline-tiles.png"]
+    covers: [F13]
+    text: "The coastline, the border line and the marine park are stored in the app itself, so the map still works far from any signal."
+
+  - id: ch05-ask
+    chapter: 5
+    kind: phone-shots
+    shots: ["android/A05-ask/01-mic.png", "android/A05-ask/02-checking.png"]
+    covers: [F14]
+    text: "He can hold the button and ask in his own words, or tap a suggested question. The app answers that it is checking straight away."
+  - id: ch05-answer
+    chapter: 5
+    kind: phone-shots
+    shots: ["android/A05-ask/03-answer.png", "android/A05-ask/04-citation.png", "android/A05-ask/05-source.png", "android/A05-ask/06-supersession.png"]
+    covers: [F15]
+    text: "Answers from official documents quote them word for word and say which document they came from. Every number comes from a tool, never from the AI."
+  - id: ch05-catch
+    chapter: 5
+    kind: phone-shots
+    shots: ["android/A06-catch-dropped/01-question.png", "android/A06-catch-dropped/02-causes.png"]
+    covers: [F16]
+    text: "Why has my catch dropped? Each possible cause is tested against data, and a cause without data is said to be untested."
+  - id: ch05-refusal
+    chapter: 5
+    kind: phone-shots
+    shots: ["android/A07-out-of-coverage/01-refusal.png"]
+    covers: [F17]
+    text: "Outside its region or its subject, Kadal Mitra says so and names the official source to ask instead."
+
+  - id: ch06-trip
+    chapter: 6
+    kind: phone-shots
+    shots: ["android/A08-trip/01-trip-started.png", "android/A08-trip/02-distance.png"]
+    covers: [F18]
+    text: "When the boat leaves the harbour, trip mode starts by itself and keeps the distance to the border line."
+  - id: ch06-border
+    chapter: 6
+    kind: phone-shots
+    shots: ["android/A08-trip/03-alert-5km.png", "android/A08-trip/04-alert-2km.png", "android/A08-trip/05-alert-mpa.png", "android/A08-trip/06-alert-warning.png"]
+    covers: [F19]
+    text: "Five kilometres from the border line, a warning. Two kilometres, an alarm. The phone checks every position itself, even with the screen off."
+  - id: ch06-offline
+    chapter: 6
+    kind: phone-shots
+    shots: ["android/A08-trip/07-offline-map.png", "android/A08-trip/08-offline-alert.png", "android/A08-trip/09-synced.png"]
+    covers: [F20]
+    text: "With no signal at sea, the map and the border alerts keep working, and his positions are kept and sent when the signal returns."
+  - id: ch06-back
+    chapter: 6
+    kind: phone-shots
+    shots: ["android/A08-trip/10-im-back.png", "android/A08-trip/11-feedback.png", "android/A08-trip/12-track-record.png"]
+    covers: [F21]
+    text: "Back at the harbour he taps I'm back, and says whether today's advice was right. The app keeps an honest record."
+
+  - id: ch07-alerts
+    chapter: 7
+    kind: phone-shots
+    shots: ["android/A09-alerts/01-list.png", "android/A09-alerts/02-quiet-hours.png", "android/A09-alerts/03-budget.png"]
+    covers: [F22]
+    text: "Alerts keep their reasons. At night they stay quiet, at most three ordinary alerts come in a day, but border and official warnings always get through."
+
+  - id: ch08-family
+    chapter: 8
+    kind: phone-shots
+    shots: ["android/A10-family/01-share.png", "android/A10-family/02-family-card-at-sea.png", "android/A10-family/03-back-notice.png", "android/A10-family/04-family-card-back.png"]
+    covers: [F23]
+    text: "He can share his boat with his family for a set time. At home they see whether he is at sea, and they are told when he is back."
+  - id: ch08-family-web
+    chapter: 8
+    kind: browser-shots
+    shots: ["web/W07-family-web/01-family-web.png", "web/W07-family-web/02-push-opt-in.png", "web/W07-family-web/03-alert-card.png"]
+    covers: [F44]
+    text: "On a computer or an iPhone, the family uses the same card in the browser, with notifications if they want them."
+
+  - id: ch09-me
+    chapter: 9
+    kind: phone-shots
+    shots: ["android/A11-me/01-profile.png", "android/A11-me/02-boats.png", "android/A11-me/03-mode-switch.png", "android/A11-me/04-language-switch.png"]
+    covers: [F24, F25]
+    text: "His page holds his boats and settings, and he can switch to any language at any time."
+  - id: ch09-data
+    chapter: 9
+    kind: phone-shots
+    shots: ["android/A11-me/05-consents.png", "android/A11-me/06-download.png", "android/A11-me/07-delete-undo.png", "android/A11-me/08-help-grievance.png", "android/A11-me/09-about-privacy.png"]
+    covers: [F26, F27]
+    text: "He can download his data, delete his account with seven days to change his mind, and find the grievance officer and the privacy notice."
+  - id: ch09-large-rtl
+    chapter: 9
+    kind: phone-shots
+    shots: ["android/A20-large-text/01-today-200.png", "android/A20-large-text/02-map-200.png", "android/A21-rtl/01-rtl-today.png", "android/A21-rtl/02-rtl-map.png"]
+    covers: [F35]
+    text: "Text can be twice as large without breaking the screens, and languages written right to left turn the whole layout around."
+  - id: ch09-web-a11y
+    chapter: 9
+    kind: browser-shots
+    shots: ["web/W08-accessibility/01-rtl.png", "web/W08-accessibility/02-zoom-200.png"]
+    covers: [F45]
+    text: "The web version does the same: right to left, and zoomed to two hundred percent."
+
+  - id: ch10-warning
+    chapter: 10
+    kind: phone-shots
+    label: Simulation
+    shots: ["android/A13-simulated-warning/01-nogo-simulation.png", "android/A13-simulated-warning/02-why-warning.png"]
+    covers: [F28]
+    text: "This is a simulation, clearly labelled. When an official warning covers his area, the answer is don't go, whatever else the forecast says."
+  - id: ch10-no-window
+    chapter: 10
+    kind: phone-shots
+    label: Demonstration of an error state
+    shots: ["android/A14-no-safe-window/01-no-window.png", "android/A15-stale-data/01-stale.png"]
+    covers: [F29, F30]
+    text: "If there is no safe window, it says when the next good time is. If the forecast is too old, it says so, and never says good to go."
+  - id: ch10-offline-ai
+    chapter: 10
+    kind: phone-shots
+    label: Demonstration of an error state
+    shots: ["android/A16-llm-offline/01-templates-only.png", "android/A16-llm-offline/02-free-form-offline.png", "android/A17-kill-switch/01-chat-off.png"]
+    covers: [F31, F32]
+    text: "If the AI cannot be reached, or is switched off, the buttons still answer from approved sentences, and free questions say they need the network."
+  - id: ch10-error-update
+    chapter: 10
+    kind: phone-shots
+    label: Demonstration of an error state
+    shots: ["android/A18-error-retry/01-error.png", "android/A18-error-retry/02-retried.png", "android/A19-update/01-update-banner.png", "android/A19-update/02-update-required.png"]
+    covers: [F33, F34]
+    text: "An error offers to try again. An old version asks to be updated, and alerts keep working while it does."
+
+  - id: ch11-public
+    chapter: 11
+    kind: browser-shots
+    shots: ["web/W01-public/01-public-verdict.png", "web/W01-public/02-install.png", "web/W02-staff-sign-in/01-sign-in.png", "web/W02-staff-sign-in/02-totp.png"]
+    covers: [F36, F37]
+    text: "Anyone can see the advice in a browser without logging in. Staff sign in with Google and a one-time code."
+  - id: ch11-expert
+    chapter: 11
+    kind: browser-shots
+    shots: ["web/W03-expert/01-sea-signal.png", "web/W03-expert/02-ledger.png", "web/W03-expert/03-h2-buffer.png", "web/W03-expert/04-citations.png"]
+    covers: [F38]
+    text: "On the shore, an expert sees the same answer with every rule that was checked, the value, the limit and the data behind it."
+  - id: ch11-copilot
+    chapter: 11
+    kind: browser-shots
+    shots: ["web/W03-expert/05-fly-to.png", "web/W03-expert/06-mission-control.png", "web/W03-expert/07-drag-departure.png"]
+    covers: [F39]
+    text: "The assistant can move the map while it answers, and dragging the departure time checks the whole plan again."
+
+  - id: ch12-analyst
+    chapter: 12
+    kind: browser-shots
+    shots: ["web/W04-analyst/01-anomaly.png", "web/W04-analyst/02-overlap.png", "web/W04-analyst/03-downloads.png", "web/W04-analyst/04-kb-browser.png"]
+    covers: [F40]
+    text: "Scientists get temperature anomalies, how the computed fishing zones compare with INCOIS, data downloads and the document library."
+
+  - id: ch13-officer
+    chapter: 13
+    kind: diagram
+    label: "Warning areas → Boats inside, anonymised → Broadcast from approved templates → Delivered in each language"
+    covers: [F41]
+    text: "The district officer's console is designed but not yet built in this version: warning areas, anonymised boats inside them, and approved broadcasts in each fisher's language."
+
+  - id: ch14-admin
+    chapter: 14
+    kind: browser-shots
+    shots: ["web/W06-admin/01-overview.png", "web/W06-admin/02-data-sources.png", "web/W06-admin/03-knowledge-base.png", "web/W06-admin/05-alerts.png", "web/W06-admin/07-kill-switches.png"]
+    covers: [F42]
+    text: "Administrators watch the data sources, the document library and the alerts, and can switch free chat off in one step."
+  - id: ch14-admin-review
+    chapter: 14
+    kind: browser-shots
+    shots: ["web/W06-admin/08-guardrails.png", "web/W06-admin/09-replay.png", "web/W06-admin/10-users.png", "web/W06-admin/11-live-map.png", "web/W06-admin/12-audit.png"]
+    covers: [F43]
+    text: "Answers the safety checks blocked are reviewed, any past answer can be replayed, and the audit log proves nothing was changed."
+
+  - id: ch15-rules
+    chapter: 15
+    kind: diagram
+    label: "Data from official sources → Rules decide → Official warnings always win → The AI only explains"
+    min_seconds: 10
+    text: "Why trust it? The rules decide, official warnings always win, and every number comes from data, not from the AI."
+  - id: ch15-languages
+    chapter: 15
+    kind: diagram
+    label: "Approved sentences → Every Indian language → Advisory only"
+    min_seconds: 9
+    text: "Safety sentences are written and approved by people, in every Indian language, and the advice is always advisory: the official warnings come first. These screens show the Gulf of Mannar and Palk Bay demonstration region."
+  - id: ch15-release
+    chapter: 15
+    kind: phone-shots
+    shots: ["release-smoke/R01-release-smoke/01-today.png", "release-smoke/R01-release-smoke/02-map.png", "release-smoke/R01-release-smoke/03-alerts.png"]
+    covers: [F46]
+    text: "And this is the release build itself, running against the live test environment."
+
+  - id: ch16-close
+    chapter: 16
+    kind: title
+    label: Kadal Mitra
+    min_seconds: 8
+    text: "Advisory only — follow official INCOIS and IMD warnings. Smart India Hackathon 2026, problem statement 26176."

@@ -10,7 +10,7 @@ import type { SceneProps } from "../types";
 function Stage({ children, scene, family }: { children: ReactNode } & Pick<SceneProps, "scene" | "family">) {
   return (
     <AbsoluteFill style={{ background: colors.deep, alignItems: "center", justifyContent: "center" }}>
-      {children}
+      <div style={{ marginBottom: 170, display: "flex", justifyContent: "center", width: "100%" }}>{children}</div>
       <CaptionBar text={scene.text} rtl={scene.rtl} family={family} />
     </AbsoluteFill>
   );

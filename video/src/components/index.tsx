@@ -17,7 +17,7 @@ export const colors = {
 };
 
 export function PhoneFrame({ layout, style, children }: { layout: Layout; style?: CSSProperties; children: ReactNode }) {
-  const h = layout === "portrait" ? 1380 : 860;
+  const h = layout === "portrait" ? 1380 : 780;
   return (
     <div
       style={{
