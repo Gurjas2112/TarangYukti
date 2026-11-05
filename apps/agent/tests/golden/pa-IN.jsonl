@@ -1,0 +1,20 @@
+{"id": "pa-IN-mz-territorial", "lang": "pa-IN", "question": "ਭਾਰਤ ਦੇ ਖੇਤਰੀ ਪਾਣੀਆਂ ਦੀ ਹੱਦ ਤੱਟ ਤੋਂ ਕਿੰਨੀ ਦੂਰ ਤੱਕ ਹੈ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "pa-IN-mz-eez", "lang": "pa-IN", "question": "ਭਾਰਤ ਦਾ ਵਿਸ਼ੇਸ਼ ਆਰਥਿਕ ਖੇਤਰ ਕੀ ਹੈ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "pa-IN-mz-foreign-fishing", "lang": "pa-IN", "question": "ਕੀ ਵਿਦੇਸ਼ੀ ਜਹਾਜ਼ ਭਾਰਤ ਦੇ ਵਿਸ਼ੇਸ਼ ਆਰਥਿਕ ਖੇਤਰ ਵਿੱਚ ਬਿਨਾਂ ਆਗਿਆ ਦੇ ਮੱਛੀ ਫੜ ਸਕਦੇ ਹਨ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "pa-IN-tn-purpose", "lang": "pa-IN", "question": "ਤਾਮਿਲਨਾਡੂ ਸਮੁੰਦਰੀ ਮੱਛੀ ਫੜਨ ਕਾਨੂੰਨ ਕੀ ਨਿਯੰਤ੍ਰਿਤ ਕਰਦਾ ਹੈ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "pa-IN-tn-mechanised", "lang": "pa-IN", "question": "ਤਮਿਲ ਨਾਡੂ ਮੱਛੀ ਪਾਲਣ ਕਾਨੂੰਨ ਦੇ ਤਹਿਤ ਇੱਕ ਮਸ਼ੀਨੀ ਮੱਛੀ ਫੜਨ ਵਾਲਾ ਜਹਾਜ਼ ਕੀ ਹੁੰਦਾ ਹੈ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "pa-IN-tn-prohibit-area", "lang": "pa-IN", "question": "ਕੀ ਤਾਮਿਲਨਾਡੂ ਸਰਕਾਰ ਕਿਸੇ ਨਿਰਧਾਰਤ ਖੇਤਰ ਵਿੱਚ ਮੱਛੀ ਫੜਨ 'ਤੇ ਪਾਬੰਦੀ ਲਗਾ ਸਕਦੀ ਹੈ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "pa-IN-tn-registration", "lang": "pa-IN", "question": "ਕੀ ਮੱਛੀ ਫੜਨ ਵਾਲੇ ਜਹਾਜ਼ਾਂ ਨੂੰ ਤਾਮਿਲਨਾਡੂ ਵਿੱਚ ਰਜਿਸਟਰ ਕਰਵਾਉਣਾ ਪੈਂਦਾ ਹੈ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "pa-IN-cm-total-2024", "lang": "pa-IN", "question": "2024 ਵਿੱਚ ਭਾਰਤ ਵਿੱਚ ਕਿੰਨੀ ਸਮੁੰਦਰੀ ਮੱਛੀ ਉਤਾਰੀ ਗਈ ਸੀ?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "pa-IN-cm-top-state", "lang": "pa-IN", "question": "2024 ਵਿੱਚ ਕਿਸ ਰਾਜ ਵਿੱਚ ਸਮੁੰਦਰੀ ਮੱਛੀ ਦੀ ਸਭ ਤੋਂ ਵੱਧ ਲੈਂਡਿੰਗ ਹੋਈ ਸੀ?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "pa-IN-cm-top-species", "lang": "pa-IN", "question": "2024 ਵਿੱਚ ਭਾਰਤ ਵਿੱਚ ਸਭ ਤੋਂ ਵੱਧ ਫੜੀ ਜਾਣ ਵਾਲੀ ਮੱਛੀ ਦੀ ਕਿਸਮ ਕਿਹੜੀ ਸੀ?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "pa-IN-sop-cyclone-at-sea", "lang": "pa-IN", "question": "ਜੇ ਮੈਂ ਸਮੁੰਦਰ ਵਿੱਚ ਹੁੰਦੀ ਹਾਂ ਅਤੇ ਤੂਫ਼ਾਨ ਦੀ ਚੇਤਾਵਨੀ ਜਾਰੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਮੈਨੂੰ ਕੀ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "pa-IN-sop-high-wave", "lang": "pa-IN", "question": "ਕੀ ਮੈਨੂੰ ਮੱਛੀ ਫੜਨ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਜਦੋਂ ਉੱਚ ਲਹਿਰ ਦੀ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਹੋਵੇ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "pa-IN-sop-cross-border", "lang": "pa-IN", "question": "ਜੇ ਮੈਂ ਭਾਰਤ-ਸ਼੍ਰੀਲੰਕਾ ਸਰਹੱਦ ਲਾਈਨ ਪਾਰ ਕਰਦੀ ਹਾਂ ਤਾਂ ਕੀ ਹੁੰਦਾ ਹੈ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "pa-IN-sop-drift-border", "lang": "pa-IN", "question": "ਮੇਰਾ ਇੰਜਣ ਖਰਾਬ ਹੋ ਗਿਆ ਹੈ ਅਤੇ ਮੈਂ ਸਰਹੱਦ ਵੱਲ ਵਧ ਰਹੀ ਹਾਂ। ਮੈਨੂੰ ਕੀ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "pa-IN-sop-coast-guard", "lang": "pa-IN", "question": "ਮੈਨੂੰ ਸਮੁੰਦਰ ਵਿੱਚ ਕੋਸਟ ਗਾਰਡ ਦੀ ਬਚਾਅ ਲਈ ਕਿਹੜੇ ਨੰਬਰ 'ਤੇ ਕਾਲ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "pa-IN-ban-east-coast", "lang": "pa-IN", "question": "ਪੂਰਬੀ ਤੱਟ 'ਤੇ ਸਾਲਾਨਾ ਮੱਛੀ ਫੜਨ 'ਤੇ ਪਾਬੰਦੀ ਕਦੋਂ ਹੈ?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "pa-IN-x-fish-price", "lang": "pa-IN", "question": "ਅੱਜ ਚੇਨਈ ਦੀ ਮਾਰਕੀਟ ਵਿੱਚ ਸੀਅਰ ਮੱਛੀ ਦੀ ਕੀਮਤ ਕੀ ਹੈ?", "expected": [], "draft": true}
+{"id": "pa-IN-x-cricket", "lang": "pa-IN", "question": "ਅੱਜ ਦੇ ਕ੍ਰਿਕਟ ਮੈਚ ਦਾ ਸਕੋਰ ਕੀ ਹੈ?", "expected": [], "draft": true}
+{"id": "pa-IN-x-recipe", "lang": "pa-IN", "question": "ਮੱਛੀ ਦੀ ਕਰੀ ਲਈ ਇੱਕ ਵਧੀਆ ਰੈਸਿਪੀ ਕੀ ਹੈ?", "expected": [], "draft": true}
+{"id": "pa-IN-x-loan", "lang": "pa-IN", "question": "ਮੈਂ ਘਰ ਖਰੀਦਣ ਲਈ ਬੈਂਕ ਲੋਨ ਲਈ ਕਿਵੇਂ ਅਰਜ਼ੀ ਦੇਵਾਂ?", "expected": [], "draft": true}

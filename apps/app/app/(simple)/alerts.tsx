@@ -1,7 +1,8 @@
 // Alerts tab: today's pushes for the signed-in user (RLS: own rows only) and the quiet hours.
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Text } from "../../src/ui/Text";
 import { z } from "zod";
 
 import { api } from "../../src/api/channels";

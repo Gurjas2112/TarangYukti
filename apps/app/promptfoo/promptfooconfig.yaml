@@ -1,0 +1,10 @@
+# LLM-facing tests (spec §14.3): run against a running agent (make mcp + make agent), never in CI.
+#   cd apps/app/promptfoo && npx promptfoo@latest eval            # every language
+#   PF_LANGS=ml-IN,ur-IN npx promptfoo@latest eval                # a subset
+description: TarangYukti language, grounding and injection tests
+prompts: ["{{question}}"]
+providers: ["file://agentProvider.mjs"]
+defaultTest:
+  options: { provider: "file://agentProvider.mjs" }
+tests: file://tests.mjs
+evaluateOptions: { maxConcurrency: 2 }

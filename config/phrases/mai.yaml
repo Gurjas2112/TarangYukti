@@ -9,7 +9,7 @@ verdict:
   CAUTION: जाउ, मुदा सावधानी सँ - {back_by} सँ पाछाँ।
   NO-GO: 'आइ नहि जाऊ। अगिला नीक समय: {next_window}.'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} के बाद लहरि बहुत ऊँच भऽ जाइत अछि।'
   H2: ओ रास्ता सीमा रेखाक बहुत नजदीक जाइत अछि।
   H1: 'एकटा आधिकारिक {issuer} चेतावनी अछि: {warning_name}।'
   H3: ओ क्षेत्र संरक्षित समुद्री उद्यान केर भीतर अछि।
@@ -35,9 +35,9 @@ directions:
   west: पश्चिम
   north_west: उत्तर-पश्चिम
 ack: समुद्रक जाँच कएल जा रहल अछि...
-brief_title: Morning brief · {harbour}
+brief_title: प्रातःकालीन संक्षिप्त विवरण · {harbour}
 push_test: कदल मित्र अलर्ट चालू अछि।
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} वापस {harbour}, {time} पर अछि।'
 consent:
   notice_version: '2026-11-04'
   short: हम अहाँक स्थानक उपयोग केवल अहाँकेँ सीमाक लग आ खराब मौसममे चेतावनी देबाक लेल करैत छी। अहाँ कोनो समय रोकि सकैत छी।
@@ -50,6 +50,6 @@ alerts:
   mpa: अहाँ संरक्षित समुद्री उद्यान के भीतर छी। एतय माछ मारबाक अनुमति नहि अछि।
 trip:
   feedback_ask: की आइ के सलाह सही छल?
-  right_on: Right on {right} of the last {total} days.
+  right_on: पिछला {total} दिनक {right} पर ठीक।
 family_title: कदल मित्र · परिवार
 chat_paused: 'प्रश्न किछु समयक लेल रुकल अछि। बटन अखनो काज करैत अछि: आइ केर समुद्र, माछ कतय मारू, अलर्ट, हम वापस आबि गेल छी।'

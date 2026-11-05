@@ -2,7 +2,8 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../src/ui/Text";
 
 import { verifyPhoneLink } from "../src/auth/supabase";
 import { colors, font, space } from "../src/ui/tokens";

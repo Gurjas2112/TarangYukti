@@ -1,0 +1,20 @@
+{"id": "kn-IN-mz-territorial", "lang": "kn-IN", "question": "ಭಾರತದ ಪ್ರಾದೇಶಿಕ ಜಲವು ಕರಾವಳಿಯಿಂದ ಎಷ್ಟು ದೂರದವರೆಗೆ ವಿಸ್ತರಿಸಿದೆ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "kn-IN-mz-eez", "lang": "kn-IN", "question": "ಭಾರತದ ವಿಶೇಷ ಆರ್ಥಿಕ ವಲಯ ಎಂದರೇನು?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "kn-IN-mz-foreign-fishing", "lang": "kn-IN", "question": "ಭಾರತದ ವಿಶೇಷ ಆರ್ಥಿಕ ವಲಯದಲ್ಲಿ ವಿದೇಶಿ ಹಡಗುಗಳು ಅನುಮತಿಯಿಲ್ಲದೆ ಮೀನುಗಾರಿಕೆ ಮಾಡಬಹುದೇ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "kn-IN-tn-purpose", "lang": "kn-IN", "question": "ತಮಿಳುನಾಡು ಸಾಗರ ಮೀನುಗಾರಿಕೆ ನಿಯಂತ್ರಣ ಕಾಯ್ದೆ ಏನು ನಿಯಂತ್ರಿಸುತ್ತದೆ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "kn-IN-tn-mechanised", "lang": "kn-IN", "question": "ತಮಿಳುನಾಡು ಮೀನುಗಾರಿಕೆ ಕಾನೂನಿನ ಅಡಿಯಲ್ಲಿ ಯಾಂತ್ರೀಕೃತ ಮೀನುಗಾರಿಕಾ ಹಡಗು ಎಂದರೇನು?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "kn-IN-tn-prohibit-area", "lang": "kn-IN", "question": "ತಮಿಳುನಾಡು ಸರ್ಕಾರವು ನಿರ್ದಿಷ್ಟ ಪ್ರದೇಶದಲ್ಲಿ ಮೀನುಗಾರಿಕೆಯನ್ನು ನಿಷೇಧಿಸಬಹುದೇ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "kn-IN-tn-registration", "lang": "kn-IN", "question": "ಮೀನುಗಾರಿಕಾ ಹಡಗುಗಳು ತಮಿಳುನಾಡಿನಲ್ಲಿ ನೋಂದಾಯಿಸಿಕೊಳ್ಳಬೇಕೇ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "kn-IN-cm-total-2024", "lang": "kn-IN", "question": "2024 ರಲ್ಲಿ ಭಾರತದಲ್ಲಿ ಎಷ್ಟು ಸಮುದ್ರ ಮೀನುಗಳನ್ನು ಇಳಿಸಲಾಯಿತು?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "kn-IN-cm-top-state", "lang": "kn-IN", "question": "2024 ರಲ್ಲಿ ಯಾವ ರಾಜ್ಯವು ಅತಿ ಹೆಚ್ಚು ಸಮುದ್ರ ಮೀನು ಇಳಿಸುವಿಕೆಯನ್ನು ಹೊಂದಿತ್ತು?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "kn-IN-cm-top-species", "lang": "kn-IN", "question": "2024 ರಲ್ಲಿ ಭಾರತದಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಹಿಡಿಯಲ್ಪಟ್ಟ ಮೀನು ಪ್ರಭೇದ ಯಾವುದು?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "kn-IN-sop-cyclone-at-sea", "lang": "kn-IN", "question": "ನಾನು ಸಮುದ್ರದಲ್ಲಿರುವಾಗ ಚಂಡಮಾರುತದ ಎಚ್ಚರಿಕೆ ನೀಡಿದರೆ ನಾನು ಏನು ಮಾಡಬೇಕು?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "kn-IN-sop-high-wave", "lang": "kn-IN", "question": "ಅಧಿಕೃತ ಎತ್ತರದ ಅಲೆಯ ಎಚ್ಚರಿಕೆ ಇದ್ದಾಗ ನಾನು ಮೀನುಗಾರಿಕೆಗೆ ಹೋಗಬೇಕೇ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "kn-IN-sop-cross-border", "lang": "kn-IN", "question": "ನಾನು ಭಾರತ ಶ್ರೀಲಂಕಾ ಗಡಿ ರೇಖೆಯನ್ನು ದಾಟಿದರೆ ಏನಾಗುತ್ತದೆ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "kn-IN-sop-drift-border", "lang": "kn-IN", "question": "ನನ್ನ ಎಂಜಿನ್ ಕೆಟ್ಟುಹೋಯಿತು ಮತ್ತು ನಾನು ಗಡಿ ರೇಖೆಯ ಕಡೆಗೆ ತೇಲುತ್ತಿದ್ದೇನೆ. ನಾನು ಏನು ಮಾಡಬೇಕು?", "expected": ["sop:border-line"], "draft": true}
+{"id": "kn-IN-sop-coast-guard", "lang": "kn-IN", "question": "ಸಮುದ್ರದಲ್ಲಿ ಕರಾವಳಿ ಕಾವಲು ಪಡೆಯ ರಕ್ಷಣೆಗಾಗಿ ನಾನು ಯಾವ ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಬೇಕು?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "kn-IN-ban-east-coast", "lang": "kn-IN", "question": "ಪೂರ್ವ ಕರಾವಳಿಯಲ್ಲಿ ವಾರ್ಷಿಕ ಮೀನುಗಾರಿಕೆ ನಿಷೇಧ ಯಾವಾಗ ಇರುತ್ತದೆ?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "kn-IN-x-fish-price", "lang": "kn-IN", "question": "ಇಂದು ಚೆನ್ನೈ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಸೀರ್ ಮೀನಿನ ಬೆಲೆ ಎಷ್ಟು?", "expected": [], "draft": true}
+{"id": "kn-IN-x-cricket", "lang": "kn-IN", "question": "ಇವತ್ತಿನ ಕ್ರಿಕೆಟ್ ಪಂದ್ಯದ ಸ್ಕೋರ್ ಏನು?", "expected": [], "draft": true}
+{"id": "kn-IN-x-recipe", "lang": "kn-IN", "question": "ಮೀನಿನ ಕರಿ ಮಾಡಲು ಒಂದು ಒಳ್ಳೆಯ ಅಡುಗೆ ವಿಧಾನ ಯಾವುದು?", "expected": [], "draft": true}
+{"id": "kn-IN-x-loan", "lang": "kn-IN", "question": "ಮನೆ ಖರೀದಿಸಲು ನಾನು ಬ್ಯಾಂಕ್ ಸಾಲಕ್ಕೆ ಹೇಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸುವುದು?", "expected": [], "draft": true}

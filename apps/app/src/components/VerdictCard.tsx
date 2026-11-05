@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import type { Brief, Verdict } from "../api/channels";
 import { colors, font, radius, space } from "../ui/tokens";

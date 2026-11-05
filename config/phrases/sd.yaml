@@ -9,20 +9,20 @@ verdict:
   CAUTION: वञो, पर ध्यान सां — {back_by} सां पोइते वञो।
   NO-GO: 'अॼु न वञो। अगि॒लो सुठो वक़्ति: {next_window}.'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} खां पोइ लहरूं तमाम वधीक मथे थी वञनि थियूं।'
   H2: उहो रस्तो सरहदी रेखा जे ॾाढो वेझो वेंदो आहे।
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'हिकु सरकारी {issuer} चेताउनी आहे: {warning_name}.'
   H3: اهو علائقو محفوظ سامونڊي پارڪ جي اندر آهي.
   H4: इहा मशीनी किश्तियुनि जे लाइ मछी मारण जी रोक जो मौसमु आहे।
-  H6: The wind gets too strong after {time}.
+  H6: हवा {time} खां पोइ तमाम तेज़ थी वेंदी आहे।
   H7: 'हिकु सरकारी तूफ़ानी चेतावनी आहे: {warning_name}.'
   H8: कुझु डेटा पुराणा या गायब आहिनि, इन करे समुंड जी जाच नथी करे सघिजे।
-spot: Fish likely {distance_km} km {direction}.
+spot: मच्छी मुमकिन आहे {distance_km} कि.मी. {direction}.
 border: सीमा रेखा {distance_km} किलोमीटर परे आहे।
 stale: पुराणो पेशिंगोई — वञण खां पहिरीं वरी जाचि वठो।
 footer: सिर्फ़ सलाह - आधिकारिक आई.एन.सी.ओ.आई.एस./आई.एम.डी. चेताउनी जी पैरवी करियो।
 needs_network: 'मूंखे इन जो जवाबु ॾियणु लाइ इंटरनेट जी ज़रूरत आहे। बटन अञा बि कमु कनि था: अॼु जो समुंडु, मछी किथे पकड़िजे, अलर्ट, मां वापस अची वेई आहियां।'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+nothing_found: मूंखे सरकारी दस्तावेज़नि में इन बाबति कुझु बि न मिलियो। मेहरबानी करे {source} खां पुछो।
 cannot_verify: मां हिन जवाब खे डेटा सां जाचि नथी सघियसि, तंहिंकरे मां इहो न ॾिंदसि। मेहरबानी करे बटननि खे इस्तेमाल करियो या वरी पुछो।
 no_window: अगि॒यनि 24 कलाकनि में को बि न।
 directions:
@@ -35,9 +35,9 @@ directions:
   west: मग़रिब
   north_west: उतर-ओलह
 ack: समुंड जी जाच कंदे...
-brief_title: Morning brief · {harbour}
+brief_title: सुबुह जी ख़ुशगवारु · {harbour}
 push_test: कदल मित्रा अलर्ट चालू आहिनि।
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} {harbour}, {time} ते वापिस आहे।'
 consent:
   notice_version: '2026-11-04'
   short: असां तव्हां जी जॻहि जो इस्तेमालु रुॿक जे वेझो ऐं ख़राब मौसम में तव्हां खे ख़बरदार करण लाइ कंदा आहियूं। तव्हां कॾहिं बि रोके सघो था।
@@ -50,6 +50,6 @@ alerts:
   mpa: तव्हां महफूज़ समुंडी बाग़ जे अंदर आहियो। हिते मछी मारण जी इजाज़त नाहे।
 trip:
   feedback_ask: छा अॼु जी सलाह सही हुई? छा तव्हां खे इहो समझ में अची वियो?
-  right_on: Right on {right} of the last {total} days.
+  right_on: पचिमा {right} मां पोइयां {total} ॾींहंनि मां.
 family_title: कदल मित्र · कुटुंब
 chat_paused: 'सवाल कुझु वक़्ति लाइ रुकी विया आहिनि। बटन अञा बि कमु कनि था: अॼु जो समुंडु, किथे मछी मारीजे, अलर्ट, मां वापसि आई आहियां।'

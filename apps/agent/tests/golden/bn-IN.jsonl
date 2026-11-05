@@ -1,0 +1,20 @@
+{"id": "bn-IN-mz-territorial", "lang": "bn-IN", "question": "ভারতের উপকূলীয় জলসীমা উপকূল থেকে কত দূরে বিস্তৃত?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "bn-IN-mz-eez", "lang": "bn-IN", "question": "ভারতের একচেটিয়া অর্থনৈতিক অঞ্চল কী?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "bn-IN-mz-foreign-fishing", "lang": "bn-IN", "question": "বিদেশী জাহাজগুলি কি অনুমতি ছাড়া ভারতের একচেটিয়া অর্থনৈতিক অঞ্চলে মাছ ধরতে পারে?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "bn-IN-tn-purpose", "lang": "bn-IN", "question": "তামিলনাড়ু সামুদ্রিক মৎস্য নিয়ন্ত্রণ আইন কী নিয়ন্ত্রণ করে?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "bn-IN-tn-mechanised", "lang": "bn-IN", "question": "তামিলনাড়ু মৎস্য আইনের অধীনে যান্ত্রিক মৎস্য জাহাজ কী?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "bn-IN-tn-prohibit-area", "lang": "bn-IN", "question": "তামিলনাড়ু সরকার কি একটি নির্দিষ্ট এলাকায় মাছ ধরা নিষিদ্ধ করতে পারে?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "bn-IN-tn-registration", "lang": "bn-IN", "question": "তামিলনাড়ুতে কি মাছ ধরার নৌকাগুলিকে নিবন্ধিত করতে হয়?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "bn-IN-cm-total-2024", "lang": "bn-IN", "question": "2024 সালে ভারতে কত সামুদ্রিক মাছ ধরা হয়েছিল?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "bn-IN-cm-top-state", "lang": "bn-IN", "question": "2024 সালে কোন রাজ্যে সবচেয়ে বেশি সামুদ্রিক মাছ ধরা হয়েছিল?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "bn-IN-cm-top-species", "lang": "bn-IN", "question": "2024 সালে ভারতে সবচেয়ে বেশি ধরা পড়া মাছের প্রজাতি কোনটি ছিল?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "bn-IN-sop-cyclone-at-sea", "lang": "bn-IN", "question": "আমি যখন সমুদ্রে থাকি, তখন ঘূর্ণিঝড়ের সতর্কতা জারি করা হলে আমার কী করা উচিত?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "bn-IN-sop-high-wave", "lang": "bn-IN", "question": "সরকারিভাবে উঁচু ঢেউয়ের সতর্কতা জারি থাকলে কি আমার মাছ ধরতে যাওয়া উচিত?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "bn-IN-sop-cross-border", "lang": "bn-IN", "question": "আমি যদি ভারত-শ্রীলঙ্কা সীমান্ত রেখা অতিক্রম করি, তাহলে কী হবে?", "expected": ["sop:border-line"], "draft": true}
+{"id": "bn-IN-sop-drift-border", "lang": "bn-IN", "question": "আমার ইঞ্জিন খারাপ হয়ে গেছে এবং আমি সীমান্ত রেখার দিকে ভেসে যাচ্ছি। আমার কী করা উচিত?", "expected": ["sop:border-line"], "draft": true}
+{"id": "bn-IN-sop-coast-guard", "lang": "bn-IN", "question": "সমুদ্রে কোস্ট গার্ডের উদ্ধারের জন্য কোন নম্বরে ফোন করতে হবে?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "bn-IN-ban-east-coast", "lang": "bn-IN", "question": "পূর্ব উপকূলে বার্ষিক মাছ ধরার নিষেধাজ্ঞা কবে থেকে জারি করা হয়েছে?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "bn-IN-x-fish-price", "lang": "bn-IN", "question": "আজ চেন্নাই বাজারে seer মাছের দাম কত?", "expected": [], "draft": true}
+{"id": "bn-IN-x-cricket", "lang": "bn-IN", "question": "আজকের ক্রিকেট ম্যাচের স্কোর কত?", "expected": [], "draft": true}
+{"id": "bn-IN-x-recipe", "lang": "bn-IN", "question": "মাছের তরকারি করার ভালো রেসিপি কী?", "expected": [], "draft": true}
+{"id": "bn-IN-x-loan", "lang": "bn-IN", "question": "বাড়ি কেনার জন্য আমি কীভাবে ব্যাঙ্কের ঋণের জন্য আবেদন করব?", "expected": [], "draft": true}

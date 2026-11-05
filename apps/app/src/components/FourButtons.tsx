@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { colors, font, radius, space, touch } from "../ui/tokens";
 

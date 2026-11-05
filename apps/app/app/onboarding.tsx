@@ -5,19 +5,20 @@ import { useQuery } from "@tanstack/react-query";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet } from "react-native";
+import { Text } from "../src/ui/Text";
 
 import { api, type BoatKind } from "../src/api/channels";
 import { signInWithGoogle } from "../src/auth/google";
 import { supabase, useSession } from "../src/auth/supabase";
 import { LanguagePicker } from "../src/components/LanguagePicker";
-import { deviceLanguage } from "../src/i18n";
+import { availableLanguages, deviceLanguage, languageInfo } from "../src/i18n";
 import { registerPush } from "../src/push/register";
 import { usePrefs } from "../src/state/prefs";
 import { colors, font, radius, space, touch } from "../src/ui/tokens";
 import { hasVoice, speak } from "../src/voice/speak";
 
-type Step = "language" | "harbour" | "boat" | "alerts";
+type Step = "language" | "harbour" | "suggest" | "boat" | "alerts";
 const BOATS: { kind: BoatKind; icon: string }[] = [
   { kind: "non_motorised", icon: "🛶" },
   { kind: "small_frp", icon: "🚤" },
@@ -31,6 +32,7 @@ export default function Onboarding() {
   const { session } = useSession();
   const [step, setStep] = useState<Step>(params.step ?? "language");
   const [status, setStatus] = useState<"idle" | "working" | "done" | "failed">("idle");
+  const [suggested, setSuggested] = useState<{ code: string; harbour: string } | null>(null);
   const harbours = useQuery({ queryKey: ["harbours"], queryFn: api.harbours, enabled: step === "harbour" });
   const consent = useQuery({ queryKey: ["consent", lang], queryFn: () => api.consent(lang), enabled: step === "alerts" });
 
@@ -109,7 +111,11 @@ export default function Onboarding() {
               style={[styles.choice, prefs.harbour === h.id && styles.chosen]}
               onPress={async () => {
                 await update({ harbour: h.id });
-                setStep("boat");
+                // spec §6.5: suggest the language of the harbour's state, accept any other
+                const s = h.suggested_language;
+                const offered = s && s !== lang && availableLanguages().some((l) => l.code === s);
+                setSuggested(offered ? { code: s, harbour: h.name } : null);
+                setStep(offered ? "suggest" : "boat");
               }}
               accessibilityRole="button"
               accessibilityLabel={h.name}
@@ -119,6 +125,33 @@ export default function Onboarding() {
             </Pressable>
           ))}
           <Back onPress={() => setStep("language")} />
+        </>
+      ) : null}
+
+      {step === "suggest" && suggested ? (
+        <>
+          <Text style={styles.title} accessibilityRole="header">
+            {t("onboarding.suggest.title", { harbour: suggested.harbour })}
+          </Text>
+          {[suggested.code, lang].map((code) => (
+            <Pressable
+              key={code}
+              style={[styles.choice, code === lang && styles.chosen]}
+              onPress={async () => {
+                if (code !== lang) await update({ lang: code });
+                setStep("boat");
+              }}
+              accessibilityRole="button"
+              accessibilityLabel={languageInfo(code)?.name ?? code}
+              accessibilityLanguage={code}
+              testID={code === lang ? "suggest-keep" : "suggest-switch"}
+            >
+              <Text style={styles.choiceText} lang={code}>
+                {languageInfo(code)?.name ?? code}
+              </Text>
+            </Pressable>
+          ))}
+          <Back onPress={() => setStep("harbour")} />
         </>
       ) : null}
 

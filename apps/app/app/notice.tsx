@@ -1,7 +1,8 @@
 // The full written notice behind "Read full notice" (DPDP; spec §7.4). Draft wording until legal review (M9).
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
+import { Text } from "../src/ui/Text";
 
 import { colors, font, space } from "../src/ui/tokens";
 

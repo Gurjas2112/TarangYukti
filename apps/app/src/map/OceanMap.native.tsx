@@ -2,7 +2,8 @@
 // this honours the same contract and lists what the map would show, so screens and the agent's frontend tools
 // work unchanged on both targets.
 import { forwardRef, useImperativeHandle, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { colors, font, space } from "../ui/tokens";
 import type { LayerId, OceanMapHandle, OceanMapProps } from "./types";

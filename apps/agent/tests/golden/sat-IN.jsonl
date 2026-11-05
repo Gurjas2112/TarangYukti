@@ -1,0 +1,20 @@
+{"id": "sat-IN-mz-territorial", "lang": "sat-IN", "question": "ᱵᱷᱟᱨᱚᱛ ᱨᱮᱭᱟᱜ ᱴᱚᱴᱷᱟᱠᱤᱭᱟᱹ ᱫᱟᱜ ᱫᱷᱟᱨᱮ ᱠᱷᱚᱱ ᱛᱤᱱᱟᱹᱜ ᱥᱟᱺᱜᱤᱧ ᱫᱷᱟᱹᱵᱤᱡ ᱯᱟᱥᱱᱟᱣ ᱟᱠᱟᱱᱟ ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sat-IN-mz-eez", "lang": "sat-IN", "question": "ᱵᱷᱟᱨᱚᱛ ᱨᱮᱭᱟᱜ ᱮᱠᱥᱠᱞᱩᱥᱤᱵᱷ ᱤᱠᱳᱱᱚᱢᱤᱠ ᱡᱳᱱ ᱫᱚ ᱪᱮᱫ ᱠᱟᱱᱟ ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sat-IN-mz-foreign-fishing", "lang": "sat-IN", "question": "ᱵᱤᱫᱮᱥᱤ ᱡᱟᱦᱟᱡ ᱠᱚ ᱪᱮᱫ ᱵᱷᱟᱨᱚᱛ ᱨᱮᱭᱟᱜ ᱵᱤᱥᱮᱥ ᱠᱟᱹᱣᱰᱤ ᱟᱹᱨᱤ ᱴᱚᱴᱷᱟ ᱨᱮ ᱵᱮᱜᱚᱨ ᱟᱹᱭᱫᱟᱹᱨ ᱛᱮ ᱦᱟᱹᱠᱩ ᱠᱚ ᱥᱟᱵ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sat-IN-tn-purpose", "lang": "sat-IN", "question": "ᱛᱟᱢᱤᱞᱱᱟᱰᱩ ᱢᱮᱨᱤᱱ ᱯᱷᱤᱥᱤᱝ ᱨᱮᱜᱩᱞᱮᱥᱚᱱ ᱮᱠᱴ ᱪᱮᱫ ᱥᱟᱵ ᱨᱮᱭᱟᱜ ᱮ ᱵᱟᱨᱮᱛᱮ ᱞᱟᱹᱭᱟ ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sat-IN-tn-mechanised", "lang": "sat-IN", "question": "ᱛᱟᱢᱤᱞᱱᱟᱰᱩ ᱨᱮᱭᱟᱜ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱟᱹᱱ ᱞᱟᱹᱭᱛᱮ ᱢᱤᱫᱴᱟᱝ ᱡᱚᱱᱛᱨᱤᱠ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱡᱟᱦᱟᱡᱽ ᱫᱚ ᱪᱮᱫ ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sat-IN-tn-prohibit-area", "lang": "sat-IN", "question": "ᱛᱟᱢᱤᱞᱱᱟᱲᱩ ᱥᱚᱨᱠᱟᱨ ᱪᱤᱱᱦᱟᱹ ᱟᱠᱟᱱ ᱴᱚᱴᱷᱟ ᱨᱮ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱵᱚᱱᱫᱚ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱥᱮ ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sat-IN-tn-registration", "lang": "sat-IN", "question": "ᱛᱟᱢᱤᱞᱱᱟᱲᱩ ᱨᱮ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱡᱟᱦᱟᱡᱽ ᱠᱚ ᱨᱮᱭᱟᱜ ᱚᱞ ᱞᱟᱹᱠᱛᱤ ᱢᱮᱱᱟᱜᱼᱟ ᱥᱮ ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sat-IN-cm-total-2024", "lang": "sat-IN", "question": "2024 ᱥᱟᱞ ᱨᱮ ᱵᱷᱟᱨᱚᱛ ᱨᱮ ᱛᱤᱱᱟᱹᱜ ᱫᱚᱨᱭᱟ ᱨᱮᱱ ᱦᱟᱹᱠᱩ ᱟᱹᱜᱩ ᱦᱩᱭ ᱞᱮᱱᱟ ?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sat-IN-cm-top-state", "lang": "sat-IN", "question": "2024 ᱥᱟᱞ ᱨᱮ ᱚᱠᱟ ᱯᱚᱱᱚᱛ ᱨᱮ ᱡᱚᱛᱚᱠᱷᱚᱱ ᱰᱷᱮᱨ ᱥᱟᱹᱢᱩᱫ ᱨᱮᱭᱟᱜ ᱦᱟᱹᱠᱩ ᱧᱟᱢ ᱞᱮᱱᱟ ?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sat-IN-cm-top-species", "lang": "sat-IN", "question": "2024 ᱥᱟᱞ ᱨᱮ ᱵᱷᱟᱨᱚᱛ ᱨᱮ ᱡᱚᱛᱚᱠᱷᱚᱱ ᱰᱷᱮᱨ ᱟᱹᱠᱷᱨᱤᱧ ᱟᱠᱟᱱ ᱦᱟᱹᱠᱩ ᱨᱮᱭᱟᱜ ᱯᱨᱚᱡᱟᱹᱛᱤ ᱫᱚ ᱪᱮᱫ ᱛᱟᱦᱮᱸᱠᱟᱱᱟ ?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sat-IN-sop-cyclone-at-sea", "lang": "sat-IN", "question": "ᱤᱧ ᱡᱚᱫᱤ ᱥᱟᱹᱢᱩᱫ ᱨᱮᱧ ᱛᱟᱦᱮᱱ ᱚᱠᱛᱚ ᱥᱟᱭᱠᱞᱳᱱ ᱨᱮᱭᱟᱜ ᱪᱮᱸᱜᱷᱟᱣᱱᱟᱧ ᱡᱟᱹᱨᱤᱭᱟᱜᱼᱟ ᱮᱱᱠᱷᱟᱱ ᱤᱧ ᱪᱮᱫᱤᱧ ᱠᱚᱨᱟᱣᱟ ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "sat-IN-sop-high-wave", "lang": "sat-IN", "question": "ᱡᱚᱠᱷᱚᱱ ᱢᱤᱫᱴᱟᱝ ᱟᱠᱷᱲᱟ ᱞᱮᱠᱟᱛᱮ ᱞᱟᱯᱷᱟᱝ ᱛᱚᱨᱚᱝᱜᱚ ᱨᱮᱭᱟᱜ ᱥᱚᱱᱛᱚᱨ ᱮᱢ ᱦᱩᱭᱩᱜᱼᱟ ᱩᱱᱫᱚ ᱪᱮᱫ ᱤᱧ ᱦᱟᱹᱠᱩᱧ ᱥᱟᱵ ᱥᱮᱱ ᱞᱟᱹᱠᱛᱤ ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "sat-IN-sop-cross-border", "lang": "sat-IN", "question": "ᱡᱩᱫᱤ ᱤᱧ ᱵᱷᱟᱨᱚᱛ ᱥᱨᱤᱞᱚᱝᱠᱟ ᱥᱤᱢᱟᱹ ᱨᱮᱭᱟᱜ ᱞᱟᱭᱤᱱ ᱯᱟᱨᱚᱢᱟ ᱮᱱᱠᱷᱟᱱ ᱪᱮᱫ ᱦᱩᱭᱩᱜᱼᱟ ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "sat-IN-sop-drift-border", "lang": "sat-IN", "question": "ᱤᱧᱟᱹᱜ ᱤᱧᱡᱤᱱ ᱵᱟᱹᱲᱤᱡ ᱮᱱᱟ ᱟᱨ ᱤᱧ ᱥᱤᱢᱟᱹ ᱥᱮᱫ ᱤᱧ ᱞᱟᱦᱟ ᱤᱫᱤᱭᱮᱫ ᱠᱟᱱᱟ ᱾ ᱤᱧ ᱪᱮᱫᱤᱧ ᱪᱤᱠᱟᱹᱭᱟ ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "sat-IN-sop-coast-guard", "lang": "sat-IN", "question": "ᱥᱟᱹᱢᱩᱫ ᱨᱮ ᱠᱳᱥᱴ ᱜᱟᱨᱰ ᱨᱮᱭᱟᱜ ᱵᱟᱧᱪᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱤᱧ ᱚᱠᱟ ᱱᱚᱢᱵᱚᱨ ᱨᱮᱧ ᱠᱚᱞ ᱦᱩᱭᱩᱜᱼᱟ ?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "sat-IN-ban-east-coast", "lang": "sat-IN", "question": "ᱯᱩᱨᱩᱵ ᱥᱟᱹᱢᱩᱫ ᱟᱲᱮ ᱨᱮ ᱥᱮᱨᱢᱟᱠᱤᱭᱟᱹ ᱦᱟᱹᱠᱩ ᱥᱟᱵ ᱨᱮᱭᱟᱜ ᱵᱟᱨᱚᱱ ᱛᱤᱠᱤᱱ ᱚᱠᱛᱚ ᱨᱮ ᱞᱟᱜᱟᱣ ᱦᱩᱭᱩᱜᱼᱟ ?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "sat-IN-x-fish-price", "lang": "sat-IN", "question": "ᱛᱮᱦᱮᱧ ᱪᱮᱱᱱᱟᱭ ᱵᱟᱡᱟᱨ ᱨᱮ ᱥᱤᱨ ᱦᱟᱹᱠᱩ ᱨᱮᱭᱟᱜ ᱫᱟᱢ ᱛᱤᱱᱟᱹᱜ ᱠᱟᱱᱟ ?", "expected": [], "draft": true}
+{"id": "sat-IN-x-cricket", "lang": "sat-IN", "question": "ᱛᱮᱦᱮᱧᱟᱜ ᱠᱨᱤᱠᱮᱴ ᱢᱮᱪ ᱨᱮᱭᱟᱜ ᱥᱠᱳᱨ ᱫᱚ ᱛᱤᱱᱟᱹᱜ ᱜᱮᱭᱟ ?", "expected": [], "draft": true}
+{"id": "sat-IN-x-recipe", "lang": "sat-IN", "question": "ᱦᱟᱠᱩ ᱠᱟᱹᱨᱤ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱝ ᱵᱷᱟᱜᱮ ᱨᱮᱥᱤᱯᱤ ᱪᱮᱫ?", "expected": [], "draft": true}
+{"id": "sat-IN-x-loan", "lang": "sat-IN", "question": "ᱤᱧ ᱪᱮᱫ ᱞᱮᱠᱟᱛᱮ ᱚᱲᱟᱜ ᱠᱤᱨᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱝᱠ ᱨᱮᱭᱟᱜ ᱞᱳᱱ ᱞᱟᱹᱜᱤᱫ ᱤᱧ ᱟᱨᱡᱤ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ?", "expected": [], "draft": true}

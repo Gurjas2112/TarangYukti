@@ -71,7 +71,27 @@ class Translator:
         self.out_of_credit = False  # Sarvam 402: stop calling; remaining strings stay English (re-run later)
 
     async def one(self, text: str, target: str) -> str | None:
-        """Translation, or None when it failed or changed a slot, number or time."""
+        """Translation, or None when it failed or changed a slot, number or time. When the plain translation
+        breaks a {slot}, it is tried once more with every slot masked as a tag (<s0>, <s1> …) and restored."""
+        out = await self._raw(text, target)
+        if out is not None and tokens(out) == tokens(text):
+            return out
+        slots = SLOT.findall(text)
+        if not slots:
+            return None
+        masked = text
+        for i, sl in enumerate(slots):
+            masked = masked.replace(sl, f"<s{i}>", 1)
+        out = await self._raw(masked, target)
+        if out is None:
+            return None
+        for i, sl in enumerate(slots):
+            if out.count(f"<s{i}>") != 1:
+                return None
+            out = out.replace(f"<s{i}>", sl)
+        return out if tokens(out) == tokens(text) else None
+
+    async def _raw(self, text: str, target: str) -> str | None:
         if self.out_of_credit:
             return None
         async with self.sem:
@@ -99,7 +119,7 @@ class Translator:
                         return None
                     await asyncio.sleep(2 ** (attempt + 1))
         out = str(r.translated_text).strip()
-        return out if out and tokens(out) == tokens(text) else None
+        return out or None
 
 
 def sync_languages() -> list[dict[str, Any]]:

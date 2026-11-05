@@ -1,0 +1,20 @@
+{"id": "mai-IN-mz-territorial", "lang": "mai-IN", "question": "भारतक प्रादेशिक जलक्षेत्र तटसँ कतेक दूर धरि पसरल अछि?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "mai-IN-mz-eez", "lang": "mai-IN", "question": "भारतक विशेष आर्थिक क्षेत्र की अछि?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "mai-IN-mz-foreign-fishing", "lang": "mai-IN", "question": "की विदेशी जहाज बिना अनुमति के भारत के विशेष आर्थिक क्षेत्र में मछली मार सकैत अछि?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "mai-IN-tn-purpose", "lang": "mai-IN", "question": "तमिलनाडु समुद्री मत्स्य पालन विनियमन अधिनियम की विनियमित करैत अछि?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mai-IN-tn-mechanised", "lang": "mai-IN", "question": "तमिलनाडु मत्स्य कानूनक अन्तर्गत मशीनीकृत मत्स्य पोत की होइत अछि?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mai-IN-tn-prohibit-area", "lang": "mai-IN", "question": "की तमिलनाडु सरकार कोनो निर्दिष्ट क्षेत्र मे माछ मारय पर रोक लगा सकैत अछि?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mai-IN-tn-registration", "lang": "mai-IN", "question": "की तमिलनाडुमे माछ मारयवला जहाज सभकेँ पंजीकृत करब आवश्यक अछि?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mai-IN-cm-total-2024", "lang": "mai-IN", "question": "2024 मे भारत मे कतेक समुद्री मछली उतारल गेल छल?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "mai-IN-cm-top-state", "lang": "mai-IN", "question": "2024 मे कोन राज्य मे सबसँ बेसी समुद्री मछलीक लैंडिंग भेल छल?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "mai-IN-cm-top-species", "lang": "mai-IN", "question": "2024 मे भारत मे सबसँ बेसी मारल जाए वाली मछली प्रजाति कोन छल?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "mai-IN-sop-cyclone-at-sea", "lang": "mai-IN", "question": "जँ हम समुद्र मे छी आ चक्रवातक चेतावनी जारी कएल जाइत अछि तँ हमरा की करबाक चाही?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "mai-IN-sop-high-wave", "lang": "mai-IN", "question": "जखन आधिकारिक रूप सँ ऊँच लहरिक चेतावनी अछि तखन की हमरा मछली मारय जाय के चाही?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "mai-IN-sop-cross-border", "lang": "mai-IN", "question": "जँ हम भारत श्रीलंका सीमा रेखा पार कएली त की हेत?", "expected": ["sop:border-line"], "draft": true}
+{"id": "mai-IN-sop-drift-border", "lang": "mai-IN", "question": "हमर इंजन खराब भऽ गेल आ हम सीमा रेखा दिस बढ़ि रहल छी। हमरा की करबाक चाही?", "expected": ["sop:border-line"], "draft": true}
+{"id": "mai-IN-sop-coast-guard", "lang": "mai-IN", "question": "समुद्र मे कोस्ट गार्ड बचाव के लेल हम केहन नंबर पर फोन करी?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "mai-IN-ban-east-coast", "lang": "mai-IN", "question": "पूर्वी तट पर वार्षिक मछली पकड़बा पर प्रतिबंध कब अछि?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "mai-IN-x-fish-price", "lang": "mai-IN", "question": "आइ चेन्नई बाजार मे सीर मछली के दाम कतेक अछि?", "expected": [], "draft": true}
+{"id": "mai-IN-x-cricket", "lang": "mai-IN", "question": "आइगक क्रिकेट मैचक स्कोर कतेक अछि?", "expected": [], "draft": true}
+{"id": "mai-IN-x-recipe", "lang": "mai-IN", "question": "मछली करीक लेल नीक रेसिपी की अछि?", "expected": [], "draft": true}
+{"id": "mai-IN-x-loan", "lang": "mai-IN", "question": "घर खरीदबाक लेल बैंक लोनक लेल आवेदन किएना करी?", "expected": [], "draft": true}

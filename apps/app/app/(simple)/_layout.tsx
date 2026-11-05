@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Redirect, Tabs } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Platform, Text } from "react-native";
+import { Platform } from "react-native";
+import { Text } from "../../src/ui/Text";
 
 import { api } from "../../src/api/channels";
 import { useSession } from "../../src/auth/supabase";

@@ -1,0 +1,20 @@
+{"id": "te-IN-mz-territorial", "lang": "te-IN", "question": "భారతదేశం యొక్క భూభాగ జలాలు తీరం నుండి ఎంత దూరం వరకు విస్తరించి ఉన్నాయి?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "te-IN-mz-eez", "lang": "te-IN", "question": "భారతదేశపు ప్రత్యేక ఆర్థిక మండలం అంటే ఏమిటి?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "te-IN-mz-foreign-fishing", "lang": "te-IN", "question": "విదేశీ నౌకలు భారతదేశ ప్రత్యేక ఆర్థిక మండలిలో అనుమతి లేకుండా చేపలు పట్టవచ్చా?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "te-IN-tn-purpose", "lang": "te-IN", "question": "తమిళనాడు మెరైన్ ఫిషింగ్ రెగ్యులేషన్ చట్టం దేనిని నియంత్రిస్తుంది?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "te-IN-tn-mechanised", "lang": "te-IN", "question": "తమిళనాడు మత్స్య చట్టం ప్రకారం యాంత్రిక చేపల వేట నౌక అంటే ఏమిటి?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "te-IN-tn-prohibit-area", "lang": "te-IN", "question": "తమిళనాడు ప్రభుత్వం ఒక నిర్దిష్ట ప్రాంతంలో చేపల వేటను నిషేధించగలదా?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "te-IN-tn-registration", "lang": "te-IN", "question": "చేపల పడవలు తమిళనాడులో నమోదు చేయవలసి ఉంటుందా?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "te-IN-cm-total-2024", "lang": "te-IN", "question": "2024లో భారతదేశంలో ఎంత సముద్రపు చేపలు ల్యాండ్ చేయబడ్డాయి?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "te-IN-cm-top-state", "lang": "te-IN", "question": "2024లో ఏ రాష్ట్రం అత్యధిక సముద్ర చేపల దిగుబడిని కలిగి ఉంది?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "te-IN-cm-top-species", "lang": "te-IN", "question": "2024లో భారతదేశంలో అత్యధికంగా పట్టుబడిన చేప జాతి ఏది?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "te-IN-sop-cyclone-at-sea", "lang": "te-IN", "question": "నేను సముద్రంలో ఉన్నప్పుడు తుఫాను హెచ్చరిక జారీ చేస్తే నేను ఏమి చేయాలి?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "te-IN-sop-high-wave", "lang": "te-IN", "question": "అధిక అలల హెచ్చరిక ఉన్నప్పుడు నేను చేపలు పట్టడానికి వెళ్లాలా?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "te-IN-sop-cross-border", "lang": "te-IN", "question": "నేను భారతదేశం శ్రీలంక సరిహద్దు రేఖను దాటితే ఏమి జరుగుతుంది?", "expected": ["sop:border-line"], "draft": true}
+{"id": "te-IN-sop-drift-border", "lang": "te-IN", "question": "నా ఇంజన్ పాడైపోయింది మరియు నేను సరిహద్దు రేఖ వైపుకు కొట్టుకుపోతున్నాను. నేను ఏమి చేయాలి?", "expected": ["sop:border-line"], "draft": true}
+{"id": "te-IN-sop-coast-guard", "lang": "te-IN", "question": "సముద్రంలో కోస్ట్ గార్డ్ రక్షణ కోసం నేను ఏ నంబర్‌కు కాల్ చేయాలి?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "te-IN-ban-east-coast", "lang": "te-IN", "question": "తూర్పు తీరంలో వార్షిక చేపల వేట నిషేధం ఎప్పుడు ఉంటుంది?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "te-IN-x-fish-price", "lang": "te-IN", "question": "ఈ రోజు చెన్నై మార్కెట్‌లో సీర్ చేప ధర ఎంత?", "expected": [], "draft": true}
+{"id": "te-IN-x-cricket", "lang": "te-IN", "question": "ఈరోజు క్రికెట్ మ్యాచ్ స్కోర్ ఎంత?", "expected": [], "draft": true}
+{"id": "te-IN-x-recipe", "lang": "te-IN", "question": "చేపల కూర కోసం మంచి వంటకం ఏమిటి?", "expected": [], "draft": true}
+{"id": "te-IN-x-loan", "lang": "te-IN", "question": "ఇల్లు కొనడానికి నేను బ్యాంకు రుణం కోసం ఎలా దరఖాస్తు చేయాలి?", "expected": [], "draft": true}

@@ -1,7 +1,8 @@
 import { router } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { api, type BoatKind } from "../api/channels";
 import { useSession } from "../auth/supabase";

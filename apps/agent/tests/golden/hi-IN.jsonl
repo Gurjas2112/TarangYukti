@@ -1,0 +1,20 @@
+{"id": "hi-IN-mz-territorial", "lang": "hi-IN", "question": "भारत का क्षेत्रीय जल तट से कितनी दूर तक फैला हुआ है?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "hi-IN-mz-eez", "lang": "hi-IN", "question": "भारत का अनन्य आर्थिक क्षेत्र क्या है?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "hi-IN-mz-foreign-fishing", "lang": "hi-IN", "question": "क्या विदेशी जहाज़ बिना अनुमति के भारत के अनन्य आर्थिक क्षेत्र में मछली पकड़ सकते हैं?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "hi-IN-tn-purpose", "lang": "hi-IN", "question": "तमिलनाडु समुद्री मत्स्य पालन विनियमन अधिनियम क्या विनियमित करता है?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "hi-IN-tn-mechanised", "lang": "hi-IN", "question": "तमिलनाडु मत्स्य पालन कानून के तहत मशीनीकृत मछली पकड़ने का जहाज़ क्या होता है?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "hi-IN-tn-prohibit-area", "lang": "hi-IN", "question": "क्या तमिलनाडु सरकार किसी निर्दिष्ट क्षेत्र में मछली पकड़ने पर रोक लगा सकती है?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "hi-IN-tn-registration", "lang": "hi-IN", "question": "क्या मछली पकड़ने वाली नौकाओं को तमिलनाडु में पंजीकृत होना आवश्यक है?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "hi-IN-cm-total-2024", "lang": "hi-IN", "question": "2024 में भारत में कितनी समुद्री मछली उतारी गई थी?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "hi-IN-cm-top-state", "lang": "hi-IN", "question": "2024 में किस राज्य में सबसे अधिक समुद्री मछली की लैंडिंग हुई थी?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "hi-IN-cm-top-species", "lang": "hi-IN", "question": "2024 में भारत में सबसे अधिक पकड़ी जाने वाली मछली की प्रजाति कौन सी थी?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "hi-IN-sop-cyclone-at-sea", "lang": "hi-IN", "question": "अगर मैं समुद्र में हूँ और चक्रवात की चेतावनी जारी की जाती है तो मुझे क्या करना चाहिए?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "hi-IN-sop-high-wave", "lang": "hi-IN", "question": "क्या मुझे मछली पकड़ने जाना चाहिए जब आधिकारिक तौर पर ऊंची लहरों की चेतावनी हो?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "hi-IN-sop-cross-border", "lang": "hi-IN", "question": "अगर मैं भारत-श्रीलंका सीमा रेखा पार करती हूँ तो क्या होता है?", "expected": ["sop:border-line"], "draft": true}
+{"id": "hi-IN-sop-drift-border", "lang": "hi-IN", "question": "मेरी इंजन खराब हो गई है और मैं सीमा रेखा की ओर बह रही हूँ। मुझे क्या करना चाहिए?", "expected": ["sop:border-line"], "draft": true}
+{"id": "hi-IN-sop-coast-guard", "lang": "hi-IN", "question": "समुद्र में कोस्ट गार्ड बचाव के लिए मुझे किस नंबर पर कॉल करना चाहिए?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "hi-IN-ban-east-coast", "lang": "hi-IN", "question": "पूर्वी तट पर वार्षिक मछली पकड़ने पर प्रतिबंध कब है?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "hi-IN-x-fish-price", "lang": "hi-IN", "question": "आज चेन्नई के बाज़ार में सीर मछली की कीमत क्या है?", "expected": [], "draft": true}
+{"id": "hi-IN-x-cricket", "lang": "hi-IN", "question": "आज के क्रिकेट मैच का स्कोर क्या है?", "expected": [], "draft": true}
+{"id": "hi-IN-x-recipe", "lang": "hi-IN", "question": "मछली करी के लिए एक अच्छी रेसिपी क्या है?", "expected": [], "draft": true}
+{"id": "hi-IN-x-loan", "lang": "hi-IN", "question": "मैं घर खरीदने के लिए बैंक लोन के लिए कैसे आवेदन करूँ?", "expected": [], "draft": true}

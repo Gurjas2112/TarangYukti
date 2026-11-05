@@ -3,7 +3,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Linking, Pressable, ScrollView, StyleSheet, Text } from "react-native";
+import { Linking, Pressable, ScrollView, StyleSheet } from "react-native";
+import { Text } from "../src/ui/Text";
 
 import { api } from "../src/api/channels";
 import { colors, font, space } from "../src/ui/tokens";

@@ -1,7 +1,8 @@
 // The Constraint Ledger (spec §7.5): every rule, its value, limit/evidence and source — open by default in Expert
 // mode. Tapping a failed H2 row draws the border buffer on the map.
 import { useTranslation } from "react-i18next";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import type { LedgerEntry, Limits } from "../api/expert";
 import { colors, font, space } from "../ui/tokens";

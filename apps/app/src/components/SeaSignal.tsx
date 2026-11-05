@@ -1,6 +1,7 @@
 // Sea Signal (spec §7.5): the Expert verdict with its earliest and recommended windows and data freshness.
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import type { Plan } from "../api/expert";
 import { colors, font, radius, space } from "../ui/tokens";

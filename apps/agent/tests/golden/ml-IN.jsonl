@@ -1,0 +1,20 @@
+{"id": "ml-IN-mz-territorial", "lang": "ml-IN", "question": "ഇന്ത്യയുടെ തീരദേശ ജലത്തിന്റെ അതിർത്തി തീരത്ത് നിന്ന് എത്ര ദൂരം വരെ വ്യാപിച്ചു കിടക്കുന്നു?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ml-IN-mz-eez", "lang": "ml-IN", "question": "ഇന്ത്യയുടെ എക്സ്ക്ലൂസീവ് ഇക്കണോമിക് സോൺ എന്നാൽ എന്താണ്?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ml-IN-mz-foreign-fishing", "lang": "ml-IN", "question": "അനുമതിയില്ലാതെ വിദേശ കപ്പലുകൾക്ക് ഇന്ത്യയുടെ എക്സ്ക്ലൂസീവ് ഇക്കണോമിക് സോണിൽ മീൻ പിടിക്കാൻ കഴിയുമോ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ml-IN-tn-purpose", "lang": "ml-IN", "question": "തമിഴ്‌നാട് മറൈൻ ഫിഷിംഗ് റെഗുലേഷൻ ആക്ട് എന്താണ് നിയന്ത്രിക്കുന്നത്?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ml-IN-tn-mechanised", "lang": "ml-IN", "question": "തമിഴ്‌നാട് മത്സ്യബന്ധന നിയമപ്രകാരം ഒരു യന്ത്രവൽകൃത മത്സ്യബന്ധന കപ്പൽ എന്നാൽ എന്താണ്?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ml-IN-tn-prohibit-area", "lang": "ml-IN", "question": "തമിഴ്‌നാട് സർക്കാരിന് ഒരു പ്രത്യേക സ്ഥലത്ത് മത്സ്യബന്ധനം നിരോധിക്കാൻ കഴിയുമോ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ml-IN-tn-registration", "lang": "ml-IN", "question": "മത്സ്യബന്ധന കപ്പലുകൾ തമിഴ്നാട്ടിൽ രജിസ്റ്റർ ചെയ്യേണ്ടതുണ്ടോ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ml-IN-cm-total-2024", "lang": "ml-IN", "question": "2024-ൽ ഇന്ത്യയിൽ എത്ര കടൽ മത്സ്യം ഇറക്കി?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ml-IN-cm-top-state", "lang": "ml-IN", "question": "2024-ൽ ഏറ്റവും കൂടുതൽ കടൽമത്സ്യലഭ്യത ഉണ്ടായിരുന്നത് ഏത് സംസ്ഥാനത്തിനാണ്?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ml-IN-cm-top-species", "lang": "ml-IN", "question": "2024-ൽ ഇന്ത്യയിൽ ഏറ്റവും കൂടുതൽ പിടിക്കപ്പെട്ട മത്സ്യം ഏത് ഇനത്തിൽപ്പെട്ടതായിരുന്നു?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ml-IN-sop-cyclone-at-sea", "lang": "ml-IN", "question": "ഞാൻ കടലിൽ ആയിരിക്കുമ്പോൾ ഒരു ചുഴലിക്കാറ്റ് മുന്നറിയിപ്പ് ലഭിച്ചാൽ ഞാൻ എന്ത് ചെയ്യണം?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ml-IN-sop-high-wave", "lang": "ml-IN", "question": "ഔദ്യോഗികമായി ഉയർന്ന തിരമാല മുന്നറിയിപ്പ് ഉള്ളപ്പോൾ ഞാൻ മീൻ പിടിക്കാൻ പോകണോ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ml-IN-sop-cross-border", "lang": "ml-IN", "question": "ഞാൻ ഇന്ത്യ ശ്രീലങ്ക അതിർത്തി കടന്നാൽ എന്ത് സംഭവിക്കും?", "expected": ["sop:border-line"], "draft": true}
+{"id": "ml-IN-sop-drift-border", "lang": "ml-IN", "question": "എൻ്റെ എഞ്ചിൻ തകരാറിലായി ഞാൻ അതിർത്തിയിലേക്ക് ഒഴുകി നീങ്ങുകയാണ്. ഞാൻ എന്ത് ചെയ്യണം?", "expected": ["sop:border-line"], "draft": true}
+{"id": "ml-IN-sop-coast-guard", "lang": "ml-IN", "question": "കടലിൽ കോസ്റ്റ് ഗാർഡ് രക്ഷാപ്രവർത്തനത്തിനായി ഞാൻ ഏത് നമ്പറിലാണ് വിളിക്കേണ്ടത്?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "ml-IN-ban-east-coast", "lang": "ml-IN", "question": "കിഴക്കൻ തീരത്ത് വാർഷിക മത്സ്യബന്ധന വിലക്ക് എപ്പോഴാണ്?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "ml-IN-x-fish-price", "lang": "ml-IN", "question": "ചെന്നൈ മാർക്കറ്റിൽ ഇന്ന് കടൽമീനിന് എന്താണ് വില?", "expected": [], "draft": true}
+{"id": "ml-IN-x-cricket", "lang": "ml-IN", "question": "ഇന്നത്തെ ക്രിക്കറ്റ് മത്സരത്തിലെ സ്കോർ എന്താണ്?", "expected": [], "draft": true}
+{"id": "ml-IN-x-recipe", "lang": "ml-IN", "question": "മീൻ കറി ഉണ്ടാക്കാൻ പറ്റിയ നല്ലൊരു പാചകക്കുറിപ്പ് എന്താണ്?", "expected": [], "draft": true}
+{"id": "ml-IN-x-loan", "lang": "ml-IN", "question": "ഒരു വീട് വാങ്ങാനായി ബാങ്ക് ലോണിന് എങ്ങനെ അപേക്ഷിക്കാം?", "expected": [], "draft": true}

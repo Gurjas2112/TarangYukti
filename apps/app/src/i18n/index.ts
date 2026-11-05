@@ -7,20 +7,11 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { I18nManager, Platform } from "react-native";
 
+import { loadFontsFor } from "../ui/fonts";
 import { catalogues } from "./catalogues";
-import languagesJson from "./languages.json";
+import { allLanguages, type Language, languageInfo } from "./languages";
 
-export type Language = {
-  code: string;
-  sarvam_code: string;
-  name: string;
-  group: "A" | "B";
-  script: string;
-  rtl: boolean;
-  status: "draft" | "released";
-};
-
-export const allLanguages = languagesJson as Language[];
+export { allLanguages, type Language, languageInfo };
 
 function appEnv(): string {
   return (Constants.expoConfig?.extra?.appEnv as string | undefined) ?? "development";
@@ -30,10 +21,6 @@ function appEnv(): string {
 export function availableLanguages(env: string = appEnv()): Language[] {
   if (env === "production") return allLanguages.filter((l) => l.status === "released");
   return allLanguages;
-}
-
-export function languageInfo(code: string): Language | undefined {
-  return allLanguages.find((l) => l.code === code);
 }
 
 export function nearestLanguage(preferred: readonly string[], available: readonly string[]): string | undefined {
@@ -69,9 +56,11 @@ void i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
   returnNull: false,
 });
+void loadFontsFor(i18n.language);  
 
 /** Switch the interface language. Returns true when the app must restart to flip left/right layout (Android). */
 export async function setLanguage(code: string): Promise<boolean> {
+  await loadFontsFor(code); // the script's Noto font is ready before any text switches to it
   await i18n.changeLanguage(code); // eslint-disable-line import/no-named-as-default-member
   const rtl = languageInfo(code)?.rtl ?? false;
   if (Platform.OS === "web") {

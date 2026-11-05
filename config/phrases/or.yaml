@@ -9,12 +9,12 @@ verdict:
   CAUTION: ଯାଅ, କିନ୍ତୁ ସାବଧାନତାର ସହିତ - {back_by} ଦ୍ୱାରା ପଛକୁ।
   NO-GO: 'ଆଜି ଯାଅ ନାହିଁ। ପରବର୍ତ୍ତୀ ଭଲ ସମୟ: {next_window}।'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} ପରେ ଢେଉଗୁଡ଼ିକ ଅତ୍ୟଧିକ ଉଚ୍ଚ ହୋଇଯାଏ।'
   H2: ସେହି ରାସ୍ତାଟି ସୀମା ରେଖା ପାଖ ଦେଇ ଯାଇଛି।
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'ଏକ ସରକାରୀ {issuer} ଚେତାବନୀ ଅଛି: {warning_name}।'
   H3: ସେହି ଅଞ୍ଚଳଟି ସଂରକ୍ଷିତ ସାମୁଦ୍ରିକ ଉଦ୍ୟାନ ମଧ୍ୟରେ ରହିଛି।
   H4: ଏହା ହେଉଛି ଯାନ୍ତ୍ରିକ ନୌକା ପାଇଁ ମାଛଧରା ନିଷେଧ ଋତୁ।
-  H6: The wind gets too strong after {time}.
+  H6: '{time} ପରେ ପବନ ଅତ୍ୟଧିକ ଶକ୍ତିଶାଳୀ ହୋଇଯାଏ।'
   H7: 'ଏକ ସରକାରୀ ଘଡ଼ଘଡ଼ି ସତର୍କ ସୂଚନା ଅଛି: {warning_name}।'
   H8: କିଛି ତଥ୍ୟ ପୁରୁଣା କିମ୍ବା ନିଖୋଜ ଅଛି, ତେଣୁ ସମୁଦ୍ରକୁ ଯାଞ୍ଚ କରାଯାଇପାରିବ ନାହିଁ।
 spot: ମାଛ ସମ୍ଭବତଃ {distance_km} କିଲୋମିଟର {direction} ଦୂରରେ ଅଛି।
@@ -22,7 +22,7 @@ border: ସୀମା ରେଖା {distance_km} କିଲୋମିଟର ଦୂ�
 stale: ପୁରୁଣା ପୂର୍ବାନୁମାନ — ବାହାରିବା ପୂର୍ବରୁ ପୁଣି ଥରେ ଯାଞ୍ଚ କରନ୍ତୁ।
 footer: କେବଳ ପରାମର୍ଶ — ଆନୁଷ୍ଠାନିକ INCOIS/IMD ଚେତାବନୀ ଅନୁସରଣ କରନ୍ତୁ।
 needs_network: 'ମୋତେ ଇଣ୍ଟରନେଟ୍ ଦରକାର ସେଇଟାକୁ ଉତ୍ତର ଦେବା ପାଇଁ। ବଟନ୍ ଗୁଡ଼ାକ ଏବେ ବି କାମ କରୁଛି: ଆଜିର ସମୁଦ୍ର, କେଉଁଠାରେ ମାଛ ଧରିବାକୁ ଯିବ, ଆଲର୍ଟ, ମୁଁ ଫେରି ଆସିଛି।'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+nothing_found: ମୁଁ ସରକାରୀ ଦଲିଲରେ ଏ ବିଷୟରେ କିଛି ପାଇଲି ନାହିଁ। ଦୟାକରି {source}ଙ୍କୁ ପଚାରନ୍ତୁ।
 cannot_verify: ମୁଁ ତଥ୍ୟ ସହିତ ଏହି ଉତ୍ତର ଯାଞ୍ଚ କରିପାରିଲି ନାହିଁ, ତେଣୁ ମୁଁ ଏହା ଦେବି ନାହିଁ। ଦୟାକରି ବଟନ୍ ବ୍ୟବହାର କରନ୍ତୁ କିମ୍ବା ପୁନର୍ବାର ପଚାରନ୍ତୁ।
 no_window: ଆଗାମୀ 24 ଘଣ୍ଟା ମଧ୍ୟରେ କେହି ନାହିଁ।
 directions:
@@ -35,7 +35,7 @@ directions:
   west: ପଶ୍ଚିମ
   north_west: ଉତ୍ତର-ପଶ୍ଚିମ
 ack: ସମୁଦ୍ର ଯାଞ୍ଚ କରୁଛି...
-brief_title: Morning brief · {harbour}
+brief_title: ସକାଳର ସଂକ୍ଷିପ୍ତ ସୂଚନା · {harbour}
 push_test: କାଦଲ ମିତ୍ର ଆଲର୍ଟଗୁଡ଼ିକ ଚାଲୁ ଅଛି।
 back_home: '{name} {harbour} କୁ {time} ରେ ଫେରି ଆସିଛି।'
 consent:

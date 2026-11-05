@@ -1,0 +1,20 @@
+{"id": "gu-IN-mz-territorial", "lang": "gu-IN", "question": "ભારતનું પ્રાદેશિક જળ દરિયાકાંઠાથી કેટલું દૂર સુધી વિસ્તરેલું છે?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "gu-IN-mz-eez", "lang": "gu-IN", "question": "ભારતનો વિશિષ્ટ આર્થિક ક્ષેત્ર શું છે?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "gu-IN-mz-foreign-fishing", "lang": "gu-IN", "question": "શું વિદેશી જહાજો પરવાનગી વિના ભારતના વિશિષ્ટ આર્થિક ક્ષેત્રમાં માછીમારી કરી શકે છે?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "gu-IN-tn-purpose", "lang": "gu-IN", "question": "તમિલનાડુ મરીન ફિશિંગ રેગ્યુલેશન એક્ટ શું નિયંત્રિત કરે છે?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gu-IN-tn-mechanised", "lang": "gu-IN", "question": "તમિલનાડુના માછીમારી કાયદા હેઠળ યાંત્રિક માછીમારી જહાજ શું છે?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gu-IN-tn-prohibit-area", "lang": "gu-IN", "question": "શું તમિલનાડુ સરકાર કોઈ ચોક્કસ વિસ્તારમાં માછીમારી પર પ્રતિબંધ લગાવી શકે છે?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gu-IN-tn-registration", "lang": "gu-IN", "question": "શું માછીમારીના જહાજોને તમિલનાડુમાં નોંધણી કરાવવી પડે છે?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gu-IN-cm-total-2024", "lang": "gu-IN", "question": "2024 માં ભારતમાં કેટલી દરિયાઈ માછલીઓ ઉતારવામાં આવી હતી?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "gu-IN-cm-top-state", "lang": "gu-IN", "question": "2024 માં કયા રાજ્યમાં સૌથી વધુ દરિયાઈ માછલીઓ પકડાઈ હતી?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "gu-IN-cm-top-species", "lang": "gu-IN", "question": "2024 માં ભારતમાં સૌથી વધુ પકડેલી માછલીની પ્રજાતિ કઈ હતી?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "gu-IN-sop-cyclone-at-sea", "lang": "gu-IN", "question": "જો હું દરિયામાં હોઉં ત્યારે ચક્રવાતની ચેતવણી આપવામાં આવે તો મારે શું કરવું જોઈએ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "gu-IN-sop-high-wave", "lang": "gu-IN", "question": "જ્યારે સત્તાવાર ઊંચી લહેરની ચેતવણી હોય ત્યારે શું મારે માછીમારી કરવા જવું જોઈએ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "gu-IN-sop-cross-border", "lang": "gu-IN", "question": "જો હું ભારત શ્રીલંકા સરહદ રેખા ઓળંગું તો શું થાય?", "expected": ["sop:border-line"], "draft": true}
+{"id": "gu-IN-sop-drift-border", "lang": "gu-IN", "question": "મારું એન્જિન ફેઈલ થઈ ગયું છે અને હું સરહદ તરફ સરકી રહી છું. મારે શું કરવું જોઈએ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "gu-IN-sop-coast-guard", "lang": "gu-IN", "question": "દરિયામાં કોસ્ટ ગાર્ડના બચાવ માટે મારે કયા નંબર પર કૉલ કરવો જોઈએ?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "gu-IN-ban-east-coast", "lang": "gu-IN", "question": "પૂર્વ કિનારે વાર્ષિક માછીમારી પર પ્રતિબંધ ક્યારે છે?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "gu-IN-x-fish-price", "lang": "gu-IN", "question": "આજે ચેન્નાઈ બજારમાં સીર માછલીની કિંમત શું છે?", "expected": [], "draft": true}
+{"id": "gu-IN-x-cricket", "lang": "gu-IN", "question": "આજની ક્રિકેટ મેચનો સ્કોર શું છે?", "expected": [], "draft": true}
+{"id": "gu-IN-x-recipe", "lang": "gu-IN", "question": "માછલીની કઢી માટે સારી રેસીપી શું છે?", "expected": [], "draft": true}
+{"id": "gu-IN-x-loan", "lang": "gu-IN", "question": "ઘર ખરીદવા માટે હું બેંક લોન માટે કેવી રીતે અરજી કરી શકું?", "expected": [], "draft": true}

@@ -1,0 +1,20 @@
+{"id": "brx-IN-mz-territorial", "lang": "brx-IN", "question": "भारतनि हायुंआरि दैमाया बोरिमानिफ्राय बेसेबां गोजानसिम गोसारना दं?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "brx-IN-mz-eez", "lang": "brx-IN", "question": "भारतनि एखुथा रांखान्थियारि ओनसोलआ मा?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "brx-IN-mz-foreign-fishing", "lang": "brx-IN", "question": "गुबुन हादोरारि दिङाफोरा गनायथि गैयालासेनो भारतनि एखुथा रांखान्थियारि ओन्सोलाव ना हमनो हायो नामा?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "brx-IN-tn-purpose", "lang": "brx-IN", "question": "तामिलनाडु लैथोआरि ना हमनाय नेमखान्थि आयेना माखौ नेमखान्थि खालामो?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "brx-IN-tn-mechanised", "lang": "brx-IN", "question": "तामिलनाडु ना हमनाय आयेननि सिङाव मोनसे मेसिनजों सोलिनाय ना हमग्रा दिङाया मा?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "brx-IN-tn-prohibit-area", "lang": "brx-IN", "question": "तामिलनाडु सोरखारा मोनसे थि ओन्सोलाव ना हमनायखौ होबथानो हायो नामा?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "brx-IN-tn-registration", "lang": "brx-IN", "question": "मा ना हमग्रा दिङाफोरखौ तामिलनाडुआव रेबथुमनांगौ ना?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "brx-IN-cm-total-2024", "lang": "brx-IN", "question": "2024 मायथाइयाव भारताव बेसेबां लैथोआरि नाफोरखौ दिहुननाय जादोंमोन?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "brx-IN-cm-top-state", "lang": "brx-IN", "question": "2024 मायथाइयाव बबे रायजोआव बयनिख्रुइ बांसिन लैथोआरि नाफोरखौ दिहुननाय जादोंमोन?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "brx-IN-cm-top-species", "lang": "brx-IN", "question": "2024 मायथाइयाव भारतआव बयनिख्रुइ बांसिन फानजानाय ना हारिसाया मामोन?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "brx-IN-sop-cyclone-at-sea", "lang": "brx-IN", "question": "आं लैथोआव थायोब्ला, जुदि मोनसे साइक्ल'ननि वार्निं होनाय जायो अब्ला आं मा खालामनांगौ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "brx-IN-sop-high-wave", "lang": "brx-IN", "question": "जेब्ला मावख'आरि गोजौ गुथालनि सामोल दं, अब्ला आं ना हमनो थांनांगौ नामा?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "brx-IN-sop-cross-border", "lang": "brx-IN", "question": "आं भारत-श्रीलंकानि सिमा हांखोखौ बारोब्ला मा जागोन?", "expected": ["sop:border-line"], "draft": true}
+{"id": "brx-IN-sop-drift-border", "lang": "brx-IN", "question": "आंनि इन्जिनआ फेलें जाबाय आरो आं सिमा हांखो फारसे बोहैलांगासिनो दं। आं मा खालामनांगौ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "brx-IN-sop-coast-guard", "lang": "brx-IN", "question": "लैथोआव क'स्ट गार्ड रैखाथिनि थाखाय आं बबे नम्बरआव कल खालामनांगौ?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "brx-IN-ban-east-coast", "lang": "brx-IN", "question": "सानजा बोरिमायाव बोसोरारि ना हमनायखौ माब्ला होबथानाय जायो?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "brx-IN-x-fish-price", "lang": "brx-IN", "question": "दिनै चेन्नाइ हाथाइयाव सीर ना बेसेबां दं?", "expected": [], "draft": true}
+{"id": "brx-IN-x-cricket", "lang": "brx-IN", "question": "दिनैनि क्रिकेट मेचनि स्करआ बेसेबां?", "expected": [], "draft": true}
+{"id": "brx-IN-x-recipe", "lang": "brx-IN", "question": "नानि ओंख्रानि थाखाय मोजां रेसिपिया मा?", "expected": [], "draft": true}
+{"id": "brx-IN-x-loan", "lang": "brx-IN", "question": "न' बायनो थाखाय आं बेंक लननि थाखाय माबोरै आर'ज खालामनो?", "expected": [], "draft": true}

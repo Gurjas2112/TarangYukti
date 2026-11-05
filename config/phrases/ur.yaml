@@ -9,12 +9,12 @@ verdict:
   CAUTION: جاؤ، لیکن احتیاط سے — {back_by} کے ذریعے۔
   NO-GO: 'آج مت جاؤ۔ اگلی مناسب وقت: {next_window}۔'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} کے بعد لہریں بہت اونچی ہو جاتی ہیں۔'
   H2: وہ راستہ سرحد کی لکیر کے بہت قریب سے گزرتا ہے۔
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'ایک باضابطہ {issuer} انتباہ ہے: {warning_name}۔'
   H3: یہ علاقہ محفوظ سمندری پارک کے اندر ہے۔
   H4: یہ میکانکی کشتیوں کے لیے ماہی گیری کی پابندی کا موسم ہے۔
-  H6: The wind gets too strong after {time}.
+  H6: ہوا {time} کے بعد بہت تیز ہو جاتی ہے۔
   H7: 'آندھی کے طوفان کی ایک سرکاری وارننگ ہے: {warning_name}۔'
   H8: کچھ ڈیٹا پرانا یا غائب ہے، اس لیے سمندر کی جانچ نہیں کی جا سکتی۔
 spot: مچھلی غالباً {distance_km} کلومیٹر {direction} دور ہے۔
@@ -35,9 +35,9 @@ directions:
   west: مغرب
   north_west: شمال مغرب
 ack: سمندر کی جانچ پڑتال...
-brief_title: Morning brief · {harbour}
+brief_title: صبح کی مختصر رپورٹ · {harbour}
 push_test: کڈل مترا کے الرٹس آن ہیں۔
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} واپس آ گئی ہے {harbour}، {time} پر۔'
 consent:
   notice_version: '2026-11-04'
   short: ہم آپ کی لوکیشن صرف آپ کو سرحد کے قریب اور خراب موسم میں خبردار کرنے کے لیے استعمال کرتے ہیں۔ آپ کسی بھی وقت روک سکتے ہیں۔
@@ -50,6 +50,6 @@ alerts:
   mpa: آپ محفوظ سمندری پارک کے اندر ہیں۔ یہاں ماہی گیری کی اجازت نہیں ہے۔
 trip:
   feedback_ask: کیا آج کی نصیحت صحیح تھی؟
-  right_on: Right on {right} of the last {total} days.
+  right_on: پچھلے {total} دنوں کے {right} پر بالکل ٹھیک۔
 family_title: کادل مترا · خاندان
 chat_paused: 'سوالات کچھ دیر کے لیے رک جاتے ہیں۔ بٹن اب بھی کام کرتے ہیں: آج کا سمندر، کہاں مچھلی پکڑنی ہے، الرٹس، میں واپس آ گئی ہوں۔'

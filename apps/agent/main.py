@@ -31,6 +31,7 @@ from langgraph.graph.message import add_messages
 from langgraph.types import Checkpointer
 from pydantic import BaseModel, Field
 from ty_common.cache import config_version
+from ty_common.phrases import nearest_language
 from ty_common.settings import get_settings
 from ty_common.telemetry import record_guardrails
 
@@ -243,7 +244,7 @@ async def make_graph(
         context = SystemMessage(
             content=f"Mode: {state.get('mode', 'simple')}. Boat type: "
             f"{state.get('boat_profile', 'small_frp')}. Reply language after translation: "
-            f"{state.get('lang', 'en-IN')}."
+            f"{state.get('lang') or nearest_language(None)}."
         )
         try:
             out = await agent.ainvoke(
@@ -309,7 +310,7 @@ async def make_graph(
         return "finalize"
 
     async def finalize(state: OrcaState, config: RunnableConfig) -> dict[str, Any]:
-        lang = state.get("lang", "en-IN")
+        lang = state.get("lang") or nearest_language(None)
         mode = state.get("mode", "simple")
         fallback = state.get("fallback")
         yuktis = [d for d in state.get("digests", []) if d.get("kind") == "yukti" and d.get("verdict")]

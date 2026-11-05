@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Modal, Pressable, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import type { Brief } from "../api/channels";
 import { colors, font, radius, space, touch } from "../ui/tokens";

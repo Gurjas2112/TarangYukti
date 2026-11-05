@@ -1,0 +1,20 @@
+{"id": "ur-IN-mz-territorial", "lang": "ur-IN", "question": "ہندوستان کی علاقائی سمندری حدود ساحل سے کتنی دور تک پھیلی ہوئی ہیں؟", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ur-IN-mz-eez", "lang": "ur-IN", "question": "ہندوستان کا خصوصی اقتصادی زون کیا ہے؟", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ur-IN-mz-foreign-fishing", "lang": "ur-IN", "question": "کیا غیر ملکی بحری جہاز اجازت کے بغیر ہندوستان کے خصوصی اقتصادی زون میں مچھلی پکڑ سکتے ہیں؟", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ur-IN-tn-purpose", "lang": "ur-IN", "question": "تمل ناڈو میرین فشنگ ریگولیشن ایکٹ کس چیز کو ریگولیٹ کرتا ہے؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ur-IN-tn-mechanised", "lang": "ur-IN", "question": "تمل ناڈو کے ماہی گیری کے قانون کے تحت میکانائزڈ ماہی گیری کا جہاز کیا ہے؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ur-IN-tn-prohibit-area", "lang": "ur-IN", "question": "کیا تامل ناڈو کی حکومت کسی مخصوص علاقے میں ماہی گیری پر پابندی لگا سکتی ہے؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ur-IN-tn-registration", "lang": "ur-IN", "question": "کیا ماہی گیری کی کشتیوں کو تمل ناڈو میں رجسٹر ہونا ضروری ہے؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ur-IN-cm-total-2024", "lang": "ur-IN", "question": "2024 میں ہندوستان میں کتنی سمندری مچھلی اتاری گئی؟", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ur-IN-cm-top-state", "lang": "ur-IN", "question": "2024 میں کس ریاست میں سمندری مچھلیوں کی سب سے زیادہ لینڈنگ ہوئی؟", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ur-IN-cm-top-species", "lang": "ur-IN", "question": "2024 میں ہندوستان میں سب سے زیادہ پکڑی جانے والی مچھلی کی قسم کون سی تھی؟", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ur-IN-sop-cyclone-at-sea", "lang": "ur-IN", "question": "اگر سمندر میں ہوں تو طوفان کی وارننگ جاری ہونے پر مجھے کیا کرنا چاہیے؟", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ur-IN-sop-high-wave", "lang": "ur-IN", "question": "کیا مجھے اس وقت مچھلی پکڑنے جانا چاہیے جب کہ اونچی لہروں کی باضابطہ وارننگ ہو؟", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ur-IN-sop-cross-border", "lang": "ur-IN", "question": "اگر میں ہندوستان سری لنکا کی سرحدی لائن عبور کروں تو کیا ہوگا؟", "expected": ["sop:border-line"], "draft": true}
+{"id": "ur-IN-sop-drift-border", "lang": "ur-IN", "question": "میری انجن فیل ہو گئی ہے اور میں سرحد کی طرف بڑھ رہی ہوں۔ مجھے کیا کرنا چاہیے؟", "expected": ["sop:border-line"], "draft": true}
+{"id": "ur-IN-sop-coast-guard", "lang": "ur-IN", "question": "مجھے سمندر میں کوسٹ گارڈ کی ریسکیو کے لیے کس نمبر پر کال کرنی چاہیے؟", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "ur-IN-ban-east-coast", "lang": "ur-IN", "question": "مشرقی ساحل پر سالانہ ماہی گیری پر پابندی کب ہے؟", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "ur-IN-x-fish-price", "lang": "ur-IN", "question": "آج چنئی بازار میں سیئر مچھلی کی قیمت کیا ہے؟", "expected": [], "draft": true}
+{"id": "ur-IN-x-cricket", "lang": "ur-IN", "question": "آج کے کرکٹ میچ کا سکور کیا ہے؟", "expected": [], "draft": true}
+{"id": "ur-IN-x-recipe", "lang": "ur-IN", "question": "مچھلی کے سالن کے لیے ایک اچھی ترکیب کیا ہے؟", "expected": [], "draft": true}
+{"id": "ur-IN-x-loan", "lang": "ur-IN", "question": "میں گھر خریدنے کے لیے بینک لون کے لیے کیسے درخواست دوں؟", "expected": [], "draft": true}

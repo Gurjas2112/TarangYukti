@@ -1,0 +1,20 @@
+{"id": "sa-IN-mz-territorial", "lang": "sa-IN", "question": "भारतस्य प्रादेशिकजलक्षेत्राणि समुद्रतटात् कियत् दूरे सन्ति?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sa-IN-mz-eez", "lang": "sa-IN", "question": "भारतस्य विशिष्टा आर्थिकक्षेत्राणि कानि?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sa-IN-mz-foreign-fishing", "lang": "sa-IN", "question": "किं विदेशीयनौकाः अनुमत्या विना भारतस्य विशिष्ट-आर्थिकक्षेत्रे मत्स्यान् ग्रहीतुं शक्नुवन्ति?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sa-IN-tn-purpose", "lang": "sa-IN", "question": "तमिळनाडु-समुद्रीय-मत्स्यग्रहण-नियमावली कस्य नियमनं करोति?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sa-IN-tn-mechanised", "lang": "sa-IN", "question": "तमिळनाडु-मत्स्यपालन-नियमानुसारं यन्त्रचालितं मत्स्यग्रहण-यानं किम् अस्ति?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sa-IN-tn-prohibit-area", "lang": "sa-IN", "question": "किं तमिळुनाडु-राज्यस्य सर्वकारः निर्दिष्टक्षेत्रे मत्स्यग्रहणम् निवारयितुं शक्नोति?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sa-IN-tn-registration", "lang": "sa-IN", "question": "किं तमिळुनाडु-राज्ये मत्स्यग्रहण-नौकानां पञ्जीकरणं आवश्यकम्?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sa-IN-cm-total-2024", "lang": "sa-IN", "question": "2024 तमे वर्षे भारते कियत् सामुद्रिकं मत्स्यं अवतरितम्?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sa-IN-cm-top-state", "lang": "sa-IN", "question": "2024 तमे वर्षे कस्मिन् राज्ये सर्वाधिकं सामुद्रिकमत्स्यग्रहणम् अभवत्?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sa-IN-cm-top-species", "lang": "sa-IN", "question": "2024 तमे वर्षे भारते सर्वाधिकं भूमौ स्थापितः मत्स्यप्रजातिः का आसीत्?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sa-IN-sop-cyclone-at-sea", "lang": "sa-IN", "question": "समुद्रे स्थित्वा यदि चक्रवातस्य चेतावनी दीयते तर्हि मया किं करणीयम्?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "sa-IN-sop-high-wave", "lang": "sa-IN", "question": "यदा आधिकारिकरूपेण उच्चतरतरङ्गस्य चेतावनी वर्तते तदा किं मत्स्यग्रहणाय गच्छेयम्?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "sa-IN-sop-cross-border", "lang": "sa-IN", "question": "यदि अहं भारत-श्रीलङ्का-सीमानरेखां उल्लंघयामि तर्हि किं भविष्यति?", "expected": ["sop:border-line"], "draft": true}
+{"id": "sa-IN-sop-drift-border", "lang": "sa-IN", "question": "मम यान्त्रिकं विफलम् अभवत्, अहं च सीमारेखां प्रति इतः इतः गच्छामि। अहं किं करोमि?", "expected": ["sop:border-line"], "draft": true}
+{"id": "sa-IN-sop-coast-guard", "lang": "sa-IN", "question": "समुद्रे तटरक्षकदलस्य उद्धारार्थं कस्यां सङ्ख्यायां दूरवाणीं कुर्याम्?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "sa-IN-ban-east-coast", "lang": "sa-IN", "question": "पूर्वसमुद्रतटे वार्षिकं मत्स्यग्रहणनिषेधः कदा भवति?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "sa-IN-x-fish-price", "lang": "sa-IN", "question": "अद्य चेन्नैनगरे विपण्यां सीर-मत्स्यस्य मूल्यं किम् अस्ति?", "expected": [], "draft": true}
+{"id": "sa-IN-x-cricket", "lang": "sa-IN", "question": "अद्य क्रिकेट्-क्रीडायाः अङ्काः किम्?", "expected": [], "draft": true}
+{"id": "sa-IN-x-recipe", "lang": "sa-IN", "question": "मत्स्यव्यञ्जनस्य उत्तमं पाकविधिः कः?", "expected": [], "draft": true}
+{"id": "sa-IN-x-loan", "lang": "sa-IN", "question": "गृहं क्रेतुं अहं कथं बैंकऋणाय आवेदनं करोमि?", "expected": [], "draft": true}

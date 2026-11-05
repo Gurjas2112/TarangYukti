@@ -1,5 +1,6 @@
 // Native fallback: step buttons (the Expert console is a web screen; this keeps the contract on both targets).
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { colors, font, space, touch } from "../ui/tokens";
 

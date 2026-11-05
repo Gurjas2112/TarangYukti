@@ -9,12 +9,12 @@ verdict:
   CAUTION: ਜਾਓ, ਪਰ ਧਿਆਨ ਨਾਲ — {back_by} ਦੁਆਰਾ ਵਾਪਸ।
   NO-GO: 'ਅੱਜ ਨਾ ਜਾਓ। ਅਗਲਾ ਵਧੀਆ ਸਮਾਂ: {next_window}.'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} ਤੋਂ ਬਾਅਦ ਲਹਿਰਾਂ ਬਹੁਤ ਉੱਚੀਆਂ ਹੋ ਜਾਂਦੀਆਂ ਹਨ।'
   H2: ਉਹ ਰਸਤਾ ਸਰਹੱਦ ਲਾਈਨ ਦੇ ਬਹੁਤ ਨੇੜੇ ਜਾਂਦਾ ਹੈ।
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'ਇੱਥੇ ਇੱਕ ਅਧਿਕਾਰਤ {issuer} ਚੇਤਾਵਨੀ ਹੈ: {warning_name}।'
   H3: ਇਹ ਖੇਤਰ ਸੁਰੱਖਿਅਤ ਸਮੁੰਦਰੀ ਪਾਰਕ ਦੇ ਅੰਦਰ ਹੈ।
   H4: ਇਹ ਮਸ਼ੀਨੀ ਕਿਸ਼ਤੀਆਂ ਲਈ ਮੱਛੀ ਫੜਨ ਦੀ ਪਾਬੰਦੀ ਦਾ ਮੌਸਮ ਹੈ।
-  H6: The wind gets too strong after {time}.
+  H6: '{time} ਤੋਂ ਬਾਅਦ ਹਵਾ ਬਹੁਤ ਤੇਜ਼ ਹੋ ਜਾਂਦੀ ਹੈ।'
   H7: 'ਇੱਕ ਅਧਿਕਾਰਤ ਤੂਫਾਨ ਦੀ ਚੇਤਾਵਨੀ ਹੈ: {warning_name}।'
   H8: ਕੁੱਝ ਅੰਕੜੇ ਪੁਰਾਣੇ ਜਾਂ ਗੁੰਮ ਹਨ, ਇਸ ਲਈ ਸਮੁੰਦਰ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।
 spot: ਮੱਛੀ ਸ਼ਾਇਦ {distance_km} ਕਿਲੋਮੀਟਰ {direction} ਦੂਰ ਹੈ।
@@ -35,7 +35,7 @@ directions:
   west: ਪੱਛਮ
   north_west: ਉੱਤਰ-ਪੱਛਮ
 ack: ਸਮੁੰਦਰ ਦੀ ਜਾਂਚ ਕਰ ਰਹੀ ਹੈ...
-brief_title: Morning brief · {harbour}
+brief_title: ਸਵੇਰ ਦੀ ਜਾਣਕਾਰੀ · {harbour}
 push_test: ਕਦਲ ਮਿੱਤਰ ਅਲਰਟ ਚਾਲੂ ਹਨ।
 back_home: '{name} {harbour} ਤੇ ਵਾਪਸ ਆ ਗਈ ਹੈ, {time}.'
 consent:
@@ -50,6 +50,6 @@ alerts:
   mpa: ਤੁਸੀਂ ਸੁਰੱਖਿਅਤ ਸਮੁੰਦਰੀ ਪਾਰਕ ਦੇ ਅੰਦਰ ਹੋ। ਇੱਥੇ ਮੱਛੀ ਫੜਨ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ।
 trip:
   feedback_ask: ਕੀ ਅੱਜ ਦੀ ਸਲਾਹ ਠੀਕ ਸੀ?
-  right_on: Right on {right} of the last {total} days.
+  right_on: ਪਿਛਲੇ {total} ਦਿਨਾਂ ਦੇ {right} 'ਤੇ ਹੀ।
 family_title: ਕਦਲ ਮਿੱਤਰ · ਪਰਿਵਾਰ
 chat_paused: 'ਸਵਾਲ ਥੋੜ੍ਹੀ ਦੇਰ ਲਈ ਰੋਕੇ ਜਾਂਦੇ ਹਨ। ਬਟਨ ਅਜੇ ਵੀ ਕੰਮ ਕਰਦੇ ਹਨ: ਅੱਜ ਦਾ ਸਮੁੰਦਰ, ਕਿੱਥੇ ਮੱਛੀ ਫੜਨੀ ਹੈ, ਚੇਤਾਵਨੀਆਂ, ਮੈਂ ਵਾਪਸ ਆ ਗਈ ਹਾਂ।'

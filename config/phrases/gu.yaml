@@ -9,12 +9,12 @@ verdict:
   CAUTION: જાઓ, પણ કાળજીપૂર્વક - {back_by} દ્વારા પાછા.
   NO-GO: 'આજે જશો નહીં. પછીનો સારો સમય: {next_window}.'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} પછી મોજાં ખૂબ ઊંચા થઈ જાય છે.'
   H2: તે માર્ગ સરહદ રેખાની ખૂબ નજીક જાય છે.
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'ત્યાં એક સત્તાવાર {issuer} ચેતવણી છે: {warning_name}.'
   H3: તે વિસ્તાર સંરક્ષિત દરિયાઈ ઉદ્યાનની અંદર છે.
   H4: યાંત્રિક બોટ માટે માછીમારી પર પ્રતિબંધની મોસમ છે.
-  H6: The wind gets too strong after {time}.
+  H6: '{time} પછી પવન ખૂબ જ જોરદાર થઈ જાય છે.'
   H7: 'ત્યાં સત્તાવાર વાવાઝોડાની ચેતવણી છે: {warning_name}.'
   H8: કેટલોક ડેટા જૂનો અથવા ગુમ છે, તેથી સમુદ્રને ચકાસી શકાતો નથી.
 spot: માછલી સંભવતઃ {distance_km} કિમી {direction} દૂર છે.
@@ -35,9 +35,9 @@ directions:
   west: પશ્ચિમ
   north_west: ઉત્તર-પશ્ચિમ
 ack: દરિયો તપાસી રહ્યા છીએ...
-brief_title: Morning brief · {harbour}
+brief_title: સવારનો ટૂંકસાર · {harbour}
 push_test: કદલ મિત્રા એલર્ટ ચાલુ છે.
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} એ {harbour}, {time} પર પાછી આવી છે.'
 consent:
   notice_version: '2026-11-04'
   short: અમે તમારું સ્થાન ફક્ત તમને સરહદ નજીક અને ખરાબ હવામાનમાં ચેતવણી આપવા માટે વાપરીએ છીએ. તમે ગમે ત્યારે બંધ કરી શકો છો.
@@ -50,6 +50,6 @@ alerts:
   mpa: તમે સુરક્ષિત દરિયાઈ ઉદ્યાનની અંદર છો. અહીં માછીમારી કરવાની મંજૂરી નથી.
 trip:
   feedback_ask: શું આજની સલાહ સાચી હતી?
-  right_on: Right on {right} of the last {total} days.
+  right_on: છેલ્લા {total} દિવસોના {right} પર જ.
 family_title: કદલ મિત્ર · પરિવાર
 chat_paused: 'પ્રશ્નો થોડા સમય માટે થોભાય છે. બટનો હજી પણ કામ કરે છે: આજનો સમુદ્ર, માછલી ક્યાં પકડવી, ચેતવણીઓ, હું પાછી આવી છું.'

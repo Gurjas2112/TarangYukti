@@ -9,20 +9,20 @@ verdict:
   CAUTION: گژھِو، مگر احتیاط سان — {back_by} پتہٕ۔
   NO-GO: 'اَز مہٕ گژھِو۔ بیٛاکھ اَصٕل وقت: {next_window}۔'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} پتہٕ چھِ لہرٕ واریاہ تھزرس واتان۔'
   H2: یہِ وتہِ چھِ سرحدٕچ لٲنہِ  واریاہ نزدیٖک گژھان ۔
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'اکھ سرکٲرِ {issuer} انتباہ چھُ: {warning_name}۔'
   H3: یہِ علاقہٕ چھٗ محفوظ سمندری پاركہِ اندر ۔
   H4: یہِ چھٗ مَشیٖنی ناوَن ہِنٛدِ گاڈٕ رٹنہٕ کِس مٗدتس پیٹھ پابٔنٛدی ہُنٛد موسم۔
-  H6: The wind gets too strong after {time}.
+  H6: ہوا چھُ {time} پتہٕ واریاہ تیز گژھان۔
   H7: 'تَتہِ چھُ اکھ سرکٲرِ گگرایہِ ہُنٛد انتباہ: {warning_name}۔'
   H8: کینٛہہ ڈیٹا چھ پرٛون یا غٲب، لہذا ہیٚکہ نہٕ سمندرٕچ جانٛچ کرنہٕ یتھ۔
-spot: Fish likely {distance_km} km {direction}.
-border: Border line is {distance_km} km away.
+spot: گاڈٕ چھےٚ ممکنہٕ طور {distance_km} کلومیٹر {direction}۔
+border: سرحدی لٲن چھےٚ {distance_km} کلومیٹر دوٗر۔
 stale: پرٛون پیشین گوئی — نیرنہٕ برٛونٛہہ کٔرِو دوبارٕ چیک۔
 footer: صرف مشورٕ — سرکٲرۍ INCOIS/IMD انتباہن پیٹھ کٔرِو عمل۔
 needs_network: 'مےٚ چھُ امہِ کِس جوابس خٲطرٕ انٹرنیٹٕچ ضروٗرت۔ بٹن چھِ وُنہِ تہِ کٲم کران: ازُک سمندر، گاڈٕ کَتہِ رٹِو، الرٹ، بہٕ چھےٚ واپس آمٕژ۔'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+nothing_found: مےٚ میوٗل نہٕ سرکٲرۍ دستاویزن منٛز اتھ متعلق کانٛہہ تہِ کَتھ۔ مہربٲنی کٔرِتھ پرٛژھِو {source}۔
 cannot_verify: بہٕ ہیوٚک نہٕ یہِ جواب ڈیٹا سۭتۍ موازنہٕ کٔرِتھ، اَمہِ کِنۍ دِتھ نہٕ بہٕ یہِ۔ مہربٲنی کٔرِتھ کٔرِو بٹن اِستعمال یا پرٛژھِو بیٚیہِ۔
 no_window: ینہٕ والٮ۪ن 24 گٲنٛٹن منٛز چھُنہٕ کانٛہہ تہِ۔
 directions:
@@ -35,21 +35,21 @@ directions:
   west: مَغرِب
   north_west: شمال مغرِب
 ack: سمندر وُچھُن...
-brief_title: Morning brief · {harbour}
+brief_title: صبحُک اِطلاع · {harbour}
 push_test: کڈل مترا الرٹ چھِ جٲری۔
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} چھُ واپس {harbour}، {time} منٛز۔'
 consent:
   notice_version: '2026-11-04'
   short: أسۍ چھِو تُہٕنٛز لوکیشن صرف تُہہِ سرحدَس نزدیٖک تہٕ خراب موسمس منٛز خبردار کرنہٕ خٲطرٕ استعمال کران۔ تُہہِ ہیٚکو کُنہِ تہِ وِزِ رُکِتھ۔
   agree: بہٕ چھُس رٲضی۔
 alerts:
   title: کڈل مِترا الرٹ
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
+  border-5km: سرحدی لٲن چھےٚ {distance_km} کلومیٹر دوٗر۔ بندرگاہس کنہِ  واپس پھیرِو۔
   border-2km: 'خطرٕ: سرحدی لٲن چھِ صرف {distance_km} کلومیٹر دوٗر۔ وۄنۍ پھِرِو واپس۔'
   beyond-imbl: 'خطرٕ: ژٕ چِھو سرحدٕچ لٲن پار کٔرمٕژ۔ وۄنۍ پھِرِو واپس۔'
   mpa: تۄہہِ چِھو مَحفوٗظ سمندری پارکہِ منٛز۔ ییٚتہِ چُھنہٕ گاڈٕ رٹنہٕ ہٗند  اجازت۔
 trip:
   feedback_ask: اَزِچ مشوَرٕ ٲسۍ صٔحیٖح؟
-  right_on: Right on {right} of the last {total} days.
+  right_on: پٔتِمین {total} دۄہَن ہُنٛد {right} پٮ۪ٹھٕہ۔
 family_title: کڈل مِترا · خاندان
 chat_paused: 'سوال چھُ کینٛہَس وِزِ رُکان۔ بٹن چھِ وُنہِ تہِ کٲم کَران: ازُک سمندر، گاڈٕ کَتہِ رٹُن، الرٹ، بہٕ چھےٚ واپس آمٕژ۔'

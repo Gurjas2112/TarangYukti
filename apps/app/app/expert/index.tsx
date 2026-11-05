@@ -1,6 +1,7 @@
 // The Expert console is a web screen (spec §17.9): the Android build shows where to open it instead.
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../../src/ui/Text";
 
 import { colors, font, space } from "../../src/ui/tokens";
 

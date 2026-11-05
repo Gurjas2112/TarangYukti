@@ -1,0 +1,20 @@
+{"id": "mr-IN-mz-territorial", "lang": "mr-IN", "question": "भारताचे प्रादेशिक जलक्षेत्र किनाऱ्यापासून किती दूरपर्यंत पसरलेले आहे?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "mr-IN-mz-eez", "lang": "mr-IN", "question": "भारताचा विशेष आर्थिक क्षेत्र म्हणजे काय?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "mr-IN-mz-foreign-fishing", "lang": "mr-IN", "question": "परवानगीशिवाय परदेशी जहाजे भारताच्या विशेष आर्थिक क्षेत्रात मासे पकडू शकतात का?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "mr-IN-tn-purpose", "lang": "mr-IN", "question": "तामिळनाडू सागरी मासेमारी नियमन कायदा कशाचे नियमन करतो?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mr-IN-tn-mechanised", "lang": "mr-IN", "question": "तामिळनाडूच्या मासेमारी कायद्यानुसार यांत्रिक मासेमारी जहाज म्हणजे काय?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mr-IN-tn-prohibit-area", "lang": "mr-IN", "question": "तामिळनाडू सरकार एखाद्या विशिष्ट भागात मासेमारी करण्यास मनाई करू शकते का?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mr-IN-tn-registration", "lang": "mr-IN", "question": "मच्छीमारी नौकांची तामिळनाडूमध्ये नोंदणी करणे आवश्यक आहे का?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "mr-IN-cm-total-2024", "lang": "mr-IN", "question": "2024 मध्ये भारतात किती सागरी मासे उतरवले गेले?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "mr-IN-cm-top-state", "lang": "mr-IN", "question": "2024 मध्ये कोणत्या राज्यात सर्वाधिक सागरी मासे पकडले गेले?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "mr-IN-cm-top-species", "lang": "mr-IN", "question": "2024 मध्ये भारतात सर्वात जास्त पकडलेली माशांची प्रजाती कोणती होती?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "mr-IN-sop-cyclone-at-sea", "lang": "mr-IN", "question": "मी समुद्रात असताना चक्रीवादळाचा इशारा जारी झाल्यास मी काय करावे?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "mr-IN-sop-high-wave", "lang": "mr-IN", "question": "जेव्हा अधिकृत उंच लाटेचा इशारा आहे, तेव्हा मी मासेमारीला जाऊ का?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "mr-IN-sop-cross-border", "lang": "mr-IN", "question": "जर मी भारत श्रीलंका सीमा रेषा ओलांडली तर काय होईल?", "expected": ["sop:border-line"], "draft": true}
+{"id": "mr-IN-sop-drift-border", "lang": "mr-IN", "question": "माझे इंजिन बंद पडले आणि मी सीमेच्या दिशेने वाहत आहे. मी काय करावे?", "expected": ["sop:border-line"], "draft": true}
+{"id": "mr-IN-sop-coast-guard", "lang": "mr-IN", "question": "समुद्रात कोस्ट गार्डच्या मदतीसाठी मी कोणत्या नंबरवर कॉल करावा?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "mr-IN-ban-east-coast", "lang": "mr-IN", "question": "पूर्व किनारपट्टीवरील वार्षिक मासेमारी बंदी कधी आहे?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "mr-IN-x-fish-price", "lang": "mr-IN", "question": "आज चेन्नईच्या बाजारात सीर माशाची किंमत काय आहे?", "expected": [], "draft": true}
+{"id": "mr-IN-x-cricket", "lang": "mr-IN", "question": "आजच्या क्रिकेट सामन्याचा स्कोअर काय आहे?", "expected": [], "draft": true}
+{"id": "mr-IN-x-recipe", "lang": "mr-IN", "question": "माशांच्या करीसाठी चांगली रेसिपी कोणती आहे?", "expected": [], "draft": true}
+{"id": "mr-IN-x-loan", "lang": "mr-IN", "question": "घर खरेदी करण्यासाठी मी बँकेतून कर्ज कसे मिळवू शकते?", "expected": [], "draft": true}

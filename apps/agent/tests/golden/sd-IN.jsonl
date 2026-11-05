@@ -1,0 +1,20 @@
+{"id": "sd-IN-mz-territorial", "lang": "sd-IN", "question": "भारत जो इलाइक़ाई पाणीअ जो खेत्रु साहिल खां केतिरो परे ताईं वधियलु आहे?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sd-IN-mz-eez", "lang": "sd-IN", "question": "भारत जो ख़ास इक़्तिसादी ज़ोन छा आहे?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sd-IN-mz-foreign-fishing", "lang": "sd-IN", "question": "छा परॾेही जहाज़ु भारत जे ख़ासि इक़्तिसादी इलाइक़े में बग़ैर इजाज़त जे मछी मारी सघनि था?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "sd-IN-tn-purpose", "lang": "sd-IN", "question": "तमिलनाडु मरीन फ़िशिंग रेगुलेशन एक्ट छा क़ाइदो कंदो आहे?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sd-IN-tn-mechanised", "lang": "sd-IN", "question": "तमिलनाडु जे माछीमारी क़ानून जे तहत मशीनी माछीमारीअ जो जहाज़ छा आहे?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sd-IN-tn-prohibit-area", "lang": "sd-IN", "question": "छा तमिलनाडू सरकार कंहिं मुक़रर इलाइक़े में मछी मारण ते रोक लॻाए सघे थी?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sd-IN-tn-registration", "lang": "sd-IN", "question": "छा मछी मारण वारनि ॿेड़ियुनि खे तमिलनाडू में रजिस्टर करणो पवंदो आहे?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "sd-IN-cm-total-2024", "lang": "sd-IN", "question": "2024 में भारत में केतिरियूं सामुंडी मछियूं लॾियूं वियूं?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sd-IN-cm-top-state", "lang": "sd-IN", "question": "2024 में कहिड़े सूबे में सभिनी खां वधीक समुद्री मछियूं लॻियूं?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sd-IN-cm-top-species", "lang": "sd-IN", "question": "2024 में भारत में सभिनी खां वधीक पकड़िजंदड़ मछीअ जी नसुल केरिड़ी हुई?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "sd-IN-sop-cyclone-at-sea", "lang": "sd-IN", "question": "जेकॾहिं मां समुंड में हुयां आहियां ऐं तव्हां खे चक्रवात जी चेताउणी ॾिनी वेंदी आहे, त मूंखे छा करण घुरिजे?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "sd-IN-sop-high-wave", "lang": "sd-IN", "question": "मूंखे मछी मारण वञण घुरिजे छा? जॾहिं त ऊची लहर जी आफ़िसियल चेतावनी आहे। मां त ॾाढी डपिजंदसि।", "expected": ["sop:official-warning"], "draft": true}
+{"id": "sd-IN-sop-cross-border", "lang": "sd-IN", "question": "जेकॾहिं मां भारत-श्रीलंका सरहद जी रेखा पारि कंदसि त छा थींदो? मूंखे त ॾाढो डप लॻो।", "expected": ["sop:border-line"], "draft": true}
+{"id": "sd-IN-sop-drift-border", "lang": "sd-IN", "question": "मुंहिंजो इंजन ख़राब थी वियो ऐं मां सरहद जे पासे वञी रही आहियां। मां छा करियां? मूंखे चिंता आहे त मां किथे न अची वञां।", "expected": ["sop:border-line"], "draft": true}
+{"id": "sd-IN-sop-coast-guard", "lang": "sd-IN", "question": "समुंड में कोस्ट गार्ड जी मदद लाइ मूंखे कहिड़े नंबर ते कॉल करणो पवंदो?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "sd-IN-ban-east-coast", "lang": "sd-IN", "question": "ओभर साहिलीअ ते सालाना माछी मारण ते पाबंदी कॾहिं आहे?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "sd-IN-x-fish-price", "lang": "sd-IN", "question": "अॼु चेन्नई जे बाज़ार में सीअर मछीअ जो अघु छा आहे?", "expected": [], "draft": true}
+{"id": "sd-IN-x-cricket", "lang": "sd-IN", "question": "अॼु जे क्रिकेट मैच जो स्कोर छा आहे?", "expected": [], "draft": true}
+{"id": "sd-IN-x-recipe", "lang": "sd-IN", "question": "मछीअ जी करीअ लाइ सुठी तरकीब छा आहे?", "expected": [], "draft": true}
+{"id": "sd-IN-x-loan", "lang": "sd-IN", "question": "मूंखे घर ख़रीद करण लाइ बैंक मां क़र्ज़ु कीअं मिलंदो?", "expected": [], "draft": true}

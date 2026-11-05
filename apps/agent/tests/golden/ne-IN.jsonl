@@ -1,0 +1,20 @@
+{"id": "ne-IN-mz-territorial", "lang": "ne-IN", "question": "भारतको प्रादेशिक जलक्षेत्र तटबाट कति टाढासम्म फैलिएको छ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ne-IN-mz-eez", "lang": "ne-IN", "question": "भारतको विशेष आर्थिक क्षेत्र के हो?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ne-IN-mz-foreign-fishing", "lang": "ne-IN", "question": "के विदेशी जहाजहरूले अनुमति बिना भारतको विशेष आर्थिक क्षेत्रमा माछा मार्न सक्छन्?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ne-IN-tn-purpose", "lang": "ne-IN", "question": "तमिलनाडु समुद्री माछा मार्ने नियमन ऐनले के नियमन गर्छ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ne-IN-tn-mechanised", "lang": "ne-IN", "question": "तमिलनाडु माछा मार्ने कानुन अन्तर्गत मेकानिकृत माछा मार्ने जहाज के हो?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ne-IN-tn-prohibit-area", "lang": "ne-IN", "question": "के तमिलनाडु सरकारले तोकिएको क्षेत्रमा माछा मार्न निषेध गर्न सक्छ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ne-IN-tn-registration", "lang": "ne-IN", "question": "के माछा मार्ने जहाजहरू तमिलनाडुमा दर्ता हुनुपर्छ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ne-IN-cm-total-2024", "lang": "ne-IN", "question": "सन् 2024 मा भारतमा कति समुद्री माछा पाइयो?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ne-IN-cm-top-state", "lang": "ne-IN", "question": "सन् 2024 मा कुन राज्यमा सबैभन्दा धेर समुद्री माछा पाइन्थ्यो?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ne-IN-cm-top-species", "lang": "ne-IN", "question": "सन् 2024 मा भारतमा सबैभन्दा धेरै माछा पाइने प्रजाति कुन थियो?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ne-IN-sop-cyclone-at-sea", "lang": "ne-IN", "question": "यदि म समुद्रमा हुँदा चक्रवातको चेतावनी जारी गरियो भने मैले के गर्नुपर्छ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ne-IN-sop-high-wave", "lang": "ne-IN", "question": "आधिकारिक उच्च लहरको चेतावनी हुँदा के म माछा मार्न जानुपर्छ?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ne-IN-sop-cross-border", "lang": "ne-IN", "question": "यदि मैले भारत श्रीलङ्काको सिमाना रेखा पार गरेँ भने के हुन्छ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "ne-IN-sop-drift-border", "lang": "ne-IN", "question": "मेरो इन्जिन बिग्रियो र म सिमानातिर सर्दैछु। मैले के गर्नुपर्छ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "ne-IN-sop-coast-guard", "lang": "ne-IN", "question": "समुद्रमा कोस्ट गार्डको उद्धारका लागि मैले कुन नम्बरमा फोन गर्नुपर्छ?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "ne-IN-ban-east-coast", "lang": "ne-IN", "question": "पूर्वी तटमा वार्षिक माछा मार्ने प्रतिबन्ध कहिले लाग्छ?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "ne-IN-x-fish-price", "lang": "ne-IN", "question": "आज चेन्नई बजारमा सीर माछाको मूल्य कति छ?", "expected": [], "draft": true}
+{"id": "ne-IN-x-cricket", "lang": "ne-IN", "question": "आजको क्रिकेट खेलको स्कोर कति छ?", "expected": [], "draft": true}
+{"id": "ne-IN-x-recipe", "lang": "ne-IN", "question": "माछा करीको लागि राम्रो रेसिपी के हो?", "expected": [], "draft": true}
+{"id": "ne-IN-x-loan", "lang": "ne-IN", "question": "घर किन्नको लागि म कसरी बैंक ऋणको लागि आवेदन दिन्छु?", "expected": [], "draft": true}

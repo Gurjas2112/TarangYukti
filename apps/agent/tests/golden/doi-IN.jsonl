@@ -1,0 +1,20 @@
+{"id": "doi-IN-mz-territorial", "lang": "doi-IN", "question": "भारत दा प्रादेशिक जल-क्षेत्र तट थमां किन्ना दूर तक्कर फैले दा ऐ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "doi-IN-mz-eez", "lang": "doi-IN", "question": "भारत दा अनन्य आर्थिक क्षेत्र केह् ऐ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "doi-IN-mz-foreign-fishing", "lang": "doi-IN", "question": "क्या बदेसी ज्हाज बगैर इजाज़त दे भारत दे खास आर्थिक खेतर च मच्छी फिरी सकदे न?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "doi-IN-tn-purpose", "lang": "doi-IN", "question": "तमिलनाडु समुंदरी मच्छी पालन विनियमन अधिनियम केह्‌‌ विनियमित करदा ऐ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "doi-IN-tn-mechanised", "lang": "doi-IN", "question": "तमिलनाडु मच्छी फड़ने दे कनून दे तैह्‌‌‌त मशीनी मच्छी फड़ने आह्‌‌‌ली ज्हाज केह्‌‌ ऐ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "doi-IN-tn-prohibit-area", "lang": "doi-IN", "question": "क्या तमिलनाडु सरकार कुसै निर्धारत खेतर च मच्छी फड़ने पर रोक लाई सकदी ऐ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "doi-IN-tn-registration", "lang": "doi-IN", "question": "क्या मच्छी पकड़ने आह्‌‌‌लियें नौकाएं गी तमिलनाडु च पंजीकृत होना पौंदा ऐ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "doi-IN-cm-total-2024", "lang": "doi-IN", "question": "2024 च भारत च किन्नी समुंदरी मच्छी लद्दी गेई ही?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "doi-IN-cm-top-state", "lang": "doi-IN", "question": "2024 च कुस राज्य च सभनें शा मती समुंदरी मच्छी दी लानडिंग ही?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "doi-IN-cm-top-species", "lang": "doi-IN", "question": "2024 च भारत च सभनें शा मती पकड़ी जाने आह्‌ली मच्छी दी प्रजाति केह्‌ ही?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "doi-IN-sop-cyclone-at-sea", "lang": "doi-IN", "question": "जेकर समुंदरै च रौंह्दे होई तफानै दी चेतावनी जारी कीती जंदी ऐ तां में केह् करना चाहिदा?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "doi-IN-sop-high-wave", "lang": "doi-IN", "question": "जिसलै अधिकारक उच्च लैह्‌र दी चेतावनी होऐ तां क्या मिगी मच्छी फड़ने जाना चाहिदा?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "doi-IN-sop-cross-border", "lang": "doi-IN", "question": "जेकर में भारत-श्रीलंका सीमा रेखा पार करी दिंदी आं तां केह् होग?", "expected": ["sop:border-line"], "draft": true}
+{"id": "doi-IN-sop-drift-border", "lang": "doi-IN", "question": "मेरा इंजन खराब होई गेआ ऐ ते में सीमा रेखा बक्खी बधा दी आं। में केह् करना चाहिदा?", "expected": ["sop:border-line"], "draft": true}
+{"id": "doi-IN-sop-coast-guard", "lang": "doi-IN", "question": "समुंदरै च कोस्ट गार्ड बचाव आस्तै में कुस नंबरै पर काल करना चाहिदा?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "doi-IN-ban-east-coast", "lang": "doi-IN", "question": "पूरबी तट उप्पर सालाना मच्छी फड़ने उप्पर पाबंदी कदूं ऐ?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "doi-IN-x-fish-price", "lang": "doi-IN", "question": "अज्ज चेन्नई दे बजार च सीर मच्छी दी केह्‌ कीमत ऐ?", "expected": [], "draft": true}
+{"id": "doi-IN-x-cricket", "lang": "doi-IN", "question": "अज्जै दे क्रिकेट मैच दा स्कोर केह् ऐ?", "expected": [], "draft": true}
+{"id": "doi-IN-x-recipe", "lang": "doi-IN", "question": "मच्छी दी तरी आस्तै इक शैल रेसिपी केह् ऐ?", "expected": [], "draft": true}
+{"id": "doi-IN-x-loan", "lang": "doi-IN", "question": "में घर खरीदने आस्तै बैंक लोन लेई किʼयां दरखास्त करां?", "expected": [], "draft": true}

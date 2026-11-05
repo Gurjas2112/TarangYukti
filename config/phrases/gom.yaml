@@ -11,18 +11,18 @@ verdict:
 why:
   H5: '{time} उपरांत ल्हारां खूब ऊंच जातात.'
   H2: तो मार्ग शिमेच्या रेषेच्या खूब लागीं वता.
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'एक अधिकृत {issuer} शिटकावणी आसा: {warning_name}.'
   H3: तो वाठार संरक्षित दर्यादेगेच्या उद्यानांत आसा.
   H4: यंत्रीकृत बोटींनी नुस्तें धरपाचेर बंदी घालपाचो हो काळ.
-  H6: The wind gets too strong after {time}.
+  H6: हवा {time} उपरांत खूब खर जाता.
   H7: 'एक अधिकृत वादळाची शिटकावणी आसा: {warning_name}.'
   H8: कांय म्हायती पोरणी वा ना, देखून दर्या तपासूंक मेळना.
-spot: Fish likely {distance_km} km {direction}.
+spot: नुस्तें {distance_km} किमी {direction} आसूं येता.
 border: शिमेची रेषा {distance_km} कि.मी. पयस आसा.
 stale: पोरणो अदमास - भायर सरचे पयलीं परत तपासून घे.
 footer: फकत सल्लो - अधिकृत INCOIS/IMD चे इशारे पाळचे.
 needs_network: 'म्हाका ताचें जाप दिवपाक इंटरनॅट जाय. बटणां अजूनय काम करतात: आयचो दर्या, नुस्तें खंय मारचें, अलर्ट, हांव परत आयल्या.'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+nothing_found: म्हाका अधिकृत कागदपत्रांनी हाचे विशीं कांयच मेळ्ळें ना. कृपया {source} क विचारचें.
 cannot_verify: हांवें हें उतर डेटा आड तपासूंक शकलेना, देखून हांव तें दिवचो ना. कृपया बटणां वापरचें वा परत विचारचें.
 no_window: फुडल्या 24 वरां भितर कोणूच ना.
 directions:
@@ -35,7 +35,7 @@ directions:
   west: अस्तंत
   north_west: उत्तर-पश्चिम
 ack: दर्या तपासता...
-brief_title: Morning brief · {harbour}
+brief_title: सकाळचो संक्षिप्त · {harbour}
 push_test: कदल मित्राचे अलर्ट चालू आसात.
 back_home: '{name} {harbour} हांगा परत आयल्या, {time}.'
 consent:
@@ -50,6 +50,6 @@ alerts:
   mpa: तूं संरक्षित दर्यादेगेच्या उद्यानांत आसा. हांगा नुस्तें मारपाक परवानगी ना.
 trip:
   feedback_ask: आयजचो सल्लो बरो आशिल्लो काय?
-  right_on: Right on {right} of the last {total} days.
+  right_on: फाटल्या {total} दिसांच्या {right} दिसांनी.
 family_title: कदल मित्र · कुटुंब
 chat_paused: 'प्रस्न कांय वेळ थांबयल्यात. बटणां अजूनय काम करतात: आयचो दर्या, नुस्तें खंय मारचें, धोक्याची सुचोवणी, हांव परत आयल्या.'

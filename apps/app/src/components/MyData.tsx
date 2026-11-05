@@ -2,7 +2,8 @@
 // everything is erased). Both are audit-logged.
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Platform, Pressable, Share, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, Share, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { api } from "../api/channels";
 import { colors, font, radius, space, touch } from "../ui/tokens";

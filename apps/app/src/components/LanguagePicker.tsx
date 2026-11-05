@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FlatList, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Modal, Pressable, StyleSheet, View } from "react-native";
 
 import { availableLanguages, type Language } from "../i18n";
 import { usePrefs } from "../state/prefs";
+import { loadAllScripts } from "../ui/fonts";
+import { Text } from "../ui/Text";
 import { colors, font, radius, space, touch } from "../ui/tokens";
 import { hasVoice, speak } from "../voice/speak";
 
 /** Every available language in its own script (spec §6.5); 🔊 speaks the name where a voice exists. */
 export function LanguagePicker({ onPicked, suggested }: { onPicked: (code: string) => void; suggested?: string | null }) {
   const { t } = useTranslation();
+  useEffect(() => {
+    void loadAllScripts(); // each name below is set in its own script's font
+  }, []);
   const langs = [...availableLanguages()].sort((a, b) =>
     a.code === suggested ? -1 : b.code === suggested ? 1 : 0,
   );
@@ -23,7 +28,9 @@ export function LanguagePicker({ onPicked, suggested }: { onPicked: (code: strin
         accessibilityLanguage={item.code}
         testID={`lang-${item.code}`}
       >
-        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.name} lang={item.code}>
+          {item.name}
+        </Text>
         {item.status === "draft" ? <Text style={styles.draft}>{t("lang.draft")}</Text> : null}
       </Pressable>
       {hasVoice(item.code) ? (
@@ -58,7 +65,9 @@ export function LanguageButton() {
         accessibilityLabel={`${t("lang.button")}: ${name}`}
         testID="language-button"
       >
-        <Text style={styles.buttonText}>🌐 {name}</Text>
+        <Text style={styles.buttonText} lang={lang}>
+          🌐 {name}
+        </Text>
       </Pressable>
       <Modal visible={open} animationType="slide" onRequestClose={() => setOpen(false)}>
         <View style={styles.modal}>

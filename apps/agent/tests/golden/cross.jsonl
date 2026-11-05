@@ -1,0 +1,20 @@
+{"id": "x-ta-rom-ban", "lang": "ta-IN", "question": "Rameswaram la fishing ban eppo aarambikkum?", "expected": ["dof:fishing-ban"], "cross": "romanised Tamil + English"}
+{"id": "x-ta-rom-cross-border", "lang": "ta-IN", "question": "Border line cross panna enna aagum?", "expected": ["sop:border-line"], "cross": "romanised Tamil + English"}
+{"id": "x-ta-rom-drift", "lang": "ta-IN", "question": "Engine fail aagi border pakkam drift aagudhu, enna pannanum?", "expected": ["sop:border-line"], "cross": "romanised Tamil + English"}
+{"id": "x-ta-rom-coastguard", "lang": "ta-IN", "question": "Kadal la aabathu na Coast Guard number enna?", "expected": ["sop:emergency-at-sea"], "cross": "romanised Tamil + English"}
+{"id": "x-ta-rom-cyclone", "lang": "ta-IN", "question": "Kadal la irukkumbodhu cyclone warning vandha enna pannanum?", "expected": ["sop:official-warning"], "cross": "romanised Tamil + English"}
+{"id": "x-hi-rom-ban", "lang": "hi-IN", "question": "East coast pe fishing ban kab hota hai?", "expected": ["dof:fishing-ban"], "cross": "Hinglish"}
+{"id": "x-hi-rom-foreign", "lang": "hi-IN", "question": "Kya foreign boats India ke EEZ mein bina permission fishing kar sakti hain?", "expected": ["act:maritime-zones-1976"], "cross": "Hinglish"}
+{"id": "x-hi-rom-top-state", "lang": "hi-IN", "question": "2024 mein sabse zyada marine fish landing kis state mein hui?", "expected": ["cmfri:landings-2024"], "cross": "Hinglish"}
+{"id": "x-hi-rom-high-wave", "lang": "hi-IN", "question": "High wave warning hai toh fishing jaana chahiye kya?", "expected": ["sop:official-warning"], "cross": "Hinglish"}
+{"id": "x-hi-rom-overboard", "lang": "hi-IN", "question": "Koi boat se paani mein gir jaye toh kya karein?", "expected": ["sop:emergency-at-sea"], "cross": "Hinglish"}
+{"id": "x-ml-rom-ban", "lang": "ml-IN", "question": "East coast il fishing ban eppozhanu?", "expected": ["dof:fishing-ban"], "cross": "romanised Malayalam + English"}
+{"id": "x-ml-rom-territorial", "lang": "ml-IN", "question": "Territorial waters coast il ninnu ethra doore vare?", "expected": ["act:maritime-zones-1976"], "cross": "romanised Malayalam + English"}
+{"id": "x-ta-eez", "lang": "ta-IN", "question": "இந்தியாவின் EEZ என்றால் என்ன?", "expected": ["act:maritime-zones-1976"], "cross": "Tamil script + English acronym"}
+{"id": "x-hi-tn-act", "lang": "hi-IN", "question": "Tamil Nadu Marine Fishing Regulation Act क्या regulate करता है?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "cross": "Devanagari + English names"}
+{"id": "x-te-kachchatheevu", "lang": "te-IN", "question": "Kachchatheevu దీవి India వైపు ఉందా?", "expected": ["sop:border-line"], "cross": "Telugu script + English names"}
+{"id": "x-bn-landings", "lang": "bn-IN", "question": "2024 সালে India-তে কত marine fish landing হয়েছে?", "expected": ["cmfri:landings-2024"], "cross": "Bengali script + English terms"}
+{"id": "x-ml-mechanised", "lang": "ml-IN", "question": "Tamil Nadu നിയമത്തിൽ mechanised fishing vessel എന്നാൽ എന്താണ്?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "cross": "Malayalam script + English terms"}
+{"id": "x-ta-rom-price", "lang": "ta-IN", "question": "Inniki Chennai market la vanjiram rate enna?", "expected": [], "cross": "romanised Tamil, unanswerable"}
+{"id": "x-hi-rom-recipe", "lang": "hi-IN", "question": "Fish curry ki recipe batao", "expected": [], "cross": "Hinglish, unanswerable"}
+{"id": "x-hi-rom-cricket", "lang": "hi-IN", "question": "Kal ke cricket match ka score kya tha?", "expected": [], "cross": "Hinglish, unanswerable"}

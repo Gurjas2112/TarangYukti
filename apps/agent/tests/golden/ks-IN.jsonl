@@ -1,0 +1,20 @@
+{"id": "ks-IN-mz-territorial", "lang": "ks-IN", "question": "ہندوستانُک علاقٲیی آب کٲتہِ تام چھُ ساحل پیٹھٕ دوٗر؟", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ks-IN-mz-eez", "lang": "ks-IN", "question": "ہِنٛدُستانُک خصوصی اِقتِصٲدی زون کیٛاہ چُھ؟", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ks-IN-mz-foreign-fishing", "lang": "ks-IN", "question": "کیٛاہ ہٮ۪کن غٲر مُلکی جہاز اجازتہٕ بغٲر ہندوستان کِس خصوصی اِقتِصٲدی علاقس منٛز گاڈٕ رٹِتھ؟", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "ks-IN-tn-purpose", "lang": "ks-IN", "question": "تامل ناڈو میرین فِشِنٛگ ریگولیشن ایکٹ کیٛاہ چھُ ضٲبطہٕ کران؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ks-IN-tn-mechanised", "lang": "ks-IN", "question": "تامل ناڈوٗ ماہی گیری قونوٗنَس تحت کیٛاہ چھِ میکانائزڈ گاڈٕ رٹنہٕ وٲلۍ جہاز؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ks-IN-tn-prohibit-area", "lang": "ks-IN", "question": "کیاہ ہیکہِ تامِل ناڈوُ حکوٗمت کُنہِ مخصوٗص علاقَس منٛز گاڈٕ رٹنہٕ پیٹھ پابندی لگٲوِتھ؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ks-IN-tn-registration", "lang": "ks-IN", "question": "کیا گاڈٕ رٹن والین جہازن چھُ تامل ناڈوہس منٛز رجسٹر گژھن؟", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "ks-IN-cm-total-2024", "lang": "ks-IN", "question": "2024 ہَس منٛز کٲتیاہ سمندری گاڈٕ آیہِ ہندوستانَس منٛز لاینہٕ؟", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ks-IN-cm-top-state", "lang": "ks-IN", "question": "2024 ہَس منٛز کُنہِ رِیاستَس منٛز ٲس ساروِی کھۄتہٕ زیٛادٕ سمندری گاڈٕ یِنہٕ؟", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ks-IN-cm-top-species", "lang": "ks-IN", "question": "2024 ہَس منٛز کُنہِ مۄلہِ ہِنٛز گاڈٕ ہِنٛز زٲژ ٲس ہندوستانَس منٛز ساروِی کھۄتہٕ زیٛادٕ وۄتھمٕژ؟", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "ks-IN-sop-cyclone-at-sea", "lang": "ks-IN", "question": "اگر بہٕ سمندرس منٛز آسن تیٚلہِ گژھِ مےٚ کیٛاہ کرُن اگر سمندری طوٗفانٕچ خبردار کٔرِتھ آیہ؟", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ks-IN-sop-high-wave", "lang": "ks-IN", "question": "مےٚ پَزِ ماہِ گیہِ گاڈٕ رٹنہِ ییٚلہِ سرکٲرِ طور  تھٔدِ لہرِ ہٗند  انتباہ آسہِ؟", "expected": ["sop:official-warning"], "draft": true}
+{"id": "ks-IN-sop-cross-border", "lang": "ks-IN", "question": "اگر بہٕ ہندوستان سری لنکا سرحدٕچ لٲن عبور کرٕ، کیا گژھِ؟", "expected": ["sop:border-line"], "draft": true}
+{"id": "ks-IN-sop-drift-border", "lang": "ks-IN", "question": "میون انجن گیہِ خراب تہٕ بہٕ چھس سرحدس کن پکان۔ مےٚ کیٛاہ کرُن؟", "expected": ["sop:border-line"], "draft": true}
+{"id": "ks-IN-sop-coast-guard", "lang": "ks-IN", "question": "سمندرس منٛز کوسٹ گارڈ بچاو باپتھ کُس نمبر پیٚیہِ مےٚ فون کرُن؟", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "ks-IN-ban-east-coast", "lang": "ks-IN", "question": "مشرقی ساحلس پٮ۪ٹھ سالانہٕ گاڈٕ رٹنٕچ پابندی کٲنٛسہِ وِزِ چھِ؟", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "ks-IN-x-fish-price", "lang": "ks-IN", "question": "اَز کٲتہِ چھُ چنئی بازارَس منٛز سیٖر گاڈٕ سُنٛد قۭمَت؟", "expected": [], "draft": true}
+{"id": "ks-IN-x-cricket", "lang": "ks-IN", "question": "أزِکہِ کرکٹ میچُک سکور کیٛاہ چُھ؟", "expected": [], "draft": true}
+{"id": "ks-IN-x-recipe", "lang": "ks-IN", "question": "گاڈٕ کٔنٛدٕ خٲطرٕ اَکھ اَصٕل ترکیب کیٛاہ چھےٚ؟", "expected": [], "draft": true}
+{"id": "ks-IN-x-loan", "lang": "ks-IN", "question": "مےٚ کِتھ پٲٹھۍ کَرٕ گھرٕ خٲطرٕ بینک لونہٕ خٲطرٕ درخواست؟", "expected": [], "draft": true}

@@ -39,3 +39,6 @@ data/snapshot/
 # Playwright
 apps/app/test-results/
 apps/app/playwright-report/
+
+# promptfoo local results
+apps/app/promptfoo/pf-latest.json

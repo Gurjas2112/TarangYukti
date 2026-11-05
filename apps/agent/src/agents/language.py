@@ -57,7 +57,9 @@ def detect(text: str) -> str | None:
     counts = {s: len(re.findall(p, text)) for s, p in SCRIPTS.items() if s != "Latn"}
     script, n = max(counts.items(), key=lambda kv: kv[1])
     if n == 0:
-        return None
+        if not re.search(SCRIPTS["Latn"], text):
+            return None
+        script = "Latn"  # Latin letters only: the language written in Latin script
     return next((x["code"] for x in available() if x["script"] == script), None)
 
 
@@ -66,17 +68,31 @@ def choose(requested: str | None, current: str | None, message: str) -> str:
     if requested in codes:
         return str(requested)
     detected = detect(message)
-    if detected:
-        return detected
+    latin = detected is not None and next((x["script"] for x in available() if x["code"] == detected), "") == "Latn"
+    if detected and not (latin and current in codes):
+        return detected  # a short Latin reply ("ok") is not confident enough to leave the stored language
     if current in codes:
         return str(current)
-    return "en-IN" if "en-IN" in codes else sorted(codes)[0]
+    from ty_common.phrases import nearest_language
+
+    return nearest_language(None)  # config order decides, never a hard-coded language
+
+
+MARKER = re.compile(r"\s*\[K\d+\]")
+SENTENCE = re.compile(r"(?<=[.!?।])\s+")
+DIGITS = re.compile(r"\d+(?:[.:]\d+)?")
 
 
 def _numbers(text: str) -> Counter[str]:
-    from ..validator import NUM, TIME, canon
+    """Every number and time, digit for digit. Units are compared as words in English only: a translation must
+    keep "5" and "05:30" identical, but it is supposed to translate "km" (கி.மீ., کلومیٹر …)."""
+    def norm(x: str) -> str:
+        if ":" in x:  # "05:30" and "5:30" are the same time
+            h, m = x.split(":")
+            return f"{int(h)}:{m}"
+        return x
 
-    return Counter([canon(m.group()) for m in NUM.finditer(text)] + [m.group() for m in TIME.finditer(text)])
+    return Counter(norm(m.group()) for m in DIGITS.finditer(text))
 
 
 def split_sentences(text: str, limit: int = MAX_CHARS) -> list[str]:
@@ -100,12 +116,19 @@ async def translate(text: str, lang: str) -> tuple[str, str | None]:
     if s.sarvam_api_key is None:
         return text, "translation unavailable (no SARVAM_API_KEY)"
 
-    def call() -> str:
-        from sarvamai import SarvamAI
+    from sarvamai import SarvamAI
 
-        client = SarvamAI(api_subscription_key=s.sarvam_api_key.get_secret_value())  # type: ignore[union-attr]
+    client = SarvamAI(api_subscription_key=s.sarvam_api_key.get_secret_value())
+
+    def one(sentence: str) -> str:
+        # Citation markers ([K3]) are taken out before translating and put back after the sentence: some
+        # languages drop them, and a sentence must never lose the link to its source document.
+        marks = [m.strip() for m in MARKER.findall(sentence)]
+        clean = MARKER.sub("", sentence).strip()
+        if not clean:
+            return " ".join(marks)
         out = []
-        for part in split_sentences(text):
+        for part in split_sentences(clean):
             r = client.text.translate(
                 input=part,
                 source_language_code="en-IN",
@@ -115,10 +138,12 @@ async def translate(text: str, lang: str) -> tuple[str, str | None]:
                 numerals_format="international",
             )
             out.append(r.translated_text)
-        return " ".join(out)
+        return " ".join([*out, *marks])
 
+    sentences = [x for x in SENTENCE.split(text.strip()) if x.strip()]
     try:
-        translated = await asyncio.wait_for(asyncio.to_thread(call), timeout=20)
+        parts = await asyncio.wait_for(asyncio.gather(*(asyncio.to_thread(one, x) for x in sentences)), timeout=20)
+        translated = " ".join(parts)
     except Exception as e:  # network, quota: send English rather than nothing
         log.info("translation failed: %s", type(e).__name__)
         return text, f"translation unavailable ({type(e).__name__})"

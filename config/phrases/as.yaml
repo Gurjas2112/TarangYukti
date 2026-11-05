@@ -9,9 +9,9 @@ verdict:
   CAUTION: যোৱা, কিন্তু সাৱধানে — {back_by} ৰ দ্বাৰা উভতি আহিবা।
   NO-GO: 'আজি নাযাবা। পৰৱৰ্তী ভাল সময়: {next_window}.'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time}ৰ পিছত ঢৌবোৰ অতি বেছি হয়।'
   H2: সেই ৰুটটো সীমাৰেখাৰ অতি ওচৰলৈ যায়।
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'এটা চৰকাৰী {issuer} সতৰ্কবাণী আছে: {warning_name}.'
   H3: সেই অঞ্চলটো সুৰক্ষিত সামুদ্ৰিক উদ্যানখনৰ ভিতৰত আছে।
   H4: এয়া যান্ত্ৰিক নাওবোৰৰ বাবে মাছ ধৰাৰ নিষেধাজ্ঞাৰ সময়।
   H6: '{time}ৰ পিছত বতাহ বেছি জোৰেৰে বলি।'
@@ -35,7 +35,7 @@ directions:
   west: পশ্চিম
   north_west: উত্তৰ-পশ্চিম
 ack: সাগৰখন পৰীক্ষা কৰি আছো...
-brief_title: Morning brief · {harbour}
+brief_title: পুৱাৰ সংক্ষিপ্ত বিৱৰণী · {harbour}
 push_test: কাদল মিত্ৰৰ এলাৰ্টসমূহ অন আছে।
 back_home: '{name} {harbour} লৈ ঘূৰি আহিছে, {time}.'
 consent:

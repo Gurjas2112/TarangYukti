@@ -9,12 +9,12 @@ verdict:
   CAUTION: थां, नाथाय सांग्राङै — {back_by} जों फिन।
   NO-GO: 'दिनै दाथां। उननि मोजां सम: {next_window}.'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} नि उनाव गुथालफोरा जोबोद गोजौ जायो।'
   H2: बै लामाया सिमा हांखोनि जोबोद खाथिसिम थाङो।
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'बेयाव मोनसे मावख''आरि {issuer} सांग्रांथि दं: {warning_name}.'
   H3: बै ओनसोला रैखाथि होजानाय लैथोआरि पार्कनि सिङाव दं।
   H4: बेयो मेसिनजों सोलिनाय दिङाफोरनि थाखाय ना हमनायनि होबथानाय बोथोर।
-  H6: The wind gets too strong after {time}.
+  H6: बारआ {time} नि उनाव जोबोद गोख्रों जायो।
   H7: 'मोनसे मावख''आरि बारहुंखा सिगांनि सांग्रांथि दं: {warning_name}।'
   H8: माखासे खारिथिया गोजाम एबा गोमानाय, बेनिखायनो लैथोखौ नायसंनो हाया।
 spot: नाया जानो हागौ {distance_km} कि.मि. {direction}।
@@ -35,9 +35,9 @@ directions:
   west: सोनाब
   north_west: सा-सोनाब
 ack: लैथोखौ नायबिजिरगासिनो दं...
-brief_title: Morning brief · {harbour}
+brief_title: फुंनि सुंद' · {harbour}
 push_test: कादल मित्रनि सांग्रांथिफोरा सोलिगासिनो दं।
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} आ {harbour}, {time} आव फैफिनबाय।'
 consent:
   notice_version: '2026-11-04'
   short: जों नोंथांनि जायगाखौ सिमा खाथियाव आरो गाज्रि बोथोराव नोंथांखौ सांग्रां खालामनो थाखायल' बाहायो। नोंथाङा जेब्लाबो होबथानो हायो।
@@ -50,6 +50,6 @@ alerts:
   mpa: नोंथाङा रैखाथि गोनां लैथोआरि पार्कनि सिङाव दं। बेवहाय ना हमनो गनायथि गैया।
 trip:
   feedback_ask: दिनैनि बोसोनआ थारमोन नामा?
-  right_on: Right on {right} of the last {total} days.
+  right_on: जोबथा {total} सानफोरनि {right} आव थार।
 family_title: कादल मित्र · नखर
 chat_paused: 'सोंथिफोरखौ दसे समनि थाखाय दोनथ''नाय जादों। बुथामफोरा दासिमबो खामानि मावो: दिनैनि लैथो, बबेयाव ना हमनो, सांग्रांथि, आं फैफिनबाय।'

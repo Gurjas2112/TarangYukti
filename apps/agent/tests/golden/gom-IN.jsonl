@@ -1,0 +1,20 @@
+{"id": "gom-IN-mz-territorial", "lang": "gom-IN", "question": "भारताचें प्रादेशिक उदक दर्यादेगे सावन कितलें पयस मेरेन पातळ्ळां?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "gom-IN-mz-eez", "lang": "gom-IN", "question": "भारताचो खाशेलो अर्थीक वाठार म्हळ्यार कितें?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "gom-IN-mz-foreign-fishing", "lang": "gom-IN", "question": "परदेशी तारवां भारताच्या खाशेल्या अर्थीक क्षेत्रांत परवानगी बगर नुस्तें मारूंक शकतात?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "gom-IN-tn-purpose", "lang": "gom-IN", "question": "तमीळनाडू मरीन फिशिंग रेग्युलेशन ऍक्ट कित्याचेर नियंत्रण दवरता?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gom-IN-tn-mechanised", "lang": "gom-IN", "question": "तमीळनाडू नुस्तेंमारी कायद्या खाला यांत्रीक नुस्तेंमारी तारूं म्हळ्यार कितें?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gom-IN-tn-prohibit-area", "lang": "gom-IN", "question": "तमीळनाडू सरकार एका थारावीक वाठारांत नुस्तें धरपाक बंदी घालूंक शकता?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gom-IN-tn-registration", "lang": "gom-IN", "question": "नुस्तेमारीच्या बोटींची तामिळनाडूंत नोंदणी करची पडटा?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "gom-IN-cm-total-2024", "lang": "gom-IN", "question": "2024 वर्सा भारतांत कितले दर्यांतले नुस्तें देंवयलें?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "gom-IN-cm-top-state", "lang": "gom-IN", "question": "2024 वर्सा खंयच्या राज्यांत सगळ्यांत चड दर्यांतले नुस्तें मेळ्ळें?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "gom-IN-cm-top-species", "lang": "gom-IN", "question": "2024 वर्सा भारतांत सगळ्यांत चड फाटीं उडयल्ली नुस्त्याची प्रजाती खंयची आशिल्ली?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "gom-IN-sop-cyclone-at-sea", "lang": "gom-IN", "question": "हांव दर्यांत आसतना चक्रीवादळाची शिटकावणी मेळ्ळी जाल्यार हांवें कितें करचें?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "gom-IN-sop-high-wave", "lang": "gom-IN", "question": "उंचें ल्हार येवपाची अधिकृत शिटकावणी आसतना हांव नुस्तें धरपाक वचूंक जाय काय?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "gom-IN-sop-cross-border", "lang": "gom-IN", "question": "हांवें भारत श्रीलंकेची शीम रेख पार केल्यार कितें जातलें?", "expected": ["sop:border-line"], "draft": true}
+{"id": "gom-IN-sop-drift-border", "lang": "gom-IN", "question": "म्हजें इंजिन बंद जालें आनी हांव शिमेवटेन व्हांवतां. हांवें कितें करचें?", "expected": ["sop:border-line"], "draft": true}
+{"id": "gom-IN-sop-coast-guard", "lang": "gom-IN", "question": "दर्यांतल्यान वाटावपा खातीर म्हाका खंयच्या क्रमांकाचेर फोन करचो पडटलो?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "gom-IN-ban-east-coast", "lang": "gom-IN", "question": "उदेंत दर्यादेगेर वर्सुकी नुस्तेंमारीचेर बंदी केन्ना आसता?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "gom-IN-x-fish-price", "lang": "gom-IN", "question": "आयज चेन्नय बाजारांत सीर नुस्त्याचो दर कितलो आसा?", "expected": [], "draft": true}
+{"id": "gom-IN-x-cricket", "lang": "gom-IN", "question": "आयच्या क्रिकेट मॅचीचो स्कोर कितलो आसा?", "expected": [], "draft": true}
+{"id": "gom-IN-x-recipe", "lang": "gom-IN", "question": "नुस्त्याच्या काये खातीर बरी रेसिपी कितें?", "expected": [], "draft": true}
+{"id": "gom-IN-x-loan", "lang": "gom-IN", "question": "घर विकतें घेवपाक हांव बँकेच्या रिणा खातीर कसो अर्ज करूंक शकता?", "expected": [], "draft": true}

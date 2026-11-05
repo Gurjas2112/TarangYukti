@@ -72,6 +72,7 @@
   "me.help": "Help",
   "me.redo": "Change harbour or boat",
   "onboarding.harbour.title": "Which harbour do you go out from?",
+  "onboarding.suggest.title": "Many fishers at {{harbour}} use this language. Which one do you want?",
   "onboarding.boat.title": "What kind of boat?",
   "onboarding.boat.non_motorised": "Boat without engine",
   "onboarding.boat.small_frp": "Small fibre boat",

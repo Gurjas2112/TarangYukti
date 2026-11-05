@@ -2,7 +2,8 @@
 // quote. Quotes stay in the document's language (never translated).
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
-import { ActivityIndicator, Linking, Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Linking, Modal, Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { expertApi } from "../api/expert";
 import { colors, font, radius, space, touch } from "../ui/tokens";

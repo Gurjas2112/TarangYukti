@@ -1,0 +1,20 @@
+{"id": "or-IN-mz-territorial", "lang": "or-IN", "question": "ଭାରତର ସାମୁଦ୍ରିକ ସୀମା ଉପକୂଳଠାରୁ କେତେ ଦୂର ପର୍ଯ୍ୟନ୍ତ ବ୍ୟାପ୍ତ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "or-IN-mz-eez", "lang": "or-IN", "question": "ଭାରତର ଏକ୍ସକ୍ଲୁସିଭ୍ ଇକୋନୋମିକ୍ ଜୋନ୍ କ’ଣ?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "or-IN-mz-foreign-fishing", "lang": "or-IN", "question": "ବିନା ଅନୁମତିରେ ବିଦେଶୀ ଜାହାଜ ଭାରତର ଏକ୍ସକ୍ଲୁସିଭ୍ ଇକୋନୋମିକ୍ ଜୋନରେ ମାଛ ଧରିପାରିବେ କି?", "expected": ["act:maritime-zones-1976"], "draft": true}
+{"id": "or-IN-tn-purpose", "lang": "or-IN", "question": "ତାମିଲନାଡୁ ସାମୁଦ୍ରିକ ମତ୍ସ୍ୟ ଅଧିନିୟମ କ’ଣ ନିୟନ୍ତ୍ରଣ କରେ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "or-IN-tn-mechanised", "lang": "or-IN", "question": "ତାମିଲନାଡୁ ମତ୍ସ୍ୟ ଆଇନ ଅନୁଯାୟୀ ଏକ ଯାନ୍ତ୍ରିକ ମତ୍ସ୍ୟ ଉତ୍ପାଦନ ଜାହାଜ କ’ଣ?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "or-IN-tn-prohibit-area", "lang": "or-IN", "question": "ତାମିଲନାଡୁ ସରକାର ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ଅଞ୍ଚଳରେ ମାଛ ଧରିବାକୁ ବାରଣ କରିପାରିବେ କି?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "or-IN-tn-registration", "lang": "or-IN", "question": "ମତ୍ସ୍ୟଜୀବୀ ଜାହାଜଗୁଡ଼ିକ ତାମିଲନାଡୁରେ ପଞ୍ଜୀକୃତ ହେବା ଆବଶ୍ୟକ କି?", "expected": ["act:tn-marine-fishing-regulation", "rules:tn-marine-fishing-regulation"], "draft": true}
+{"id": "or-IN-cm-total-2024", "lang": "or-IN", "question": "2024 ମସିହାରେ ଭାରତରେ କେତେ ସାମୁଦ୍ରିକ ମାଛ ଅବତରଣ କରାଯାଇଥିଲା?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "or-IN-cm-top-state", "lang": "or-IN", "question": "2024 ମସିହାରେ କେଉଁ ରାଜ୍ୟରେ ସର୍ବାଧିକ ସାମୁଦ୍ରିକ ମାଛ ଅବତରଣ ହୋଇଥିଲା?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "or-IN-cm-top-species", "lang": "or-IN", "question": "2024 ମସିହାରେ ଭାରତରେ ସବୁଠାରୁ ଅଧିକ ପକାଯାଇଥିବା ମାଛ ପ୍ରଜାତି କ’ଣ ଥିଲା?", "expected": ["cmfri:landings-2024"], "draft": true}
+{"id": "or-IN-sop-cyclone-at-sea", "lang": "or-IN", "question": "ମୁଁ ସମୁଦ୍ରରେ ଥିବା ସମୟରେ ଯଦି ଏକ ଘୂର୍ଣ୍ଣିବାତ୍ୟା ଚେତାବନୀ ଜାରି କରାଯାଏ, ତେବେ ମୋର କ'ଣ କରିବା ଉଚିତ୍?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "or-IN-sop-high-wave", "lang": "or-IN", "question": "ଯେତେବେଳେ ସରକାରୀ ଉଚ୍ଚ ଢେଉ ଚେତାବନୀ ଅଛି, ମୋର ମାଛ ଧରିବାକୁ ଯିବା ଉଚିତ୍ କି?", "expected": ["sop:official-warning"], "draft": true}
+{"id": "or-IN-sop-cross-border", "lang": "or-IN", "question": "ଯଦି ମୁଁ ଭାରତ ଶ୍ରୀଲଙ୍କା ସୀମା ରେଖା ଅତିକ୍ରମ କରେ ତେବେ କ'ଣ ହେବ?", "expected": ["sop:border-line"], "draft": true}
+{"id": "or-IN-sop-drift-border", "lang": "or-IN", "question": "ମୋର ଇଞ୍ଜିନ୍ ଖରାପ ହୋଇଗଲା ଏବଂ ମୁଁ ସୀମା ରେଖା ଆଡ଼କୁ ଗତି କରୁଛି। ମୁଁ କ'ଣ କରିବି?", "expected": ["sop:border-line"], "draft": true}
+{"id": "or-IN-sop-coast-guard", "lang": "or-IN", "question": "ସମୁଦ୍ରରେ ଉଦ୍ଧାର ପାଇଁ ମୁଁ କେଉଁ ନମ୍ବରକୁ କଲ୍ କରିବା ଉଚିତ୍?", "expected": ["sop:emergency-at-sea"], "draft": true}
+{"id": "or-IN-ban-east-coast", "lang": "or-IN", "question": "ପୂର୍ବ ଉପକୂଳରେ ବାର୍ଷିକ ମାଛ ଧରିବା ଉପରେ କେବେ ପ୍ରତିବନ୍ଧକ ଲାଗୁ ହେବ?", "expected": ["dof:fishing-ban"], "draft": true}
+{"id": "or-IN-x-fish-price", "lang": "or-IN", "question": "ଆଜି ଚେନ୍ନାଇ ବଜାରରେ ସିର ମାଛର ଦାମ୍ କେତେ?", "expected": [], "draft": true}
+{"id": "or-IN-x-cricket", "lang": "or-IN", "question": "ଆଜିର କ୍ରିକେଟ୍ ମ୍ୟାଚ୍‌ର ସ୍କୋର କେତେ ଅଛି?", "expected": [], "draft": true}
+{"id": "or-IN-x-recipe", "lang": "or-IN", "question": "ମାଛ ତରକାରୀ ପାଇଁ ଏକ ଭଲ ରେସିପି କ'ଣ?", "expected": [], "draft": true}
+{"id": "or-IN-x-loan", "lang": "or-IN", "question": "ଘର କିଣିବା ପାଇଁ ମୁଁ କିପରି ବ୍ୟାଙ୍କ ଋଣ ପାଇଁ ଆବେଦନ କରିବି?", "expected": [], "draft": true}

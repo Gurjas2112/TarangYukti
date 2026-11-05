@@ -1,7 +1,8 @@
 // Map tab. The OceanMap (MapLibre, offline PMTiles) arrives in Milestones 7 and 11; until then the tab shows the
 // same facts in words: fishing spot and border line from today's card.
 import { useTranslation } from "react-i18next";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
+import { Text } from "../../src/ui/Text";
 
 import { useBrief } from "../../src/brief/useBrief";
 import { usePrefs } from "../../src/state/prefs";

@@ -9,20 +9,20 @@ verdict:
   CAUTION: ꯆꯠꯂꯨ, ꯑꯗꯨꯕꯨ ꯆꯦꯛꯁꯤꯟꯅ ꯆꯠꯀꯗꯕꯅꯤ — {back_by} ꯒꯤ ꯃꯇꯨꯡꯗ ꯍꯜꯂꯛꯀꯅꯤ꯫
   NO-GO: 'ꯉꯁꯤ ꯆꯠꯂꯣꯏꯗꯕꯅꯤ꯫ ꯃꯊꯪꯒꯤ ꯐꯕ ꯃꯇꯝ: {next_window}꯫'
 why:
-  H5: Waves get too high after {time}.
+  H5: '{time} ꯒꯤ ꯃꯇꯨꯡꯗ ꯏꯊꯛꯁꯤꯡ ꯌꯥꯝꯅ ꯋꯥꯡꯈꯠꯂꯛꯏ꯫'
   H2: ꯃꯗꯨꯒꯤ ꯂꯝꯕꯤ ꯑꯗꯨ ꯉꯝꯈꯩꯒꯤ ꯂꯩꯏꯒ ꯌꯥꯝꯅ ꯅꯛꯅ ꯆꯠꯂꯤ꯫
-  H1: 'There is an official {issuer} warning: {warning_name}.'
+  H1: 'ꯑꯣꯐꯤꯁꯤꯌꯦꯜ {issuer} ꯋꯥꯔꯅꯤꯡ ꯑꯃ ꯂꯩ: {warning_name}꯫'
   H3: ꯃꯐꯝ ꯑꯗꯨ ꯉꯥꯛꯁꯦꯟꯗꯨꯅ ꯊꯝꯂꯤꯕ ꯃꯦꯔꯤꯟ ꯄꯥꯔꯛꯀꯤ ꯃꯅꯨꯡꯗ ꯂꯩ꯫
   H4: ꯃꯁꯤ ꯃꯦꯀꯥꯅꯥꯏꯖ ꯇꯧꯔꯕ ꯍꯤꯁꯤꯡꯒꯤ ꯉꯥ ꯐꯥꯕꯒꯤ ꯑꯊꯤꯡꯕ ꯊꯝꯕꯒꯤ ꯃꯇꯝꯅꯤ꯫
   H6: '{time}গী মতুংদা নুংশিৎ অসি য়াম্না কনবা ওইরকই।'
-  H7: 'There is an official thunderstorm warning: {warning_name}.'
+  H7: 'ꯑꯣꯐꯤꯁꯤꯌꯦꯜ ꯑꯣꯏꯕ ꯅꯣꯡꯂꯩ-ꯅꯨꯡꯁꯤꯠꯀꯤ ꯆꯦꯛꯁꯤꯟꯋꯥ ꯑꯃ ꯂꯩ: {warning_name}.'
   H8: ꯗꯦꯇꯥ ꯈꯔꯗꯤ ꯑꯔꯤꯕ ꯅꯠꯇ꯭ꯔꯒ ꯌꯥꯎꯗꯕ ꯑꯣꯏ, ꯃꯔꯝ ꯑꯗꯨꯅ ꯁꯃꯨꯗ꯭ꯔ ꯑꯁꯤ ꯆꯦꯛ ꯇꯧꯕ ꯉꯝꯗꯦ꯫
-spot: Fish likely {distance_km} km {direction}.
+spot: ꯉꯥ ꯑꯁꯤ {distance_km} km {direction} ꯑꯣꯏꯔꯝꯕ ꯌꯥꯏ꯫
 border: ꯉꯝꯈꯩꯒꯤ ꯂꯩꯏ ꯑꯁꯤ {distance_km} ꯀꯤꯂꯣꯃꯤꯇꯔ ꯂꯥꯞꯅ ꯂꯩ꯫
 stale: ꯑꯔꯤꯕ ꯐꯣꯔꯀꯥꯁꯠ — ꯊꯥꯗꯣꯛꯇ꯭ꯔꯤꯉꯩ ꯃꯃꯥꯡꯗ ꯑꯃꯨꯛ ꯍꯟꯅ ꯌꯦꯡꯕꯤꯌꯨ꯫
 footer: ꯄꯥꯎꯇꯥꯛ ꯈꯛꯇꯃꯛ — ꯑꯣꯐꯤꯁꯤꯑꯦꯜ ꯑꯥꯏ.ꯑꯦꯟ.ꯁꯤ.ꯑꯣ.ꯑꯥꯏ.ꯑꯦꯁ./ꯑꯥꯏ.ꯑꯦꯝ.ꯗꯤ.ꯒꯤ ꯆꯦꯛꯁꯤꯟꯋꯥꯁꯤꯡ ꯏꯟꯕꯤꯌꯨ꯫
 needs_network: 'ꯃꯗꯨꯒꯤ ꯄꯥꯎꯈꯨꯝ ꯄꯤꯅꯕ ꯑꯩꯉꯣꯟꯗ ꯏꯟꯇꯔꯅꯦꯠ ꯃꯊꯧ ꯇꯥꯏ꯫ ꯕꯇꯟꯁꯤꯡ ꯑꯗꯨ ꯍꯧꯖꯤꯛꯁꯨ ꯊꯕꯛ ꯇꯧꯔꯤ: ꯉꯁꯤꯒꯤ ꯁꯃꯨꯗ꯭ꯔ, ꯉꯥ ꯐꯥꯅꯕ ꯃꯐꯝ, ꯑꯦꯂꯔꯠꯁꯤꯡ, ꯑꯩ ꯍꯜꯂꯦ꯫'
-nothing_found: I found nothing about this in the official documents. Please ask the {source}.
+nothing_found: ꯑꯩꯍꯥꯛꯅ ꯑꯣꯐꯤꯁꯤꯑꯦꯜ ꯗꯣꯀ꯭ꯌꯨꯃꯦꯟꯠꯁꯤꯡꯗ ꯃꯁꯤꯒꯤ ꯃꯇꯥꯡꯗ ꯀꯔꯤꯃꯠꯇ ꯐꯪꯈꯤꯗꯦ꯫ ꯆꯥꯟꯕꯤꯗꯨꯅ {source} ꯗ ꯍꯪꯕꯤꯌꯨ꯫
 cannot_verify: ꯑꯩꯍꯥꯛꯅ ꯄꯥꯎꯈꯨꯝ ꯑꯁꯤ ꯗꯦꯇꯥꯒ ꯌꯦꯡꯅꯕ ꯉꯝꯈꯤꯗꯦ, ꯃꯔꯝ ꯑꯗꯨꯅ ꯑꯩꯍꯥꯛꯅ ꯄꯤꯔꯣꯏ꯫ ꯆꯥꯟꯕꯤꯗꯨꯅ ꯕꯇꯟꯁꯤꯡ ꯑꯗꯨ ꯁꯤꯖꯤꯟꯅꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯒ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯪꯕꯤꯌꯨ꯫
 no_window: ꯃꯊꯪꯒꯤ ꯄꯨꯡ 24ꯗ ꯑꯃꯠꯇ ꯂꯩꯔꯣꯏꯗꯦ꯫
 directions:
@@ -35,21 +35,21 @@ directions:
   west: ꯅꯣꯡꯆꯨꯞ
   north_west: ꯑꯋꯥꯡ-ꯅꯣꯡꯆꯨꯞ
 ack: ꯁꯃꯨꯗ꯭ꯔ ꯑꯗꯨ ꯌꯦꯡꯁꯤꯟꯂꯒ...
-brief_title: Morning brief · {harbour}
+brief_title: ꯑꯌꯨꯛꯀꯤ ꯑꯇꯦꯟꯕ ꯋꯥꯔꯣꯜ · {harbour}
 push_test: ꯀꯗꯜ ꯃꯤꯇ꯭ꯔꯥꯒꯤ ꯑꯦꯂꯔꯠꯁꯤꯡ ꯑꯗꯨ ꯑꯣꯟꯅꯔꯦ꯫
-back_home: '{name} is back at {harbour}, {time}.'
+back_home: '{name} {harbour}, {time} দা হল্লকখি।'
 consent:
   notice_version: '2026-11-04'
   short: ꯑꯩꯈꯣꯏꯅ ꯅꯍꯥꯛꯀꯤ ꯃꯐꯝ ꯑꯁꯤ ꯅꯍꯥꯛꯄꯨ ꯉꯝꯈꯩꯒꯤ ꯃꯅꯥꯛꯇ ꯑꯃꯁꯨꯡ ꯐꯠꯇꯕ ꯑꯀꯥꯏꯕ ꯐꯤꯕꯝꯗ ꯆꯦꯛꯁꯤꯟꯋꯥ ꯇꯧꯅꯕ ꯈꯛꯇꯃꯛ ꯁꯤꯖꯤꯟꯅꯩ꯫ ꯅꯍꯥꯛꯅ ꯀꯔꯤꯒꯨꯝꯕ ꯃꯇꯝ ꯑꯃꯗ ꯂꯦꯞꯄ ꯌꯥꯏ꯫
   agree: ꯑꯩ ꯌꯥꯅꯩ꯫
 alerts:
   title: ꯀꯗꯜ ꯃꯤꯇ꯭ꯔ ꯑꯦꯂꯔꯠ
-  border-5km: Border line is {distance_km} km away. Turn back toward the harbour.
+  border-5km: ꯉꯝꯈꯩꯒꯤ ꯂꯩꯏ ꯑꯁꯤ {distance_km} ꯀꯤꯂꯣꯃꯤꯇꯔ ꯂꯥꯞꯅ ꯂꯩ꯫ ꯍꯤꯊꯥꯡꯐꯝꯒꯤ ꯃꯥꯏꯀꯩꯗ ꯑꯃꯨꯛ ꯍꯟꯅ ꯂꯥꯛꯎ꯫
   border-2km: 'ꯈꯨꯗꯣꯡꯊꯤꯕ: ꯉꯝꯈꯩꯒꯤ ꯂꯩꯏ ꯑꯁꯤ {distance_km} km ꯈꯛꯇꯃꯛ ꯂꯥꯞꯅ ꯂꯩ꯫ ꯍꯧꯖꯤꯛ ꯍꯟꯖꯤꯟꯕꯤꯌꯨ꯫'
   beyond-imbl: 'ꯈꯨꯗꯣꯡꯊꯤꯅꯤꯡꯉꯥꯏ ꯑꯣꯏꯕ ꯐꯤꯕꯝ: ꯅꯍꯥꯛꯅ ꯉꯝꯈꯩꯒꯤ ꯂꯩꯏ ꯂꯥꯟꯊꯣꯛꯈ꯭ꯔꯦ꯫ ꯍꯧꯖꯤꯛ ꯍꯟꯖꯤꯟꯕꯤꯌꯨ꯫'
   mpa: ꯅꯍꯥꯛ ꯉꯥꯛꯁꯦꯟꯗꯨꯅ ꯊꯝꯂꯤꯕ ꯁꯃꯨꯗ꯭ꯔꯒꯤ ꯄꯥꯔꯛ ꯑꯁꯤꯒꯤ ꯃꯅꯨꯡꯗ ꯂꯩꯔꯦ꯫ ꯃꯐꯝ ꯑꯁꯤꯗ ꯉꯥ ꯐꯥꯕ ꯌꯥꯗꯦ꯫
 trip:
   feedback_ask: ꯉꯁꯤꯒꯤ ꯄꯥꯎꯇꯥꯛ ꯑꯗꯨ ꯑꯆꯨꯝꯕ꯭ꯔꯥ?
-  right_on: Right on {right} of the last {total} days.
+  right_on: ꯍꯧꯈꯤꯕ {total} ꯅꯨꯃꯤꯠꯁꯤꯡꯒꯤ {right} ꯗ ꯆꯞ ꯆꯥꯅ꯫
 family_title: ꯀꯗꯜ ꯃꯤꯇ꯭ꯔ · ꯏꯃꯨꯡ
 chat_paused: 'ꯋꯥꯍꯪꯁꯤꯡ ꯑꯗꯨ ꯃꯇꯝ ꯈꯔꯒꯤ ꯑꯣꯏꯅ ꯂꯦꯞꯍꯜꯂꯤ꯫ ꯕꯇꯟꯁꯤꯡ ꯑꯗꯨ ꯍꯧꯖꯤꯛꯁꯨ ꯊꯕꯛ ꯇꯧꯔꯤ: ꯉꯁꯤꯒꯤ ꯁꯃꯨꯗ꯭ꯔ, ꯉꯥ ꯐꯥꯅꯕ ꯃꯐꯝ, ꯑꯦꯂꯔꯠꯁꯤꯡ, ꯑꯩ ꯍꯜꯂꯦ꯫'

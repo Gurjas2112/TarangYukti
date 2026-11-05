@@ -4,7 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { router } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Text } from "../../src/ui/Text";
 import QRCode from "react-native-qrcode-svg";
 
 import { api } from "../../src/api/channels";

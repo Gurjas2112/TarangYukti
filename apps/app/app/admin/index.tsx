@@ -1,6 +1,7 @@
 // Staff consoles are web screens (spec §17.9): the Android build shows where to open them instead.
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../../src/ui/Text";
 
 import { colors, font, space } from "../../src/ui/tokens";
 import { EXPERT_URL } from "../expert";

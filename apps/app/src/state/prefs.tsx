@@ -3,7 +3,7 @@
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import type { BoatKind } from "../api/channels";
-import { deviceLanguage, setLanguage } from "../i18n";
+import { deviceLanguage, i18n, setLanguage } from "../i18n";
 import { getItem, setItem } from "../offline/store";
 
 export type Prefs = {
@@ -53,7 +53,7 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
   );
 
   const value = useMemo(
-    () => ({ prefs, loaded, lang: prefs.lang ?? deviceLanguage() ?? "en-IN", update }),
+    () => ({ prefs, loaded, lang: prefs.lang ?? deviceLanguage() ?? i18n.language, update }),
     [prefs, loaded, update],
   );
   return <PrefsContext.Provider value={value}>{children}</PrefsContext.Provider>;

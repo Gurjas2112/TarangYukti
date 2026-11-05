@@ -1,351 +1,99 @@
 {
   "as-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "brief_title"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "family.backAt"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "bn-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "family.atSeaSince",
-      "family.backAt"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "brx-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "doi-IN": {
-    "phrases": [
-      "why.H1",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "trip.rightOn",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "gom-IN": {
-    "phrases": [
-      "why.H1",
-      "why.H6",
-      "spot",
-      "nothing_found",
-      "brief_title",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "gu-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "hi-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "trip.rightOn",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "kn-IN": {
-    "phrases": [
-      "why.H1",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "staff.roleNow",
-      "mydata.deletingOn"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "ks-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "spot",
-      "border",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "alerts.border-5km",
-      "trip.right_on"
-    ],
-    "ui": [
-      "today.asOf",
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "trip.backAt",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "mai-IN": {
-    "phrases": [
-      "why.H5",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "ml-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "trip.right_on"
-    ],
-    "ui": [
-      "family.backAt",
-      "family.advice",
-      "mydata.deletingOn"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "mni-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H7",
-      "spot",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "alerts.border-5km",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "family.advice",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "mr-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "today.asOf",
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "trip.backAt",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "ne-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "or-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "nothing_found",
-      "brief_title"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "trip.borderKm",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "pa-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "trip.right_on"
-    ],
-    "ui": [
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "sa-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
+    "phrases": [],
     "ui": [
-      "alerts.quiet",
       "me.addPhoneHelp",
-      "trip.borderKm",
       "family.share",
-      "staff.roleNow",
       "staff.code",
       "admin.metric.active_fishers_7d",
       "admin.metric.trips_closed_7d",
-      "mydata.deletingOn",
       "mydata.deleteHelp"
     ]
   },
   "sat-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "brief_title",
-      "trip.right_on"
-    ],
+    "phrases": [],
     "ui": [
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "trip.borderKm",
-      "trip.backAt",
-      "trip.rightOn",
-      "family.atSeaSince",
-      "family.backAt",
-      "family.advice",
-      "staff.roleNow",
-      "admin.liveNote",
-      "admin.chainBroken"
+      "admin.liveNote"
     ]
   },
   "sd-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "spot",
-      "nothing_found",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "trip.atSeaSince",
-      "trip.rightOn",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "ta-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H6",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "today.asOf",
-      "trip.atSeaSince",
-      "family.atSeaSince",
-      "staff.roleNow"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "te-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "nothing_found",
-      "brief_title"
-    ],
-    "ui": [
-      "alerts.quiet",
-      "mydata.deletingOn"
-    ]
+    "phrases": [],
+    "ui": []
   },
   "ur-IN": {
-    "phrases": [
-      "why.H5",
-      "why.H1",
-      "why.H6",
-      "brief_title",
-      "back_home",
-      "trip.right_on"
-    ],
-    "ui": [
-      "today.asOf",
-      "alerts.quiet",
-      "trip.borderKm",
-      "mydata.deletingOn"
-    ]
+    "phrases": [],
+    "ui": []
   }
 }

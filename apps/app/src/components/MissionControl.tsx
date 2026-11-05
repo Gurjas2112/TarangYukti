@@ -1,6 +1,7 @@
 // Mission Control (spec §7.10): which agents worked on the last answer — shown behind "Show how it works".
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Text } from "../ui/Text";
 
 import { colors, font, space } from "../ui/tokens";
 
