@@ -1,0 +1,29 @@
+{
+  "source": "services/mcp tarangyukti.tools.geo.fence_check (Shapely on the same layers), 2026-11-05",
+  "points": [
+    {"lat": 9.288, "lon": 79.313, "imbl_km": 22.8, "side": "india", "ring": "clear", "in_mpa": false},
+    {"lat": 9.35, "lon": 79.45, "imbl_km": 6.8, "side": "india", "ring": "clear", "in_mpa": false},
+    {"lat": 8.9, "lon": 79.1, "imbl_km": 33.3, "side": "india", "ring": "clear", "in_mpa": false},
+    {"lat": 9.2, "lon": 79.2, "imbl_km": 36.5, "side": "india", "ring": "clear", "in_mpa": true},
+    {"lat": 9.1, "lon": 79.05, "imbl_km": 51.7, "side": "india", "ring": "clear", "in_mpa": false},
+    {"lat": 9.1, "lon": 79.49, "imbl_km": 4.7, "side": "india", "ring": "warning", "in_mpa": false},
+    {"lat": 9.2, "lon": 79.49, "imbl_km": 4.8, "side": "india", "ring": "warning", "in_mpa": false},
+    {"lat": 9.4, "lon": 79.45, "imbl_km": 4.6, "side": "india", "ring": "warning", "in_mpa": false},
+    {"lat": 9.5, "lon": 79.405, "imbl_km": 4.7, "side": "india", "ring": "warning", "in_mpa": false},
+    {"lat": 9.7, "lon": 79.345, "imbl_km": 4.8, "side": "india", "ring": "warning", "in_mpa": false},
+    {"lat": 9.85, "lon": 79.455, "imbl_km": 4.8, "side": "india", "ring": "warning", "in_mpa": false},
+    {"lat": 9.3, "lon": 79.505, "imbl_km": 1.7, "side": "india", "ring": "alarm", "in_mpa": false},
+    {"lat": 9.4, "lon": 79.48, "imbl_km": 1.6, "side": "india", "ring": "alarm", "in_mpa": false},
+    {"lat": 9.5, "lon": 79.435, "imbl_km": 1.6, "side": "india", "ring": "alarm", "in_mpa": false},
+    {"lat": 9.7, "lon": 79.38, "imbl_km": 1.7, "side": "india", "ring": "alarm", "in_mpa": false},
+    {"lat": 9.85, "lon": 79.49, "imbl_km": 1.7, "side": "india", "ring": "alarm", "in_mpa": false},
+    {"lat": 10.0, "lon": 79.695, "imbl_km": 1.9, "side": "india", "ring": "alarm", "in_mpa": false},
+    {"lat": 9.25, "lon": 79.55, "imbl_km": 2.3, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false},
+    {"lat": 9.27, "lon": 79.57, "imbl_km": 4.8, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false},
+    {"lat": 9.3, "lon": 79.58, "imbl_km": 6.4, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false},
+    {"lat": 9.2, "lon": 79.7, "imbl_km": 18.3, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false},
+    {"lat": 9.45, "lon": 79.85, "imbl_km": 38.4, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false},
+    {"lat": 9.9, "lon": 79.9, "imbl_km": 14.9, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false},
+    {"lat": 9.6, "lon": 79.55, "imbl_km": 14.4, "side": "beyond_imbl", "ring": "beyond", "in_mpa": false}
+  ]
+}

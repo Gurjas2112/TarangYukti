@@ -276,5 +276,20 @@
   "update.required.title": "Please update the app",
   "update.required.body": "This version is too old. Border and weather alerts keep working, but update to see today's advice.",
   "update.openAlerts": "Open alerts",
-  "today.retry": "Try again"
+  "today.retry": "Try again",
+  "local.border.warning": "Border line is {{km}} km away. Stay on the Indian side.",
+  "local.border.alarm": "Border line only {{km}} km away. Turn back towards the coast now.",
+  "local.border.beyond": "You may have crossed the border line. Turn back towards India now.",
+  "local.park.inside": "You are inside the Gulf of Mannar marine park. Fishing is not allowed here.",
+  "local.channel": "Border and safety alerts",
+  "trip.service.title": "Trip mode is on",
+  "trip.service.body": "Kadal Mitra is watching the border line while you are at sea.",
+  "trip.local.active": "Trip mode on since {{time}}",
+  "trip.local.pending": "{{n}} positions waiting to be sent",
+  "trip.local.synced": "All positions sent",
+  "permission.title": "Alerts at sea, even with the phone locked",
+  "permission.body": "To warn you near the border line, Kadal Mitra needs your location all the time while you are at sea. It is used only for safety alerts and your family's boat card. On the next screens, choose \"While using the app\", then \"Allow all the time\".",
+  "permission.continue": "Continue",
+  "permission.denied": "Without location all the time, alerts work only while the app is open.",
+  "map.legend": "Red dashed line: border line. Green: marine park, no fishing. Black dot: your harbour. Blue dot: you."
 }

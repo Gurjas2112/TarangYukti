@@ -8,7 +8,9 @@ import { Text } from "../../src/ui/Text";
 
 import { api } from "../../src/api/channels";
 import { useSession } from "../../src/auth/supabase";
+import { TripLocal } from "../../src/components/TripLocal";
 import { useLive } from "../../src/location/useLiveTracking";
+import { stopTrip } from "../../src/tasks/trip";
 import { colors, font, radius, space, touch } from "../../src/ui/tokens";
 
 const hhmm = (iso: string) =>
@@ -41,6 +43,7 @@ export default function TripTab() {
   const ro = trips.data?.right_on;
 
   async function back() {
+    await stopTrip(); // the phone's trip mode stops too (the harbour geofence restarts it next time)
     await api.back(token!);
     await qc.invalidateQueries({ queryKey: ["trips"] });
   }
@@ -53,6 +56,7 @@ export default function TripTab() {
 
   return (
     <ScrollView contentContainerStyle={styles.root} testID="trip-screen">
+      <TripLocal />
       {open ? (
         <View style={styles.card} testID="trip-open" accessibilityLiveRegion="polite">
           <Text style={styles.big}>⛵ {t("trip.atSeaSince", { time: hhmm(open.departed_at) })}</Text>

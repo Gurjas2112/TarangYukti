@@ -77,7 +77,8 @@
   "sat-IN": {
     "phrases": [],
     "ui": [
-      "admin.liveNote"
+      "admin.liveNote",
+      "trip.local.pending"
     ]
   },
   "sd-IN": {

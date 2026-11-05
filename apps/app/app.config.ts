@@ -53,8 +53,17 @@ const config: ExpoConfig = {
     ],
     "@react-native-google-signin/google-signin",
     ["expo-build-properties", { android: { usesCleartextTraffic: laptopBackend } }],
-    // TODO(tarangyukti): Milestones 7–11 add @maplibre/maplibre-react-native, expo-location (background) and
-    // expo-build-properties (cleartext only when isDev).
+    [
+      "expo-location",
+      {
+        // Background location for border alerts with the screen off (spec §17.4); Google Play declaration needed.
+        isAndroidBackgroundLocationEnabled: true,
+        isAndroidForegroundServiceEnabled: true,
+        locationAlwaysAndWhenInUsePermission:
+          "Kadal Mitra uses your location while you are at sea to warn you near the India–Sri Lanka border line and the marine park, even when the phone is locked.",
+      },
+    ],
+    // TODO(tarangyukti): MapLibre React Native with offline PMTiles (Milestone 11, part 2).
   ],
   experiments: { typedRoutes: true },
   extra: { appEnv, cleartextAllowed: laptopBackend, eas: { projectId: "3d825c81-c777-423d-a423-b8b2e96a648f" } },

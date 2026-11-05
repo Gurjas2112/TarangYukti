@@ -25,15 +25,19 @@ describe("OceanMap contract (native implementation)", () => {
   it("honours flyTo, showLayer and drawRoute through the handle", async () => {
     const ref = createRef<OceanMapHandle>();
     await render(<OceanMap ref={ref} {...props} />);
-    expect(screen.getByTestId("map-center").props.children.join("")).toContain("9.250, 79.200");
+    expect(screen.getByTestId("camera-9.250,79.200")).toBeTruthy();
+    expect(screen.getByTestId("source-land")).toBeTruthy(); // coastline always drawn, bundled in the app
+    expect(screen.getByTestId("source-imbl")).toBeTruthy();
     await act(async () => {
       ref.current!.flyTo(79.313, 9.288, 10);
-      ref.current!.showLayer("sst", true);
+      ref.current!.showLayer("mpa", true);
       ref.current!.showLayer("imbl", false);
-      ref.current!.drawRoute(null);
+      ref.current!.drawRoute({ type: "LineString", coordinates: [[79.313, 9.288], [79.4, 9.35]] });
     });
-    expect(screen.getByTestId("map-center").props.children.join("")).toContain("9.288, 79.313");
-    expect(screen.getByTestId("map-layers").props.children).toBe("land · sst");
+    expect(screen.getByTestId("camera-9.288,79.313")).toBeTruthy();
+    expect(screen.queryByTestId("source-imbl")).toBeNull();
+    expect(screen.getByTestId("source-mpa")).toBeTruthy();
+    expect(screen.getByTestId("source-route")).toBeTruthy();
   });
 
   it("lists every layer and colour ramps stay in range", () => {

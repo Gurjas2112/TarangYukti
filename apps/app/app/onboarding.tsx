@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet } from "react-native";
+import { ActivityIndicator, Platform, Pressable, ScrollView, StyleSheet } from "react-native";
 import { Text } from "../src/ui/Text";
 
 import { api, type BoatKind } from "../src/api/channels";
@@ -14,11 +14,12 @@ import { supabase, useSession } from "../src/auth/supabase";
 import { LanguagePicker } from "../src/components/LanguagePicker";
 import { availableLanguages, deviceLanguage, languageInfo } from "../src/i18n";
 import { registerPush } from "../src/push/register";
+import { enableBackgroundSafety } from "../src/tasks/trip";
 import { usePrefs } from "../src/state/prefs";
 import { colors, font, radius, space, touch } from "../src/ui/tokens";
 import { hasVoice, speak } from "../src/voice/speak";
 
-type Step = "language" | "harbour" | "suggest" | "boat" | "alerts";
+type Step = "language" | "harbour" | "suggest" | "boat" | "alerts" | "permission";
 const BOATS: { kind: BoatKind; icon: string }[] = [
   { kind: "non_motorised", icon: "🛶" },
   { kind: "small_frp", icon: "🚤" },
@@ -67,12 +68,35 @@ export default function Onboarding() {
         notice_version: c.notice_version,
       });
       const pushOn = await registerPush(token);
-      await update({ onboarded: true, alertsOn: pushOn });
+      await update({ alertsOn: pushOn });
+      if (Platform.OS === "android") {
+        setStatus("idle");
+        setStep("permission"); // explain background location before Android asks (spec §17.4)
+        return;
+      }
+      await update({ onboarded: true });
       setStatus("done");
       router.replace("/");
     } catch {
       setStatus("failed");
     }
+  }
+
+  /** Android: after the explanation, location permissions and the harbour geofence. */
+  async function allowBackground() {
+    setStatus("working");
+    try {
+      const token = (await supabase().auth.getSession()).data.session?.access_token;
+      const me = token ? await api.me(token) : null;
+      const boatId = me?.boats[0]?.id;
+      const harbour = (await api.harbours()).find((h) => h.id === prefs.harbour);
+      const ok = boatId && harbour ? await enableBackgroundSafety({ boatId, lang, harbour: { lat: harbour.lat, lon: harbour.lon } }) : false;
+      setStatus(ok ? "done" : "failed");
+    } catch {
+      setStatus("failed");
+    }
+    await update({ onboarded: true });
+    router.replace("/");
   }
 
   async function skip() {
@@ -152,6 +176,26 @@ export default function Onboarding() {
             </Pressable>
           ))}
           <Back onPress={() => setStep("harbour")} />
+        </>
+      ) : null}
+
+      {step === "permission" ? (
+        <>
+          <Text style={styles.title} accessibilityRole="header" testID="permission-explained">
+            {t("permission.title")}
+          </Text>
+          <Text style={styles.choiceText}>{t("permission.body")}</Text>
+          <Pressable
+            style={[styles.choice, styles.chosen]}
+            onPress={() => void allowBackground()}
+            disabled={status === "working"}
+            accessibilityRole="button"
+            accessibilityLabel={t("permission.continue")}
+            testID="permission-continue"
+          >
+            <Text style={styles.choiceText}>{t("permission.continue")}</Text>
+          </Pressable>
+          {status === "failed" ? <Text style={styles.choiceText}>{t("permission.denied")}</Text> : null}
         </>
       ) : null}
 
