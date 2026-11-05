@@ -31,6 +31,11 @@ def test_no_row_was_removed() -> None:
 @pytest.mark.parametrize("row", [r for r in ROWS if r["layer"] == "agent"], ids=lambda r: r["id"])
 async def test_failure_row(row: dict[str, Any]) -> None:
     inp, exp = row["input"], row["expect"]
+    if "translation" in inp:
+        from src.agents import language
+
+        assert language.numbers_match(inp["translation"]["english"], inp["translation"]["translated"]) is exp["numbers_match"]
+        return
     if "draft" in inp:
         check = validator.validate(
             inp["draft"], inp.get("citations", []), inp.get("tool_texts", []), inp.get("passages", {}), "simple"

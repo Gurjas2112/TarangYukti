@@ -59,3 +59,18 @@
   cause: the quote was not copied word for word
   guard: verbatim quote check drops the sentence
   expect: { quote_dropped: ["K1"], text: "" }
+
+- id: F-006
+  found: 2026-11-05 · TraceRoot improvement run 148f31841952 (signal S-01)
+  layer: agent
+  input:
+    translation:
+      english: "Under the Maritime Zones Act, 1976, India's territorial waters extend twelve nautical miles from the baseline [K1]."
+      translated: "समुद्री क्षेत्र अधिनियम, 1976 के तहत, भारत का प्रादेशिक जल आधार रेखा से 12 समुद्री मील तक फैला है। [K1]"
+  snapshot: null
+  wrong: "Malayalam, Manipuri, Punjabi and Santali users got English replies to questions about maritime law"
+  cause: the English draft spelled numbers in words; the translation wrote them as digits, and the number check
+    treated the digits as new figures and fell back to English
+  guard: numbers_match accepts a digit only when the English draft has the same value in digits or in words;
+    any other new or dropped number still sends the English text
+  expect: { numbers_match: true }

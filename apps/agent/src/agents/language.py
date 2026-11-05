@@ -109,6 +109,57 @@ def split_sentences(text: str, limit: int = MAX_CHARS) -> list[str]:
     return parts
 
 
+_UNITS = {
+    w: i
+    for i, w in enumerate(
+        "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+        "seventeen eighteen nineteen".split()
+    )
+}
+_TENS = {
+    w: 10 * i for i, w in enumerate("_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()) if w != "_"
+}
+_SCALES = {"hundred": 100, "thousand": 1000, "lakh": 100_000}
+
+
+def _spelled(text: str) -> Counter[str]:
+    """Numbers written in English words ("twelve", "two hundred", "twenty-four"), as digit strings."""
+    out: Counter[str] = Counter()
+    total, current, seen = 0, 0, False
+    for w in [*re.findall(r"[a-z]+", text.lower().replace("-", " ")), "."]:
+        if w in _UNITS:
+            current += _UNITS[w]
+        elif w in _TENS:
+            current += _TENS[w]
+        elif w == "hundred" and seen:
+            current = max(current, 1) * 100
+        elif w in ("thousand", "lakh") and seen:
+            total += max(current, 1) * _SCALES[w]
+            current = 0
+        elif w == "and" and seen:
+            continue
+        else:
+            if seen:
+                out[str(total + current)] += 1
+            total, current, seen = 0, 0, False
+            continue
+        seen = True
+    return out
+
+
+def numbers_match(english: str, translated: str) -> bool:
+    """A translation keeps every number of the English draft digit for digit. It may write a number the draft
+    spelled in words ("twelve nautical miles" → "12"), but never introduce any other figure (signal S-01)."""
+    en, tr = _numbers(english), _numbers(translated)
+    if en == tr:
+        return True
+    if any(tr[k] < v for k, v in en.items()):
+        return False
+    extra = tr - en
+    words = _spelled(english)
+    return all(words[k] >= v for k, v in extra.items())
+
+
 async def translate(text: str, lang: str) -> tuple[str, str | None]:
     """(text in `lang`, None) or (the English text, reason) when translation is unavailable or changed a number."""
     if lang.startswith("en"):
@@ -148,6 +199,6 @@ async def translate(text: str, lang: str) -> tuple[str, str | None]:
     except Exception as e:  # network, quota: send English rather than nothing
         log.info("translation failed: %s", type(e).__name__)
         return text, f"translation unavailable ({type(e).__name__})"
-    if _numbers(translated) != _numbers(text):
+    if not numbers_match(text, translated):
         return text, "translation changed a number or time; English sent instead"
     return translated, None

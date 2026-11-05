@@ -42,3 +42,12 @@ def test_number_check_ignores_units_and_leading_zeros_but_not_values() -> None:
     assert n("2.4 m") != n("2.6 m")
     assert n("leave at 05:30") != n("leave at 06:30")
     assert n("[K3] [K4]") != n("[K3]")  # a dropped citation marker is a change
+
+
+def test_spelled_numbers_may_become_digits_but_nothing_new_appears() -> None:
+    en = "India's territorial waters extend twelve nautical miles; the EEZ two hundred nautical miles [K1]."
+    assert language.numbers_match(en, "प्रादेशिक जल 12 समुद्री मील तक; ईईजेड 200 समुद्री मील [K1]।")
+    assert not language.numbers_match(en, "प्रादेशिक जल 14 समुद्री मील [K1]।")  # a different figure
+    assert not language.numbers_match("Waves 2.4 m after 05:30.", "लहरें 05:30 के बाद।")  # a number dropped
+    assert language._spelled("twenty-four hours, one hundred and fifty boats")["24"] == 1
+    assert language._spelled("one hundred and fifty boats")["150"] == 1
