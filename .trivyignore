@@ -5,3 +5,11 @@
 # Exposure: client-side only — it parses the viewer's own URL in their own browser/app; no server uses it.
 # Revisit when expo-router moves off query-string@7. Review by 2027-02-01.
 CVE-2026-118664
+
+# @opentelemetry/propagator-jaeger 1.30.1 (DoS on a malformed uber-trace-id header), via @traceroot-ai/traceroot
+# -> @opentelemetry/sdk-trace-node 1.x. TraceRoot's SDK pins OpenTelemetry 1.x; the fixed 2.x does not fit it.
+# Exposure: none in deployed services — TraceRoot is a devDependency of ty-copilot (absent from the `pnpm deploy
+# --prod` image), runs only on the laptop for test traffic (TRACEROOT_ENABLED, refused in live), and the Jaeger
+# propagator is only used when OTEL_PROPAGATORS includes jaeger, which nothing sets.
+# Revisit when @traceroot-ai/traceroot moves to OpenTelemetry 2.x. Review by 2027-02-01.
+CVE-2026-59892

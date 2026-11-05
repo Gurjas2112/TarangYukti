@@ -34,7 +34,10 @@ async def test_failure_row(row: dict[str, Any]) -> None:
     if "translation" in inp:
         from src.agents import language
 
-        assert language.numbers_match(inp["translation"]["english"], inp["translation"]["translated"]) is exp["numbers_match"]
+        assert (
+            language.numbers_match(inp["translation"]["english"], inp["translation"]["translated"])
+            is exp["numbers_match"]
+        )
         return
     if "draft" in inp:
         check = validator.validate(
