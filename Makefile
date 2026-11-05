@@ -10,7 +10,7 @@ MCP := cd services/mcp && uv run python -m
 WORKER := cd services/worker && uv run python -m
 
 .PHONY: install infra-up infra-down dev test lint typecheck phone \
-        channels outbox i18n-draft sim-boat housekeeping failures-pull snapshot snapshot-upload snapshot-download sim-warning layers \
+        channels outbox i18n-draft capture capture-web coverage scenario golden-draft sim-boat housekeeping failures-pull snapshot snapshot-upload snapshot-download sim-warning layers \
         agent agent-purge smoke bicep brief-now db-migrate db-roles kb-index kb-query eval-rag push-test test-rls test-local demo trace-evals run-prod
 
 install:
@@ -141,3 +141,19 @@ run-prod:            # build every image locally (Docker) the way ACR builds the
 
 trace-evals:
 	@echo "$@: Milestone 13" && exit 1
+
+# ── walkthrough capture (Milestone 10b, spec §17.14) ─────────────────────────────────────────────────────
+capture:             # make capture CAP=<capture.apk> LIVE=<live.apk> [LANGS="ml-IN hi-IN"]
+	scripts/capture_all.sh $(CAP) $(LIVE) $(LANGS)
+
+capture-web:         # web flows W01–W08 only: make capture-web LANG_CODE=en-IN OUT=artifacts/walk
+	WALK_OUT=$(abspath $(OUT))/$(LANG_CODE)/web APP_LANG=$(LANG_CODE) pnpm -C apps/app exec playwright test e2e/web/walkthrough.spec.ts --project=desktop
+
+coverage:            # make coverage ROOT=artifacts/app-walkthrough/<v>-<date> LANGS="en-IN"
+	python scripts/check_coverage.py $(ROOT) --langs $(LANGS)
+
+scenario:            # make scenario S=simulated-warning   (laptop backend with CAPTURE_SCENARIOS=1)
+	scripts/scenario.sh $(S)
+
+golden-draft:        # draft the per-language golden sets with Sarvam (status: draft)
+	cd services/channels && PYTHONIOENCODING=utf-8 uv run python ../../scripts/golden_draft.py $(if $(ONLY),--only $(ONLY),)

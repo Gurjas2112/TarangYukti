@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scripts/capture_all.sh:*)",
+      "Bash(scripts/capture_walkthrough.sh:*)",
+      "Bash(scripts/release_smoke.sh:*)",
+      "Bash(scripts/scenario.sh:*)",
+      "Bash(bash scripts/scenario.sh:*)",
+      "Bash(python scripts/check_coverage.py:*)",
+      "Bash(python scripts/capture_tools.py:*)",
+      "Bash(pnpm -C apps/app exec playwright test:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(ffprobe:*)",
+      "Bash(sha256sum:*)",
+      "Bash(jq:*)",
+      "Bash(gh release upload:*)"
+    ],
+    "deny": [
+      "Bash(adb.exe shell rm:*)",
+      "Bash(adb.exe shell pm clear com.google.android.gms:*)"
+    ]
+  }
+}
