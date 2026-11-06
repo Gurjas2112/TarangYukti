@@ -56,7 +56,9 @@ set -e
 
 # 5 · stop the recording and remux to MP4 without re-encoding
 sleep 2
-kill -INT "$REC" 2>/dev/null || true
+# scrcpy.exe is a native Windows program: Git Bash signals do not reach it. A hard stop is safe — Matroska keeps
+# everything recorded up to that moment, and ffmpeg remuxes it below.
+taskkill //F //IM scrcpy.exe >/dev/null 2>&1 || kill "$REC" 2>/dev/null || true
 wait "$REC" 2>/dev/null || true
 ffmpeg -loglevel error -y -i "$TMP/walkthrough.mkv" -c copy "$OUT/video/full-walkthrough.mp4" || true
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT/video/full-walkthrough.mp4" 2>/dev/null || echo 0)

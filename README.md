@@ -1,326 +1,547 @@
-# TarangYukti
+<div align="center">
 
-A conversational, constraint-reasoning marine copilot that turns ISRO/INCOIS ocean data into explainable,
-voice-first safety verdicts for small-boat fishers (prototype region: Gulf of Mannar + Palk Bay).
+# 🌊 TarangYukti · Kadal Mitra
 
-- Build contract: [AGENTS.md](AGENTS.md) (same text as `.github/copilot-instructions.md`)
-- Full design: [docs/TarangYukti_Engineering_Specification_v2.2.md](docs/TarangYukti_Engineering_Specification_v2.2.md) — wins on any disagreement
-- Built one milestone at a time (AGENTS.md §15).
+### *"Can I go to sea today?"* — answered in your own language, with the reasons, before you leave the harbour.
 
-## Status
+**TarangYukti** (तरंग *wave* + युक्ति *reasoning*) turns ISRO / INCOIS ocean data, IMD warnings and official fishing
+documents into a clear **Go · Careful · Don't go** for small-boat fishers — and keeps watching the border line for them
+at sea, even with the phone locked and no signal.
 
-| Milestone | State |
+[![CI](https://github.com/Gurjas2112/TarangYukti/actions/workflows/ci.yml/badge.svg)](https://github.com/Gurjas2112/TarangYukti/actions/workflows/ci.yml)
+![Languages](https://img.shields.io/badge/languages-22%20Indian%20%2B%20English-F26B21)
+![Platforms](https://img.shields.io/badge/app-Android%20%2B%20Web-2F6FDE)
+![AI](https://img.shields.io/badge/AI-explains,%20rules%20decide-07612A)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**[▶ Watch the full walkthrough](#-see-it-in-action)** · **[🖼 Screens, flow by flow](#-flow-by-flow)** ·
+**[🌐 Try the web app](https://ty-web.wittybay-bae06624.centralindia.azurecontainerapps.io)** ·
+**[⚙ How it works](#-how-it-works)** · **[🚀 Run it](#-run-it-yourself)**
+
+</div>
+
+---
+
+> **Advisory only — always follow official INCOIS / IMD warnings.** TarangYukti is a prototype for the Gulf of Mannar
+> and Palk Bay (Smart India Hackathon 2026, ISRO problem statement 26176, "ORCA").
+
+## 💡 Why it exists
+
+At 4:30 in the morning a fisher in Rameswaram has one question. The answer is scattered across wave forecasts,
+official warnings, long English bulletins and a border line nobody can see at sea — crossing it can cost the boat
+and the crew's freedom. **Kadal Mitra** (*friend of the sea*), the app, puts it all into one card:
+
+| You ask | You get |
 |---|---|
-| 1 · Scaffold | **Done** — see below |
-| 2 · Data tools + cache + snapshots | **Done** — see below |
-| 3 · Yukti engine + route | **Done** — see below |
-| 4 · RAG | **Done** — see below |
-| 5 · Agent graph | **Done** — see below |
-| 6 · Simple mode on both targets | **Done** — see below |
-| 7 · Expert console (web build) | **Done** — see below |
-| 8 · Alerts, trips, family, feedback | **Done** — see below |
-| 9 · Auth, RLS, admin | **Done** — see below (one dashboard switch left for you) |
-| 10 · Deployment (Azure slim demo tier) + docs | **Done** — templates, images and pipelines ready; not deployed yet (see below) |
-| 10a · Every Indian language (fonts, RTL, reviews) | Next |
+| 🗣 "Can I go to sea tomorrow morning?" — by voice or a tap, in Tamil, Hindi, Malayalam, Urdu… | **Go · Careful · Don't go**, a good time to leave, when to be back, and *why* in one sentence |
+| 🐟 "Where should I fish?" | Likely fishing zones on a map that works offline, with the border line and the marine park |
+| ⚖ "When is the fishing ban?" | The official document, quoted word for word, with its source |
+| ⛵ *(nothing — you're at sea)* | Automatic alerts **5 km** and **2 km** from the border line, with the screen off and no signal |
+| 🏠 *(your family at home)* | "He is back at the harbour" — without calling |
 
-## Milestone 10 — deployment and docs
+## ✨ What makes it different
 
-Everything needed to run TarangYukti on **Azure Container Apps in Central India** — the slim demo tier chosen for
-the hosted prototype, and the full Tier 1 of the specification behind one parameter. Step-by-step:
-[docs/go-live.md](docs/go-live.md).
+- **🧮 The AI never invents a number.** Every wave height, distance and time comes from a tool with a source and a
+  timestamp. A validator rejects any reply with a figure it cannot trace — then falls back to approved sentences.
+- **⚖ Rules decide, the AI explains.** Go / Careful / Don't go comes from a deterministic constraint engine
+  (*Yukti*: 8 hard rules, 5 soft) and a time-aware safest-route search — not from a language model.
+- **🚨 Official warnings always win.** An active INCOIS or IMD warning forces *Don't go*. The app never says "safe" —
+  only "advisory".
+- **🇮🇳 Every Indian language, none built in.** All 22 scheduled languages + English: interface, voice in (and voice out
+  for 11), Noto fonts for every script, right-to-left for Urdu, Kashmiri and Sindhi. Safety sentences are released only
+  after two native speakers sign them.
+- **📴 Works where the signal doesn't.** Border and park checks run on the phone; positions queue offline and sync later.
+- **🔍 Every answer can be audited.** Each verdict is stored as a ledger of rules, values and datasets, with the time each
+  fact was true and the time it was known — so any past answer can be replayed.
 
-- **Images** (`docker/`): one Python image for agent, MCP, channels and worker (`--build-arg SERVICE_DIR=…`, non-root,
-  config/data/kb baked in); the CopilotKit runtime on Node 24; the web build behind nginx with the single-page
-  fallback, immutable hashed assets and the Front Door check.
-- **Infrastructure** (`infra/azure/*.bicep`, warning-free): registry, Key Vault (RBAC, purge protection), managed
-  identity, Log Analytics (180 days), Container Apps environment, 6 apps (web, copilot, channels public; agent, MCP,
-  Redis internal), 4 jobs (watch every 15 min, push outbox every minute, nightly ingest, nightly purge/retention),
-  Application Insights with availability test, alerts and a budget. `tier=demo` scales to zero with no VNet;
-  `tier=live` adds zone redundancy, 2+ replicas and Front Door + WAF (300 req/min per IP, `/admin` from India only).
-- **Edge**: `ty_common.edge.FrontDoorOnly` (channels), the copilot wrapper and the nginx template answer 403 unless
-  the request came through this Front Door profile (health paths exempt); off when no Front Door is configured.
-- **Pipelines**: `deploy-azure.yml` (OIDC, ACR builds, Bicep deploy, smoke test incl. the direct-origin 403) runs
-  after CI once the repository variable `AZURE_DEPLOY=true` is set; `android-release.yml` builds, verifies (signing
-  certificate, package, target SDK, no cleartext) and publishes the APK from a `kadal-mitra-v*` tag; CI now also
-  checks the Bicep templates and the 23 language catalogues.
-- **App release info**: channels `GET /app/version` (update banner / forced update) and `POST /client-errors`
-  (scrubbed of coordinates, e-mails and tokens).
-- **Operations**: `make demo` (snapshot mode, every service, smoke test), `make smoke` (laptop or Azure URLs),
-  `make bicep`, `make run-prod` (build the images with Docker), `tests/load/dawn_rush.py` (Gate L1).
-- **Docs**: [go-live](docs/go-live.md), [incident runbook](docs/incident-runbook.md), [DPIA draft](docs/dpia.md),
-  [governance](docs/governance.md), [test report](docs/test-report.md), [releases](docs/releases.md).
+## 🎬 See it in action
 
-Not done yet, and why: nothing is deployed — that needs the pay-as-you-go subscription and your go-ahead (costs
-money); the container images have not been built on this laptop because Docker was not running (ACR builds them on
-the first deployment); Gate L1, the restore drill and VAPT belong to live testing with real users.
+<!-- WALKTHROUGH-VIDEO -->
 
-## Milestone 9 — roles, row-level security, admin console, governance
+<table><tr><td width="320" valign="top">
 
-- **Roles**: `user_roles` + the `custom_access_token_hook` put `app_role` in every token. **Enable it once in the
-  Supabase dashboard** (Authentication → Hooks → *Customize Access Token* → `public.custom_access_token_hook`);
-  until then staff screens show "invited staff only". Staff (analyst, officer, platform_admin) must pass TOTP
-  (`aal2`): the web build enrols an authenticator app on first visit.
-- **RLS on every table**, with database helpers so policies never recurse. Cross-user tests against the real
-  database (`make test-rls`, 12 tests): strangers and anonymous users see nothing personal; family sees a shared
-  boat only while the grant is valid and can't write its positions; nobody can make themselves staff; admin
-  functions need MFA; officers see positions only inside **active official warning areas**, last hour, with MFA;
-  the agent role can only record answers and read the kill switches; audit tampering is detected.
-- **Audit log**: append-only, each row hashes the previous one; `audit_verify()` finds the first broken link.
-  Consents, data exports, deletion requests, sharing, role changes, kill switches and admin actions are logged.
-- **My data** (Me): download everything as JSON; delete the account with a 7-day undo, after which the worker
-  deletes the conversation threads and the account (everything cascades). **Help** names the grievance officer
-  from `config/governance.yaml` — still a placeholder.
-- **Answers**: every reply is stored with its model, prompt version and config version, guard flags and ledger id
-  (180 days). `GET /sources/answer/{id}` (owner or staff) and admin **Replay** show the ledger as it was known then.
-- **Admin console** (`/admin`, web, platform_admin + MFA): overview with daily-use measures, data sources,
-  knowledge base (approve/reject quarantine, *Supersede with…*), alerts (retry), guardrail review (*Add to failures
-  dataset* → `make failures-pull` → `failures.yaml` rows in a PR), replay, users & roles (invite staff), anonymised
-  live map, audit log with *Verify chain*, and the **kill switches**: free-form chat off (buttons keep working) and
-  non-critical alerts paused per harbour. Each action asks for a reason and lands in the audit log.
-- **Analyst tools** in the Expert console are now for analysts/admins with MFA.
-- **Retention** (`make housekeeping`, nightly): positions older than 30 days → per-day H3 cell counts with no user
-  id; answers and Neo4j ledgers older than 180 days deleted. Official warning polygons refresh every 15 minutes.
-- **Governance**: `scripts/check_governed.py` (CI workflow `governance`) fails when a governed config changes
-  without a `version:` bump, or phrases/prompts/model settings change without a line in `docs/releases.md`, or a
-  governed file lacks a code owner. A PR touching governed files needs the `safety-hold` label and stays red until
-  24 hours after its last commit (Annexure I, solo build). Branch protection is not switched on because changes
-  are pushed straight to `main` for now.
+<img src="docs/media/kadal-mitra-hero.gif" width="300" alt="Kadal Mitra: choosing a language, harbour and boat, then the verdict card">
 
-## Milestone 8 — trips, border alerts, family, feedback
+</td><td valign="top">
 
-- **Live positions**: while the app is open and alerts are on, one fix a minute goes to channels `POST /positions`
-  (web: `watchPosition`; Android: foreground location — background trip mode is Milestone 11). A batch of up to
-  100 fixes is accepted for the phone's outbox. Fixes must be inside the region, not in the future, at most a day
-  old, and stored under RLS (only the boat's owner can post or read them; family can't).
-- **Trips**: leaving the 1.5 km harbour circle (`config/harbours.yaml`) opens a trip; re-entering closes it; the
-  **I'm back** button closes it too. Then the Trip tab asks *Was today's advice right?* 👍/👎 and shows *Right on N
-  of the last M days*. Feedback never changes thresholds by itself.
-- **Border and park alerts**: the newest fix is checked with `fence_check`; 5 km → warning, 2 km → alarm, past the
-  line → alarm (rings from `constraints.yaml`), marine park → non-critical. Same rule at most once per 2 hours
-  unless the level rises. Channels queues them through a narrow database function (owner's boat, fixed rule list);
-  the worker sends them after the alert budget and quiet hours. The 15-minute watch job re-checks every boat at sea
-  with a position in the last 30 minutes (safety net).
-- **Family**: Me → *Share my boat with family* (Google e-mail, up to 90 days, revocable). When that person signs in,
-  the grant is attached to their account (`claim_share_grants`) and they get the boat card at `/family/<boat>`:
-  *At sea since 05:10* / *Back at Rameswaram at 14:20*. When a trip closes, the worker sends each of them
-  *"<boat> is back at <harbour>, HH:MM"* in their own language.
-- **Simulation**: `make sim-boat GPX=artifacts/sim_trip.gpx` (emulator route) or `make sim-boat POST=1` (dev account
-  → `/positions`, local only). Verified live: trip opened on leaving the harbour, 2 km alarm queued as critical,
-  trip closed on return, family notice queued for the family test account.
-- **Tests**: trip rules with fixed times (`ty_common.trips`), channels validation, the worker's family notice, the
-  alert budget; dev-only Playwright flows for the signed-in Trip tab, sharing and the family card
-  (`TY_SESSIONS=<file> pnpm -C apps/app e2e:web trip-family`).
+**[▶ Watch the full-length screen recording](docs/media/kadal-mitra-walkthrough.mp4)** — 9 min 9 s, uncut: all
+22 Android flows in order, recorded on the emulator by the automated walkthrough (`make capture`). Compressed to
+5 MB for the repository.
 
-Not done yet: background trip mode, on-device border alerts and the offline outbox on Android (Milestone 11);
-officer views of boats in warning areas (Milestone 9). New strings and phrases are in English in the other
-languages until Sarvam credit is topped up (`make i18n-draft`). The boat's name defaults to the harbour name at
-onboarding, so the family notice reads "Rameswaram is back at Rameswaram" until the fisher names the boat.
+What you will see, in order: choosing a language → harbour → boat → consent · the morning brief · the verdict, its
+reasons and the 24-hour ribbon · the offline map · asking questions (border distance, fishing ban, *why has my
+catch dropped?*, an out-of-region question) · alerts · your data, help and privacy · a labelled **SIMULATION**
+of an official warning forcing *Don't go* · no safe window · old data · AI offline · chat switched off · an
+error and *Try again* · an update prompt · 200 % text · right-to-left Urdu.
 
-## Milestone 7 — Expert console (web build)
+Every frame is the real app — nothing mocked up.
 
-`/expert` on the web build (Me → *Open the Expert console*; the Android build shows where to open it instead).
+</td></tr></table>
 
-- **Map** (`src/map/OceanMap.web.tsx`): MapLibre GL JS with a deck.gl overlay, drawn in one fixed order: sea-surface
-  temperature, chlorophyll, land, marine park, the H2 border buffer (width from `constraints.yaml`, in metres),
-  the border line, computed fishing zones, INCOIS points, route, harbour. Layers are toggled by the user or the
-  agent. There are no third-party basemap tiles: land, border and park come from our own layers (`/layers/*`).
-  `OceanMap.native.tsx` honours the same contract until Milestone 11 brings MapLibre Native with offline PMTiles.
-- **Sea Signal + Constraint Ledger** (open by default): the verdict, earliest and recommended windows, and every
-  H1–H8 / S1–S5 row with value, **limit** (from config), time and evidence. Tapping H2 draws the border buffer.
-- **Drag the departure**: 0 to +24 h in 30-minute steps; the plan is re-evaluated for that time.
-- **Copilot panel**: questions go to the agent through `ty-copilot`. The agent's final state now carries
-  `mission` (which specialists ran → **Mission Control**, behind "Show how it works"), `ui_actions` (fly to the
-  harbour; open the ledger in Expert mode) and `citations` (passage id, issuer, title, valid till → **citation
-  chips** that open the verbatim passage). CopilotKit frontend tools: `flyTo`, `openWhy` on both targets;
-  `showLayer`, `drawRoute`, `setTime`, `openLedger`, `openCitation` on Expert routes only.
-- **Analyst tools**: SST anomaly chart (30 days, vs 1991–2020) with the marine-heatwave test; computed fishing
-  zones vs INCOIS (overlap score); CSV downloads and NetCDF links straight to the source; the knowledge-base list.
-- **New data tools** (MCP): `anomaly_series` (NOAA OISST anomaly) and `pfz_compute` (thermal fronts from a Sobel
-  gradient of JPL MUR 1 km SST sampled at 0.05°, intersected with VIIRS chlorophyll, merged into zones). OISST's
-  0.25° grid is too smooth to show fronts. Thresholds are in `constraints.yaml` (`pfz_compute`, `heatwave`) as
-  demo defaults to tune against INCOIS advisories.
-- **Channels** (public, cacheable): `/expert/plan`, `/layers/{imbl,mpa,land}`, `/grids/{sst,chl}` (+ `/csv`,
-  `/netcdf`), `/pfz`, `/anomaly`, `/sources/chunk/{id}`, `/kb/documents` (read as `anon` under RLS).
-- **Tests**: Playwright hero flow on the exported web build (`pnpm -C apps/app e2e:web`; needs channels + MCP
-  running) and an `@llm` chat test (`--grep @llm`; needs agent + copilot + Gemini). Jest covers the map contract,
-  UI actions, ledger and Mission Control.
+## 🖼 Flow by flow
 
-Not done yet: `openLedger` shows the ledger of the plan on screen, not a stored answer's ledger (answer lookup by
-id is the provenance API, Milestone 9); officer screens and human-in-the-loop broadcasts (Milestones 8–9); the
-PMTiles basemap (Milestone 11). The new Expert strings are in English in every catalogue until Sarvam credit is
-topped up (`make i18n-draft`).
+<!-- WALKTHROUGH-GALLERY -->
 
-## Milestone 6 — Simple mode (Android + web)
+Every screen below is a real capture of this build (Android emulator and Chrome, en-IN), taken automatically by the walkthrough flows in `apps/app/e2e/` — **51 screens across 22 flows**. Click a flow to open it.
 
-Kadal Mitra's everyday screens, in every language, with no login needed for public advice.
+<details>
+<summary><b>A01 · Getting started in your language</b> — 6 screens</summary>
 
-- **Today**: the verdict in plain words (≥ 40 px, icon + word), a 24-hour ribbon (the verdict for leaving at each
-  hour), "Why?" (one approved sentence per reason), the fishing spot and the border line, the voice (Group A
-  languages), the advisory footer and the four buttons *Today's sea · Where to fish · Alerts · I'm back*. The card
-  comes from the new `sea_brief` MCP tool through channels `GET /brief`: approved phrases only, never a code
-  (PFZ, IMBL, H1–H8). It is cached per harbour, boat type and language, and saved on the phone for offline use.
-- **Voice**: hold the mic → a "checking the sea…" clip starts within a second → channels `/stt` (Sarvam Saaras v4)
-  → the agent → the reply is shown and spoken through `/tts` (Bulbul v3, mp3 cached in the public `tts` bucket).
-- **Onboarding** (language first, then harbour, boat type, spoken consent): **Turn on alerts** signs in with Google,
-  records the consents, the boat and the fisher role (channels `/onboarding`) and only then asks for notification
-  permission. **Not now** keeps everything public.
-- **Push**: one sender, the worker. Channels `/push/subscribe` stores Expo tokens (Android) or Web Push
-  subscriptions (web) and queues the "alerts are on" test push; the worker's outbox (every minute) sends Expo +
-  VAPID pushes, deletes dead subscriptions and applies the alert budget (critical always; ≤ 3 others a day; quiet
-  hours; 2-hour repeat gap). `make push-test USER=<uuid>`.
-- **Morning brief**: the 15-minute watch job sends each fisher their card 30 min before their usual departure
-  (median of the last 10 trips; default 04:00 IST). Tapping it opens `/brief` and plays the voice; the web service
-  worker keeps that page offline. `make brief-now USER=<uuid>`.
-- **Add this phone**: Me → QR with a one-time sign-in token (10 minutes) for the same account (`/phone-link`).
-- **Languages**: i18next catalogues and safety phrase files for all 23 languages. Everything except English was
-  drafted with `sarvam-translate:v1` (`make i18n-draft`) and is `status: draft`: development builds show every
-  language marked *Draft*, and production builds show only released ones. A string whose `{slots}`, numbers or times
-  did not survive translation stays in English and is listed in `apps/app/src/i18n/drafts.json` for reviewers.
-  CI checks that every catalogue and phrase file has every key with the same slots. Note that `ENV=live` serves
-  only **approved** phrase files, and English is still a draft too, so phrase sign-off comes before Tier 1.
-- **Database** (`make db-migrate`): `user_roles`, `boats`, `positions`, `push_subscriptions`, `share_grants`,
-  `user_prefs`, `trips`, `consents`, `alerts`, all under RLS (owner-only; family via an unexpired grant), the
-  `tts` bucket, and `config/harbours.yaml` (harbours other than Rameswaram are approximate until verified).
-- **Expo / EAS**: the app is linked to the Expo project `@gurjas_gandhi/tarangyukti`; `eas.json` has the spec's
-  build profiles (development, preview, live, store, capture).
+*Language picker with every language in its own script, spoken where a voice exists · Harbour list · Boat type picture buttons · Spoken consent, full written notice · Location, notification and background-location permissions with explanation · Google sign-in*
 
-Not done yet: the map (Milestones 7 and 11), trips and "I'm back" (Milestone 8), right-to-left layout checks and
-Noto fonts for every script (Milestone 10a), and native-speaker review of every language.
+<p>
+<img src="docs/screenshots/android/A01-onboarding/01-language-picker.png" width="200" alt="A01-onboarding 01-language-picker" title="01-language-picker">
+<img src="docs/screenshots/android/A01-onboarding/02-language-spoken.png" width="200" alt="A01-onboarding 02-language-spoken" title="02-language-spoken">
+<img src="docs/screenshots/android/A01-onboarding/03-harbour.png" width="200" alt="A01-onboarding 03-harbour" title="03-harbour">
+<img src="docs/screenshots/android/A01-onboarding/04-boat.png" width="200" alt="A01-onboarding 04-boat" title="04-boat">
+<img src="docs/screenshots/android/A01-onboarding/05-consent.png" width="200" alt="A01-onboarding 05-consent" title="05-consent">
+<img src="docs/screenshots/android/A01-onboarding/06-full-notice.png" width="200" alt="A01-onboarding 06-full-notice" title="06-full-notice">
+</p>
 
-## Milestone 5 — the agent
+</details>
 
-`apps/agent` serves the LangGraph agent over AG-UI (`make agent`, `POST /agent`, `GET /ok`); `ty-copilot` forwards to it.
+<details>
+<summary><b>A12 · Add this phone</b> — 0 screens</summary>
 
-- **Graph**: prepare (Language agent: keeps the reply language, mode, boat) → button flow (deterministic, no LLM)
-  or planner (Gemini, `create_agent`, 7 specialists wrapped as tools: data discovery, weather, ocean, geospatial,
-  knowledge, Yukti, explain) → validator → finalize.
-- **Specialists** call the MCP tools in parallel and return compact digests with IST times; the planner only sees
-  digests, so every figure it can use comes from a ToolResult.
-- **Validator**: numbers and times grounded in the turn's tool outputs, `[Kn]` citations verbatim, no codes in
-  Simple mode, never "safe" without "advisory"; one rewrite, then a template from the ledger.
-- **Simple mode** shows the verdict from approved phrases only; free text is drafted in English and translated
-  with Sarvam (international numerals; English is sent if any number changed). Footer always added.
-- **LLM down** (timeout or API error): button flows still answer from the Yukti ledger; free-form questions get the
-  "needs the internet" phrase. Planner effort is `low` by default (`ORCA_PLANNER_EFFORT`): medium and high hit the
-  20 s timeout in live runs.
-- **Memory**: thread state in Postgres schema `agent` (`AsyncPostgresSaver`); the first caller owns a thread
-  (another user → 403); one run per thread (Redis lock → 409); nightly purge after 30 days (`make agent-purge`).
-  Verified: a new server process continues a conversation started before the restart.
-- **Failures harness**: `tests/failures/failures.yaml` (+ `ids.lock`) is replayed by `make test`; rows can't be removed.
-- **Telemetry**: one tracer per process (OTLP → Grafana, Azure Monitor in Tier 1, TraceRoot for test runs only);
-  exported spans are scrubbed of tokens, phones, e-mails and coordinates. Seeing traces in Grafana needs Docker
-  (`make infra-up`) — not verified yet because Docker Desktop was not running.
+*"Add this phone" QR link*
 
-## Milestone 4 — knowledge search (RAG)
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
 
-`kb_search` (MCP tool) answers "what does the law / order / bulletin say?" with up to 8 cited passages
-`[K1]…[K8]` from official documents, in any language.
+</details>
 
-- **Corpus** (`kb/sources/manifest.yaml`): Maritime Zones of India Act 1976, Tamil Nadu Marine Fishing
-  Regulation Act 1983 + 2017 amendment, CMFRI Marine Fish Landings 2024, three team-written safety SOPs
-  (DRAFT), and the region's live IMD / INCOIS / SDMA CAP alerts with their validity windows.
-- **Ingest** (`make kb-index`, worker): fetch (allow-listed) → SHA-256 skip if unchanged → Docling →
-  sanitiser (quarantines prompt-injection text) → HybridChunker (≤ 512 tokens) → topics from
-  `config/aliases.yaml` → Gemini Embedding 2 (768-d) → Postgres. A new version supersedes the old one; a CAP
-  alert supersedes the alerts it references. Nothing is deleted.
-- **Search**: original question (aliases expanded) + an English rewrite (Gemini) → `kb_hybrid_search`
-  (pgvector + full text, filtered by validity, supersession, region, and `known_at` for replays) → RRF → top 8.
-  Without the embedding service it falls back to full text. Below `RAG_MIN_SIM` it reports "nothing relevant".
-- **Evaluation** (`make eval-rag`, report in `docs/eval-report.md`): 60 golden questions (30 English, 30 Tamil)
-  in `apps/agent/tests/golden.jsonl`; recall@8 0.958 in both languages (gate 0.9). `RAG_MIN_SIM` calibrated to
-  0.70. Ragas answer-quality scores need the agent and come with Milestone 5.
-- **Database**: `make db-migrate` applies `supabase/migrations`; `make db-roles` creates `ty_api` (reads as
-  `authenticated` under RLS), `ty_worker` and `ty_agent` and writes their URLs into `.env`.
+<details>
+<summary><b>A02 · The morning brief</b> — 2 screens</summary>
 
-Not indexed yet: the PIB fishing-ban release (PIB refuses automated clients — save the page from a browser to
-`kb/sources/captured/pib-2114930.html` and run `make kb-index`), and the Tamil Nadu Rules 2020 (the
-department's link returns 404). Document search uses the cloud database, so it needs the network.
+*Morning brief push, opened from the notification, voice plays*
 
-## Milestone 3 — Yukti constraint engine
+<p>
+<img src="docs/screenshots/android/A02-morning-brief/02-brief-card.png" width="200" alt="A02-morning-brief 02-brief-card" title="02-brief-card">
+<img src="docs/screenshots/android/A02-morning-brief/03-voice-playing.png" width="200" alt="A02-morning-brief 03-voice-playing" title="03-voice-playing">
+</p>
 
-`yukti_evaluate` (MCP tool) answers "can I go?" for a boat type, a start point and an optional fishing
-spot: it checks H1–H8 (hard) and S1–S5 (soft) from `config/constraints.yaml` and `config/boats.yaml`,
-maps the result to **GO / CAUTION / NO-GO**, searches departures every 30 min for 24 h for the
-**earliest window** and the **recommended** one, and writes the Constraint Ledger to Neo4j
-(`answer_id`). `route_safest` returns the time-expanded A* route on H3 cells.
+</details>
 
-- **H1** counts IMD, INCOIS **and state disaster authority (SDMA)** alerts — a deliberate extension of the
-  spec decided on 2026-11-03; thunderstorm/lightning alerts are H7.
-- Routes never enter land (Natural Earth 1:10m), the marine park, or cells within 5 km of the IMBL, and
-  skip cells whose forecast at the hour the boat is there breaks the boat's limits.
-- "Unknown" is never GO: missing or stale inputs fail H8; a missing forecast fails H5/H6 as unknown.
-- With `DATA_MODE=snapshot` the engine evaluates as of the snapshot's capture time.
-- S5 (two wave sources agree) is "not tested" until a second wave source exists; S1 needs a PFZ advisory.
-- The ledger stores no names, phones, coordinates or user cells; replay uses `known_at <= answer time`.
+<details open>
+<summary><b>A03 · Today: the verdict and why</b> — 4 screens</summary>
 
-## Milestone 2 — data tools
+*Verdict card GO / CAUTION / NO-GO, 24-hour ribbon · "Why?" in one sentence, then all reasons · Four buttons*
 
-Tools on the MCP server (`services/mcp`, `:8001/mcp`), each returning a `ToolResult` and cached with
-`@cached(ns="tool")` (raw coordinates never enter the cache; keys use H3 cells):
+<p>
+<img src="docs/screenshots/android/A03-today/01-verdict.png" width="200" alt="A03-today 01-verdict" title="01-verdict">
+<img src="docs/screenshots/android/A03-today/02-ribbon.png" width="200" alt="A03-today 02-ribbon" title="02-ribbon">
+<img src="docs/screenshots/android/A03-today/03-why.png" width="200" alt="A03-today 03-why" title="03-why">
+<img src="docs/screenshots/android/A03-today/05-four-buttons.png" width="200" alt="A03-today 05-four-buttons" title="05-four-buttons">
+</p>
 
-| Tool | Live source | Notes |
+</details>
+
+<details>
+<summary><b>A04 · The map (works offline)</b> — 2 screens</summary>
+
+*Where to fish: PFZ, agreement with INCOIS · Safest route, border line, protected area, own position, offline tiles*
+
+<p>
+<img src="docs/screenshots/android/A04-map/01-pfz.png" width="200" alt="A04-map 01-pfz" title="01-pfz">
+<img src="docs/screenshots/android/A04-map/04-border-mpa.png" width="200" alt="A04-map 04-border-mpa" title="04-border-mpa">
+</p>
+
+</details>
+
+<details>
+<summary><b>A05 · Ask anything</b> — 3 screens</summary>
+
+*Ask: voice button, instant acknowledgement · Cited answer with verbatim quote and labelled translation*
+
+<p>
+<img src="docs/screenshots/android/A05-ask/01-mic.png" width="200" alt="A05-ask 01-mic" title="01-mic">
+<img src="docs/screenshots/android/A05-ask/02-checking.png" width="200" alt="A05-ask 02-checking" title="02-checking">
+<img src="docs/screenshots/android/A05-ask/03-answer.png" width="200" alt="A05-ask 03-answer" title="03-answer">
+</p>
+
+</details>
+
+<details>
+<summary><b>A06 · Why has my catch dropped?</b> — 2 screens</summary>
+
+*"Why has catch dropped?" ranked causes*
+
+<p>
+<img src="docs/screenshots/android/A06-catch-dropped/01-question.png" width="200" alt="A06-catch-dropped 01-question" title="01-question">
+<img src="docs/screenshots/android/A06-catch-dropped/02-causes.png" width="200" alt="A06-catch-dropped 02-causes" title="02-causes">
+</p>
+
+</details>
+
+<details>
+<summary><b>A07 · Outside its coverage</b> — 1 screen</summary>
+
+*Out-of-coverage refusal naming the official source*
+
+<p>
+<img src="docs/screenshots/android/A07-out-of-coverage/01-refusal.png" width="200" alt="A07-out-of-coverage 01-refusal" title="01-refusal">
+</p>
+
+</details>
+
+<details>
+<summary><b>A08 · At sea: trip mode and border alerts</b> — 0 screens</summary>
+
+*Trip mode starts on leaving the harbour · Border alerts at 5 km and 2 km · Offline at sea: map, route, brief and alerts work · "I'm back", trip closed*
+
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
+
+</details>
+
+<details>
+<summary><b>A09 · Alerts</b> — 1 screen</summary>
+
+*Alerts list with reasons*
+
+<p>
+<img src="docs/screenshots/android/A09-alerts/01-list.png" width="200" alt="A09-alerts 01-list" title="01-list">
+</p>
+
+</details>
+
+<details>
+<summary><b>A10 · Family sharing</b> — 0 screens</summary>
+
+*Family sharing: grant with expiry*
+
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
+
+</details>
+
+<details>
+<summary><b>A11 · Me: data, language, help</b> — 4 screens</summary>
+
+*Me: profile and boats · Language switch to any language, including right-to-left · Consent history and withdrawal · Help with grievance officer*
+
+<p>
+<img src="docs/screenshots/android/A11-me/01-profile.png" width="200" alt="A11-me 01-profile" title="01-profile">
+<img src="docs/screenshots/android/A11-me/04-language-switch.png" width="200" alt="A11-me 04-language-switch" title="04-language-switch">
+<img src="docs/screenshots/android/A11-me/08-help-grievance.png" width="200" alt="A11-me 08-help-grievance" title="08-help-grievance">
+<img src="docs/screenshots/android/A11-me/09-about-privacy.png" width="200" alt="A11-me 09-about-privacy" title="09-about-privacy">
+</p>
+
+</details>
+
+<details>
+<summary><b>A13 · Official warning wins (simulation)</b> — 2 screens</summary>
+
+*Simulated official warning forces NO-GO, labelled SIMULATION*
+
+<p>
+<img src="docs/screenshots/android/A13-simulated-warning/01-nogo-simulation.png" width="200" alt="A13-simulated-warning 01-nogo-simulation" title="01-nogo-simulation">
+<img src="docs/screenshots/android/A13-simulated-warning/02-why-warning.png" width="200" alt="A13-simulated-warning 02-why-warning" title="02-why-warning">
+</p>
+
+</details>
+
+<details>
+<summary><b>A14 · No safe window</b> — 1 screen</summary>
+
+*No safe window: next good time*
+
+<p>
+<img src="docs/screenshots/android/A14-no-safe-window/01-no-window.png" width="200" alt="A14-no-safe-window 01-no-window" title="01-no-window">
+</p>
+
+</details>
+
+<details>
+<summary><b>A15 · Old data is never 'good to go'</b> — 1 screen</summary>
+
+*Stale data: old forecast, never Good to go*
+
+<p>
+<img src="docs/screenshots/android/A15-stale-data/01-stale.png" width="200" alt="A15-stale-data 01-stale" title="01-stale">
+</p>
+
+</details>
+
+<details>
+<summary><b>A16 · AI offline: buttons still work</b> — 2 screens</summary>
+
+*LLM unreachable: buttons answer from templates*
+
+<p>
+<img src="docs/screenshots/android/A16-llm-offline/01-templates-only.png" width="200" alt="A16-llm-offline 01-templates-only" title="01-templates-only">
+<img src="docs/screenshots/android/A16-llm-offline/02-free-form-offline.png" width="200" alt="A16-llm-offline 02-free-form-offline" title="02-free-form-offline">
+</p>
+
+</details>
+
+<details>
+<summary><b>A17 · Free chat switched off</b> — 1 screen</summary>
+
+*Kill switch: free-form chat off, buttons and alerts on*
+
+<p>
+<img src="docs/screenshots/android/A17-kill-switch/01-chat-off.png" width="200" alt="A17-kill-switch 01-chat-off" title="01-chat-off">
+</p>
+
+</details>
+
+<details>
+<summary><b>A18 · Error and retry</b> — 2 screens</summary>
+
+*Error with retry*
+
+<p>
+<img src="docs/screenshots/android/A18-error-retry/01-error.png" width="200" alt="A18-error-retry 01-error" title="01-error">
+<img src="docs/screenshots/android/A18-error-retry/02-retried.png" width="200" alt="A18-error-retry 02-retried" title="02-retried">
+</p>
+
+</details>
+
+<details>
+<summary><b>A19 · Update required</b> — 1 screen</summary>
+
+*Update available banner*
+
+<p>
+<img src="docs/screenshots/android/A19-update/02-update-required.png" width="200" alt="A19-update 02-update-required" title="02-update-required">
+</p>
+
+</details>
+
+<details>
+<summary><b>A20 · Large text (200 %)</b> — 2 screens</summary>
+
+*Large text at 200 % without clipping*
+
+<p>
+<img src="docs/screenshots/android/A20-large-text/01-today-200.png" width="200" alt="A20-large-text 01-today-200" title="01-today-200">
+<img src="docs/screenshots/android/A20-large-text/02-map-200.png" width="200" alt="A20-large-text 02-map-200" title="02-map-200">
+</p>
+
+</details>
+
+<details>
+<summary><b>W01 · Public web verdict</b> — 2 screens</summary>
+
+*Public web verdict without login*
+
+<p>
+<img src="docs/screenshots/web/W01-public/01-public-verdict.png" width="420" alt="W01-public 01-public-verdict" title="01-public-verdict">
+<img src="docs/screenshots/web/W01-public/02-install.png" width="420" alt="W01-public 02-install" title="02-install">
+</p>
+
+</details>
+
+<details>
+<summary><b>W02 · Staff sign-in</b> — 1 screen</summary>
+
+*Staff sign-in with Google and TOTP (aal2)*
+
+<p>
+<img src="docs/screenshots/web/W02-staff-sign-in/01-sign-in.png" width="420" alt="W02-staff-sign-in 01-sign-in" title="01-sign-in">
+</p>
+
+</details>
+
+<details open>
+<summary><b>W03 · Expert console</b> — 6 screens</summary>
+
+*Expert console: Sea Signal and ribbon, ledger open, H2 row draws the border buffer, citations drawer · Agent drives the map*
+
+<p>
+<img src="docs/screenshots/web/W03-expert/01-sea-signal.png" width="420" alt="W03-expert 01-sea-signal" title="01-sea-signal">
+<img src="docs/screenshots/web/W03-expert/02-ledger.png" width="420" alt="W03-expert 02-ledger" title="02-ledger">
+<img src="docs/screenshots/web/W03-expert/03-h2-buffer.png" width="420" alt="W03-expert 03-h2-buffer" title="03-h2-buffer">
+<img src="docs/screenshots/web/W03-expert/05-fly-to.png" width="420" alt="W03-expert 05-fly-to" title="05-fly-to">
+<img src="docs/screenshots/web/W03-expert/06-mission-control.png" width="420" alt="W03-expert 06-mission-control" title="06-mission-control">
+<img src="docs/screenshots/web/W03-expert/07-drag-departure.png" width="420" alt="W03-expert 07-drag-departure" title="07-drag-departure">
+</p>
+
+</details>
+
+<details>
+<summary><b>W04 · Analyst tools</b> — 0 screens</summary>
+
+*Analyst: anomaly charts, PFZ-vs-INCOIS overlap, CSV/NetCDF downloads, knowledge-base browser*
+
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
+
+</details>
+
+<details>
+<summary><b>W05 · District officer</b> — 0 screens</summary>
+
+*Officer: warning areas, anonymised boats, broadcast from approved templates, approval, delivery per language*
+
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
+
+</details>
+
+<details>
+<summary><b>W06 · Admin console</b> — 0 screens</summary>
+
+*Admin: overview, data sources, knowledge base and quarantine, supersede, alerts, AI usage, kill switches · Admin: guardrail review, replay with PDF, users and roles, live map, audit log, system health, languages*
+
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
+
+</details>
+
+<details>
+<summary><b>W07 · Family on the web</b> — 0 screens</summary>
+
+*Family on the web*
+
+_Not captured in this build (needs a signed-in test account, or the feature is not built yet)._
+
+</details>
+
+<details>
+<summary><b>W08 · Web: right-to-left and zoom</b> — 2 screens</summary>
+
+*Web in a right-to-left language and at 200 % zoom*
+
+<p>
+<img src="docs/screenshots/web/W08-accessibility/01-rtl.png" width="420" alt="W08-accessibility 01-rtl" title="01-rtl">
+<img src="docs/screenshots/web/W08-accessibility/02-zoom-200.png" width="420" alt="W08-accessibility 02-zoom-200" title="02-zoom-200">
+</p>
+
+</details>
+
+<details>
+<summary><b>R01 · Release build on the live environment</b> — 3 screens</summary>
+
+*Release build against Tier 1: Today, Map, Alerts*
+
+<p>
+<img src="docs/screenshots/android/R01-release-smoke/01-today.png" width="200" alt="R01-release-smoke 01-today" title="01-today">
+<img src="docs/screenshots/android/R01-release-smoke/02-map.png" width="200" alt="R01-release-smoke 02-map" title="02-map">
+<img src="docs/screenshots/android/R01-release-smoke/03-alerts.png" width="200" alt="R01-release-smoke 03-alerts" title="03-alerts">
+</p>
+
+</details>
+
+
+## ⚙ How it works
+
+```mermaid
+flowchart LR
+    subgraph Phone["📱 Kadal Mitra (Android + Web, one Expo codebase)"]
+        UI["Verdict card · Map · Trip · Alerts"]
+        BG["Background border watch<br/>(on-device, offline)"]
+    end
+    UI -->|ask / tap| CK["ty-copilot<br/>CopilotKit runtime"]
+    CK --> AG["ty-agent<br/>LangGraph planner + 8 specialists"]
+    AG -->|MCP tools| MCP["ty-mcp<br/>data tools · Yukti engine · RAG"]
+    MCP --> SRC[("Open-Meteo · INCOIS · IMD/NDMA CAP<br/>NOAA · Copernicus · GFW")]
+    MCP --> KB[("Supabase Postgres<br/>pgvector · PostGIS · RLS")]
+    AG --> VAL{"Validator<br/>numbers · quotes · language"}
+    VAL -->|approved phrases| UI
+    MCP --> LEDGER[("Neo4j<br/>evidence ledger")]
+    UI <-->|voice, push, positions| CH["ty-channels<br/>Sarvam STT/TTS · push · trips"]
+    WK["ty-worker<br/>morning brief · alerts · ingest"] --> CH
+```
+
+1. **Gather facts** — forecasts, official warnings, sea temperature, chlorophyll, fishing zones and the border / park
+   layers, each with its source and fetch time (cached by H3 cell, never by a person).
+2. **Decide** — the Yukti engine tries departure times every 30 minutes over 24 hours, searches the safest route on
+   H3 cells, and checks every hard rule (official warnings, border distance, marine park, fishing ban, waves, wind,
+   thunderstorms, data freshness). Any failed hard rule means *Don't go*.
+3. **Explain** — the agent explains the decision in plain words; document answers quote the source verbatim.
+4. **Check** — the validator removes any ungrounded number, fake citation or wrong-language text, then the reply is
+   assembled from approved phrases in the user's language.
+
+## 🧭 Who uses it
+
+| | Simple mode (default) | Expert & staff (web) |
 |---|---|---|
-| `marine_forecast` | Open-Meteo Marine + Forecast | waves, swell, currents, SST, wind; QC ranges from `config/qc.yaml` |
-| `sst_grid` / `chl_grid` | NOAA CoastWatch ERDDAP (OISST NRT, NOAA-20 VIIRS) | cloud gaps left missing; age vs freshness limit in notes |
-| `imd_warnings`, `incois_alerts` | NDMA SACHET (official CAP alerts) | free; real issuer read from each alert (state authorities relay INCOIS alerts) |
-| `pfz_incois` | snapshot only | INCOIS publishes PFZ advisories as web pages only |
-| `fence_check`, `geo_distance` | local layers | IMBL from the 1974/1976 treaty positions; marine park from WDPA |
+| **Fisher** | Verdict card, four big buttons, voice, morning brief, trip mode, border alerts | — |
+| **Family** | Shared boat card, "back at harbour" notice | — |
+| **Expert on the shore** | — | Sea Signal, full rule ledger, citations, map the assistant can drive, departure slider |
+| **Scientist** | — | Temperature anomalies, fishing-zone comparison with INCOIS, CSV / NetCDF downloads, document library |
+| **Administrator** | — | Data sources, knowledge base, alerts, guardrail review, answer replay, users, audit chain, kill switches |
+
+## 🧱 Built with
+
+| Layer | Stack |
+|---|---|
+| App | Expo SDK 57 · React Native 0.86 · Expo Router · MapLibre (native + web) · TanStack Query · Zod · i18next |
+| AI | LangGraph + LangChain · Gemini 3.8 Flash · Gemini Embedding 2 · FastMCP tools · CopilotKit (AG-UI) |
+| Reasoning | Yukti constraint engine (Python) · time-expanded A* on H3 · hybrid RAG (pgvector + full-text, RRF) |
+| Voice & language | Sarvam Saaras v4 (speech-to-text), Bulbul v3 (speech), Sarvam-Translate · Noto fonts for every script |
+| Data | Supabase (Postgres 17, PostGIS, pgvector, Auth, Storage, row-level security) · Neo4j · Redis |
+| Cloud | Azure Container Apps (Central India) · Bicep · Key Vault · Front Door + WAF ready · Application Insights |
+| Quality | pytest · Hypothesis · Jest · Playwright · Maestro · promptfoo · TraceRoot · Ruff · mypy --strict · Trivy |
+
+## 📊 Measured, not claimed
+
+| What | Result | Where |
+|---|---|---|
+| Document search, 440 questions in 22 languages + code-mixed | mean recall@8 **0.925** (gate 0.9; most misses are one document not yet indexed) | [eval report](docs/eval-report.md) |
+| Agent safety checks, 86 traced runs in every language | **1.00** on footer, no "safe", no repaired drafts, no figures for unanswerable questions | [improvement report](docs/improvement/report.md) |
+| Same language in → same language out (promptfoo) | 24 / 25 languages (Sindhi script decision pending) | [improvement report](docs/improvement/report.md) |
+| Phone vs server border distance | within **50 m** wherever alerts happen | `apps/app/__tests__/fences.test.ts` |
+| Walkthrough capture (Android emulator + Chrome) | **22 / 22** Android flows and 6 / 6 runnable web flows pass; 51 screens below | [`apps/app/e2e/`](apps/app/e2e) |
+| Automated tests | ~400 across Python, Jest, Playwright and the failures dataset; 8 CI jobs | [test report](docs/test-report.md) |
+
+## 🚀 Run it yourself
+
+**Try it now:** the [web app](https://ty-web.wittybay-bae06624.centralindia.azurecontainerapps.io) (demo tier — it
+sleeps when idle, so the first load takes ~30 s) or the Android APK from the [releases](https://github.com/Gurjas2112/TarangYukti/releases).
+
+**On your laptop** (Windows Git Bash or WSL; Python 3.12 with `uv`, Node 24 with `pnpm`):
 
 ```bash
-make snapshot DATE=2026-11-02      # capture live sources → data/snapshot/<date>/ + manifest → Supabase Storage
-make sim-warning DATE=2026-11-02   # add the labelled SIMULATED INCOIS high-wave warning (CLEAR=1 removes it)
-DATA_MODE=snapshot SNAPSHOT_DATE=2026-11-02 …   # every tool reads only the snapshot (works offline)
+git clone https://github.com/Gurjas2112/TarangYukti && cd TarangYukti
+cp .env.example .env              # add your keys: Supabase, Gemini, Sarvam, Neo4j (see .env.example)
+make install                      # pnpm + uv for every service
+make infra-up                     # Redis + Grafana (Docker)
+make dev                          # agent :8123 · data tools :8001 · channels :8002 · worker · copilot :8200 · app :8081
 ```
 
-With `DATA_MODE=online`, a tool whose live source is down falls back to the snapshot with
-`cache="snapshot"`, `confidence="low"` and a note; if there is no snapshot it returns
-`data.available=false`. The cache is bypassed (not fatal) when Redis is not running.
+| Command | What it does |
+|---|---|
+| `make test` · `make lint` · `make typecheck` | Every test, linter and type check (what CI runs) |
+| `make demo DATE=YYYY-MM-DD` | Demo from a dated snapshot — works offline |
+| `make brief-now USER=<id>` | Send one fisher's morning brief now |
+| `make sim-boat POST=1` | Replay a boat trip (border alerts, trip open/close, family notice) |
+| `make eval-rag` · `make trace-evals` | Retrieval evaluation · agent evaluation traced into TraceRoot |
+| `make capture CAP=… LIVE=…` | Full walkthrough capture: every flow, every language, screenshots + recording |
+| `cd apps/app && pnpm start` | The app (Android development build or `pnpm web`) |
 
-## Repository
+Deploying to Azure: [docs/go-live.md](docs/go-live.md).
+
+## 🗂 Repository
 
 ```
-apps/app            Expo SDK 57 + Expo Router — Kadal Mitra (Android) + web build, one codebase
-apps/agent          LangGraph agent on Gemini; FastAPI server (/ok now, AG-UI /agent in Milestone 5)
-services/copilot    ty-copilot — CopilotKit runtime (Node 24) → ty-agent
-services/mcp        package "tarangyukti" — FastMCP data tools, Yukti engine, RAG
-services/channels   ty-channels — voice, brief, onboarding, push subscriptions (make channels)
-services/worker     ty-worker — scheduled jobs, push sender
-packages/ty-common  shared settings, ToolResult, two-tier cache (@cached)
-config/             constraints, boats, qc, sources, languages (23), aliases, phrases
-supabase/           config.toml, migrations (postgis, vector, snapshots bucket)
-infra/              docker-compose (redis, otel-lgtm; neo4j optional)
+apps/app        Kadal Mitra — Expo app for Android + web (Simple, Expert, admin)
+apps/agent      LangGraph agent: planner, specialists, validator, AG-UI server
+services/mcp    FastMCP data tools, Yukti constraint engine, safest route, RAG
+services/channels  voice, push, positions, trips, onboarding, admin and provenance API
+services/worker    morning brief, alert watch, push outbox, ingestion, housekeeping
+services/copilot   CopilotKit runtime between the app and the agent
+packages/ty-common shared settings, auth, two-tier cache, telemetry, capture scenarios
+config/         rules (constraints.yaml), boats, sources, languages, approved phrases (23 files)
+infra/          Docker Compose for the laptop, Bicep for Azure
+video/          Remotion story video built from the real walkthrough capture
+docs/           specification, reports, runbooks, governance
 ```
 
-## Quick start (Windows Git Bash or WSL)
+## 🛡 Safety, privacy and honesty
 
-Needs: uv, Node ≥ 24, pnpm 10, Docker (for Redis + Grafana).
+- Personal data stays in Supabase under row-level security; caches and traces never hold phones, names or coordinates.
+- Safety wording comes only from phrase files signed by two native speakers. **Every language is still a draft** —
+  machine-drafted and waiting for its reviewers — so production shows none of them yet.
+- Every failure found becomes a permanent test ([`tests/failures/failures.yaml`](tests/failures/failures.yaml)).
+- Not built yet: the district officer's console, and a detailed offline street basemap (the offline map shows the
+  coastline, border line and marine park).
 
-```bash
-cp .env.example .env                    # fill real values (never commit)
-cp apps/app/.env.example apps/app/.env.local
-cp services/copilot/.env.example services/copilot/.env
-make install                            # pnpm install + uv sync for every Python project
-make infra-up                           # redis + otel-lgtm
-make test lint typecheck
-make dev                                # agent :8123, mcp :8001, channels :8002, copilot :8200, Metro :8081
-```
+## 📚 Learn more
 
-## Milestone 1 decisions and assumptions
+[Engineering specification](docs/TarangYukti_Engineering_Specification_v2.2.md) ·
+[Build contract (AGENTS.md)](AGENTS.md) · [Go-live](docs/go-live.md) · [Incident runbook](docs/incident-runbook.md) ·
+[DPIA](docs/dpia.md) · [Governance](docs/governance.md) · [Releases](docs/releases.md) ·
+[Third-party notices](THIRD_PARTY.md)
 
-- **Dev databases are cloud:** Supabase (Mumbai) and Neo4j AuraDB, instead of the local Supabase stack in spec §12.3.7.
-  Apply migrations with `pnpm dlx supabase link --project-ref <ref>` then `pnpm dlx supabase db push`, and create
-  service roles with `scripts/db_roles.sh`. The local Neo4j container is opt-in (`--profile local-neo4j`).
-- **CopilotKit web check passed:** the web export renders with `@copilotkit/react-native/headless` and reaches
-  `ty-copilot` (`/api/copilotkit/info` → 200) with no console errors, so no `react-core` fallback is needed.
-- Routes live in `apps/app/app/` (spec layout), not the SDK 57 template's `src/app/`.
-- i18n is a minimal catalogue lookup until Milestone 6 brings i18next; every language in `config/languages.yaml`
-  is `draft` until two native-speaker reviewers sign its phrase file.
-- Docling, Ragas and Schemathesis are added in their milestones (4 and later), not now.
-- CopilotKit runtime telemetry is opted out (`COPILOTKIT_TELEMETRY_DISABLED=true`).
-- **Azure is for a hosted demo prototype only**, not live testing with real users. After Milestones 2–7, the
-  demo deploys on pay-as-you-go as a *slim demo tier*: the spec's Container Apps + Bicep + GitHub deploy
-  pipeline, but 1 replica that scales to zero, no zone redundancy and no Azure Load Testing; Front Door + WAF
-  optional. The full Tier 1 of spec §15.2 (≥ 2 replicas, zone-redundant, load gate) applies only if live testing
-  with real users is ever started.
+<div align="center">
 
-Licence: see [LICENSE](LICENSE).
+Made with 🌊 for the fishers of the Gulf of Mannar and Palk Bay · MIT licence
+
+</div>

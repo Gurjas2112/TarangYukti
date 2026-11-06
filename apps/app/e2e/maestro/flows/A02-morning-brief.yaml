@@ -7,3 +7,5 @@ appId: in.tarangyukti.kadalmitra
 - scrollUntilVisible: { element: { id: "play-brief" }, direction: DOWN, timeout: 20000 }
 - tapOn: { id: "play-brief" }
 - takeScreenshot: A02-morning-brief/03-voice-playing
+- back
+- extendedWaitUntil: { visible: { id: "tab-today" }, timeout: 30000 }

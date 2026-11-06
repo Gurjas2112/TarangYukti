@@ -43,7 +43,10 @@ def collect(args: list[str]) -> int:
     to = Path(args[args.index("--to") + 1])
     n = 0
     for base in [Path(a) for a in args[: args.index("--to")]]:
-        for png in base.rglob("*.png"):
+        # Maestro writes `takeScreenshot: <flow>/<step>` relative to the working directory: there, only its own
+        # top-level <flow>/ folders are taken, never anything deeper (the repo holds earlier captures).
+        pngs = base.glob("[AR][0-9][0-9]-*/*.png") if base.resolve() == Path.cwd().resolve() else base.rglob("*.png")
+        for png in pngs:
             flow = png.parent.name
             if not (len(flow) > 4 and flow[0] in "AR" and flow[1:3].isdigit() and flow[3] == "-"):
                 continue

@@ -1,6 +1,7 @@
 appId: in.tarangyukti.kadalmitra
 ---
 # F23: sharing needs a signed-in test fisher
+- extendedWaitUntil: { visible: { id: "tab-me" }, timeout: 30000 }
 - tapOn: { id: "tab-me" }
 - extendedWaitUntil: { visible: { id: "me-screen" }, timeout: 30000 }
 - runFlow:

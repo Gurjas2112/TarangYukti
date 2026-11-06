@@ -3,7 +3,7 @@ appId: in.tarangyukti.kadalmitra
 # F01–F06. Without a test Google account on the emulator the flow takes "Not now" (F05/F06 stay a gap).
 - extendedWaitUntil: { visible: { id: "onboarding-language" }, timeout: 60000 }
 - takeScreenshot: A01-onboarding/01-language-picker
-- scrollUntilVisible: { element: { id: "lang-${APP_LANG}" }, direction: DOWN, timeout: 30000 }
+- scrollUntilVisible: { element: { id: "lang-${APP_LANG}" }, direction: DOWN, timeout: 30000, visibilityPercentage: 50 }
 - tapOn: { id: "lang-speak-${APP_LANG}", optional: true }
 - takeScreenshot: A01-onboarding/02-language-spoken
 - tapOn: { id: "lang-${APP_LANG}" }

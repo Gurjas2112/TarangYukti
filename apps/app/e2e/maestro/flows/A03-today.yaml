@@ -1,6 +1,7 @@
 appId: in.tarangyukti.kadalmitra
 ---
 # F09–F11
+- extendedWaitUntil: { visible: { id: "tab-today" }, timeout: 30000 }
 - tapOn: { id: "tab-today" }
 - extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
 - takeScreenshot: A03-today/01-verdict

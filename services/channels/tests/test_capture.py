@@ -43,9 +43,14 @@ def test_token_required_and_scenarios_apply(
     assert client.post("/admin/capture/scenario", json={"name": "nope"}, headers=h).status_code == 422
 
     assert client.post("/admin/capture/scenario", json={"name": "update-required"}, headers=h).status_code == 200
-    assert client.get("/app/version").json()["minVersionCode"] == 1_000_000
+    r = client.get("/app/version")
+    assert r.json()["minVersionCode"] == 1_000_000
+    assert r.headers["cache-control"] == "no-store"  # capture runs never serve a cached answer
 
     assert client.post("/admin/capture/scenario", json={"name": "fault-next-request"}, headers=h).status_code == 200
-    assert client.get("/app/version").status_code == 500  # exactly one failure
-    assert client.get("/app/version").status_code == 200
+    assert client.get("/app/version").status_code == 200  # other requests are untouched
+    brief = "/brief?harbour=rameswaram&boat_type=small_frp&lang=en-IN"
+    for _ in range(2):  # the first request and the app's one automatic retry
+        assert client.get(brief).status_code == 500
+    assert capture.current() == "normal"  # then the Try again button works
     assert capture.current() == "normal"

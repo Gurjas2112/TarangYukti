@@ -1,6 +1,7 @@
 appId: in.tarangyukti.kadalmitra
 ---
 # F07: the QR is shown to a signed-in user
+- extendedWaitUntil: { visible: { id: "tab-me" }, timeout: 30000 }
 - tapOn: { id: "tab-me" }
 - runFlow:
     when: { visible: { id: "phone-link-qr" } }

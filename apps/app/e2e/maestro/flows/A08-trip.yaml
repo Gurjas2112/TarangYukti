@@ -1,6 +1,7 @@
 appId: in.tarangyukti.kadalmitra
 ---
 # F18–F21: needs a signed-in test fisher with a boat; background alerts are Milestone 11.
+- extendedWaitUntil: { visible: { id: "tab-trip" }, timeout: 30000 }
 - tapOn: { id: "tab-trip" }
 - extendedWaitUntil: { visible: { id: "trip-screen" }, timeout: 30000 }
 - runFlow:

@@ -3,9 +3,12 @@ appId: in.tarangyukti.kadalmitra
 # F35: scenario font-scale-200 (scripts/scenario.sh sets the system font scale)
 - stopApp
 - launchApp
-- extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- extendedWaitUntil: { visible: { id: "today-screen" }, timeout: 90000 }
+- waitForAnimationToEnd: { timeout: 10000 }
 - takeScreenshot: A20-large-text/01-today-200
+- extendedWaitUntil: { visible: { id: "tab-map" }, timeout: 30000 }
 - tapOn: { id: "tab-map" }
 - extendedWaitUntil: { visible: { id: "map-screen" }, timeout: 60000 }
 - takeScreenshot: A20-large-text/02-map-200
+- extendedWaitUntil: { visible: { id: "tab-today" }, timeout: 30000 }
 - tapOn: { id: "tab-today" }

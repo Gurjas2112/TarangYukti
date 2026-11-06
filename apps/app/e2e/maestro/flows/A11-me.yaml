@@ -1,6 +1,7 @@
 appId: in.tarangyukti.kadalmitra
 ---
 # F24–F27
+- extendedWaitUntil: { visible: { id: "tab-me" }, timeout: 30000 }
 - tapOn: { id: "tab-me" }
 - extendedWaitUntil: { visible: { id: "me-screen" }, timeout: 30000 }
 - takeScreenshot: A11-me/01-profile

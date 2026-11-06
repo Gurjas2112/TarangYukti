@@ -4,6 +4,7 @@ appId: in.tarangyukti.kadalmitra
 - stopApp
 - launchApp
 - extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 90000 }
+- extendedWaitUntil: { visible: { id: "tab-today" }, timeout: 30000 }
 - tapOn: { id: "tab-today" }
 - scrollUntilVisible: { element: { id: "suggested-0" }, direction: DOWN, timeout: 20000 }
 - tapOn: { id: "suggested-0" }

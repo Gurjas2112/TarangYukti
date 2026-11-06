@@ -1,6 +1,7 @@
 appId: in.tarangyukti.kadalmitra
 ---
 # F22
+- extendedWaitUntil: { visible: { id: "tab-alerts" }, timeout: 30000 }
 - tapOn: { id: "tab-alerts" }
 - extendedWaitUntil: { visible: { id: "alerts-screen" }, timeout: 30000 }
 - takeScreenshot: A09-alerts/01-list

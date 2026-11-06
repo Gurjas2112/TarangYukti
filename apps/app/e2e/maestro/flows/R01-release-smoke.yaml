@@ -3,7 +3,7 @@ appId: in.tarangyukti.kadalmitra
 # F46: the live APK against Tier 1 (scripts/release_smoke.sh)
 - launchApp: { clearState: true }
 - extendedWaitUntil: { visible: { id: "onboarding-language" }, timeout: 60000 }
-- scrollUntilVisible: { element: { id: "lang-${APP_LANG}" }, direction: DOWN, timeout: 30000 }
+- scrollUntilVisible: { element: { id: "lang-${APP_LANG}" }, direction: DOWN, timeout: 30000, visibilityPercentage: 50 }
 - tapOn: { id: "lang-${APP_LANG}" }
 - extendedWaitUntil: { visible: { id: "harbour-rameswaram" }, timeout: 90000 }
 - tapOn: { id: "harbour-rameswaram" }
@@ -14,9 +14,11 @@ appId: in.tarangyukti.kadalmitra
 - tapOn: { id: "alerts-not-now" }
 - extendedWaitUntil: { visible: { id: "verdict-card" }, timeout: 120000 }
 - takeScreenshot: R01-release-smoke/01-today
+- extendedWaitUntil: { visible: { id: "tab-map" }, timeout: 30000 }
 - tapOn: { id: "tab-map" }
 - extendedWaitUntil: { visible: { id: "map-screen" }, timeout: 60000 }
 - takeScreenshot: R01-release-smoke/02-map
+- extendedWaitUntil: { visible: { id: "tab-alerts" }, timeout: 30000 }
 - tapOn: { id: "tab-alerts" }
 - extendedWaitUntil: { visible: { id: "alerts-screen" }, timeout: 60000 }
 - takeScreenshot: R01-release-smoke/03-alerts
