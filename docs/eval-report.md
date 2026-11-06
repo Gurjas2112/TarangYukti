@@ -49,3 +49,7 @@ safety SOP is not retrieved).
 
 **Next:** save the PIB page and re-index (`make kb-index`), then re-run; add Assamese, Bengali and Bodo spellings of
 "high wave warning" to `config/aliases.yaml` once their reviewers confirm the terms.
+
+**Update 2026-11-06.** The PIB ban release was saved by hand (`kb/sources/captured/pib-2114930.html`) and indexed
+(`make kb-index ONLY=dof:fishing-ban`). The ban question now retrieves `dof:fishing-ban` in the top 4 in English,
+romanised Hindi, Bengali and romanised Tamil (spot check); a full re-run of the 440 questions is still to do.

@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head id="Head1"><title>
+	Press Release Page | Press Information Bureau
+</title><link href="css/style.css?v=1" rel="stylesheet" type="text/css" /><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="alternate stylesheet" href="css/change.css?v=1" media="screen" title="change" /><link rel="alternate stylesheet" href="css/green.css?v=1" media="screen" title="green" /><link rel="alternate stylesheet" href="css/yellow.css" media="screen" title="yellow" /><link rel="stylesheet" type="text/css" href="css/prtint.css" media="print" /><link rel="stylesheet" href="css/style3.1.css" type="text/css" /><link id="pibA11yCss" rel="stylesheet" href="/css/accessibility.css?v=7" type="text/css" />
+    <script type="text/javascript">
+        (function (d) {
+            var t = "";
+            try {
+                t = window.localStorage.getItem("pibStyle") || "";
+            } catch (e) {
+                t = "";
+            }
+            if (t === "orange") {
+                t = "yellow";
+            }
+            var c = t === "change" ? " pib-hc"
+                : t === "green" ? " pib-theme-green"
+                : t === "yellow" ? " pib-theme-yellow" : "";
+            d.documentElement.className += c + " pib-a11y-content";
+        }(document));
+    </script>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/accessibility.js?v=7"></script>
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                  function getParameterByName(name) {
+                        var url = window.location.href;
+                        name = name.replace(/[\[\]]/g, '\\$&');
+                        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                              results = regex.exec(url);
+                        if (!results) return null;
+                        if (!results[2]) return '';
+                        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                  }
+                  let prid = parseInt(getParameterByName('PRID'), 10);
+
+                  if (!isNaN(prid) && prid > 0) {
+                        $.ajax({
+                              type: "POST",
+                              url: "AjaxMethod.aspx/UpdatePRHitCount",
+                              async: false,
+                              data: JSON.stringify({ 'PermId': prid }),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              success: function (response) {
+                                    console.log(response);
+                              },
+                              error: function (error) {
+                                    console.log("Error in AJAX request", error);
+                              }
+                        });
+                  } else {
+                        console.log("Invalid parameters:", prid);
+                  }
+            });
+    </script>
+    <style type="text/css">
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        full-width {
+            width: 100%;
+        }
+
+        .logo-left, .logo-center, .countdown {
+            display: flex;
+            align-items: center;
+        }
+
+            .logo-left img, .logo-center img {
+                height: 70px;
+            }
+
+        .countdown {
+            text-align: center;
+            background-color: var(--dbim-text, #150202);
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid grey;
+        }
+
+        .firstnumber {
+            color: #000000;
+            position: absolute;
+            top: 50px;
+            right: 90px;
+            font-size: 30px;
+        }
+
+        .secondnumber {
+            position: absolute;
+            color: #000000;
+            right: 45px;
+            top: 50px;
+            font-size: 30px;
+        }
+
+        .countdown .days {
+            font-size: 35px;
+            color: gold;
+        }
+
+        .countdown p {
+            margin: 0;
+        }
+
+        .countdown .text {
+            font-size: 16px;
+        }
+
+        a {
+            word-break: break-all;
+        }
+
+        iframe, img {
+            max-width: 100%;
+        }
+
+        /* === DBIM 3.0 Option 4 Separator Line & Reading Meta Styling === */
+        .pr-share--footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-top: 1px solid var(--dbim-border, #d1d5db);
+            padding-top: 16px;
+            margin-top: 24px;
+        }
+
+        .pr-share__left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pr-reading-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--dbim-text-secondary, #475569);
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: auto;
+        }
+
+        .pr-reading-meta__item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pr-reading-meta__divider {
+            color: var(--dbim-border, #cbd5e1);
+            font-weight: 300;
+        }
+
+        .pib-hc .pr-reading-meta,
+        .pib-hc .pr-reading-meta svg {
+            color: currentColor !important;
+        }
+
+        @media (max-width: 680px) {
+            .pr-share--footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pr-reading-meta {
+                margin-left: 0;
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media(max-width:1199px) {
+            .firstnumber {
+                top: 40px;
+                right: 72px;
+                font-size: 30px;
+            }
+
+            .secondnumber {
+                right: 35px;
+                top: 40px;
+                font-size: 30px;
+            }
+        }
+
+        @media(max-width:990px) {
+            .firstnumber {
+                top: 25px;
+                right: 54px;
+                font-size: 30px;
+            }
+
+            .secondnumber {
+                right: 25px;
+                top: 25px;
+                font-size: 30px;
+            }
+        }
+
+        @media(max-width:768px) {
+            .countdown, .days {
+                font-size: 12px !important;
+            }
+
+            .firstnumber {
+                top: 25%;
+                right: 8%;
+                font-size: 30px;
+            }
+
+            .secondnumber {
+                right: 4.5%;
+                top: 25%;
+                font-size: 30px;
+            }
+        }
+
+        @media(max-width:475px) {
+            .countdown, .days {
+                font-size: 10px !important;
+                top: 20%;
+            }
+
+            .bannerimgdiv {
+                padding: 0 !important;
+            }
+
+            .bannerimg {
+                width: 108% !important;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+            $(function () {
+                  $("[id*=printPDF]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+            $(function () {
+                  $("[id*=printPDFEvent]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+    </script>
+
+    <link id="pibConsentCss" href="/css/consent.css?v=8" rel="stylesheet" type="text/css" /><link id="pibFontsCss" href="/css/fonts-noto.css?v=6" rel="stylesheet" type="text/css" /><link id="pibDbimCss" href="/css/dbim.css?v=1120" rel="stylesheet" type="text/css" /><meta property="og:title" content="Assistant to Fishermen" /><meta property="og:url" content="www.pib.gov.in/Pressreleaseshare.aspx?PRID=2114930" /><meta property="og:description" content="The uniform ban on fishing for 61 days is implemented annually by the Department of Fisheries, Gover" /><meta property="og:image" content="https:/pib.gov.in/images/indian-emblem.png" />
+                                <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="C4E7H-KSCMC-422L4-W3EM5-U36MF",function(){function e(){if(!i){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,o.parentNode.appendChild(e),i=!0}}function t(e){i=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(o.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",o.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"C4E7H-KSCMC-422L4-W3EM5-U36MF";var o=document.currentScript||document.getElementsByTagName("script")[0],i=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!i)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),o.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="m5zoelth6nzwq2xmy76a-f-1979f0f30-clientnsv4-s.akamaihd.net",o="false"=="true"?2:1,i={"ak.v":"41","ak.cp":"1825201","ak.ai":parseInt("1215205",10),"ak.ol":"0","ak.cr":17,"ak.ipv":4,"ak.proto":"h2","ak.rid":"4749e4c4","ak.r":28714,"ak.a2":n,"ak.m":"dscb","ak.n":"ff","ak.cport":56530,"ak.gh":"103.243.115.103","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1793902588","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==mcZWio6m/MqZ/oArJ1sV5nkRHvF3gxd/TidkHfBbOJb/xUngRFmunIk7CtWKsDrk9OsVbbtRvdHZNXGkhkwkKmlxgVE/CUPZaVZCNMYOdvZD4Y+tAUTRADJf87+yh0gQdFy4okC+v/Xxnb8y3hoo2JrO9YarGDPQt4AF/XqsnFP68H/yPFoOaIWria1M2ybnPPepek6W8ZUJECcpTuM8j9WK9bs5OAS5FsMATSE4IAPn8yACZwDQmzwOHEzsRT2l3qlstsx98fQt7BLa2oFN7MyyLK2I0DeMRePVyRNLYpMbfMO6hWgm5ckzw1dv0S54vyWyN5Jd3m52MLv/4/S0scprNxbgP1wPFqDPWySlNSOetMcuvB9h/pdvP+77piNHr+6K4JA4BqmKGw4cqay2EdTyfFW1kpGSvIDsLN9qKuI=","ak.pv":"9","ak.dpoabenc":"","ak.tf":o};if(""!==t)i["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))i["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var e=["ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+     style="position:absolute;width:0;height:0;overflow:hidden" id="dbim-icon-sprite">
+    <defs>
+        <symbol id="icon-angle-double-left" viewBox="0 0 24 24"><path d="M11.6 4.6 4.2 12l7.4 7.4 2.2-2.2L8.6 12l5.2-5.2z"/><path d="M19 4.6 11.6 12 19 19.4l2.2-2.2L16 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-angle-double-right" viewBox="0 0 24 24"><path d="M12.4 4.6 10.2 6.8 15.4 12l-5.2 5.2 2.2 2.2L19.8 12z"/><path d="M5 4.6 2.8 6.8 8 12l-5.2 5.2L5 19.4 12.4 12z"/></symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M20.8 10.6H9.6v2.8h11.2z"/><path d="M10.8 5.6 3.2 12l7.6 6.4z"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M3.2 10.6h11.2v2.8H3.2z"/><path d="M13.2 5.6 20.8 12l-7.6 6.4z"/></symbol>
+        <symbol id="icon-blogger" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M6.4 2.4h11.2a4 4 0 0 1 4 4v11.2a4 4 0 0 1-4 4H6.4a4 4 0 0 1-4-4V6.4a4 4 0 0 1 4-4zm2.8 5.2a2 2 0 0 0 0 4h2.4a2 2 0 0 0 0-4zm0 5.6a2 2 0 0 0 0 4h5.6a2 2 0 0 0 0-4z"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path d="M7.6 2.4H10v2.4H7.6z"/><path d="M14 2.4h2.4v2.4H14z"/><path fill-rule="evenodd" d="M4 4.8h16a1.6 1.6 0 0 1 1.6 1.6v13.2a1.6 1.6 0 0 1-1.6 1.6H4a1.6 1.6 0 0 1-1.6-1.6V6.4A1.6 1.6 0 0 1 4 4.8zm.4 5.6v8.4h15.2v-8.4z"/><path d="M6.4 12.4h3.2v3.2H6.4z"/></symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="M15.4 4.6 8 12l7.4 7.4 2.2-2.2L12.4 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="M8.6 4.6 6.4 6.8 11.6 12l-5.2 5.2 2.2 2.2L16 12z"/></symbol>
+        <symbol id="icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24"><path d="M10.8 3h2.4v7.6h3.4L12 16.6l-4.6-6h3.4z"/><path d="M4 17.2h2.4v2.4h11.2v-2.4H20v3.2a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 20.4z"/></symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M13.6 21.6v-8.4h2.8l.42-3.3h-3.22V7.8c0-.95.27-1.6 1.64-1.6h1.74V3.26a23 23 0 0 0-2.54-.13c-2.5 0-4.22 1.53-4.22 4.34v2.43H7.4v3.3h2.82v8.4z"/></symbol>
+        <symbol id="icon-fact-check" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4 3.6 5.6v6.2c0 4.6 3.4 8.6 8.4 9.8 5-1.2 8.4-5.2 8.4-9.8V5.6zm-1 13.2-3.6-3.6 1.7-1.7 1.9 1.9 4.5-4.5 1.7 1.7z"/></symbol>
+        <symbol id="icon-hashtag" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.8 3h2.4l-1 6h3.2l1-6h2.4l-1 6h3.4v2.4h-3.8l-.6 3.2h3.6V17h-4l-1 5h-2.4l1-5h-3.2l-1 5H5.4l1-5H3V14.6h3.8l.6-3.2H3.8V9h4zm.6 8.4-.6 3.2h3.2l.6-3.2z"/></symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="M12 3.4 2.8 11.6h2.4v8.4a1 1 0 0 0 1 1h3.3v-5.4h5v5.4h3.3a1 1 0 0 0 1-1v-8.4h2.4z"/></symbol>
+        <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.6 2.4h8.8a5.2 5.2 0 0 1 5.2 5.2v8.8a5.2 5.2 0 0 1-5.2 5.2H7.6a5.2 5.2 0 0 1-5.2-5.2V7.6a5.2 5.2 0 0 1 5.2-5.2zm0 2.4a2.8 2.8 0 0 0-2.8 2.8v8.8a2.8 2.8 0 0 0 2.8 2.8h8.8a2.8 2.8 0 0 0 2.8-2.8V7.6a2.8 2.8 0 0 0-2.8-2.8z"/><path fill-rule="evenodd" d="M12 6.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 2.4a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z"/><circle cx="17.3" cy="6.7" r="1.3"/></symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M4.8 8.8h3.6v12H4.8z"/><circle cx="6.6" cy="5.4" r="2.1"/><path d="M10.8 8.8h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.35 4.3 5.4v6.6h-3.6v-5.85c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1v5.95h-3.6z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M2.4 7.6v9.2a1.6 1.6 0 0 0 1.6 1.6h16a1.6 1.6 0 0 0 1.6-1.6V7.6L12 14z"/><path d="M21.2 5.4H2.8L12 11.8z"/></symbol>
+        <symbol id="icon-mail-open" viewBox="0 0 24 24"><path d="M2.4 9.8h19.2v9.6A1.6 1.6 0 0 1 20 21H4a1.6 1.6 0 0 1-1.6-1.6z"/><path d="M12 2.6 21.6 9.2h-3.8L12 5.3 6.2 9.2H2.4z"/><path d="m3.9 11.2 8.1 5.4 8.1-5.4 1.5 1.3-9.6 6.4-9.6-6.4z"/></symbol>
+        <symbol id="icon-map-marker" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a7 7 0 0 0-7 7c0 5.2 7 12.2 7 12.2s7-7 7-12.2a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></symbol>
+        <symbol id="icon-newspaper" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.8 4.4h14.8v15.2H2.8zm2 2v11.2h10.8V6.4z"/><path d="M6 7.6h8.4v1.6H6z"/><path d="M6 10.8h8.4v1.6H6z"/><path d="M6 14h5.2v1.6H6z"/><path d="M18.4 8.4h2.8v9.6a1.4 1.4 0 0 1-2.8 0z"/></symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24"><rect x="7.4" y="4" width="3.6" height="16" rx="0.9"/><rect x="13" y="4" width="3.6" height="16" rx="0.9"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 4.5v15l12-7.5z"/></symbol>
+        <symbol id="icon-picture" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.4 5.2h19.2v13.6H2.4zm2 2v9.6h15.2V7.2z"/><path d="M5.6 16.4 10 11l2.6 3 2-2.2 4 4.6z"/><circle cx="8" cy="10.4" r="1.5"/></symbol>
+        <symbol id="icon-press-conference" viewBox="0 0 24 24"><circle cx="12" cy="5.2" r="2.6"/><path d="M7.6 12.2a4.4 4.4 0 0 1 8.8 0z"/><circle cx="4.9" cy="9.6" r="2.2"/><path d="M1.8 15.2a3.1 3.1 0 0 1 6.2 0z"/><circle cx="19.1" cy="9.6" r="2.2"/><path d="M16 15.2a3.1 3.1 0 0 1 6.2 0z"/><path d="M6.6 13.6h10.8l2.2 7.8H4.4z"/></symbol>
+        <symbol id="icon-print" viewBox="0 0 24 24"><path d="M6.4 2.8h11.2v4.4H6.4z"/><path d="M4 8.4h16a1.6 1.6 0 0 1 1.6 1.6v5.6a1.6 1.6 0 0 1-1.6 1.6h-1.6v-2.8H6v2.8H4a1.6 1.6 0 0 1-1.6-1.6V10A1.6 1.6 0 0 1 4 8.4z"/><path d="M7.2 15.6h9.6v5.6H7.2z"/></symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24"><circle cx="4.8" cy="19.2" r="2.4"/><path d="M2.4 11.2v3.2a6.4 6.4 0 0 1 6.4 6.4H12A9.6 9.6 0 0 0 2.4 11.2z"/><path d="M2.4 4.8V8A13.6 13.6 0 0 1 16 21.6h3.2A16.8 16.8 0 0 0 2.4 4.8z"/></symbol>
+        <symbol id="icon-search-plus" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 2.8a7.2 7.2 0 1 0 0 14.4 7.2 7.2 0 0 0 0-14.4zm0 2.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6z"/><path d="M15.3 14.6 21.2 20.5l-1.5 1.5-5.9-5.9z"/><path d="M9.2 6.8h1.6v2.4h2.4v1.6h-2.4v2.4H9.2v-2.4H6.8V9.2h2.4z"/></symbol>
+        <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5.6" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="18.4" r="3"/><path d="M8.3 10.9 15.7 7.2l.9 1.8-7.4 3.7z"/><path d="M9.2 13.1 16.6 16.8l-.9 1.8-7.4-3.7z"/></symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"><path d="M4.2 3h4.3l11.3 18h-4.3z"/><path d="M19.3 3h-2.6L4.2 21h2.6z"/></symbol>
+        <symbol id="icon-university" viewBox="0 0 24 24"><path d="M12 2.4 21.6 7.2v1.6H2.4V7.2z"/><path d="M4.8 10.4h2.4v8H4.8z"/><path d="M9.2 10.4h2.4v8H9.2z"/><path d="M13.4 10.4h2.4v8h-2.4z"/><path d="M17.6 10.4H20v8h-2.4z"/><path d="M3.2 19.8h17.6v1.8H3.2z"/></symbol>
+        <symbol id="icon-volume-up" viewBox="0 0 24 24"><path d="M3.2 9.2h3.3l5-4.2v14l-5-4.2H3.2z"/><path d="M14.6 8.4a5 5 0 0 1 0 7.2l1.6 1.6a7.2 7.2 0 0 0 0-10.4z"/><path d="M17.4 5.6a8.8 8.8 0 0 1 0 12.8l1.5 1.5a10.9 10.9 0 0 0 0-15.8z"/></symbol>
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a9.5 9.5 0 0 0-8.1 14.5L2.4 21.6l4.8-1.4A9.5 9.5 0 1 0 12 2.4zm0 2.2a7.3 7.3 0 1 1-3.8 13.5l-.4-.2-2.6.7.7-2.5-.3-.4A7.3 7.3 0 0 1 12 4.6z"/><path d="M9.4 7.8c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.4 7.6.4 7.6.4s5.9 0 7.6-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8zM10.2 15.1V8.9l5.1 3.1z"/></symbol>
+    </defs>
+</svg>
+
+    <form method="post" action="./PressReleasePage.aspx?PRID=2114930&amp;reg=48&amp;lang=2" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="sc_HiddenField" id="sc_HiddenField" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZPQet1wIx1Q48y3xJY2k25Y7qxH5RrQ9qQcN-OiTC9guZtri9w2&amp;t=639191042600000000" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=x6wALODbMJK5e0eRC_p1LdIxBJXt0U_WW5GWfJqHAqo6frgCmGRfEywglicTersO2OKrFhK1gAIp0Wk2al2YrpdR3uWqH6f4nfjBsCyRUfTUUVmb0&amp;t=ffffffffecf8d3f2" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=P5lTttoqSeZXoYRLQMIScH645UK3RD852IErF2548Wz9Ssv0rLjB4fhVKnHcMpqkaMHpNAGOeWY02Lf4aBYN9-dVBme_SNK5KJwmFQNpMixYDZ7M0&amp;t=ffffffffecf8d3f2" type="text/javascript"></script>
+<script src="/PressReleasePage.aspx?_TSM_HiddenField_=sc_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.5.7.123%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a5a4df314-b4a2-4da2-a207-9284f1b1e96c%3ade1feab2%3af2c8e708%3a8613aea7%3af9cec9bc%3a3202a5a2%3aab09e3fe%3a87104b7c%3a720a52bf%3a589eaa30%3aa67c2700%3abe6fb298" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="59B53027" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="6d5zlTWNmYly2sGGbwkygmuyq7ze0haSZl8GcUui862knLi4UAm2TXXqzC9KW/tWnbjtDPuuBYOd9pItbpFLBXVaTFcugCIYgp0PAqsmk/lKnNIstpt/sT0rPd9YylaVQziZawV2bZjqq6gn3BRClrAmL+uTZFkZM+6Z7f/wi2qfycSQwle20K8GdW+dnFBVIilTBY1Z6tBSxc65ydX6ZiLqpFkS9vDBTlTlF93qqR5auLcU3WdW810/mvHuZ1zoqkjLouP8STYEYZb7Ku8ZmZscl/Q=" />
+</div>
+        
+        <div id="templateCss"></div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('sc', 'form1', ['tupdate12','update12'], [], [], 90, '');
+//]]>
+</script>
+
+        <input type="hidden" name="hfGridHtml" id="hfGridHtml" />
+        <div class="container" style='margin-bottom: 50px;'>
+            <div id="accessories">
+                
+                <div class="pull-right" style="display: flex">
+                    <div id="voll"></div>
+                    <div id="vollDT"></div>
+                    
+
+<span class="print-icons">
+<input type="image" name="Print1$print" id="Print1_print" aria-label="Print" src="images/printer_icon.png" alt="print page button" style="padding: 5px 10px 5px 10px;" />
+</span>
+                </div>
+            </div>
+            <input type="hidden" name="hydpermid" id="hydpermid" value="2114930" />
+            
+
+            <div class="innner-page-main-about-us-content-right-part">
+                <div id="MinistryName" class="MinistryNameSubhead text-center">
+                    Ministry of Fisheries, Animal Husbandry & Dairying
+                </div>
+                <div id="lg_g"><div class='log_oo'>  <img src='https://static.pib.gov.in/WriteReadData/specificdocs/photo/2026/sep/ph_9768_20260902_10000501.png' alt='azadi ka amrit mahotsav' /> </div></div>
+
+                <div class="text-center event-heading-background">
+                    
+                    <h1 id="Titleh2">
+                        Assistant to Fishermen
+                    </h1>
+                    <h3 id="Subtitleh3">
+                        <span id="ltrSubtitle"></span>
+                    </h3>
+                </div>
+
+                <div id="PrDateTime" class="ReleaseDateSubHeaddateTime text-center pt20">
+                    Posted On:
+                              25 MAR 2025 5:45PM by PIB Delhi
+                </div>
+                
+                <div class='pt20'>
+                </div>
+                <input type="hidden" name="hydphotoUrl" id="hydphotoUrl" />
+                
+
+                <!-- Release content wrapper for client-side zero-reflow word count -->
+                <div id="pibReleaseBody">
+                    <p style="margin-left:0in; margin-right:-2.15pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The uniform ban on fishing for 61 days is implemented annually by the <span style="color:black">Department of Fisheries, </span>Government of India in the Exclusive Economic Zone (EEZ) of India beyond territorial waters on both the coasts for 61 days (<em>i.e</em>., 15<sup>th</sup> April to 14<sup>th</sup> June in the East Coast, and 1<sup>st</sup> June to 31<sup>st</sup> July in the West Coast) based on the recommendations of the Technical Committee and in consultation with the coastal States/Union Territories (UTs). The traditional non-motorized units are exempted from this uniform fishing ban imposed in the Indian EEZ beyond territorial waters. Similarly, the coastal States/UTs are also implementing the fishing ban within their territorial waters in line with the uniform ban implemented in the EEZ. Under the Pradhan Mantri Matsya Sampada Yojana (PMMSY) implemented by the <span style="color:black">Department of Fisheries, </span>Government of India, the livelihood and nutritional support for socio-economically backward active traditional fishers<span style="color:black"> is provided </span>during the fishing ban/lean period. Livelihood and nutritional support for 5,97,709 fisher families has been provided annually during fishing ban/lean period, at a total investment of Rs.1059.94 crores during 2020-21 to 2023-24. </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">As informed by the Department of Commerce, Ministry of Commerce and Industry, Govt. of India, there has been an import of fish and fish products worth 722.01 million USD to India in the last 3 years (FY 2021-22 to FY 2023-24), including import in the state of Tamil Nadu. As informed by the Marine Products Export Development Authority (MPEDA) under the Department of Commerce, Ministry of Commerce and Industry, there has been an export of fish and fish products worth 23,235.78 million USD from India in the last 3 years (FY 2021-22 to FY 2023-24), including fish and fish products worth 2,607.99 million USD from the state of Tamil Nadu. </span></span></p>
+
+<p style="text-align:justify"><span style="color:black; font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px">In order to promote the export of marine products, the Department of Fisheries, Government of India has taken several steps, these <em>inter-alia</em> include support through PMMSY for branding, standards and certification, training and capacity building, creation of post-harvest infrastructure with emphasis on seamless cold-chain and development of modern fishing harbours and fish landing centers, etc. In addition, to address the critical infrastructure requirements of fisheries and aquaculture sectors, the Department of Fisheries, GoI during 2018-19 has created the Fisheries and Aquaculture Infrastructure Development Fund (FIDF) with a total fund size of Rs 7522.48 crore to provide concessional finance to states/UT and private sector. In this regard the supported activities included development of 27,823 ice plant /cold storages and transportation facilities with an investment of ₹1362 Cr, acquisition of 1398 Deep Sea Fishing Vessels (₹ 1310 Cr) and up-gradation of 1338 fishing vessels (₹ 193.64 Cr). Further, Department of Fisheries has also approved the projects for export oriented fish species such as Scampi, Mud crab, Asian Seabass, Cobia etc. and supported the state-of-the-art aquaculture production technologies like RAS and Biofloc. In addition, Department of Fisheries, GoI has notified Tuna Cluster in the Union Territory of Andaman &amp; Nicobar Islands, Seaweed Cluster in the Lakshadweep and has issued the Guidelines for promoting diversified species and Nucleus Breeding Centre (NBCs)/Broodstock Multiplication Centre (BMCs) under the Coastal Aquaculture Authority Act, 2005 (amended in 2023). Apart from this, to ensure the sustainability and uninterrupted supply of Indian seafood material to the US Market, the Department is supporting a Marine Mammal Stock Assessment Project at the cost of around ₹ 13.29 Cr. In order to meet the requirements of the export markets for wild-caught shrimp, the Department of Fisheries is facilitating the installation of Turtle Excluder Devices (TEDs) in shrimp trawlers by including TEDs as a separate line item under the PMMSY scheme, and has advised the maritime states/UTs to mandate TED usage in trawl nets through amendments in their respective Marine Fisheries Regulation Acts. To strengthen India&#39;s seafood sector globally, the Government is facilitating ease of business by amending Coastal Aquaculture Authority Act (Amendment) 2023. In addition, the Department is conducting Investors meets, Stakeholders consultation and also advising the States/UTs to encourage the farmers to attend the technical and demonstration workshops/training programs related to seed and feed, technology infusion, ornamental fisheries, hatchery technologies etc. on periodic basis in order to increase in productivity and quality of fishery produce</span><strong style="font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px"><span style="color:black">.</span></strong></p>
+
+<p style="margin-left:0in"><span style="font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px; text-align:justify">This information was given by Union Minister of State, Ministry of Fisheries, Animal Husbandry and Dairying, Shri George Kurian, in a written reply in Lok Sabha on 25th March, 2025.</span></p>
+
+<p style="margin-left:0in; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">*****</span></span></p>
+
+<p style="margin-left:0in"><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">AA</span></span></strong></p>
+
+                </div>
+
+                <div id="reel_pic">
+                </div>
+
+                <br />
+                <span id="ReleaseId">(Release ID: 2114930)</span>
+                <span id="lblViews">Visitor Counter : 1212</span>
+                <div>
+                    
+                </div>
+                
+
+                <span id="lblRefPhoto"></span>
+
+                <div class="BackgroundRelease">
+                    
+                </div>
+                <div>
+                    
+                </div>
+                <div class="ReleaseLang">Read this release in: 
+                
+                        <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2115000' target="_blank">
+                            Urdu </a>
+                    
+                        ,
+                    
+                        <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2114932' target="_blank">
+                            हिन्दी </a>
+                    
+                </div>
+
+                <div class="RelTag">
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <div class="clear">
+                </div>
+
+                <!-- DBIM 3.0 Option 4: Separator Line with Left Share Rail & Right Reading Metrics -->
+                <div class="pr-share pr-share--footer" role="region" aria-label="Share and reading details">
+                    <div class="pr-share__left">
+                        <span class="pr-share__label" aria-hidden="true">Share</span>
+                        <ul class="pr-share__list">
+                            <li><a class="pr-share__btn pr-share__btn--facebook"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2114930"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Share on Facebook">
+                                <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false">
+                                    <use href="#icon-facebook" xlink:href="#icon-facebook"></use>
+                                </svg>
+                            </a></li>
+                            <li><a class="pr-share__btn pr-share__btn--twitter"
+                                href="https://twitter.com/intent/tweet?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2114930"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Share on X">
+                                <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false">
+                                    <use href="#icon-twitter" xlink:href="#icon-twitter"></use>
+                                </svg>
+                            </a></li>
+                            <li><a class="pr-share__btn pr-share__btn--whatsapp"
+                                href="https://api.whatsapp.com/send?text=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2114930"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Share on WhatsApp">
+                                <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false">
+                                    <use href="#icon-whatsapp" xlink:href="#icon-whatsapp"></use>
+                                </svg>
+                            </a></li>
+                            <li><a class="pr-share__btn pr-share__btn--linkedin"
+                                href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2114930"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Share on LinkedIn">
+                                <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false">
+                                    <use href="#icon-linkedin" xlink:href="#icon-linkedin"></use>
+                                </svg>
+                            </a></li>
+                            <li><a class="pr-share__btn pr-share__btn--mail"
+                                href="mailto:?subject=Press+release+from+PIB&amp;body=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2114930"
+                                aria-label="Share by email">
+                                <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false">
+                                    <use href="#icon-mail" xlink:href="#icon-mail"></use>
+                                </svg>
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="pr-reading-meta" id="prReadingMeta" aria-label="Reading statistics">
+                        <span class="pr-reading-meta__item">
+                            <!-- Modern Document / Word Count Icon -->
+                            <svg class="pr-reading-meta__icon" width="18" height="18" viewbox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5" />
+                                <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" />
+                            </svg>
+                            <span id="prWordCount">-- words</span>
+                        </span>
+
+                        <span class="pr-reading-meta__divider" aria-hidden="true">|</span>
+
+                        <span class="pr-reading-meta__item">
+                            <!-- Modern Precision Clock / Read Time Icon -->
+                            <svg class="pr-reading-meta__icon" width="18" height="18" viewbox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+                                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+                            </svg>
+                            <span id="prReadTime">-- min read</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="RelLink" class="RelLink">
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <center>
+                    
+                </center>
+            </div>
+
+            <div id="update12">
+	
+                    
+                    <input type="hidden" name="Hidden" id="Hidden" />
+                    <div id="P_CategoryManagement" class="ModalWindow" style="border-width:0px;height:60%;width:60%;overflow:auto;display: none">
+		
+                        <div>
+                            <input type="image" name="btnClose" id="btnClose" src="images/close_flat_icon.png" />
+                        </div>
+                        <div id="description">
+                        </div>
+                        <div class="text-center">
+                            <h2>
+                                
+                                <br>
+                                
+                            </h2>
+                        </div>
+                        <br />
+                        <div class="clear">
+                        </div>
+                        
+                    
+	</div>
+                
+</div>
+        </div>
+
+        <div id="PdfDiv" style="display: none;">
+            <table width="100%">
+                <tr>
+                    <td style="font-weight: 200; text-align: center">
+                        Ministry of Fisheries, Animal Husbandry & Dairying
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                        <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                            Assistant to Fishermen
+                        </div>
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                        <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                            
+                        </div>
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                        <div style="text-align: center; font-size: 14px;">
+                            Posted On:
+                                          25 MAR 2025 5:45PM by PIB Delhi
+                        </div>
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                        <div style="font-weight: 200; text-align: left; font-size: 16px;">
+                            <p style="margin-left:0in; margin-right:-2.15pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The uniform ban on fishing for 61 days is implemented annually by the <span style="color:black">Department of Fisheries, </span>Government of India in the Exclusive Economic Zone (EEZ) of India beyond territorial waters on both the coasts for 61 days (<em>i.e</em>., 15<sup>th</sup> April to 14<sup>th</sup> June in the East Coast, and 1<sup>st</sup> June to 31<sup>st</sup> July in the West Coast) based on the recommendations of the Technical Committee and in consultation with the coastal States/Union Territories (UTs). The traditional non-motorized units are exempted from this uniform fishing ban imposed in the Indian EEZ beyond territorial waters. Similarly, the coastal States/UTs are also implementing the fishing ban within their territorial waters in line with the uniform ban implemented in the EEZ. Under the Pradhan Mantri Matsya Sampada Yojana (PMMSY) implemented by the <span style="color:black">Department of Fisheries, </span>Government of India, the livelihood and nutritional support for socio-economically backward active traditional fishers<span style="color:black"> is provided </span>during the fishing ban/lean period. Livelihood and nutritional support for 5,97,709 fisher families has been provided annually during fishing ban/lean period, at a total investment of Rs.1059.94 crores during 2020-21 to 2023-24. </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">As informed by the Department of Commerce, Ministry of Commerce and Industry, Govt. of India, there has been an import of fish and fish products worth 722.01 million USD to India in the last 3 years (FY 2021-22 to FY 2023-24), including import in the state of Tamil Nadu. As informed by the Marine Products Export Development Authority (MPEDA) under the Department of Commerce, Ministry of Commerce and Industry, there has been an export of fish and fish products worth 23,235.78 million USD from India in the last 3 years (FY 2021-22 to FY 2023-24), including fish and fish products worth 2,607.99 million USD from the state of Tamil Nadu. </span></span></p>
+
+<p style="text-align:justify"><span style="color:black; font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px">In order to promote the export of marine products, the Department of Fisheries, Government of India has taken several steps, these <em>inter-alia</em> include support through PMMSY for branding, standards and certification, training and capacity building, creation of post-harvest infrastructure with emphasis on seamless cold-chain and development of modern fishing harbours and fish landing centers, etc. In addition, to address the critical infrastructure requirements of fisheries and aquaculture sectors, the Department of Fisheries, GoI during 2018-19 has created the Fisheries and Aquaculture Infrastructure Development Fund (FIDF) with a total fund size of Rs 7522.48 crore to provide concessional finance to states/UT and private sector. In this regard the supported activities included development of 27,823 ice plant /cold storages and transportation facilities with an investment of ₹1362 Cr, acquisition of 1398 Deep Sea Fishing Vessels (₹ 1310 Cr) and up-gradation of 1338 fishing vessels (₹ 193.64 Cr). Further, Department of Fisheries has also approved the projects for export oriented fish species such as Scampi, Mud crab, Asian Seabass, Cobia etc. and supported the state-of-the-art aquaculture production technologies like RAS and Biofloc. In addition, Department of Fisheries, GoI has notified Tuna Cluster in the Union Territory of Andaman &amp; Nicobar Islands, Seaweed Cluster in the Lakshadweep and has issued the Guidelines for promoting diversified species and Nucleus Breeding Centre (NBCs)/Broodstock Multiplication Centre (BMCs) under the Coastal Aquaculture Authority Act, 2005 (amended in 2023). Apart from this, to ensure the sustainability and uninterrupted supply of Indian seafood material to the US Market, the Department is supporting a Marine Mammal Stock Assessment Project at the cost of around ₹ 13.29 Cr. In order to meet the requirements of the export markets for wild-caught shrimp, the Department of Fisheries is facilitating the installation of Turtle Excluder Devices (TEDs) in shrimp trawlers by including TEDs as a separate line item under the PMMSY scheme, and has advised the maritime states/UTs to mandate TED usage in trawl nets through amendments in their respective Marine Fisheries Regulation Acts. To strengthen India&#39;s seafood sector globally, the Government is facilitating ease of business by amending Coastal Aquaculture Authority Act (Amendment) 2023. In addition, the Department is conducting Investors meets, Stakeholders consultation and also advising the States/UTs to encourage the farmers to attend the technical and demonstration workshops/training programs related to seed and feed, technology infusion, ornamental fisheries, hatchery technologies etc. on periodic basis in order to increase in productivity and quality of fishery produce</span><strong style="font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px"><span style="color:black">.</span></strong></p>
+
+<p style="margin-left:0in"><span style="font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px; text-align:justify">This information was given by Union Minister of State, Ministry of Fisheries, Animal Husbandry and Dairying, Shri George Kurian, in a written reply in Lok Sabha on 25th March, 2025.</span></p>
+
+<p style="margin-left:0in; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">*****</span></span></p>
+
+<p style="margin-left:0in"><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">AA</span></span></strong></p>
+
+                        </div>
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                        <div style="font-weight: 100; text-align: left; font-size: 16px;">
+                            (Release ID: 2114930)
+                        </div>
+                        <div style="height: 30px; width: 100%;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 200; text-align: center; font-size: 24px;"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="clearfix">
+        </div>
+
+        <div class="section1">
+            <div id="frst_t">
+                <div id="arr_rm"><div class='sticky-social_mb'><ul class='social_mb'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930&text=Assistant to Fishermen' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Assistant to Fishermen&body=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930&title=Assistant to Fishermen&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+            </div>
+            <div id="second_t">
+                <div id="sndr_rm"><div class='sticky-social'><ul class='social'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930&text=Assistant to Fishermen' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Assistant to Fishermen&body=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=2114930&title=Assistant to Fishermen&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+            </div>
+        </div>
+        <input type="hidden" name="ltrTitlee" id="ltrTitlee" value="Assistant to Fishermen" />
+        <input type="hidden" name="ltrSubtitlee" id="ltrSubtitlee" />
+        <input type="hidden" name="ltrDescriptionn" id="ltrDescriptionn" value="&lt;p style=&quot;margin-left:0in; margin-right:-2.15pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>The uniform ban on fishing for 61 days is implemented annually by the &lt;span style=&quot;color:black&quot;>Department of Fisheries, &lt;/span>Government of India in the Exclusive Economic Zone (EEZ) of India beyond territorial waters on both the coasts for 61 days (&lt;em>i.e&lt;/em>., 15th April to 14th June in the East Coast, and 1st June to 31st July in the West Coast) based on the recommendations of the Technical Committee and in consultation with the coastal States/Union Territories (UTs). The traditional non-motorized units are exempted from this uniform fishing ban imposed in the Indian EEZ beyond territorial waters. Similarly, the coastal States/UTs are also implementing the fishing ban within their territorial waters in line with the uniform ban implemented in the EEZ. Under the Pradhan Mantri Matsya Sampada Yojana (PMMSY) implemented by the &lt;span style=&quot;color:black&quot;>Department of Fisheries, &lt;/span>Government of India, the livelihood and nutritional support for socio-economically backward active traditional fishers&lt;span style=&quot;color:black&quot;> is provided &lt;/span>during the fishing ban/lean period. Livelihood and nutritional support for 5,97,709 fisher families has been provided annually during fishing ban/lean period, at a total investment of Rs.1059.94 crores during 2020-21 to 2023-24. &lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>As informed by the Department of Commerce, Ministry of Commerce and Industry, Govt. of India, there has been an import of fish and fish products worth 722.01 million USD to India in the last 3 years (FY 2021-22 to FY 2023-24), including import in the state of Tamil Nadu. As informed by the Marine Products Export Development Authority (MPEDA) under the Department of Commerce, Ministry of Commerce and Industry, there has been an export of fish and fish products worth 23,235.78 million USD from India in the last 3 years (FY 2021-22 to FY 2023-24), including fish and fish products worth 2,607.99 million USD from the state of Tamil Nadu. &lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;color:black; font-family:&amp;quot;Times New Roman&amp;quot;,Times,serif; font-size:16px&quot;>In order to promote the export of marine products, the Department of Fisheries, Government of India has taken several steps, these &lt;em>inter-alia&lt;/em> include support through PMMSY for branding, standards and certification, training and capacity building, creation of post-harvest infrastructure with emphasis on seamless cold-chain and development of modern fishing harbours and fish landing centers, etc. In addition, to address the critical infrastructure requirements of fisheries and aquaculture sectors, the Department of Fisheries, GoI during 2018-19 has created the Fisheries and Aquaculture Infrastructure Development Fund (FIDF) with a total fund size of Rs 7522.48 crore to provide concessional finance to states/UT and private sector. In this regard the supported activities included development of 27,823 ice plant /cold storages and transportation facilities with an investment of ₹1362 Cr, acquisition of 1398 Deep Sea Fishing Vessels (₹ 1310 Cr) and up-gradation of 1338 fishing vessels (₹ 193.64 Cr). Further, Department of Fisheries has also approved the projects for export oriented fish species such as Scampi, Mud crab, Asian Seabass, Cobia etc. and supported the state-of-the-art aquaculture production technologies like RAS and Biofloc. In addition, Department of Fisheries, GoI has notified Tuna Cluster in the Union Territory of Andaman &amp;amp; Nicobar Islands, Seaweed Cluster in the Lakshadweep and has issued the Guidelines for promoting diversified species and Nucleus Breeding Centre (NBCs)/Broodstock Multiplication Centre (BMCs) under the Coastal Aquaculture Authority Act, 2005 (amended in 2023). Apart from this, to ensure the sustainability and uninterrupted supply of Indian seafood material to the US Market, the Department is supporting a Marine Mammal Stock Assessment Project at the cost of around ₹ 13.29 Cr. In order to meet the requirements of the export markets for wild-caught shrimp, the Department of Fisheries is facilitating the installation of Turtle Excluder Devices (TEDs) in shrimp trawlers by including TEDs as a separate line item under the PMMSY scheme, and has advised the maritime states/UTs to mandate TED usage in trawl nets through amendments in their respective Marine Fisheries Regulation Acts. To strengthen India&amp;#39;s seafood sector globally, the Government is facilitating ease of business by amending Coastal Aquaculture Authority Act (Amendment) 2023. In addition, the Department is conducting Investors meets, Stakeholders consultation and also advising the States/UTs to encourage the farmers to attend the technical and demonstration workshops/training programs related to seed and feed, technology infusion, ornamental fisheries, hatchery technologies etc. on periodic basis in order to increase in productivity and quality of fishery produce&lt;/span>&lt;strong style=&quot;font-family:&amp;quot;Times New Roman&amp;quot;,Times,serif; font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>.&lt;/span>&lt;/strong>&lt;/p>
+
+&lt;p style=&quot;margin-left:0in&quot;>&lt;span style=&quot;font-family:&amp;quot;Times New Roman&amp;quot;,Times,serif; font-size:16px; text-align:justify&quot;>This information was given by Union Minister of State, Ministry of Fisheries, Animal Husbandry and Dairying, Shri George Kurian, in a written reply in Lok Sabha on 25th March, 2025.&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0in; text-align:center&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>*****&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0in&quot;>&lt;strong>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>AA&lt;/span>&lt;/span>&lt;/strong>&lt;/p>
+" />
+        <script type="text/javascript">
+                  var mPlayer = document.getElementById("background_music");
+                  var mPlayAction = document.getElementById("playbutton");
+                  var isPlaying = false;
+
+                  function playAudio() {
+                        mPlayer.play();
+                        isPlaying = true;
+                        document.getElementById('stopA').style.display = "block";
+                        document.getElementById('playA').style.display = "none";
+                  }
+
+                  function pauseAudio() {
+                        mPlayer.pause();
+                        isPlaying = false;
+                        document.getElementById('playA').style.display = "block";
+                        document.getElementById('stopA').style.display = "none";
+                  }
+        </script>
+        <script type="text/javascript">
+                  var synth = window.speechSynthesis;
+
+                  function CleanHtml(html) {
+                        html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+                        return html;
+                  }
+                  function stripHtml(html) {
+                        let tmp = document.createElement("DIV");
+                        tmp.innerHTML = CleanHtml(html);
+                        return tmp.textContent || tmp.innerText || "";
+                  }
+        </script>
+        <script type="text/javascript">
+                  $(document).ready(function () {
+                        $("table").each(function () {
+                              if (!$(this).closest(".table-responsive").length) {
+                                    $(this).wrap("<div class='table-responsive'></div>");
+                              }
+                        });
+
+                        var width = $(window).width();
+                        if (width < 768) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                        }
+                  });
+        </script>
+        <style type="text/css">
+            @media print {
+                .sticky-social, .sticky-social_mb, .pull-right, #printPDF {
+                    display: none !important;
+                }
+            }
+
+            .f_vl {
+                padding-right: 30px;
+                font-size: 17px;
+                cursor: pointer;
+            }
+
+            .log_oo {
+                display: flex;
+                justify-content: space-between;
+            }
+
+                .log_oo img {
+                    width: 150px;
+                }
+
+            .sticky-social_mb {
+                position: fixed;
+                bottom: 0px;
+                padding: 0px;
+                margin: 0px;
+                width: 100%;
+            }
+
+            .social_mb {
+                list-style: none;
+                display: flex;
+                width: 100%;
+                margin-bottom: -8px;
+            }
+
+                .social_mb a {
+                    padding: 8px 0px;
+                    font-size: 30px;
+                    transition: all 0.8s ease-in-out;
+                    width: 20% !important;
+                    text-align: center;
+                }
+        </style>
+        <style type="text/css">
+            .section1 {
+                position: relative;
+                padding: 10px 0px;
+                width: 100%;
+            }
+
+            .sticky-social {
+                position: fixed;
+                top: 20px;
+                left: 0px;
+                padding: 0px;
+                margin: 0px;
+            }
+
+            .social {
+                list-style: none;
+            }
+
+                .social a li {
+                    padding: 8px 12px;
+                    font-size: 25px;
+                    transition: all 0.8s ease-in-out;
+                }
+
+                    .social a li:hover {
+                        margin-right: -30px;
+                        box-shadow: 2px 5px 10px grey;
+                    }
+
+                        .social a li:hover .fa {
+                            margin-left: 20px;
+                        }
+
+            .fb_b {
+                background-color: var(--dbim-key, #0F5757);
+            }
+
+            .twitter_r {
+                background-color: var(--dbim-key, #0F5757);
+            }
+
+            .whatsapp_r {
+                background-color: var(--dbim-key, #0F5757);
+            }
+
+            .fa-envelope_r {
+                background-color: var(--dbim-key, #0F5757);
+            }
+
+            .fa-linkedin_r {
+                background-color: var(--dbim-key, #0F5757);
+            }
+        </style>
+        <style type="text/css">
+            @media only screen and (max-device-width: 767px) {
+                p span img {
+                    max-width: 90% !important;
+                    height: auto !important;
+                }
+
+                p img {
+                    max-width: 90% !important;
+                    height: auto !important;
+                }
+
+                h2 {
+                    font-size: var(--dbim-h2, 20px);
+                    font-weight: 600 !important;
+                }
+
+                h3 {
+                    font-size: var(--dbim-h3, 16px);
+                    font-weight: 600 !important;
+                }
+            }
+        </style>
+        <style type="text/css">
+            .film-roll-badge {
+                position: absolute;
+                top: 82%;
+                right: 20px;
+                width: 230px;
+                height: 70px;
+                background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 18px, var(--dbim-text, #150202) 18px, var(--dbim-text, #150202) 36px );
+                border-top: 8px solid var(--dbim-green-key, #0F5757);
+                border-bottom: 8px solid var(--dbim-green-key, #0F5757);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                animation: moveFilm 8s linear infinite;
+                z-index: 10;
+            }
+
+                .film-roll-badge::before,
+                .film-roll-badge::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 10px;
+                    background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 10px, #fff 10px, #fff 20px );
+                    left: 0;
+                    z-index: 2;
+                }
+
+                .film-roll-badge::before {
+                    top: -4px;
+                }
+
+                .film-roll-badge::after {
+                    bottom: -4px;
+                }
+
+            .film-roll-inner {
+                position: relative;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: flicker 2s infinite ease-in-out;
+            }
+
+            .countdown-text {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: #fff;
+                text-shadow: 0 0 6px rgba(255, 255, 255, 0.4), 0 0 10px #000;
+                white-space: nowrap;
+            }
+
+            @keyframes moveFilm {
+                0% {
+                    background-position: 0 0;
+                }
+
+                100% {
+                    background-position: 120px 0;
+                }
+            }
+
+            @keyframes flicker {
+                0%, 100% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0.9;
+                }
+
+                25% {
+                    opacity: 0.95;
+                }
+
+                75% {
+                    opacity: 0.85;
+                }
+            }
+
+            @media (max-width: 1500px) {
+                .film-roll-badge {
+                    top: 68%;
+                    right: 18px;
+                    height: 65px;
+                    font-size: 0.85rem;
+                }
+
+                .press-section {
+                    margin-top: 35px;
+                }
+            }
+
+            @media (max-width: 992px) {
+                .film-roll-badge {
+                    top: 52%;
+                    right: 10px;
+                    width: 200px;
+                    height: 60px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .film-roll-badge {
+                    top: 56%;
+                    right: 10px;
+                    width: 124px;
+                    height: 55px;
+                }
+
+                .countdown-text {
+                    font-size: 0.9rem;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .film-roll-badge {
+                    top: 59%;
+                    right: 5px;
+                    height: 50px;
+                }
+
+                .countdown-text {
+                    font-size: 0.85rem;
+                }
+            }
+        </style>
+        <script type="text/javascript">
+                  const festivalStart = new Date("2025-11-20T00:00:00").getTime();
+                  const festivalEnd = new Date("2025-11-28T23:59:59").getTime();
+                  const countdownElement = document.getElementById("countdown");
+
+                  if (countdownElement) {
+                        const interval = setInterval(() => {
+                              const now = new Date().getTime();
+
+                              if (now < festivalStart) {
+                                    const diff = festivalStart - now;
+                                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                                    countdownElement.innerHTML = `${days} Day${days !== 1 ? 's' : ''} ${hours} Hour${hours !== 1 ? 's' : ''} to go`;
+                              } else if (now >= festivalStart && now <= festivalEnd) {
+                                    const dayNumber = Math.floor((now - festivalStart) / (1000 * 60 * 60 * 24)) + 1;
+                                    countdownElement.innerHTML = `56th IFFI - Day ${dayNumber}`;
+                              } else {
+                                    countdownElement.innerHTML = `✨ IFFI closes but never ends…`;
+                                    const elements = document.querySelectorAll('.film-roll-badge');
+                                    elements.forEach(el => el.style.width = "350px");
+                                    clearInterval(interval);
+                              }
+                        }, 1000);
+                  }
+        </script>
+        <script type="text/javascript">
+                  const miffStart = new Date("2026-06-15T00:00:00").getTime();
+                  const miffEnd = new Date("2026-06-15T23:59:59").getTime();
+                  const miffElement = document.getElementById("miff");
+
+                  if (miffElement) {
+                        const miffInterval = setInterval(() => {
+                              const now = new Date().getTime();
+
+                              if (now < miffStart) {
+                                    const diff = miffStart - now;
+                                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                                    miffElement.innerHTML = `${days} Day${days === 1 ? '' : 's'} to MIFF ...`;
+                              } else if (now >= miffStart && now <= miffEnd) {
+                                    const dayNumber = Math.floor((now - miffStart) / (1000 * 60 * 60 * 24)) + 1;
+                                    miffElement.innerHTML = `19th MIFF - Day ${dayNumber}`;
+                              } else {
+                                    miffElement.innerHTML = `✨ MIFF concludes, cinema lives on...`;
+                                    document.querySelectorAll('.film-roll-badge').forEach(el => el.style.width = "350px");
+                                    clearInterval(miffInterval);
+                              }
+                        }, 1000);
+                  }
+        </script>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("sc_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"P_CategoryManagement","dynamicServicePath":"/PressReleasePage.aspx","id":"mpe"}, null, null, $get("Hidden"));
+});
+//]]>
+</script>
+<input type="hidden" name="__ncforminfo" value="XK7LO7GfCsrNQHFo0_UgRcxSMjZpiqwd2XTahZmRDjC6LK5wipk07lLVZ_2JZJN2RD1fLZ2n7mhyxdXMqXHhz-XoukyDe_UzblDdtUgZuUSNVGmnhpakRw=="/></form>
+    
+
+<script type="application/json" id="pibConsentConfig">{"ga4Id":"G-Q414Y0X6EE,G-QJJ6LZ8LHV","policyUrl":"/CookiePolicy.aspx","text":{"bannerLabel":"Cookie consent","title":"Cookies on this website","body":"We use essential cookies to make this website work. We also set analytics cookies when you arrive, so we can see how the site is used and improve it - you can switch these off below or at any time from the Cookie Policy page. Cookies from embedded social media content are set only if you allow them.","policyLink":"Read our Cookie Policy","accept":"Accept all","reject":"Reject optional","customize":"Customise","prefsTitle":"Cookie preferences","prefsIntro":"Choose which cookies this website may set. Essential cookies cannot be switched off because the site does not work without them. Analytics cookies are on unless you turn them off. Social media cookies stay off until you allow them. You can change these choices at any time from the Cookie Policy page.","essentialName":"Essential cookies","essentialDesc":"Needed for the site to function. These remember your session, your language and region, your text size and colour theme, and verify the security check on forms. They are always on.","analyticsName":"Analytics cookies","analyticsDesc":"Help us understand how visitors use the site - which pages are read and how long people stay - so it can be improved. The information is collected in a form that does not directly identify you. These are on when you arrive; switching them off here stops them and deletes the ones already set.","socialName":"Social media cookies","socialDesc":"Set by content embedded from X, Facebook and YouTube, such as timelines and videos. These platforms may use them to track you across websites. They stay off until you allow them.","save":"Save preferences","cancel":"Cancel"}}</script>
+<script type="text/javascript" src='/js/consent.js?v=10'></script>
+
+<script type="text/javascript" src='/js/consent-embeds.js?v=10'></script>
+
+
+    <!-- Minimal O(N) Time and O(1) Auxiliary Space Word Count & Read Time Calculation -->
+    <script type="text/javascript">
+            (function () {
+                  function calculateReadingStats() {
+                        var bodyEl = document.getElementById("pibReleaseBody");
+                        if (!bodyEl) return;
+
+                        // textContent extracts text without triggering expensive layout/reflow computations
+                        var text = bodyEl.textContent || "";
+                        var words = 0;
+                        var inWord = false;
+
+                        // O(N) single pass character code scan: achieves O(1) space with zero array allocations
+                        for (var i = 0, len = text.length; i < len; i++) {
+                              var code = text.charCodeAt(i);
+                              // Delimits on ASCII whitespace, control characters, tabs, newlines, and non-breaking spaces (160)
+                              if (code <= 32 || code === 160) {
+                                    inWord = false;
+                              } else if (!inWord) {
+                                    inWord = true;
+                                    words++;
+                              }
+                        }
+
+                        // Standard 250 WPM reading speed (e.g., 612 words yields 2 min read)
+                        var minutes = Math.max(1, Math.round(words / 250));
+
+                        var elWords = document.getElementById("prWordCount");
+                        var elTime = document.getElementById("prReadTime");
+
+                        if (elWords) elWords.textContent = words + (words === 1 ? " word" : " words");
+                        if (elTime) elTime.textContent = minutes + " min read";
+                  }
+
+                  if (document.readyState === "loading") {
+                        document.addEventListener("DOMContentLoaded", calculateReadingStats);
+                  } else {
+                        calculateReadingStats();
+                  }
+            })();
+    </script>
+
+    <script type="text/javascript">
+            (function () {
+                  try {
+                        if (window.self === window.top) { return; }
+                  } catch (e) { return; }
+                  var s = document.createElement("style");
+                  s.textContent = ".sticky-social, .sticky-social_mb { display: none !important; }";
+                  (document.head || document.documentElement).appendChild(s);
+            }());
+    </script>
+</body>
+</html>
